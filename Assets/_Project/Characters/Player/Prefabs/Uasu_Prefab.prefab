@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
       propertyPath: m_Name
-      value: Uasu_Model
+      value: Uasu_Prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -59,6 +59,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7971008189745937271}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 894983558538034883}
   m_SourcePrefab: {fileID: 100100000, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
 --- !u!1 &6887226188864423112 stripped
 GameObject:
@@ -90,3 +93,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &894983558538034883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887226188864423112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60fafc4d0f8c3409786da4fd1e8cfdd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _horizontalInput: 0
+  _verticalInput: 0
+  _jumpPressed: 0
+  _r2Value: 0
+  _lockPressed: 0
