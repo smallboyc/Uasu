@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerLocomotionManager))]
+[RequireComponent(typeof(PlayerAnimationManager))]
 public class PlayerManager : CharacterManager
 {
     private PlayerLocomotionManager _playerLocomotionManager;

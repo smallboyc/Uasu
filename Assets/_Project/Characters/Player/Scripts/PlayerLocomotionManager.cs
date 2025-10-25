@@ -8,7 +8,12 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     private Transform _cameraTransform;
     private float _currentSpeed = 0.0f;
     [SerializeField] private float _walkingSpeed = 3.0f;
+    [SerializeField] private float _jumpHeight = 1.0f;
     [SerializeField] private float _rotationSpeed = 6.0f;
+    [SerializeField] private float _gravity = -24.0f;
+    [SerializeField] float _jumpCooldown = 0.6f;
+    [SerializeField] bool _jumpCanBePerformed = true;
+    private bool _jumpButtonReleased = true;
     private Vector3 _moveDirection; //free move direction vector (magenta gizmos ---o)
     [SerializeField] private float _verticalVelocity = 0.0f;
     [SerializeField] private float _moveIntensity;
@@ -48,6 +53,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     public void HandleAllMovement()
     {
         HandleGroundedMovement();
+        HandleAerialMovement();
         FreePlayerRotation();
 
         Vector3 move = _moveDirection * _currentSpeed * Time.deltaTime;
@@ -83,6 +89,34 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     }
 
+    private void HandleAerialMovement()
+    {
+        if (_playerManager._characterController.isGrounded)
+        {
+            if (_verticalVelocity < 0f)
+                _verticalVelocity = -2f;
+
+            if (PlayerInputManager.Instance._jumpPressed && _jumpButtonReleased && _jumpCanBePerformed)
+            {
+                _verticalVelocity = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
+                StartCoroutine(ReloadJump());
+            }
+        }
+        else
+        {
+            _verticalVelocity += _gravity * Time.deltaTime;
+        }
+
+        _jumpButtonReleased = !PlayerInputManager.Instance._jumpPressed;
+    }
+
+    //Cooldown before Jumping again.
+    private IEnumerator ReloadJump()
+    {
+        _jumpCanBePerformed = false;
+        yield return new WaitForSeconds(_jumpCooldown);
+        _jumpCanBePerformed = true;
+    }
 
     private void FreePlayerRotation()
     {

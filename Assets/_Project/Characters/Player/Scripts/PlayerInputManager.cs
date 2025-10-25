@@ -7,6 +7,7 @@ public class PlayerInputManager : MonoBehaviour
     private PlayerControls _playerControls;
     public float _horizontalInput;
     public float _verticalInput;
+    public bool _jumpPressed;
 
 
     public static PlayerInputManager Instance
@@ -42,6 +43,9 @@ public class PlayerInputManager : MonoBehaviour
             _playerControls = new PlayerControls();
             //WALK
             _playerControls.PlayerMovement.Movement.performed += OnMovePerformed;
+            //JUMP
+            _playerControls.PlayerMovement.Jump.performed += OnJumpPerformed;
+            _playerControls.PlayerMovement.Jump.canceled += OnJumpCanceled;
         }
         _playerControls.Enable();
     }
@@ -57,5 +61,15 @@ public class PlayerInputManager : MonoBehaviour
     {
         _horizontalInput = input.ReadValue<Vector2>().x;
         _verticalInput = input.ReadValue<Vector2>().y;
+    }
+
+    private void OnJumpPerformed(InputAction.CallbackContext input)
+    {
+        _jumpPressed = true;
+    }
+
+    private void OnJumpCanceled(InputAction.CallbackContext input)
+    {
+        _jumpPressed = false;
     }
 }
