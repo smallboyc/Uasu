@@ -2,21 +2,23 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerManager))]
+[RequireComponent(typeof(PlayerAnimationManager))]
 public class PlayerLocomotionManager : CharacterLocomotionManager
 {
     private PlayerManager _playerManager;
     private Transform _cameraTransform;
     private float _currentSpeed = 0.0f;
-    [SerializeField] private float _walkingSpeed = 3.0f;
+    [SerializeField] private float _walkingSpeed = 4.0f;
+    [SerializeField] private float _gravity = -24.0f;
     [SerializeField] private float _jumpHeight = 1.0f;
     [SerializeField] private float _rotationSpeed = 6.0f;
-    [SerializeField] private float _gravity = -24.0f;
     [SerializeField] float _jumpCooldown = 0.6f;
     [SerializeField] bool _jumpCanBePerformed = true;
     private bool _jumpButtonReleased = true;
     private Vector3 _moveDirection; //free move direction vector (magenta gizmos ---o)
     [SerializeField] private float _verticalVelocity = 0.0f;
     [SerializeField] private float _moveIntensity;
+
 
 
     public float GetIntensity
@@ -50,11 +52,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         _playerManager = GetComponent<PlayerManager>();
     }
 
-    public void HandleAllMovement()
+    public void HandleAllMovement(PlayerLockManager playerLockManager, bool isLockedOnEnemy)
     {
         HandleGroundedMovement();
         HandleAerialMovement();
-        FreePlayerRotation();
+        HandleRotationMovement(playerLockManager, isLockedOnEnemy);
 
         Vector3 move = _moveDirection * _currentSpeed * Time.deltaTime;
         move.y = _verticalVelocity * Time.deltaTime;
@@ -86,7 +88,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         //Let's define more precisely in the future if we really want a sprint option.
         _currentSpeed = _walkingSpeed;
 
-
     }
 
     private void HandleAerialMovement()
@@ -110,12 +111,17 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         _jumpButtonReleased = !PlayerInputManager.Instance._jumpPressed;
     }
 
-    //Cooldown before Jumping again.
-    private IEnumerator ReloadJump()
+
+    private void HandleRotationMovement(PlayerLockManager playerLockManager, bool isLockedOnEnemy)
     {
-        _jumpCanBePerformed = false;
-        yield return new WaitForSeconds(_jumpCooldown);
-        _jumpCanBePerformed = true;
+        if (!isLockedOnEnemy)
+        {
+            FreePlayerRotation();
+        }
+        else
+        {
+            LockPlayerRotation(playerLockManager);
+        }
     }
 
     private void FreePlayerRotation()
@@ -123,6 +129,19 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         if (_moveDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(_moveDirection);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                _rotationSpeed * Time.deltaTime
+            );
+        }
+    }
+
+    private void LockPlayerRotation(PlayerLockManager playerLockManager)
+    {
+        if (playerLockManager._lookDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(playerLockManager._lookDirection);
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,
                 targetRotation,
@@ -141,6 +160,15 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
         Gizmos.DrawLine(start, end);
         Gizmos.DrawSphere(end, 0.1f);
+    }
+
+
+    //Cooldown before Jumping again.
+    private IEnumerator ReloadJump()
+    {
+        _jumpCanBePerformed = false;
+        yield return new WaitForSeconds(_jumpCooldown);
+        _jumpCanBePerformed = true;
     }
 
 }

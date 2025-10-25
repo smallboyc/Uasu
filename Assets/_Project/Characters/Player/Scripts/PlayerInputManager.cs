@@ -8,6 +8,7 @@ public class PlayerInputManager : MonoBehaviour
     public float _horizontalInput;
     public float _verticalInput;
     public bool _jumpPressed;
+    public bool _lockPressed;
 
 
     public static PlayerInputManager Instance
@@ -41,11 +42,14 @@ public class PlayerInputManager : MonoBehaviour
         if (_playerControls == null)
         {
             _playerControls = new PlayerControls();
-            //WALK
+            //WALK, RUN
             _playerControls.PlayerMovement.Movement.performed += OnMovePerformed;
             //JUMP
             _playerControls.PlayerMovement.Jump.performed += OnJumpPerformed;
             _playerControls.PlayerMovement.Jump.canceled += OnJumpCanceled;
+            //LOCK
+            _playerControls.PlayerMovement.Lock.performed += OnLockPerformed;
+            _playerControls.PlayerMovement.Lock.canceled += OnLockCanceled;
         }
         _playerControls.Enable();
     }
@@ -71,5 +75,15 @@ public class PlayerInputManager : MonoBehaviour
     private void OnJumpCanceled(InputAction.CallbackContext input)
     {
         _jumpPressed = false;
+    }
+
+    private void OnLockPerformed(InputAction.CallbackContext input)
+    {
+        _lockPressed = true;
+    }
+
+    private void OnLockCanceled(InputAction.CallbackContext input)
+    {
+        _lockPressed = false;
     }
 }
