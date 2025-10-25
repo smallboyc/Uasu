@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerLockManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerLockManager : MonoBehaviour
     private bool _canToggleJoystick = true; //We use this variable to avoid joystick call on multiple frames.
     public Vector3 _lookDirection;
     private Color _basicEnemyColor = new(0.9622641f, 0.3495016f, 0.3495016f, 1f);
+
 
     //Main function.
     public void TargetLockEnemies(ref bool _isLockedOnEnemy)
@@ -27,13 +29,16 @@ public class PlayerLockManager : MonoBehaviour
         if (_targetEnemy == null)
         {
             _isLockedOnEnemy = false;
+            IsometricCameraManager.Instance.CancelCameraLockEffect();
             TargetBestEnemy(ref bestEnemy);
             HighlightBestEnemy(ref bestEnemy);
         }
         else
         {
             _isLockedOnEnemy = true;
+            IsometricCameraManager.Instance.ActiveCameraLockEffect();
             HighlightLockedEnemy();
+
         }
 
         if (PlayerInputManager.Instance._lockPressed && _canToggleJoystick)
