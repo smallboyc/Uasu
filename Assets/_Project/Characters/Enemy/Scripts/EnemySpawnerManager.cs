@@ -8,7 +8,6 @@ public class EnemySpawnerManager : MonoBehaviour
 
     void Awake()
     {
-        // Vérifications
         if (_enemyPrefab == null || _enemySpawnerWayPoints == null || _enemySpawnerWayPoints.Count == 0)
         {
             Debug.LogError($"[{name}] EnemySpawnerManager error: Please assign an enemy prefab and waypoints.");

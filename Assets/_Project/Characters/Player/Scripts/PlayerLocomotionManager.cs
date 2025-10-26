@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerAnimationManager))]
 public class PlayerLocomotionManager : CharacterLocomotionManager
 {
-    private PlayerManager _playerManager;
     private Transform _cameraTransform;
     private float _currentSpeed = 0.0f;
     [SerializeField] private float _walkingSpeed = 4.0f;
@@ -37,30 +36,21 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         }
     }
 
-    public bool IsGrounded
-    {
-        get
-        {
-            return _playerManager._characterController.isGrounded;
-        }
-    }
-
     protected override void Awake()
     {
         base.Awake();
         _cameraTransform = Camera.main.transform;
-        _playerManager = GetComponent<PlayerManager>();
     }
 
-    public void HandleAllMovement(PlayerLockManager playerLockManager, bool isLockedOnEnemy)
+    public void HandleAllMovement(CharacterController characterController, PlayerLockManager playerLockManager, bool isLockedOnEnemy)
     {
         HandleGroundedMovement();
-        HandleAerialMovement();
+        HandleAerialMovement(characterController);
         HandleRotationMovement(playerLockManager, isLockedOnEnemy);
 
         Vector3 move = _moveDirection * _currentSpeed * Time.deltaTime;
         move.y = _verticalVelocity * Time.deltaTime;
-        _playerManager._characterController.Move(move);
+        characterController.Move(move);
     }
 
     private void HandleGroundedMovement()
@@ -90,9 +80,9 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     }
 
-    private void HandleAerialMovement()
+    private void HandleAerialMovement(CharacterController characterController)
     {
-        if (_playerManager._characterController.isGrounded)
+        if (characterController.isGrounded)
         {
             if (_verticalVelocity < 0f)
                 _verticalVelocity = -2f;
