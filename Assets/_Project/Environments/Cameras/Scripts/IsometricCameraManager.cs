@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
+[RequireComponent(typeof(CinemachineCamera))]
 public class IsometricCameraManager : MonoBehaviour
 {
     private static IsometricCameraManager _instance;
@@ -33,12 +34,17 @@ public class IsometricCameraManager : MonoBehaviour
             return;
         }
         _instance = this;
-        DontDestroyOnLoad(gameObject);
+
         _isometricCamera = GetComponent<CinemachineCamera>();
     }
 
     private void Start()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            _isometricCamera.Follow = player.transform;
+        }
         _currentCameraAngle = _initialCameraAngle;
         _currentOrthographicSize = _initialOrthographicSize;
     }
