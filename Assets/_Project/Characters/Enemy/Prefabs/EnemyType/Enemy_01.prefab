@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6502249579551940192}
   - component: {fileID: 3807738836422465755}
   - component: {fileID: 1829690074933744511}
+  - component: {fileID: -3014408635735591312}
   m_Layer: 0
   m_Name: Enemy_01
   m_TagString: Enemy
@@ -160,5 +161,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d39db55af16e405ab69e87da09a5344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: 0}
   _wayPoints: []
+--- !u!114 &-3014408635735591312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6578594796744957414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af664bd710b90456a8d1bb9165764a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

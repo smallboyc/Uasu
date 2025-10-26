@@ -8,8 +8,27 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
     private float _moveSpeed = 2.0f;
     private float _rotationSpeed = 2.0f;
 
+    Vector3 _targetDirection;
 
-    public void HandleAllMovement(CharacterController characterController, Vector3 spawnPosition, List<Transform> wayPoints)
+    public void HandleAllMovement(CharacterController characterController, List<Transform> wayPoints, EnemyLockManager enemyLockManager)
+    {
+        enemyLockManager.TargetLockPlayer();
+
+        if (!enemyLockManager.IsLockedOnPlayer)
+        {
+            CheckForWayPoints(wayPoints);
+            _targetDirection = _currentWayPointTarget;
+        }
+        else
+        {
+            _targetDirection = enemyLockManager.GetPlayerTransform.position;
+        }
+
+        EnableTargetMovement(characterController);
+
+    }
+
+    private void CheckForWayPoints(List<Transform> wayPoints)
     {
         if (wayPoints == null || wayPoints.Count == 0)
             return;
@@ -21,8 +40,11 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
             _currentWayPointIndex = randomIndex;
             _currentWayPointTarget = wayPoints[_currentWayPointIndex].position;
         }
+    }
 
-        Vector3 direction = _currentWayPointTarget - transform.position;
+    private void EnableTargetMovement(CharacterController characterController)
+    {
+        Vector3 direction = _targetDirection - transform.position;
         direction.y = 0.0f;
         direction.Normalize();
 
@@ -40,4 +62,6 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
         }
     }
 }
+
+
 

@@ -2,28 +2,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyLocomotionManager))]
+[RequireComponent(typeof(EnemyLockManager))]
 public class EnemyManager : CharacterManager
 {
-    [SerializeField] private Vector3 _spawnPosition;
     [SerializeField] private List<Transform> _wayPoints;
-
     private EnemyLocomotionManager _enemyLocomotionManager;
+    private EnemyLockManager _enemyLockManager;
     protected override void Awake()
     {
         base.Awake();
         _enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
+        _enemyLockManager = GetComponent<EnemyLockManager>();
     }
 
     protected override void Update()
     {
         base.Update();
-        _enemyLocomotionManager.HandleAllMovement(characterController, _spawnPosition,_wayPoints);
+        _enemyLockManager.TargetLockPlayer();
+        _enemyLocomotionManager.HandleAllMovement(characterController, _wayPoints, _enemyLockManager);
     }
 
-    public void SetWayPoints(Vector3 spawnPosition, List<Transform> enemySpawnerWaypoints)
+    public void SetWayPoints(List<Transform> enemySpawnerWaypoints)
     {
-        _spawnPosition = spawnPosition;
         _wayPoints = enemySpawnerWaypoints;
-
     }
 }

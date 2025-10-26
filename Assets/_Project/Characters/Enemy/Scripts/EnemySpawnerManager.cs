@@ -29,6 +29,6 @@ public class EnemySpawnerManager : MonoBehaviour
             return;
         }
 
-        enemyManager.SetWayPoints(transform.position, _enemySpawnerWayPoints);
+        enemyManager.SetWayPoints(_enemySpawnerWayPoints);
     }
 }
