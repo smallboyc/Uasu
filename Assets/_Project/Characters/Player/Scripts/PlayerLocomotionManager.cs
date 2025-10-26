@@ -39,6 +39,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    private void Start()
+    {
         _cameraTransform = Camera.main.transform;
     }
 
