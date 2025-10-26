@@ -24,15 +24,6 @@ public class IsometricCameraManager : MonoBehaviour
             return _instance;
         }
     }
-
-    public CinemachineCamera GetCamera
-    {
-        get
-        {
-            return _isometricCamera;
-        }
-    }
-
     void Awake()
     {
         //Singleton
