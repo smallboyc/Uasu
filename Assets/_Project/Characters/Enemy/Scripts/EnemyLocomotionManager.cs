@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,14 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
     private int _currentWayPointIndex = -1;
     private float _moveSpeed = 2.0f;
     private float _rotationSpeed = 2.0f;
-
     Vector3 _targetDirection;
+
+    //Have a break, have a kit kat :
+    private float _breakSuccessProbability = 0.3f;
+    private bool _enemyTakeABreak;
+    private bool _canLookForABreak = true;
+    private int _breakCooldown = 4;
+
 
     public void HandleAllMovement(CharacterController characterController, List<Transform> wayPoints, EnemyLockManager enemyLockManager)
     {
@@ -16,17 +23,38 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
 
         if (!enemyLockManager.IsLockedOnPlayer)
         {
+            //Enemy is looking for wayPoints to go 
             CheckForWayPoints(wayPoints);
             _targetDirection = _currentWayPointTarget;
+
+            //Enemy wants sometimes to take a break...
+            if (_canLookForABreak)
+            {
+                _canLookForABreak = false;
+                StartCoroutine(LookForABreak());
+            }
         }
-        else
+        else //Enemy focus the player! 
         {
             _targetDirection = enemyLockManager.GetPlayerTransform.position;
         }
 
+        //Disable movement when enemy take a break!
+        if (!enemyLockManager.IsLockedOnPlayer && _enemyTakeABreak)
+            return;
+
         EnableTargetMovement(characterController);
 
     }
+
+    private IEnumerator LookForABreak()
+    {
+        yield return new WaitForSeconds(_breakCooldown);
+        float randomFloat = Random.Range(0.0f, 1.0f);
+        _enemyTakeABreak = _breakSuccessProbability > randomFloat;
+        _canLookForABreak = true;
+    }
+
 
     private void CheckForWayPoints(List<Transform> wayPoints)
     {
