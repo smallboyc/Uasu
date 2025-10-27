@@ -3,11 +3,11 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterManager : MonoBehaviour
 {
-    [HideInInspector] public CharacterController _characterController;
+    [HideInInspector] protected CharacterController characterController;
     protected virtual void Awake()
     {
         DontDestroyOnLoad(this);
-        _characterController = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
     }
 
     protected virtual void Start()

@@ -144,7 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d07adfe6131b4fb8b581ce1760a3dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: 0}
 --- !u!114 &7416606695584317001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,4 +211,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _limitAngle: 60
   _lockCooldown: 0.25
-  _lookDirection: {x: 0, y: 0, z: 0}
+  _lockDirection: {x: 0, y: 0, z: 0}

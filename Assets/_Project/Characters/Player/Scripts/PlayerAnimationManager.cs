@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimationManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class PlayerAnimationManager : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void HandlePlayerAnimations(PlayerLocomotionManager playerLocomotionManager, bool isLock)
+    public void HandlePlayerAnimations(CharacterController characterController, PlayerLocomotionManager playerLocomotionManager, bool isLock)
     {
         if (isLock)
         {
@@ -39,7 +40,7 @@ public class PlayerAnimationManager : MonoBehaviour
         }
 
         //Jump
-        _animator.SetBool("IsGrounded", playerLocomotionManager.IsGrounded);
+        _animator.SetBool("IsGrounded", characterController.isGrounded);
     }
 
 }

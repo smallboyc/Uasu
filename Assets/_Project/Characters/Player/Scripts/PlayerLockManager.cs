@@ -11,12 +11,29 @@ public class PlayerLockManager : MonoBehaviour
     private List<GameObject> _enemiesInRange = new();
     private string _enemyTag = "Enemy";
     private bool _canToggleJoystick = true; //We use this variable to avoid joystick call on multiple frames.
-    public Vector3 _lookDirection;
+    public Vector3 _lockDirection;
     private Color _basicEnemyColor = new(0.9622641f, 0.3495016f, 0.3495016f, 1f);
+    private bool _isLockedOnEnemy;
 
+
+    public bool IsLockedOnEnemy
+    {
+        get
+        {
+            return _isLockedOnEnemy;
+        }
+    }
+
+    public Vector3 GetLockDirection
+    {
+        get
+        {
+            return _lockDirection;
+        }
+    }
 
     //Main function.
-    public void TargetLockEnemies(ref bool _isLockedOnEnemy)
+    public void TargetLockEnemies()
     {
         //If we're locking an enemy but we exit the range, then unlock.
         if (_enemiesInRange.Count == 0)
@@ -46,7 +63,7 @@ public class PlayerLockManager : MonoBehaviour
             ToggleLockEnemy(ref bestEnemy);
         }
 
-        LookDirectionToEnemy();
+        LockDirectionToEnemy();
     }
 
 
@@ -141,7 +158,7 @@ public class PlayerLockManager : MonoBehaviour
     }
 
     //Focus on the enemy by keeping the player eyes on the enemy locked with animtation.
-    private void LookDirectionToEnemy()
+    private void LockDirectionToEnemy()
     {
         if (_targetEnemy == null)
             return;
@@ -150,6 +167,6 @@ public class PlayerLockManager : MonoBehaviour
         directionToEnemy.y = 0f;
         if (directionToEnemy.sqrMagnitude < 0.001f) return;
 
-        _lookDirection = directionToEnemy.normalized;
+        _lockDirection = directionToEnemy.normalized;
     }
 }

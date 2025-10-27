@@ -8,7 +8,6 @@ public class PlayerManager : CharacterManager
     private PlayerLocomotionManager _playerLocomotionManager;
     private PlayerLockManager _playerLockManager;
     private PlayerAnimationManager _playerAnimationManager;
-    private bool _isLockedOnEnemy;
 
     protected override void Awake()
     {
@@ -21,9 +20,9 @@ public class PlayerManager : CharacterManager
     protected override void Update()
     {
         base.Update();
-        _playerLockManager.TargetLockEnemies(ref _isLockedOnEnemy);
-        _playerLocomotionManager.HandleAllMovement(_playerLockManager, _isLockedOnEnemy);
-        _playerAnimationManager.HandlePlayerAnimations(_playerLocomotionManager, _isLockedOnEnemy);
+        _playerLockManager.TargetLockEnemies();
+        _playerLocomotionManager.HandleAllMovement(characterController, _playerLockManager);
+        _playerAnimationManager.HandlePlayerAnimations(characterController, _playerLocomotionManager, _playerLockManager.IsLockedOnEnemy);
     }
 }
 
