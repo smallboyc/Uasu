@@ -22,15 +22,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Lock",
-                    "type": "Button",
-                    "id": "1e4ec831-ddc7-4360-834d-5b360417d72c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -165,10 +156,58 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player Interaction",
+            "id": "b124c92f-2c15-414b-8cc3-451aab923789",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "ce282cbe-f477-4e7e-82fe-7bd8f5d2a41e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Lock",
+                    "type": "Button",
+                    "id": "a19a195a-b409-4472-8cff-e13e1c930f72",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b38a66ba-ad83-4fe4-9896-e729c2520ed1",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b78e9b7e-678a-4315-ac75-5875b2d8e4ab",
+                    "id": "e1914816-bbe9-46bc-b712-1e1fd07e3c9e",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd6ed511-4269-4a9e-b673-f74488829196",
                     "path": "<Gamepad>/rightStickPress",
                     "interactions": "",
                     "processors": "",
@@ -179,7 +218,7 @@
                 },
                 {
                     "name": "",
-                    "id": "5f045cfc-8986-42a4-9721-de9fe221da08",
+                    "id": "e3ee3689-b2ae-4fa6-83d5-0a60cb7fdad9",
                     "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",

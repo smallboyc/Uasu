@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &468982684650917781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8606868090902566742}
+  m_Layer: 0
+  m_Name: HandHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8606868090902566742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468982684650917781}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.29654837, y: -0.39182198, z: -0.6643545, w: 0.5631765}
+  m_LocalPosition: {x: 0.00107, y: 0.00429, z: 0.00094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1637786505550911176}
+  m_LocalEulerAnglesHint: {x: -10.754, y: -58.243, z: -93.42}
+--- !u!1 &7330620252869653122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2447754541676271175}
+  m_Layer: 0
+  m_Name: BackHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2447754541676271175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7330620252869653122}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.8454912, y: 0.43741715, z: -0.19127801, w: -0.23921481}
+  m_LocalPosition: {x: -0.00364, y: -0.001, z: -0.00258}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1127107506157109449}
+  m_LocalEulerAnglesHint: {x: 193.72, y: 33.255005, z: -58.825012}
 --- !u!1001 &6004774309313460633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,7 +124,13 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 6488d94b057ec403ea8a7ca61a7e0f20, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -2526110212387047088, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2447754541676271175}
+    - targetCorrespondingSourceObject: {fileID: 5039431557493780305, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8606868090902566742}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
       insertIndex: -1
@@ -86,6 +154,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3217836107803619878}
   m_SourcePrefab: {fileID: 100100000, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
+--- !u!4 &1127107506157109449 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2526110212387047088, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
+  m_PrefabInstance: {fileID: 6004774309313460633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1637786505550911176 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5039431557493780305, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
+  m_PrefabInstance: {fileID: 6004774309313460633}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6887226188864423112 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
@@ -128,10 +206,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fafc4d0f8c3409786da4fd1e8cfdd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horizontalInput: 0
-  _verticalInput: 0
-  _jumpPressed: 0
-  _lockPressed: 0
+  horizontalInput: 0
+  verticalInput: 0
+  jumpPressed: 0
+  lockPressed: 0
+  interactPressed: 0
 --- !u!114 &308839958320171869
 MonoBehaviour:
   m_ObjectHideFlags: 0

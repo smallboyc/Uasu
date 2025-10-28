@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerLockManager : MonoBehaviour
@@ -58,7 +57,7 @@ public class PlayerLockManager : MonoBehaviour
 
         }
 
-        if (PlayerInputManager.Instance._lockPressed && _canToggleJoystick)
+        if (PlayerInputManager.Instance.lockPressed && _canToggleJoystick)
         {
             ToggleLockEnemy(ref bestEnemy);
         }
