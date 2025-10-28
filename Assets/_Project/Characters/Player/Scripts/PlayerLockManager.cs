@@ -48,13 +48,13 @@ public class PlayerLockManager : MonoBehaviour
             _isLockedOnEnemy = false;
             IsometricCameraManager.Instance.CancelCameraLockEffect();
             TargetBestEnemy(ref bestEnemy);
-            HighlightBestEnemy(ref bestEnemy);
+            // HighlightBestEnemy(ref bestEnemy);
         }
         else
         {
             _isLockedOnEnemy = true;
             IsometricCameraManager.Instance.ActiveCameraLockEffect();
-            HighlightLockedEnemy();
+            // HighlightLockedEnemy();
 
         }
 
@@ -81,8 +81,8 @@ public class PlayerLockManager : MonoBehaviour
     {
         if (other.CompareTag(_enemyTag))
         {
-            Renderer r = other.gameObject.GetComponent<Renderer>();
-            r.material.color = _basicEnemyColor;
+            // Renderer r = other.gameObject.GetComponent<Renderer>();
+            // r.material.color = _basicEnemyColor;
 
             if (other.gameObject == _targetEnemy)
             {
@@ -135,17 +135,17 @@ public class PlayerLockManager : MonoBehaviour
 
 
     //A Yellow color applied to the best enemy found.
-    private void HighlightBestEnemy(ref GameObject bestEnemy)
-    {
-        foreach (GameObject enemy in _enemiesInRange)
-        {
-            Renderer r = enemy.GetComponent<Renderer>();
-            if (enemy == bestEnemy && enemy != _targetEnemy)
-                r.material.color = Color.yellow;
-            else
-                r.material.color = _basicEnemyColor;
-        }
-    }
+    // private void HighlightBestEnemy(ref GameObject bestEnemy)
+    // {
+    //     foreach (GameObject enemy in _enemiesInRange)
+    //     {
+    //         Renderer r = enemy.GetComponent<Renderer>();
+    //         if (enemy == bestEnemy && enemy != _targetEnemy)
+    //             r.material.color = Color.yellow;
+    //         else
+    //             r.material.color = _basicEnemyColor;
+    //     }
+    // }
 
     //A Blue color applied to the best enemy locked by the player.
     private void HighlightLockedEnemy()

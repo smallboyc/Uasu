@@ -62,7 +62,7 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
             return;
 
         if (_currentWayPointTarget == Vector3.zero ||
-            Vector3.Distance(transform.position, _currentWayPointTarget) < 1.0f)
+            Vector3.Distance(transform.position, _currentWayPointTarget) < 3.0f)
         {
             int randomIndex = Random.Range(0, wayPoints.Count);
             _currentWayPointIndex = randomIndex;
