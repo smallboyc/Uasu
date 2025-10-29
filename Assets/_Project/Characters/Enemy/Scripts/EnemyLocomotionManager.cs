@@ -19,8 +19,6 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
 
     public void HandleAllMovement(CharacterController characterController, List<Transform> wayPoints, EnemyLockManager enemyLockManager)
     {
-        enemyLockManager.TargetLockPlayer();
-
         if (!enemyLockManager.IsLockedOnPlayer)
         {
             //Enemy is looking for wayPoints to go 

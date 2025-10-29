@@ -133,9 +133,9 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void LockPlayerRotation(PlayerLockManager playerLockManager)
     {
-        if (playerLockManager.GetLockDirection != Vector3.zero)
+        if (playerLockManager.LockDirection != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(playerLockManager.GetLockDirection);
+            Quaternion targetRotation = Quaternion.LookRotation(playerLockManager.LockDirection);
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,
                 targetRotation,

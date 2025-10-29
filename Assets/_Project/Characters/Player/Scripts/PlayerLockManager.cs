@@ -1,171 +1,168 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLockManager : MonoBehaviour
 {
-    [SerializeField] private float _limitAngle = 60.0f; //must be > 0
+    [Header("Lock Settings")]
+    [SerializeField] private float _lockRadius = 8.0f;
+    [SerializeField] private float _limitAngle = 60.0f;
+    [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private float _lockCooldown = 0.25f;
+    [SerializeField] private GameObject _potentialLockIndicatorPrefab;
+    [SerializeField] private GameObject _lockIndicatorPrefab;
+
+    private GameObject _bestEnemy = null;
     private GameObject _targetEnemy;
-    private List<GameObject> _enemiesInRange = new();
-    private string _enemyTag = "Enemy";
-    private bool _canToggleJoystick = true; //We use this variable to avoid joystick call on multiple frames.
-    public Vector3 _lockDirection;
-    private Color _basicEnemyColor = new(0.9622641f, 0.3495016f, 0.3495016f, 1f);
+    private GameObject _potentialLockIndicator;
+    private GameObject _lockIndicator;
     private bool _isLockedOnEnemy;
+    private bool _canToggleLock = true;
+    private Vector3 _lockDirection;
 
+    public bool IsLockedOnEnemy => _isLockedOnEnemy;
+    public Vector3 LockDirection => _lockDirection;
 
-    public bool IsLockedOnEnemy
-    {
-        get
-        {
-            return _isLockedOnEnemy;
-        }
-    }
-
-    public Vector3 GetLockDirection
-    {
-        get
-        {
-            return _lockDirection;
-        }
-    }
-
-    //Main function.
+    // Main function used in the PlayerManager.
     public void TargetLockEnemies()
     {
-        //If we're locking an enemy but we exit the range, then unlock.
-        if (_enemiesInRange.Count == 0)
-        {
-            _targetEnemy = null;
-        }
-
-        GameObject bestEnemy = null;
-
-        if (_targetEnemy == null)
-        {
-            _isLockedOnEnemy = false;
-            IsometricCameraManager.Instance.CancelCameraLockEffect();
-            TargetBestEnemy(ref bestEnemy);
-            // HighlightBestEnemy(ref bestEnemy);
-        }
-        else
-        {
-            _isLockedOnEnemy = true;
-            IsometricCameraManager.Instance.ActiveCameraLockEffect();
-            // HighlightLockedEnemy();
-
-        }
-
-        if (PlayerInputManager.Instance.lockPressed && _canToggleJoystick)
-        {
-            ToggleLockEnemy(ref bestEnemy);
-        }
-
-        LockDirectionToEnemy();
+        FindBestEnemyInRange();
+        HandleLockToggle();
+        UpdateLockState();
+        SpawnLockIndicator();
     }
 
-
-
-    // TRIGGER //
-    void OnTriggerEnter(Collider other)
+    // Private functions
+    private void FindBestEnemyInRange()
     {
-        if (other.CompareTag(_enemyTag))
-        {
-            _enemiesInRange.Add(other.gameObject);
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(_enemyTag))
-        {
-            // Renderer r = other.gameObject.GetComponent<Renderer>();
-            // r.material.color = _basicEnemyColor;
-
-            if (other.gameObject == _targetEnemy)
-            {
-                _targetEnemy = null;
-            }
-
-            _enemiesInRange.Remove(other.gameObject);
-        }
-    }
-    // END OF TRIGGER //
-
-    //Find the best enemy to target. (=> In range and with the lowest directional angle enemy/player)
-    private void TargetBestEnemy(ref GameObject bestEnemy)
-    {
+        // We target the Enemy Character controller collider
+        Collider[] enemies = Physics.OverlapSphere(transform.position, _lockRadius, _enemyLayer);
         float smallestAngle = Mathf.Infinity;
+        _bestEnemy = null;
 
-        foreach (GameObject enemy in _enemiesInRange)
+        foreach (Collider enemy in enemies)
         {
-            float angle = Vector3.Angle(transform.forward, enemy.transform.position - transform.position);
+            Vector3 directionToEnemy = enemy.transform.position - transform.position;
+            directionToEnemy.y = 0f;
+            float angle = Vector3.Angle(transform.forward, directionToEnemy);
 
             if (angle < _limitAngle && angle < smallestAngle)
             {
                 smallestAngle = angle;
-                bestEnemy = enemy;
+                _bestEnemy = enemy.gameObject;
+            }
+        }
+
+        //If Enemy is locked, but we exit our lock range => unlock the enemy
+        if (_isLockedOnEnemy && _targetEnemy != null)
+        {
+            float distance = Vector3.Distance(transform.position, _targetEnemy.transform.position);
+            if (distance > _lockRadius)
+            {
+                UnlockEnemy();
             }
         }
     }
 
-    //Lock the best enemy
-    private void ToggleLockEnemy(ref GameObject bestEnemy)
+    private void HandleLockToggle()
     {
-        _canToggleJoystick = false;
-        StartCoroutine(LockCooldown());
-        if (_targetEnemy == null)
+        if (_bestEnemy != null && PlayerInputManager.Instance.lockPressed && _canToggleLock)
         {
-            _targetEnemy = bestEnemy;
+            _canToggleLock = false;
+            StartCoroutine(LockCooldownRoutine());
+
+            if (!_isLockedOnEnemy && _bestEnemy != null)
+                LockEnemy(_bestEnemy);
+            else
+                UnlockEnemy();
+        }
+
+    }
+
+    private void UpdateLockState()
+    {
+        if (_isLockedOnEnemy && _targetEnemy != null)
+        {
+            UpdateLockDirection();
+            IsometricCameraManager.Instance.ActiveCameraLockEffect();
         }
         else
         {
-            _targetEnemy = null;
+            IsometricCameraManager.Instance.CancelCameraLockEffect();
         }
     }
 
-    //Little trick to avoid joystick lock pression at multiple frames.
-    private IEnumerator LockCooldown()
+    private void LockEnemy(GameObject enemy)
     {
-        yield return new WaitForSeconds(_lockCooldown);
-        _canToggleJoystick = true;
+        _targetEnemy = enemy;
+        _isLockedOnEnemy = true;
     }
 
-
-    //A Yellow color applied to the best enemy found.
-    // private void HighlightBestEnemy(ref GameObject bestEnemy)
-    // {
-    //     foreach (GameObject enemy in _enemiesInRange)
-    //     {
-    //         Renderer r = enemy.GetComponent<Renderer>();
-    //         if (enemy == bestEnemy && enemy != _targetEnemy)
-    //             r.material.color = Color.yellow;
-    //         else
-    //             r.material.color = _basicEnemyColor;
-    //     }
-    // }
-
-    //A Blue color applied to the best enemy locked by the player.
-    private void HighlightLockedEnemy()
+    private void UnlockEnemy()
     {
         if (_targetEnemy != null)
         {
-            Renderer r = _targetEnemy.GetComponent<Renderer>();
-            r.material.color = Color.blue;
+            DestroyLockIndicator();
         }
+        _targetEnemy = null;
+        _isLockedOnEnemy = false;
     }
 
-    //Focus on the enemy by keeping the player eyes on the enemy locked with animtation.
-    private void LockDirectionToEnemy()
+    private void UpdateLockDirection()
     {
-        if (_targetEnemy == null)
-            return;
+        if (_targetEnemy == null) return;
 
         Vector3 directionToEnemy = _targetEnemy.transform.position - transform.position;
         directionToEnemy.y = 0f;
-        if (directionToEnemy.sqrMagnitude < 0.001f) return;
 
         _lockDirection = directionToEnemy.normalized;
     }
+
+    private void SpawnLockIndicator()
+    {
+        DestroyLockIndicator();
+
+        GameObject targetObject = null;
+        GameObject prefabToUse = null;
+
+        if (_targetEnemy != null)
+        {
+            targetObject = _targetEnemy;
+            prefabToUse = _lockIndicatorPrefab;
+        }
+        else if (_bestEnemy != null)
+        {
+            targetObject = _bestEnemy;
+            prefabToUse = _potentialLockIndicatorPrefab;
+        }
+
+        if (prefabToUse == null || targetObject == null)
+            return;
+
+        _lockIndicator = Instantiate(prefabToUse, targetObject.transform);
+        _lockIndicator.transform.localPosition = new Vector3(0f, 3f, 0f);
+        _lockIndicator.transform.localScale = Vector3.one * 0.5f;
+    }
+
+    private void DestroyLockIndicator()
+    {
+        if (_lockIndicator != null)
+        {
+            Destroy(_lockIndicator);
+            _lockIndicator = null;
+        }
+    }
+
+    private IEnumerator LockCooldownRoutine()
+    {
+        yield return new WaitForSeconds(_lockCooldown);
+        _canToggleLock = true;
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = _isLockedOnEnemy ? Color.red : Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _lockRadius);
+    }
+#endif
 }
