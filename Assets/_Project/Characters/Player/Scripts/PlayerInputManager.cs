@@ -3,105 +3,69 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
+    // Singleton
     private static PlayerInputManager _instance;
+    public static PlayerInputManager Instance => _instance;
+
+    // Inputs
+    public float HorizontalInput { get; private set; }
+    public float VerticalInput { get; private set; }
+    public bool JumpPressed { get; private set; }
+    public bool LockPressed { get; private set; }
+    public bool InteractPressed { get; private set; }
+    public bool ToggleWeaponPressed { get; private set; }
+    public bool AttackPressed { get; private set; }
+
     private PlayerControls _playerControls;
-    public float horizontalInput;
-    public float verticalInput;
-    public bool jumpPressed;
-    public bool lockPressed;
-    public bool interactPressed;
 
-
-    public static PlayerInputManager Instance
+    // --- Singleton Setup ---
+    private void Awake()
     {
-        get
-        {
-            if (_instance == null)
-            {
-                Debug.LogError("No Instance found for PlayerInputManager.");
-            }
-            return _instance;
-        }
-    }
-
-    void Awake()
-    {
-        //Singleton
-        if (_instance != null)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
         }
+
         _instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
-
-    //Bind once for all, the Controller listener.
+    // --- Input System Setup ---
     private void OnEnable()
     {
         if (_playerControls == null)
         {
             _playerControls = new PlayerControls();
 
-            //--MOVEMENT--//
-            //WALK, RUN
-            _playerControls.PlayerMovement.Movement.performed += OnMovePerformed;
-            //JUMP
-            _playerControls.PlayerMovement.Jump.performed += OnJumpPerformed;
-            _playerControls.PlayerMovement.Jump.canceled += OnJumpCanceled;
+            // Movement
+            _playerControls.PlayerMovement.Movement.performed += OnMovementPerformed;
+            _playerControls.PlayerMovement.Jump.performed += _ => JumpPressed = true;
+            _playerControls.PlayerMovement.Jump.canceled += _ => JumpPressed = false;
 
-            //--INTERACTION--//
-            //LOCK (enemy)
-            _playerControls.PlayerInteraction.Lock.performed += OnLockPerformed;
-            _playerControls.PlayerInteraction.Lock.canceled += OnLockCanceled;
-            //INTERACT (props, environment, sorcerer)
-            _playerControls.PlayerInteraction.Interact.performed += OnInteractPerformed;
-            _playerControls.PlayerInteraction.Interact.canceled += OnInteractCanceled;
-
+            // Interaction
+            _playerControls.PlayerInteraction.Lock.performed += _ => LockPressed = true;
+            _playerControls.PlayerInteraction.Lock.canceled += _ => LockPressed = false;
+            _playerControls.PlayerInteraction.Interact.performed += _ => InteractPressed = true;
+            _playerControls.PlayerInteraction.Interact.canceled += _ => InteractPressed = false;
+            _playerControls.PlayerInteraction.ToggleWeapon.performed += _ => ToggleWeaponPressed = true;
+            _playerControls.PlayerInteraction.ToggleWeapon.canceled += _ => ToggleWeaponPressed = false;
+            _playerControls.PlayerInteraction.Attack.performed += _ => AttackPressed = true;
+            _playerControls.PlayerInteraction.Attack.performed += _ => AttackPressed = false;
         }
+
         _playerControls.Enable();
     }
 
-    //Unbind the listener at the end.
     private void OnDisable()
     {
         _playerControls?.Disable();
     }
 
-    //Get the x & y from the Controller left stick
-    private void OnMovePerformed(InputAction.CallbackContext input)
+    // --- Input Callbacks ---
+    private void OnMovementPerformed(InputAction.CallbackContext input)
     {
-        horizontalInput = input.ReadValue<Vector2>().x;
-        verticalInput = input.ReadValue<Vector2>().y;
-    }
-
-    private void OnJumpPerformed(InputAction.CallbackContext input)
-    {
-        jumpPressed = true;
-    }
-
-    private void OnJumpCanceled(InputAction.CallbackContext input)
-    {
-        jumpPressed = false;
-    }
-
-    private void OnLockPerformed(InputAction.CallbackContext input)
-    {
-        lockPressed = true;
-    }
-
-    private void OnLockCanceled(InputAction.CallbackContext input)
-    {
-        lockPressed = false;
-    }
-    private void OnInteractPerformed(InputAction.CallbackContext input)
-    {
-        interactPressed = true;
-    }
-
-    private void OnInteractCanceled(InputAction.CallbackContext input)
-    {
-        interactPressed = false;
+        HorizontalInput = input.ReadValue<Vector2>().x;
+        VerticalInput = input.ReadValue<Vector2>().y;
     }
 }

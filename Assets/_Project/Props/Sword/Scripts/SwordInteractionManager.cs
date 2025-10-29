@@ -22,7 +22,7 @@ public class SwordInteractionManager : MonoBehaviour
 
     void Update()
     {
-        if (PlayerInputManager.Instance.interactPressed && !_isInteractionLocked)
+        if (PlayerInputManager.Instance.InteractPressed && !_isInteractionLocked)
         {
             StartCoroutine(HandleInteraction());
         }

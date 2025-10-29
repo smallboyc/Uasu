@@ -64,7 +64,7 @@ public class PlayerLockManager : MonoBehaviour
 
     private void HandleLockToggle()
     {
-        if (_bestEnemy != null && PlayerInputManager.Instance.lockPressed && _canToggleLock)
+        if (_bestEnemy != null && PlayerInputManager.Instance.LockPressed && _canToggleLock)
         {
             _canToggleLock = false;
             StartCoroutine(LockCooldownRoutine());
