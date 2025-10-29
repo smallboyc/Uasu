@@ -60,8 +60,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     private void HandleGroundedMovement()
     {
         Vector2 input = new(
-            PlayerInputManager.Instance._horizontalInput,
-            PlayerInputManager.Instance._verticalInput
+            PlayerInputManager.Instance.HorizontalInput,
+            PlayerInputManager.Instance.VerticalInput
         );
 
         //Our camera has its own local coord system. We need to project our player input from this local system to the world.
@@ -91,7 +91,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             if (_verticalVelocity < 0f)
                 _verticalVelocity = -2f;
 
-            if (PlayerInputManager.Instance._jumpPressed && _jumpButtonReleased && _jumpCanBePerformed)
+            if (PlayerInputManager.Instance.JumpPressed && _jumpButtonReleased && _jumpCanBePerformed)
             {
                 _verticalVelocity = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
                 StartCoroutine(ReloadJump());
@@ -102,7 +102,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             _verticalVelocity += _gravity * Time.deltaTime;
         }
 
-        _jumpButtonReleased = !PlayerInputManager.Instance._jumpPressed;
+        _jumpButtonReleased = !PlayerInputManager.Instance.JumpPressed;
     }
 
 
@@ -133,9 +133,9 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void LockPlayerRotation(PlayerLockManager playerLockManager)
     {
-        if (playerLockManager.GetLockDirection != Vector3.zero)
+        if (playerLockManager.LockDirection != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(playerLockManager.GetLockDirection);
+            Quaternion targetRotation = Quaternion.LookRotation(playerLockManager.LockDirection);
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,
                 targetRotation,

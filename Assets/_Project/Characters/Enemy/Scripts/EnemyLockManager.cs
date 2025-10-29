@@ -2,59 +2,71 @@ using UnityEngine;
 
 public class EnemyLockManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _targetPlayer;
     [SerializeField] private float _limitAngle = 80.0f;
-    private string _playerTag = "Player";
+    [SerializeField] private float _lockRadius = 5.0f;
+    [SerializeField] private LayerMask _playerLayer;
+    private GameObject _targetPlayer;
     private bool _isLockedOnPlayer;
+    private bool _isPlayerOnRange;
 
-    public bool IsLockedOnPlayer
-    {
-        get
-        {
-            return _isLockedOnPlayer;
-        }
-    }
+    public bool IsLockedOnPlayer => _isLockedOnPlayer;
+    public Transform GetPlayerTransform => _targetPlayer != null ? _targetPlayer.transform : null;
 
-    public Transform GetPlayerTransform
-    {
-        get
-        {
-            if (_targetPlayer != null)
-                return _targetPlayer.transform;
-            return null;
-        }
-    }
-
+    // Main function
     public void TargetLockPlayer()
     {
-        if (_targetPlayer != null)
-        {
-            Vector3 direction = _targetPlayer.transform.position - transform.position;
-            direction.y = 0.0f;
-            direction.Normalize();
+        Collider[] players = Physics.OverlapSphere(transform.position, _lockRadius, _playerLayer);
 
-            float angle = Vector3.Angle(transform.forward, direction);
-            if (angle < _limitAngle)
-            {
-                _isLockedOnPlayer = true;
-            }
+        if (players.Length == 0)
+        {
+            ResetPlayerDetection();
+            return;
         }
+        GetSinglePlayer(players);
+        CheckIfEnemySeeThePlayer();
+        CheckIfEnemyIsTooFar();
     }
 
-    void OnTriggerEnter(Collider other)
+
+    // Private
+    private void ResetPlayerDetection()
     {
-        if (other.CompareTag(_playerTag))
-        {
-            _targetPlayer = other.gameObject;
-        }
+        _isPlayerOnRange = false;
+        _isLockedOnPlayer = false;
+        _targetPlayer = null;
     }
 
-    void OnTriggerExit(Collider other)
+    private void CheckIfEnemySeeThePlayer()
     {
-        if (other.CompareTag(_playerTag))
+        Vector3 direction = _targetPlayer.transform.position - transform.position;
+        direction.y = 0.0f;
+        float angle = Vector3.Angle(transform.forward, direction);
+
+        // Enemy detection
+        if (angle < _limitAngle)
+            _isLockedOnPlayer = true;
+    }
+
+    private void CheckIfEnemyIsTooFar()
+    {
+        if (_targetPlayer != null && Vector3.Distance(transform.position, _targetPlayer.transform.position) > _lockRadius)
         {
-            _targetPlayer = null;
             _isLockedOnPlayer = false;
+            _targetPlayer = null;
         }
     }
+
+    private void GetSinglePlayer(Collider[] players)
+    {
+        _targetPlayer = players[0].gameObject;
+        _isPlayerOnRange = true;
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = _isLockedOnPlayer ? Color.red : (_isPlayerOnRange ? Color.yellow : Color.magenta);
+        Gizmos.DrawWireSphere(transform.position, _lockRadius);
+    }
+#endif
 }

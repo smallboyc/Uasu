@@ -1,16 +1,16 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class EnemyAnimationManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    Animator _animator;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        _animator = GetComponent<Animator>();
+    }
+    public void HandleEnemyAnimations(CharacterController characterController, EnemyLocomotionManager enemyLocomotionManager)
+    {
+        _animator.SetBool("IsTakingABreak", enemyLocomotionManager.EnemyTakeABreak);
     }
 }

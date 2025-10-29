@@ -5,14 +5,17 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - Magic_Sword
+  - HandHolder
+  - BackHolder
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
