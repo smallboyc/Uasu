@@ -4,45 +4,48 @@ using UnityEngine;
 
 public class EnemyLocomotionManager : CharacterLocomotionManager
 {
-    Vector3 _currentWayPointTarget = Vector3.zero;
+    private Vector3 _currentWayPointTarget = Vector3.zero;
     private int _currentWayPointIndex = -1;
-    private float _moveSpeed = 2.0f;
-    private float _rotationSpeed = 2.0f;
-    Vector3 _targetDirection;
+    [SerializeField] private float _moveSpeed = 1.2f;
+    [SerializeField] private float _rotationSpeed = 1.0f;
+    private Vector3 _targetDirection;
 
-    //Have a break, have a kit kat :
-    private float _breakSuccessProbability = 0.3f;
+    // Break
+    [SerializeField] private float _breakSuccessProbability = 0.3f;
+    [SerializeField] private float _breakCooldown = 4.0f;
+    [SerializeField] private float _breakDuration = 3.0f;
     private bool _enemyTakeABreak;
     private bool _canLookForABreak = true;
-    private int _breakCooldown = 4;
 
+    public bool EnemyTakeABreak => _enemyTakeABreak;
 
     public void HandleAllMovement(CharacterController characterController, List<Transform> wayPoints, EnemyLockManager enemyLockManager)
     {
-        if (!enemyLockManager.IsLockedOnPlayer)
+        // Disable movement if enemy takes a break.
+        if (!enemyLockManager.IsLockedOnPlayer && _enemyTakeABreak)
         {
-            //Enemy is looking for wayPoints to go 
+            return;
+        }
+
+        // Enemy lock the player => No break permited, focus the player
+        if (enemyLockManager.IsLockedOnPlayer)
+        {
+            _enemyTakeABreak = false;
+            _targetDirection = enemyLockManager.GetPlayerTransform.position;
+        }
+        else // Player is not locked => Enemy make a round and can take a break.
+        {
             CheckForWayPoints(wayPoints);
             _targetDirection = _currentWayPointTarget;
 
-            //Enemy wants sometimes to take a break...
             if (_canLookForABreak)
             {
                 _canLookForABreak = false;
                 StartCoroutine(LookForABreak());
             }
         }
-        else //Enemy focus the player! 
-        {
-            _targetDirection = enemyLockManager.GetPlayerTransform.position;
-        }
-
-        //Disable movement when enemy take a break!
-        if (!enemyLockManager.IsLockedOnPlayer && _enemyTakeABreak)
-            return;
 
         EnableTargetMovement(characterController);
-
     }
 
     private IEnumerator LookForABreak()
@@ -51,8 +54,13 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
         float randomFloat = Random.Range(0.0f, 1.0f);
         _enemyTakeABreak = _breakSuccessProbability > randomFloat;
         _canLookForABreak = true;
-    }
 
+        if (_enemyTakeABreak)
+        {
+            yield return new WaitForSeconds(_breakDuration);
+            _enemyTakeABreak = false;
+        }
+    }
 
     private void CheckForWayPoints(List<Transform> wayPoints)
     {
@@ -88,6 +96,3 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
         }
     }
 }
-
-
-

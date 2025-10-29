@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//TODO : Create a PropsManager to centralized interaction and use inheritance.
 [RequireComponent(typeof(SwordInteractionManager))]
 public class SwordManager : MonoBehaviour
 {
