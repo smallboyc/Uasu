@@ -23,7 +23,7 @@ public class EnemyManager : CharacterManager
         base.Update();
         _enemyLockManager.TargetLockPlayer();
         _enemyLocomotionManager.HandleAllMovement(characterController, _wayPoints, _enemyLockManager);
-        _enemyAnimationManager.HandleEnemyAnimations(characterController, _enemyLocomotionManager);
+        _enemyAnimationManager.HandleEnemyAnimations(_enemyLocomotionManager, _enemyLockManager);
 
     }
 

@@ -9,8 +9,9 @@ public class EnemyAnimationManager : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-    public void HandleEnemyAnimations(CharacterController characterController, EnemyLocomotionManager enemyLocomotionManager)
+    public void HandleEnemyAnimations(EnemyLocomotionManager enemyLocomotionManager, EnemyLockManager enemyLockManager)
     {
         _animator.SetBool("IsTakingABreak", enemyLocomotionManager.EnemyTakeABreak);
+        _animator.SetBool("IsLockedOnPlayer", enemyLockManager.IsLockedOnPlayer);
     }
 }

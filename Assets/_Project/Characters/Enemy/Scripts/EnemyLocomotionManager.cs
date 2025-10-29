@@ -6,8 +6,12 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
 {
     private Vector3 _currentWayPointTarget = Vector3.zero;
     private int _currentWayPointIndex = -1;
-    [SerializeField] private float _moveSpeed = 1.2f;
-    [SerializeField] private float _rotationSpeed = 1.0f;
+    private float _walkSpeed = 1.2f;
+    private float _runSpeed = 1.7f;
+    [SerializeField] private float _moveSpeed;
+    private float _walkRotationSpeed = 1.0f;
+    private float _runRotationSpeed = 1.5f;
+    [SerializeField] private float _rotationSpeed;
     private Vector3 _targetDirection;
 
     // Break
@@ -30,11 +34,15 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
         // Enemy lock the player => No break permited, focus the player
         if (enemyLockManager.IsLockedOnPlayer)
         {
+            _moveSpeed = _runSpeed;
+            _rotationSpeed = _runRotationSpeed;
             _enemyTakeABreak = false;
             _targetDirection = enemyLockManager.GetPlayerTransform.position;
         }
         else // Player is not locked => Enemy make a round and can take a break.
         {
+            _moveSpeed = _walkSpeed;
+            _rotationSpeed = _walkRotationSpeed;
             CheckForWayPoints(wayPoints);
             _targetDirection = _currentWayPointTarget;
 
