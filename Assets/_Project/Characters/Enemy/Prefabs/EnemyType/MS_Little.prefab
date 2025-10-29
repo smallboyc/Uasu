@@ -186,8 +186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af664bd710b90456a8d1bb9165764a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetPlayer: {fileID: 0}
   _limitAngle: 80
+  _lockRadius: 5
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!143 &6238989562853406620
 CharacterController:
   m_ObjectHideFlags: 0

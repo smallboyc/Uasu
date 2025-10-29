@@ -13,8 +13,7 @@ public class PlayerLockManager : MonoBehaviour
 
     private GameObject _bestEnemy = null;
     private GameObject _targetEnemy;
-    private GameObject _potentialLockIndicator;
-    private GameObject _lockIndicator;
+    private GameObject _currentLockIndicator;
     private bool _isLockedOnEnemy;
     private bool _canToggleLock = true;
     private Vector3 _lockDirection;
@@ -138,17 +137,17 @@ public class PlayerLockManager : MonoBehaviour
         if (prefabToUse == null || targetObject == null)
             return;
 
-        _lockIndicator = Instantiate(prefabToUse, targetObject.transform);
-        _lockIndicator.transform.localPosition = new Vector3(0f, 3f, 0f);
-        _lockIndicator.transform.localScale = Vector3.one * 0.5f;
+        _currentLockIndicator = Instantiate(prefabToUse, targetObject.transform);
+        _currentLockIndicator.transform.localPosition = new Vector3(0f, 3f, 0f);
+        _currentLockIndicator.transform.localScale = Vector3.one * 0.5f;
     }
 
     private void DestroyLockIndicator()
     {
-        if (_lockIndicator != null)
+        if (_currentLockIndicator != null)
         {
-            Destroy(_lockIndicator);
-            _lockIndicator = null;
+            Destroy(_currentLockIndicator);
+            _currentLockIndicator = null;
         }
     }
 
