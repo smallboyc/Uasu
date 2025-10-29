@@ -11,7 +11,7 @@ public class PlayerAnimationManager : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void HandlePlayerAnimations(CharacterController characterController, PlayerLocomotionManager playerLocomotionManager, bool isLock)
+    public void HandlePlayerAnimations(CharacterController characterController, PlayerLocomotionManager playerLocomotionManager, bool isLock, PlayerAttackManager playerAttackManager)
     {
         if (isLock)
         {
@@ -41,6 +41,8 @@ public class PlayerAnimationManager : MonoBehaviour
 
         //Jump
         _animator.SetBool("IsGrounded", characterController.isGrounded);
+        //Attack
+        _animator.SetBool("IsAttacking", playerAttackManager.IsAttacking);
     }
 
 }

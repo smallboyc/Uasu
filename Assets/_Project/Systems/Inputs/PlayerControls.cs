@@ -279,7 +279,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
-                    ""id"": ""59d08276-a7c7-4dcf-9bf6-c8e7d238a15e"",
+                    ""id"": ""f0e118e7-4dde-4cce-8401-9de45ff3b718"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -355,7 +355,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""eb4158a0-3c50-4384-a8f1-f272e96d3944"",
+                    ""id"": ""d943f7c6-5ee7-4ecd-a02d-a63811e6ddf6"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -366,7 +366,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4599e4d0-997a-469f-9402-7d73d8947492"",
+                    ""id"": ""10910881-6a39-4d40-b6a5-84d4d47fbbf3"",
                     ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",

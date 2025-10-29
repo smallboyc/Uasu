@@ -270,6 +270,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3217836107803619878}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 782785799141515127}
   m_SourcePrefab: {fileID: 100100000, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
 --- !u!4 &1127107506157109449 stripped
 Transform:
@@ -387,3 +390,20 @@ MonoBehaviour:
   _lockCooldown: 0.25
   _potentialLockIndicatorPrefab: {fileID: 6594505346125808084, guid: eea9824bd6b394977b9df1a8765b049d, type: 3}
   _lockIndicatorPrefab: {fileID: 1317000795022926830, guid: de636d1c58e1c4244959691e7a8028a0, type: 3}
+--- !u!114 &782785799141515127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887226188864423112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2526d568bf88844a29efdc8474b8abf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRadius: 3
+  _limitAngle: 30
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
