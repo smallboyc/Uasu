@@ -4,57 +4,54 @@ using UnityEngine;
 public class SwordInteractionManager : MonoBehaviour
 {
     [SerializeField] private Collider _pickupCollider;
-    [SerializeField] private Collider _hitboxCollider;
-    private string _playerTag = "Player";
+    private Transform _handHolder;
+    private Transform _backHolder;
     private bool _playerCanGetSword;
     private bool _playerHasSword;
-    [SerializeField] private Transform _handHolder;
-    [SerializeField] private Transform _backHolder;
     private bool _isInHand;
-    private bool _isInteractionLocked = false;
+    private bool _isInteractionLocked;
 
-    void Awake()
+    public void FindPlayerHolders()
     {
-        _pickupCollider.enabled = true;
-        _hitboxCollider.enabled = false;
+        if (_handHolder == null)
+            _handHolder = GameObject.FindGameObjectWithTag("HandHolder").transform;
+
+        if (_backHolder == null)
+            _backHolder = GameObject.FindGameObjectWithTag("BackHolder").transform;
     }
 
-
-    void Update()
+    public void EnableSwordInteraction()
     {
-        if (PlayerInputManager.Instance.InteractPressed && !_isInteractionLocked)
+        if (!_playerHasSword)
         {
-            StartCoroutine(HandleInteraction());
+            if (PlayerInputManager.Instance.InteractPressed && _playerCanGetSword) GetSword();
+        }
+        else
+        {
+            if (PlayerInputManager.Instance.ToggleWeaponPressed && !_isInteractionLocked) StartCoroutine(ToggleWeapon());
         }
     }
 
-    private IEnumerator HandleInteraction()
+    private void GetSword()
     {
-        _isInteractionLocked = true;
-
-        if (_playerCanGetSword)
+        _pickupCollider.enabled = false;
+        if (_backHolder == null || _handHolder == null)
         {
-            _playerCanGetSword = false;
-            _pickupCollider.enabled = false;
-            _hitboxCollider.enabled = true;
-            if (_backHolder == null || _handHolder == null)
-            {
-                Debug.LogError($"[{name}] PlayerInteractionManager error: Back/Hand Holder is null.");
-                _isInteractionLocked = false;
-                yield break;
-            }
+            Debug.LogError($"[{name}] PlayerInteractionManager error: Back/Hand Holder is null.");
+            _isInteractionLocked = false;
+        }
+        AttachTo(_handHolder);
+        _playerHasSword = true;
+    }
+    private IEnumerator ToggleWeapon()
+    {
+        if (_isInHand)
+            AttachTo(_backHolder);
+        else
             AttachTo(_handHolder);
-            _playerHasSword = true;
-        }
-        else if (_playerHasSword)
-        {
-            if (_isInHand)
-                AttachTo(_backHolder);
-            else
-                AttachTo(_handHolder);
-        }
-        yield return new WaitForSeconds(0.3f);
 
+        _isInteractionLocked = true;
+        yield return new WaitForSeconds(0.3f);
         _isInteractionLocked = false;
     }
 
@@ -69,7 +66,7 @@ public class SwordInteractionManager : MonoBehaviour
     // TRIGGER //
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(_playerTag))
+        if (other.CompareTag("Player"))
         {
             _playerCanGetSword = true;
         }
@@ -77,7 +74,7 @@ public class SwordInteractionManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(_playerTag))
+        if (other.CompareTag("Player"))
         {
             _playerCanGetSword = false;
         }

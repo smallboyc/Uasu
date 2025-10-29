@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8606868090902566742}
   m_Layer: 3
   m_Name: HandHolder
-  m_TagString: Untagged
+  m_TagString: HandHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2447754541676271175}
   m_Layer: 3
   m_Name: BackHolder
-  m_TagString: Untagged
+  m_TagString: BackHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,11 +323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60fafc4d0f8c3409786da4fd1e8cfdd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalInput: 0
-  verticalInput: 0
-  jumpPressed: 0
-  lockPressed: 0
-  interactPressed: 0
 --- !u!114 &308839958320171869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,4 +385,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _lockCooldown: 0.25
+  _potentialLockIndicatorPrefab: {fileID: 6594505346125808084, guid: eea9824bd6b394977b9df1a8765b049d, type: 3}
   _lockIndicatorPrefab: {fileID: 1317000795022926830, guid: de636d1c58e1c4244959691e7a8028a0, type: 3}

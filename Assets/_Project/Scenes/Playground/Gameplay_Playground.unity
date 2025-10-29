@@ -550,11 +550,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!4 &642208456 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8606868090902566742, guid: 143cf4377c6024f61ab4be83bfd7e2bf, type: 3}
-  m_PrefabInstance: {fileID: 1691388307}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &711544122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -901,11 +896,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 770574521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1179956642 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2447754541676271175, guid: 143cf4377c6024f61ab4be83bfd7e2bf, type: 3}
-  m_PrefabInstance: {fileID: 1691388307}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1340819229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,10 +1120,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3217836107803619878, guid: 143cf4377c6024f61ab4be83bfd7e2bf, type: 3}
-      propertyPath: _potentialLockIndicatorPrefab
-      value: 
-      objectReference: {fileID: 6594505346125808084, guid: eea9824bd6b394977b9df1a8765b049d, type: 3}
     - target: {fileID: 6115755347848748658, guid: 143cf4377c6024f61ab4be83bfd7e2bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1191,14 +1177,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2292343193671950048, guid: 705857320b1ab46929d5cbfea285be8b, type: 3}
-      propertyPath: _backHolder
-      value: 
-      objectReference: {fileID: 1179956642}
-    - target: {fileID: 2292343193671950048, guid: 705857320b1ab46929d5cbfea285be8b, type: 3}
-      propertyPath: _handHolder
-      value: 
-      objectReference: {fileID: 642208456}
     - target: {fileID: 6306065643984119508, guid: 705857320b1ab46929d5cbfea285be8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
