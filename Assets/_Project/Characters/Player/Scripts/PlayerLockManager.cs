@@ -18,7 +18,12 @@ public class PlayerLockManager : MonoBehaviour
     private bool _canToggleLock = true;
     private Vector3 _lockDirection;
 
-    public bool IsLockedOnEnemy => _isLockedOnEnemy;
+    public bool IsLockedOnEnemy
+    {
+        get => _isLockedOnEnemy;
+        set => _isLockedOnEnemy = value;
+    }
+
     public Vector3 LockDirection => _lockDirection;
 
     // Main function used in the PlayerManager.
@@ -59,6 +64,12 @@ public class PlayerLockManager : MonoBehaviour
             {
                 UnlockEnemy();
             }
+        }
+
+        //The Enemy just die => Unlock
+        if (_isLockedOnEnemy && _targetEnemy == null)
+        {
+            UnlockEnemy();
         }
     }
 

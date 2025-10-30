@@ -8,8 +8,8 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private LayerMask _enemyLayer;
     private bool _canAttack = true;
     private bool _isAttacking;
-    private float _attackCooldown = 0.5f;
-
+    private float _attackCooldown = 1.0f;
+    private float _waitForHit = 0.3f;
     public bool IsAttacking => _isAttacking;
 
     public void HandleAttack()
@@ -30,7 +30,7 @@ public class PlayerAttackManager : MonoBehaviour
 
                 if (angle < _limitAngle)
                 {
-                    enemy.gameObject.GetComponent<CharacterController>().Move(transform.forward * 30.0f * Time.deltaTime);
+                    StartCoroutine(HitEnemy(enemy));
                 }
             }
             StartCoroutine(AnimationCooldown());
@@ -49,6 +49,13 @@ public class PlayerAttackManager : MonoBehaviour
     {
         yield return new WaitForSeconds(_attackCooldown);
         _canAttack = true;
+    }
+
+    private IEnumerator HitEnemy(Collider enemy)
+    {
+        yield return new WaitForSeconds(_waitForHit);
+        EnemyHealthManager enemyHealthManager = enemy.gameObject.GetComponent<EnemyHealthManager>();
+        enemyHealthManager.Hit();
     }
 
 #if UNITY_EDITOR

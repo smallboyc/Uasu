@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CharacterHealthManager))]
 public class CharacterManager : MonoBehaviour
 {
     [HideInInspector] protected CharacterController characterController;
@@ -18,6 +19,6 @@ public class CharacterManager : MonoBehaviour
 
     protected virtual void Update()
     {
-
+     
     }
 }
