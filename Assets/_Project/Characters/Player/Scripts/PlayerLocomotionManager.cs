@@ -17,7 +17,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     private Vector3 _moveDirection; //free move direction vector (magenta gizmos ---o)
     [SerializeField] private float _verticalVelocity = 0.0f;
     [SerializeField] private float _moveIntensity;
-    private bool _stopMoving;
 
     public float GetIntensity => _moveIntensity;
     public Vector3 GetMoveDirection => _moveDirection;
@@ -34,6 +33,9 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     public void HandleAllMovement(CharacterController characterController, PlayerLockManager playerLockManager, PlayerAttackManager playerAttackManager)
     {
+        if (playerAttackManager.IsAttacking)
+            return;
+
         HandleGroundedMovement();
         HandleAerialMovement(characterController);
         HandleRotationMovement(playerLockManager, playerLockManager.IsLockedOnEnemy);
@@ -41,17 +43,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         Vector3 move = _moveDirection * _currentSpeed * Time.deltaTime;
         move.y = _verticalVelocity * Time.deltaTime;
 
-        if (playerAttackManager.IsAttacking && characterController.isGrounded) _stopMoving = true;
-
-        if (!_stopMoving)
-        {
-            characterController.Move(move);
-        }
-        else
-        {
-            StartCoroutine(StopMovingCooldown());
-        }
-
+        characterController.Move(move);
     }
 
     private void HandleGroundedMovement()
@@ -152,15 +144,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         Gizmos.DrawLine(start, end);
         Gizmos.DrawSphere(end, 0.1f);
     }
-
-
-    private IEnumerator StopMovingCooldown()
-    {
-        yield return new WaitForSeconds(1.0f);
-        _stopMoving = false;
-
-    }
-
 
     //Cooldown before Jumping again.
     private IEnumerator ReloadJump()

@@ -36,8 +36,8 @@ public class PlayerManager : CharacterManager
         if (!_playerHealthManager.IsStunned)
         {
             _playerLockManager.TargetLockEnemies();
+            _playerAttackManager.HandleAttack(characterController);
             _playerLocomotionManager.HandleAllMovement(characterController, _playerLockManager, _playerAttackManager);
-            _playerAttackManager.HandleAttack();
         }
 
         _playerAnimationManager.HandlePlayerAnimations(characterController, _playerLocomotionManager, _playerLockManager.IsLockedOnEnemy, _playerAttackManager);
