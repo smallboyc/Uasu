@@ -8,10 +8,8 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private float _attackCooldown = 1.0f; //Time between two attacks
     [SerializeField] private float _waitForHit = 0.3f;
-
     private bool _isAttacking;
     private bool _canAttack = true;
-
     public bool IsAttacking => _isAttacking;
 
     public void HandleAttack(CharacterController characterController)
@@ -52,11 +50,20 @@ public class PlayerAttackManager : MonoBehaviour
     private IEnumerator HitEnemy(Collider enemy)
     {
         yield return new WaitForSeconds(_waitForHit);
-        EnemyHealthManager enemyHealthManager = enemy.GetComponent<EnemyHealthManager>();
+        EnemyHealthManager enemyHealthManager = enemy.gameObject.GetComponent<EnemyHealthManager>();
         if (enemyHealthManager != null)
         {
-            enemyHealthManager.Hit(0.8f);
+            enemyHealthManager.Hit(0.5f);
         }
+
+
+        EnemyLockManager enemyLockManager = enemy.gameObject.GetComponent<EnemyLockManager>();
+        //If player is not locked by enemy and permforms attack
+        if (enemyLockManager != null && !enemyLockManager.IsLockedByPlayerPosition)
+        {
+            enemyLockManager.IsLockedByPlayerAttack = true;
+        }
+
     }
 
 #if UNITY_EDITOR

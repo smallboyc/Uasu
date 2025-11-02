@@ -26,13 +26,13 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
     public void HandleAllMovement(CharacterController characterController, List<Transform> wayPoints, EnemyLockManager enemyLockManager)
     {
         // Disable movement if enemy takes a break.
-        if (!enemyLockManager.IsLockedOnPlayer && _enemyTakeABreak)
+        if (!enemyLockManager.EnemyIsLockedOnPlayer() && _enemyTakeABreak)
         {
             return;
         }
 
         // Enemy lock the player => No break permited, focus the player
-        if (enemyLockManager.IsLockedOnPlayer)
+        if (enemyLockManager.EnemyIsLockedOnPlayer())
         {
             _moveSpeed = _runSpeed;
             _rotationSpeed = _runRotationSpeed;

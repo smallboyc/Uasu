@@ -12,7 +12,8 @@ public class EnemyAnimationManager : MonoBehaviour
     public void HandleEnemyAnimations(EnemyLocomotionManager enemyLocomotionManager, EnemyLockManager enemyLockManager, EnemyHealthManager enemyHealthManager)
     {
         _animator.SetBool("IsTakingABreak", enemyLocomotionManager.EnemyTakeABreak);
-        _animator.SetBool("IsLockedOnPlayer", enemyLockManager.IsLockedOnPlayer);
+        _animator.SetBool("IsLockedByPlayerPosition", enemyLockManager.IsLockedByPlayerPosition);
+        _animator.SetBool("IsLockedByPlayerAttack", enemyLockManager.IsLockedByPlayerAttack);
         _animator.SetBool("IsStunned", enemyHealthManager.IsStunned);
     }
 }

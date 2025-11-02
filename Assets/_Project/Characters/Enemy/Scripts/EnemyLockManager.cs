@@ -6,11 +6,25 @@ public class EnemyLockManager : MonoBehaviour
     [SerializeField] private float _lockRadius = 5.0f;
     [SerializeField] private LayerMask _playerLayer;
     private GameObject _targetPlayer;
-    private bool _isLockedOnPlayer;
-    private bool _isPlayerOnRange;
+    private bool _isLockedByPlayerPosition;
+    private bool _isLockedByPlayerAttack;
+    private bool _isPlayerOnRange; //Range is the Trigger Sphere (so it doesn't mean the enemy saw the player)
 
-    public bool IsLockedOnPlayer => _isLockedOnPlayer;
+    public bool IsLockedByPlayerPosition // Enemy locks the player without been first attack
+    {
+        get => _isLockedByPlayerPosition;
+        set => _isLockedByPlayerPosition = value;
+    }
+
+    public bool IsLockedByPlayerAttack // Enemy locks the player because the player attacked (enemy didn't see the player)
+    {
+        get => _isLockedByPlayerAttack;
+        set => _isLockedByPlayerAttack = value;
+    }
+
     public Transform GetPlayerTransform => _targetPlayer != null ? _targetPlayer.transform : null;
+
+    public bool EnemyIsLockedOnPlayer() => IsLockedByPlayerAttack || IsLockedByPlayerPosition;
 
     // Main function
     public void TargetLockPlayer()
@@ -32,7 +46,8 @@ public class EnemyLockManager : MonoBehaviour
     private void ResetPlayerDetection()
     {
         _isPlayerOnRange = false;
-        _isLockedOnPlayer = false;
+        _isLockedByPlayerPosition = false;
+        _isLockedByPlayerAttack = false;
         _targetPlayer = null;
     }
 
@@ -44,14 +59,15 @@ public class EnemyLockManager : MonoBehaviour
 
         // Enemy detection
         if (angle < _limitAngle)
-            _isLockedOnPlayer = true;
+            _isLockedByPlayerPosition = true;
     }
 
     private void CheckIfEnemyIsTooFar()
     {
         if (_targetPlayer != null && Vector3.Distance(transform.position, _targetPlayer.transform.position) > _lockRadius)
         {
-            _isLockedOnPlayer = false;
+            _isLockedByPlayerPosition = false;
+            _isLockedByPlayerAttack = false;
             _targetPlayer = null;
         }
     }
@@ -62,10 +78,11 @@ public class EnemyLockManager : MonoBehaviour
         _isPlayerOnRange = true;
     }
 
+
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = _isLockedOnPlayer ? Color.red : (_isPlayerOnRange ? Color.yellow : Color.magenta);
+        Gizmos.color = _isLockedByPlayerPosition ? Color.red : (_isPlayerOnRange ? Color.yellow : Color.magenta);
         Gizmos.DrawWireSphere(transform.position, _lockRadius);
     }
 #endif
