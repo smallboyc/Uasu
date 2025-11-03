@@ -3,24 +3,23 @@ using UnityEngine;
 
 public class EnemyAttackManager : MonoBehaviour
 {
-    [SerializeField] private float _enemyAttackDistance = 2.0f;
-    private float _limitAngle = 50.0f;
-    private bool _enemyAttackAnimation;
-    private float _AnimationCooldown = 0.5f;
-    private float _AttackReloadCooldown = 1.0f;
+    [SerializeField] private float _attackRadius = 2.0f;
+    [SerializeField] private float _limitAngle = 50.0f;
+    [SerializeField] private float _hitDelay = 0.7f;
+    [SerializeField] private float _animationCooldown = 0.5f;
+    [SerializeField] private float _attackReloadCooldown = 1.0f;
     private bool _canAttack = true;
-    public bool IsAttacking => _enemyAttackAnimation;
+    private bool _isAttacking;
+    public bool IsAttacking => _isAttacking;
 
 
-    // Enemy attacks always have priority
     public void HandleAttack(EnemyLockManager enemyLockManager)
     {
         if (enemyLockManager.Player && _canAttack && PlayerOnEnemyAttackRange(enemyLockManager))
         {
-            _enemyAttackAnimation = true;
-            _canAttack = false;
+            StartCoroutine(HandleAttackFlow());
 
-            StartCoroutine(AttackCooldown(enemyLockManager));
+            StartCoroutine(HandleHit(enemyLockManager));
         }
     }
 
@@ -30,7 +29,7 @@ public class EnemyAttackManager : MonoBehaviour
         directionToPlayer.y = 0f;
         float angle = Vector3.Angle(transform.forward, directionToPlayer);
 
-        bool isPlayerOnRange = Vector3.Distance(transform.position, enemyLockManager.Player.transform.position) < _enemyAttackDistance;
+        bool isPlayerOnRange = Vector3.Distance(transform.position, enemyLockManager.Player.transform.position) < _attackRadius;
         bool isEnemySawThePlayer = angle < _limitAngle;
 
         if (isPlayerOnRange && isEnemySawThePlayer)
@@ -39,24 +38,33 @@ public class EnemyAttackManager : MonoBehaviour
         return null;
     }
 
-    private IEnumerator AttackCooldown(EnemyLockManager enemyLockManager)
+    private IEnumerator HandleAttackFlow()
     {
-        //Animation
-        yield return new WaitForSeconds(_AnimationCooldown);
-        _enemyAttackAnimation = false;
+        _isAttacking = true;
+        _canAttack = false;
 
-        //Even if the attack is launch, we have to check if the player is still on the enemy's range to hit the player.
+        // Wait the animation's end
+        yield return new WaitForSeconds(_animationCooldown);
+        _isAttacking = false;
+
+        // Wait a bit before a new attack
+        yield return new WaitForSeconds(_attackReloadCooldown);
+        _canAttack = true;
+    }
+
+    private IEnumerator HandleHit(EnemyLockManager enemyLockManager)
+    {
+        yield return new WaitForSeconds(_hitDelay);
+
         GameObject player = PlayerOnEnemyAttackRange(enemyLockManager);
         if (player)
         {
             PlayerHealthManager playerHealthManager = player.GetComponent<PlayerHealthManager>();
             playerHealthManager.Hit();
+            PlayerLocomotionManager playerLocomotionManager = player.GetComponent<PlayerLocomotionManager>();
+            StartCoroutine(playerLocomotionManager.SetKnockback(transform.forward, 8.0f));
         }
         else
             Debug.Log("Player dodge");
-
-        //Attack reload
-        yield return new WaitForSeconds(_AttackReloadCooldown);
-        _canAttack = true;
     }
 }

@@ -39,6 +39,10 @@ public class PlayerManager : CharacterManager
             _playerAttackManager.HandleAttack(characterController);
             _playerLocomotionManager.HandleAllMovement(characterController, _playerLockManager, _playerAttackManager);
         }
+        else
+        {
+            _playerLocomotionManager.HandleKnockback(characterController);
+        }
 
         _playerAnimationManager.HandlePlayerAnimations(characterController, _playerLocomotionManager, _playerLockManager.IsLockedOnEnemy, _playerAttackManager);
     }

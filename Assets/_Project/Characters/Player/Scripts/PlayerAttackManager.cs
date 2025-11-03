@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
 {
-    [SerializeField] private float _attackRadius = 3.0f;
+    [SerializeField] private float _attackRadius = 1.5f;
     [SerializeField] private float _limitAngle = 50.0f;
-    [SerializeField] private float _waitForHit = 0.3f;
+    [SerializeField] private float _hitDelay = 0.3f;
+    [SerializeField] private float _animationCooldown = 0.7f;
+    [SerializeField] private float _attackReloadCooldown = 0.5f;
     [SerializeField] private LayerMask _enemyLayer;
-    private float _animationCooldown = 0.7f;
-    private float _attackReloadCooldown = 1.0f; //Time between two attacks
-    private bool _isAttacking;
     private bool _canAttack = true;
+    private bool _isAttacking;
     public bool IsAttacking => _isAttacking;
 
-    // Player can attack if the enemy is not attacking !
     public void HandleAttack(CharacterController characterController)
     {
         if (!_isAttacking && _canAttack && characterController.isGrounded && PlayerInputManager.Instance.AttackPressed)
@@ -31,7 +30,7 @@ public class PlayerAttackManager : MonoBehaviour
                 float angle = Vector3.Angle(transform.forward, directionToEnemy);
                 if (angle < _limitAngle)
                 {
-                    StartCoroutine(HitEnemy(enemy));
+                    StartCoroutine(HandleHit(enemy));
                 }
             }
         }
@@ -42,18 +41,18 @@ public class PlayerAttackManager : MonoBehaviour
         _isAttacking = true;
         _canAttack = false;
 
-        // Wait the animation's end
+        // Avoid looping animation attack (just one time when the character is attacking)
         yield return new WaitForSeconds(_animationCooldown);
         _isAttacking = false;
 
         // Wait a bit before a new attack
-        yield return new WaitForSeconds(_attackReloadCooldown - _animationCooldown);
+        yield return new WaitForSeconds(_attackReloadCooldown);
         _canAttack = true;
     }
 
-    private IEnumerator HitEnemy(Collider enemy)
+    private IEnumerator HandleHit(Collider enemy)
     {
-        yield return new WaitForSeconds(_waitForHit);
+        yield return new WaitForSeconds(_hitDelay);
 
         EnemyHealthManager enemyHealthManager = enemy.gameObject.GetComponent<EnemyHealthManager>();
         if (enemyHealthManager != null)

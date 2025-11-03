@@ -20,11 +20,6 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
     [SerializeField] private float _breakDuration = 3.0f;
     private bool _enemyTakeABreak;
     private bool _canLookForABreak = true;
-
-    //Knockback
-    private Vector3 _knockbackDirection = Vector3.zero;
-    private float _knockbackPower;
-
     public bool EnemyTakeABreak => _enemyTakeABreak;
 
     public void HandleAllMovement(CharacterController characterController, List<Transform> wayPoints, EnemyLockManager enemyLockManager)
@@ -60,24 +55,7 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
         EnableTargetMovement(characterController);
     }
 
-    public void HandleKnockback(CharacterController characterController)
-    {
-        //Enemy has been hit, then the player will apply a knockback
-        if (_knockbackDirection != Vector3.zero)
-        {
-            characterController.Move(_knockbackDirection * _knockbackPower * Time.deltaTime);
-            _knockbackPower -= Time.deltaTime;
-        }
-    }
-
-    public IEnumerator SetKnockback(Vector3 direction, float power)
-    {
-        _knockbackDirection = direction;
-        _knockbackPower = power;
-        yield return new WaitForSeconds(0.5f);
-        _knockbackDirection = Vector3.zero;
-        _knockbackPower = 0.0f;
-    }
+    
 
     private IEnumerator LookForABreak()
     {
