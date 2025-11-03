@@ -10,6 +10,7 @@ public class CharacterHealthManager : MonoBehaviour
     public virtual void Hit(float stunnedCooldown = 0.2f)
     {
         _isStunned = true;
+        Debug.Log($"{name} has been hit!");
         StartCoroutine(StunnedCooldown(stunnedCooldown));
     }
 
@@ -24,9 +25,9 @@ public class CharacterHealthManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator StunnedCooldown(float stunnedCooldo)
+    private IEnumerator StunnedCooldown(float stunnedCooldown)
     {
-        yield return new WaitForSeconds(stunnedCooldo);
+        yield return new WaitForSeconds(stunnedCooldown);
         _isStunned = false;
     }
 }

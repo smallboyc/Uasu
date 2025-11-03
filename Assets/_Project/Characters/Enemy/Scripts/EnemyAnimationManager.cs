@@ -13,8 +13,7 @@ public class EnemyAnimationManager : MonoBehaviour
     {
         _animator.SetBool("IsTakingABreak", enemyLocomotionManager.EnemyTakeABreak);
         _animator.SetBool("IsAttacking", enemyAttackManager.IsAttacking);
-        _animator.SetBool("IsLockedByPlayerPosition", enemyLockManager.IsLockedByPlayerPosition);
-        _animator.SetBool("IsLockedByPlayerAttack", enemyLockManager.IsLockedByPlayerAttack);
+        _animator.SetBool("HasLockedPlayer", enemyLockManager.HasLockedPlayer);
         _animator.SetBool("IsStunned", enemyHealthManager.IsStunned);
     }
 }

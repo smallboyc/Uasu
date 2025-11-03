@@ -43,7 +43,10 @@ public class EnemyManager : CharacterManager
                 _enemyLockManager.TargetLockPlayer();
                 _enemyLocomotionManager.HandleAllMovement(characterController, _wayPoints, _enemyLockManager);
             }
-
+        }
+        else
+        {
+            _enemyLocomotionManager.HandleKnockback(characterController);
         }
 
         _enemyAnimationManager.HandleEnemyAnimations(_enemyLocomotionManager, _enemyLockManager, _enemyHealthManager, _enemyAttackManager);

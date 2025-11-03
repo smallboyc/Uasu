@@ -5,11 +5,12 @@ public class EnemyAttackManager : MonoBehaviour
 {
     [SerializeField] private float _enemyAttackDistance = 2.0f;
     private float _limitAngle = 50.0f;
-    private bool _canAttack = true;
     private bool _enemyAttackAnimation;
-    private float _enemyAttackAnimationCooldown = 0.5f;
-    private float _enemyAttackReloadCooldown = 2.0f;
+    private float _AnimationCooldown = 0.5f;
+    private float _AttackReloadCooldown = 1.0f;
+    private bool _canAttack = true;
     public bool IsAttacking => _enemyAttackAnimation;
+
 
     // Enemy attacks always have priority
     public void HandleAttack(EnemyLockManager enemyLockManager)
@@ -23,7 +24,7 @@ public class EnemyAttackManager : MonoBehaviour
         }
     }
 
-    private bool PlayerOnEnemyAttackRange(EnemyLockManager enemyLockManager)
+    private GameObject PlayerOnEnemyAttackRange(EnemyLockManager enemyLockManager)
     {
         Vector3 directionToPlayer = enemyLockManager.Player.transform.position - transform.position;
         directionToPlayer.y = 0f;
@@ -32,29 +33,30 @@ public class EnemyAttackManager : MonoBehaviour
         bool isPlayerOnRange = Vector3.Distance(transform.position, enemyLockManager.Player.transform.position) < _enemyAttackDistance;
         bool isEnemySawThePlayer = angle < _limitAngle;
 
-        return isPlayerOnRange && isEnemySawThePlayer;
+        if (isPlayerOnRange && isEnemySawThePlayer)
+            return enemyLockManager.Player;
+
+        return null;
     }
 
     private IEnumerator AttackCooldown(EnemyLockManager enemyLockManager)
     {
-        //Avoid Player attack during enemy's attack
-        PlayerAttackManager playerAttackManager = enemyLockManager.Player.GetComponent<PlayerAttackManager>();
-        playerAttackManager.IsAttackCanceled = true;
-
         //Animation
-        yield return new WaitForSeconds(_enemyAttackAnimationCooldown);
+        yield return new WaitForSeconds(_AnimationCooldown);
         _enemyAttackAnimation = false;
 
         //Even if the attack is launch, we have to check if the player is still on the enemy's range to hit the player.
-        if (PlayerOnEnemyAttackRange(enemyLockManager))
-            Debug.Log("Hit!");
+        GameObject player = PlayerOnEnemyAttackRange(enemyLockManager);
+        if (player)
+        {
+            PlayerHealthManager playerHealthManager = player.GetComponent<PlayerHealthManager>();
+            playerHealthManager.Hit();
+        }
         else
             Debug.Log("Player dodge");
 
-        playerAttackManager.IsAttackCanceled = false;
-        
         //Attack reload
-        yield return new WaitForSeconds(_enemyAttackReloadCooldown);
+        yield return new WaitForSeconds(_AttackReloadCooldown);
         _canAttack = true;
     }
 }
