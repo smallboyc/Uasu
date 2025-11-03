@@ -405,11 +405,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2526d568bf88844a29efdc8474b8abf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRadius: 3
-  _limitAngle: 30
+  _attackRadius: 2
+  _limitAngle: 70
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  _attackCooldown: 1
+  _waitForHit: 0.3
 --- !u!114 &1748791925215807943
 MonoBehaviour:
   m_ObjectHideFlags: 0

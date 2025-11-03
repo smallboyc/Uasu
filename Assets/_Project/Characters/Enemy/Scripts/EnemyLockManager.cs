@@ -22,7 +22,8 @@ public class EnemyLockManager : MonoBehaviour
         set => _isLockedByPlayerAttack = value;
     }
 
-    public Transform GetPlayerTransform => _targetPlayer != null ? _targetPlayer.transform : null;
+    // public Transform GetPlayerTransform => _targetPlayer != null ? _targetPlayer.transform : null;
+    public GameObject Player => _targetPlayer != null ? _targetPlayer : null;
 
     public bool EnemyIsLockedOnPlayer() => IsLockedByPlayerAttack || IsLockedByPlayerPosition;
 

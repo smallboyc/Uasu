@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyLocomotionManager))]
 [RequireComponent(typeof(EnemyLockManager))]
 [RequireComponent(typeof(EnemyHealthManager))]
+[RequireComponent(typeof(EnemyAttackManager))]
 [RequireComponent(typeof(EnemyAnimationManager))]
 public class EnemyManager : CharacterManager
 {
@@ -11,14 +12,16 @@ public class EnemyManager : CharacterManager
     private EnemyLocomotionManager _enemyLocomotionManager;
     private EnemyLockManager _enemyLockManager;
     private EnemyHealthManager _enemyHealthManager;
+    private EnemyAttackManager _enemyAttackManager;
     private EnemyAnimationManager _enemyAnimationManager;
     protected override void Awake()
     {
         base.Awake();
         _enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
         _enemyLockManager = GetComponent<EnemyLockManager>();
-        _enemyAnimationManager = GetComponent<EnemyAnimationManager>();
+        _enemyAttackManager = GetComponent<EnemyAttackManager>();
         _enemyHealthManager = GetComponent<EnemyHealthManager>();
+        _enemyAnimationManager = GetComponent<EnemyAnimationManager>();
     }
 
     protected override void Update()
@@ -33,11 +36,17 @@ public class EnemyManager : CharacterManager
 
         if (!_enemyHealthManager.IsStunned)
         {
-            _enemyLockManager.TargetLockPlayer();
-            _enemyLocomotionManager.HandleAllMovement(characterController, _wayPoints, _enemyLockManager);
+            _enemyAttackManager.HandleAttack(_enemyLockManager);
+
+            if (!_enemyAttackManager.IsAttacking)
+            {
+                _enemyLockManager.TargetLockPlayer();
+                _enemyLocomotionManager.HandleAllMovement(characterController, _wayPoints, _enemyLockManager);
+            }
+
         }
 
-        _enemyAnimationManager.HandleEnemyAnimations(_enemyLocomotionManager, _enemyLockManager, _enemyHealthManager);
+        _enemyAnimationManager.HandleEnemyAnimations(_enemyLocomotionManager, _enemyLockManager, _enemyHealthManager, _enemyAttackManager);
 
     }
 

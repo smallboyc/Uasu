@@ -9,16 +9,27 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private float _attackCooldown = 1.0f; //Time between two attacks
     [SerializeField] private float _waitForHit = 0.3f;
     private bool _isAttacking;
+    private bool _isAttackCanceled;
     private bool _canAttack = true;
     public bool IsAttacking => _isAttacking;
+    public bool IsAttackCanceled
+    {
+        get => _isAttackCanceled;
+        set => _isAttackCanceled = value;
+    }
 
+
+    // Player can attack if the enemy is not attacking !
     public void HandleAttack(CharacterController characterController)
     {
+        if (IsAttackCanceled)
+            return;
+            
         if (!_isAttacking && _canAttack && characterController.isGrounded && PlayerInputManager.Instance.AttackPressed)
         {
             StartCoroutine(HandleAttackFlow());
 
-            // Detect if enemy is in range and hit 
+            // Detect if enemy is in range
             Collider[] enemies = Physics.OverlapSphere(transform.position, _attackRadius, _enemyLayer);
             foreach (Collider enemy in enemies)
             {

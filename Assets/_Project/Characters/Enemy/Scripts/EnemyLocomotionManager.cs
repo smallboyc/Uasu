@@ -37,7 +37,7 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
             _moveSpeed = _runSpeed;
             _rotationSpeed = _runRotationSpeed;
             _enemyTakeABreak = false;
-            _targetDirection = enemyLockManager.GetPlayerTransform.position;
+            _targetDirection = enemyLockManager.Player.transform.position;
         }
         else // Player is not locked => Enemy make a round and can take a break.
         {
