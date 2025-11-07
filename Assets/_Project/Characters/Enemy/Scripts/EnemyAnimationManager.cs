@@ -1,19 +1,16 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class EnemyAnimationManager : MonoBehaviour
+public class EnemyAnimationManager : CharacterAnimationManager
 {
-    Animator _animator;
-
-    void Awake()
+    public void PlayLocomotionAnimation(bool enemyTakeABreak, bool hasLockedPlayer)
     {
-        _animator = GetComponent<Animator>();
+        _animator.SetBool("IsTakingABreak", enemyTakeABreak);
+        _animator.SetBool("HasLockedPlayer", hasLockedPlayer);
     }
-    public void HandleEnemyAnimations(EnemyLocomotionManager enemyLocomotionManager, EnemyLockManager enemyLockManager, EnemyHealthManager enemyHealthManager, EnemyAttackManager enemyAttackManager)
+
+    public void PlayAttackAnimation()
     {
-        _animator.SetBool("IsTakingABreak", enemyLocomotionManager.EnemyTakeABreak);
-        _animator.SetBool("IsAttacking", enemyAttackManager.IsAttacking);
-        _animator.SetBool("HasLockedPlayer", enemyLockManager.HasLockedPlayer);
-        _animator.SetBool("IsStunned", enemyHealthManager.IsStunned);
+        _animator.SetTrigger("Attack");
     }
 }

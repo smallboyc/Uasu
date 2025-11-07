@@ -2,21 +2,15 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 
 [RequireComponent(typeof(Animator))]
-public class PlayerAnimationManager : MonoBehaviour
+public class PlayerAnimationManager : CharacterAnimationManager
 {
-    Animator _animator;
-
-    private void Awake()
+    public void PlayLocomotionAnimation(CharacterController characterController, PlayerLocomotionManager playerLocomotionManager, PlayerLockManager playerLockManager)
     {
-        _animator = GetComponent<Animator>();
-    }
+        _animator.SetBool("IsLock", playerLockManager.IsLockedOnEnemy);
 
-    public void HandlePlayerAnimations(CharacterController characterController, PlayerLocomotionManager playerLocomotionManager, bool isLock, PlayerAttackManager playerAttackManager)
-    {
-        if (isLock)
+        //Lock state
+        if (playerLockManager.IsLockedOnEnemy)
         {
-            _animator.SetBool("IsLock", true);
-
             Vector3 moveDirection = playerLocomotionManager.GetMoveDirection.normalized;
 
             // Send dot product btw moveDirection and both forward and right vectors.
@@ -30,19 +24,18 @@ public class PlayerAnimationManager : MonoBehaviour
 
             _animator.SetFloat("Forward", forwardDot, 0.1f, Time.deltaTime);
             _animator.SetFloat("Right", rightDot, 0.1f, Time.deltaTime);
-        }
-        else
-        {
-            _animator.SetBool("IsLock", false);
-            // Send intensity for free player movement.
-            _animator.SetFloat("Intensity", playerLocomotionManager.GetIntensity, 0.1f, Time.deltaTime);
-
+            return;
         }
 
-        //Jump
+        //Standard state
+        _animator.SetFloat("Intensity", playerLocomotionManager.GetIntensity, 0.1f, Time.deltaTime);
         _animator.SetBool("IsGrounded", characterController.isGrounded);
-        //Attack
-        _animator.SetBool("IsAttacking", playerAttackManager.IsAttacking);
+    }
+
+    public void PlayAttackAnimation()
+    {
+        _animator.SetTrigger("Attack");
     }
 
 }
+

@@ -22,6 +22,10 @@ public class EnemyManager : CharacterManager
         _enemyAttackManager = GetComponent<EnemyAttackManager>();
         _enemyHealthManager = GetComponent<EnemyHealthManager>();
         _enemyAnimationManager = GetComponent<EnemyAnimationManager>();
+
+        //Animations
+        _enemyLocomotionManager.SetAnimationManager(_enemyAnimationManager);
+        _enemyAttackManager.SetAnimationManager(_enemyAnimationManager);
     }
 
     protected override void Update()
@@ -48,9 +52,6 @@ public class EnemyManager : CharacterManager
         {
             _enemyLocomotionManager.HandleKnockback(characterController);
         }
-
-        _enemyAnimationManager.HandleEnemyAnimations(_enemyLocomotionManager, _enemyLockManager, _enemyHealthManager, _enemyAttackManager);
-
     }
 
     public void SetWayPoints(List<Transform> enemySpawnerWaypoints)

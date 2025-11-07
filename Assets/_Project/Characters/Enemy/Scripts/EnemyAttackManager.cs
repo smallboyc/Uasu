@@ -6,16 +6,18 @@ public class EnemyAttackManager : MonoBehaviour
     [SerializeField] private float _attackRadius = 2.0f;
     [SerializeField] private float _limitAngle = 50.0f;
     [SerializeField] private float _hitDelay = 0.7f;
-    [SerializeField] private float _animationCooldown = 0.5f;
     [SerializeField] private float _attackReloadCooldown = 1.0f;
-    private bool _canAttack = true;
+
     private bool _isAttacking;
     public bool IsAttacking => _isAttacking;
+
+    private EnemyAnimationManager _enemyAnimationManager;
+    public void SetAnimationManager(EnemyAnimationManager enemyAnimationManager) => _enemyAnimationManager = enemyAnimationManager;
 
 
     public void HandleAttack(EnemyLockManager enemyLockManager)
     {
-        if (enemyLockManager.Player && _canAttack && PlayerOnEnemyAttackRange(enemyLockManager))
+        if (enemyLockManager.Player && !_isAttacking && PlayerOnEnemyAttackRange(enemyLockManager))
         {
             StartCoroutine(HandleAttackFlow());
 
@@ -41,15 +43,10 @@ public class EnemyAttackManager : MonoBehaviour
     private IEnumerator HandleAttackFlow()
     {
         _isAttacking = true;
-        _canAttack = false;
-
-        // Wait the animation's end
-        yield return new WaitForSeconds(_animationCooldown);
-        _isAttacking = false;
-
+        _enemyAnimationManager.PlayAttackAnimation();
         // Wait a bit before a new attack
         yield return new WaitForSeconds(_attackReloadCooldown);
-        _canAttack = true;
+        _isAttacking = false;
     }
 
     private IEnumerator HandleHit(EnemyLockManager enemyLockManager)

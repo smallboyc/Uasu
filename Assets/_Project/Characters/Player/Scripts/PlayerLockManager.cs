@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAnimationManager))]
 public class PlayerLockManager : MonoBehaviour
 {
     [Header("Lock Settings")]

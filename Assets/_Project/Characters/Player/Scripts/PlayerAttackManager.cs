@@ -2,21 +2,22 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAnimationManager))]
 public class PlayerAttackManager : MonoBehaviour
 {
     [SerializeField] private float _attackRadius = 1.5f;
     [SerializeField] private float _limitAngle = 50.0f;
     [SerializeField] private float _hitDelay = 0.3f;
-    [SerializeField] private float _animationCooldown = 0.7f;
     [SerializeField] private float _attackReloadCooldown = 0.5f;
     [SerializeField] private LayerMask _enemyLayer;
-    private bool _canAttack = true;
-    private bool _isAttacking;
+    private bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
+    private PlayerAnimationManager _playerAnimationManager;
+    public void SetAnimationManager(PlayerAnimationManager playerAnimationManager) => _playerAnimationManager = playerAnimationManager;
 
     public void HandleAttack(CharacterController characterController)
     {
-        if (!_isAttacking && _canAttack && characterController.isGrounded && PlayerInputManager.Instance.AttackPressed)
+        if (!_isAttacking && characterController.isGrounded && PlayerInputManager.Instance.AttackPressed)
         {
             StartCoroutine(HandleAttackFlow());
 
@@ -39,15 +40,13 @@ public class PlayerAttackManager : MonoBehaviour
     private IEnumerator HandleAttackFlow()
     {
         _isAttacking = true;
-        _canAttack = false;
 
         // Avoid looping animation attack (just one time when the character is attacking)
-        yield return new WaitForSeconds(_animationCooldown);
-        _isAttacking = false;
+        _playerAnimationManager.PlayAttackAnimation();
 
         // Wait a bit before a new attack
         yield return new WaitForSeconds(_attackReloadCooldown);
-        _canAttack = true;
+        _isAttacking = false;
     }
 
     private IEnumerator HandleHit(Collider enemy)

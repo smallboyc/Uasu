@@ -20,6 +20,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     public float GetIntensity => _moveIntensity;
     public Vector3 GetMoveDirection => _moveDirection;
+    private PlayerAnimationManager _playerAnimationManager;
+    public void SetAnimationManager(PlayerAnimationManager playerAnimationManager) => _playerAnimationManager = playerAnimationManager;
 
     protected override void Awake()
     {
@@ -44,6 +46,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         move.y = _verticalVelocity * Time.deltaTime;
 
         characterController.Move(move);
+        //Animations
+        _playerAnimationManager.PlayLocomotionAnimation(characterController, this, playerLockManager);
     }
 
     private void HandleGroundedMovement()

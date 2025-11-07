@@ -16,11 +16,16 @@ public class PlayerManager : CharacterManager
     protected override void Awake()
     {
         base.Awake();
+        // Get Feature Component
         _playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
         _playerLockManager = GetComponent<PlayerLockManager>();
         _playerAttackManager = GetComponent<PlayerAttackManager>();
         _playerHealthManager = GetComponent<PlayerHealthManager>();
         _playerAnimationManager = GetComponent<PlayerAnimationManager>();
+
+        // Set AnimationManager to Feature Component
+        _playerLocomotionManager.SetAnimationManager(_playerAnimationManager);
+        _playerAttackManager.SetAnimationManager(_playerAnimationManager);
     }
 
     protected override void Update()
@@ -41,10 +46,9 @@ public class PlayerManager : CharacterManager
         }
         else
         {
+            Debug.Log("Stun");
             _playerLocomotionManager.HandleKnockback(characterController);
         }
-
-        _playerAnimationManager.HandlePlayerAnimations(characterController, _playerLocomotionManager, _playerLockManager.IsLockedOnEnemy, _playerAttackManager);
     }
 }
 
