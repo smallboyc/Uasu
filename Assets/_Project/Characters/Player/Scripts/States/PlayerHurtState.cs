@@ -6,7 +6,7 @@ public class PlayerHurtState : PlayerState
     public PlayerHurtState(PlayerManager playerManager)
         : base(playerManager)
     {
-        Priority = 2;
+        Priority = 3;
     }
 
     public override void Enter()

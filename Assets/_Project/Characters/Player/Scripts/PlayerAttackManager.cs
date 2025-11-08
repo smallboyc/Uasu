@@ -1,71 +1,51 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerAnimationManager))]
 public class PlayerAttackManager : MonoBehaviour
 {
     [SerializeField] private float _attackRadius = 1.5f;
-    [SerializeField] private float _limitAngle = 50.0f;
-    [SerializeField] private float _hitDelay = 0.3f;
-    [SerializeField] private float _attackReloadCooldown = 0.5f;
+    [SerializeField] private float _attackAngle = 50f;
     [SerializeField] private LayerMask _enemyLayer;
+
     private bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
-    private PlayerAnimationManager _playerAnimationManager;
-    public void SetAnimationManager(PlayerAnimationManager playerAnimationManager) => _playerAnimationManager = playerAnimationManager;
 
-    public void HandleAttack(CharacterController characterController)
+
+    // Only use these methods in the Attack Animation !!
+    public void TriggerStartAttack()
     {
-        if (!_isAttacking && characterController.isGrounded && PlayerInputManager.Instance.AttackPressed)
-        {
-            StartCoroutine(HandleAttackFlow());
-
-            //1. Detect if enemy is in range
-            Collider[] enemies = Physics.OverlapSphere(transform.position, _attackRadius, _enemyLayer);
-            foreach (Collider enemy in enemies)
-            {
-                //2. Check if enemy is in the player vision
-                Vector3 directionToEnemy = enemy.gameObject.transform.position - transform.position;
-                directionToEnemy.y = 0f;
-                float angle = Vector3.Angle(transform.forward, directionToEnemy);
-                if (angle < _limitAngle)
-                {
-                    StartCoroutine(HandleHit(enemy));
-                }
-            }
-        }
+        Debug.Log("Trigger Start Attack");
+        _isAttacking = true;
     }
 
-    private IEnumerator HandleAttackFlow()
+    public void TriggerEndAttack()
     {
-        _isAttacking = true;
-
-        // Avoid looping animation attack (just one time when the character is attacking)
-        _playerAnimationManager.PlayAttackAnimation();
-
-        // Wait a bit before a new attack
-        yield return new WaitForSeconds(_attackReloadCooldown);
+        Debug.Log("Trigger End Attack");
         _isAttacking = false;
     }
 
-    private IEnumerator HandleHit(Collider enemy)
+    // Appelé depuis un Animation Event ("AttackHitEvent")
+    public void TriggerOnAttackHit()
     {
-        yield return new WaitForSeconds(_hitDelay);
-
-        EnemyHealthManager enemyHealthManager = enemy.gameObject.GetComponent<EnemyHealthManager>();
-        if (enemyHealthManager != null)
+        Debug.Log("Trigger Hit Attack");
+        Collider[] enemies = Physics.OverlapSphere(transform.position, _attackRadius, _enemyLayer);
+        foreach (Collider enemy in enemies)
         {
-            enemyHealthManager.Hit(0.5f);
-            //Set a knockback to the enemy
-            EnemyLocomotionManager enemyLocomotionManager = enemy.gameObject.GetComponent<EnemyLocomotionManager>();
-            StartCoroutine(enemyLocomotionManager.SetKnockback(transform.forward, 3.0f));
+            Vector3 dir = enemy.transform.position - transform.position;
+            dir.y = 0;
 
-            //Player surprises the enemy with an attack => Enemy is angry!
-            EnemyLockManager enemyLockManager = enemy.gameObject.GetComponent<EnemyLockManager>();
-            if (!enemyLockManager.HasLockedPlayer)
+            if (Vector3.Angle(transform.forward, dir) < _attackAngle)
             {
-                enemyLockManager.HasLockedPlayer = true;
+                if (enemy.TryGetComponent(out EnemyHealthManager enemyHealth))
+                {
+                    enemyHealth.Hit(0.5f);
+
+                    // if (enemy.TryGetComponent(out EnemyLocomotionManager enemyLocomotion))
+                    // {
+                    //     enemyLocomotion.StartCoroutine(
+                    //         enemyLocomotion.SetKnockback(transform.forward, 3.0f)
+                    //     );
+                    // }
+                }
             }
         }
     }
@@ -73,7 +53,7 @@ public class PlayerAttackManager : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, _attackRadius);
     }
 #endif

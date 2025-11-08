@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class StateMachine
 {
     public State CurrentState { get; private set; }
@@ -16,6 +18,10 @@ public class StateMachine
             CurrentState.Exit();
             CurrentState = newState;
             CurrentState.Enter();
+        }
+        else
+        {
+            Debug.Log("Check Priority.");
         }
     }
 }
