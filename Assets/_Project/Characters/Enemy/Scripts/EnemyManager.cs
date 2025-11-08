@@ -1,61 +1,101 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyLocomotionManager))]
 [RequireComponent(typeof(EnemyLockManager))]
-[RequireComponent(typeof(EnemyHealthManager))]
 [RequireComponent(typeof(EnemyAttackManager))]
 [RequireComponent(typeof(EnemyAnimationManager))]
 public class EnemyManager : CharacterManager
 {
+
+    // State Machine
+    public StateMachine EnemyStateMachine;
+    public EnemyIdleState _idleState;
+    public EnemyPatrolState _patrolState;
+    public EnemyAttackState _attackState;
+
+
+    // State Getter
+    public EnemyIdleState IdleState => _idleState;
+    public EnemyPatrolState PatrolState => _patrolState;
+    public EnemyAttackState AttackState => _attackState;
+
+    public EnemyAnimationManager AnimationManager;
+    public EnemyLocomotionManager LocomotionManager;
+    public EnemyAttackManager AttackManager;
+    public EnemyLockManager LockManager;
+
+    [Header("Attack")]
+    [SerializeField] private float _attackCooldown = 1.0f;
+    private bool _canAttack = true;
+    [HideInInspector] public bool CanAttack => _canAttack;
+
+    public IEnumerator AttackCooldown()
+    {
+        _canAttack = false;
+        yield return new WaitForSeconds(_attackCooldown);
+        _canAttack = true;
+    }
+
+    [Header("Patrol")]
     [SerializeField] private List<Transform> _wayPoints;
-    private EnemyLocomotionManager _enemyLocomotionManager;
-    private EnemyLockManager _enemyLockManager;
-    private EnemyHealthManager _enemyHealthManager;
-    private EnemyAttackManager _enemyAttackManager;
-    private EnemyAnimationManager _enemyAnimationManager;
-    protected override void Awake()
-    {
-        base.Awake();
-        _enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
-        _enemyLockManager = GetComponent<EnemyLockManager>();
-        _enemyAttackManager = GetComponent<EnemyAttackManager>();
-        _enemyHealthManager = GetComponent<EnemyHealthManager>();
-        _enemyAnimationManager = GetComponent<EnemyAnimationManager>();
-
-        //Animations
-        _enemyLocomotionManager.SetAnimationManager(_enemyAnimationManager);
-        _enemyAttackManager.SetAnimationManager(_enemyAnimationManager);
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-        if (_enemyHealthManager.Health <= 0)
-        {
-            _enemyHealthManager.GiveSoul();
-            _enemyHealthManager.Die();
-            return;
-        }
-
-        if (!_enemyHealthManager.IsStunned)
-        {
-            _enemyAttackManager.HandleAttack(_enemyLockManager);
-
-            if (!_enemyAttackManager.IsAttacking)
-            {
-                _enemyLockManager.TargetLockPlayer();
-                _enemyLocomotionManager.HandleAllMovement(CharacterController, _wayPoints, _enemyLockManager);
-            }
-        }
-        else
-        {
-            _enemyLocomotionManager.HandleKnockback(CharacterController);
-        }
-    }
+    [HideInInspector] public List<Transform> WayPoints => _wayPoints;
 
     public void SetWayPoints(List<Transform> enemySpawnerWaypoints)
     {
         _wayPoints = enemySpawnerWaypoints;
     }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        // Manager
+        AnimationManager = GetComponent<EnemyAnimationManager>();
+        LocomotionManager = GetComponent<EnemyLocomotionManager>();
+        LockManager = GetComponent<EnemyLockManager>();
+        AttackManager = GetComponent<EnemyAttackManager>();
+
+        // States
+        _idleState = new EnemyIdleState(this);
+        _patrolState = new EnemyPatrolState(this);
+        _attackState = new EnemyAttackState(this);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        // State Machine
+        EnemyStateMachine = new StateMachine();
+        EnemyStateMachine.Initialize(_patrolState);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        EnemyStateMachine.CurrentState.Update();
+        // if (_enemyHealthManager.Health <= 0)
+        // {
+        //     _enemyHealthManager.GiveSoul();
+        //     _enemyHealthManager.Die();
+        //     return;
+        // }
+
+        // if (!_enemyHealthManager.IsStunned)
+        // {
+        //     _enemyAttackManager.HandleAttack(_enemyLockManager);
+
+        //     if (!_enemyAttackManager.IsAttacking)
+        //     {
+        //         _enemyLockManager.TargetLockPlayer();
+        //         _enemyLocomotionManager.HandleAllMovement(CharacterController, _wayPoints, _enemyLockManager);
+        //     }
+        // }
+        // else
+        // {
+        //     _enemyLocomotionManager.HandleKnockback(CharacterController);
+        // }
+    }
+
+
 }

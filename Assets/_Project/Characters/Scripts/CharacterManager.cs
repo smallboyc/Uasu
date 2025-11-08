@@ -1,13 +1,11 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(CharacterHealthManager))]
 public abstract class CharacterManager : MonoBehaviour
 {
     [HideInInspector] public CharacterController CharacterController;
     protected virtual void Awake()
     {
-        DontDestroyOnLoad(this);
         CharacterController = GetComponent<CharacterController>();
     }
 

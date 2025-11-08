@@ -3,11 +3,7 @@ using UnityEngine;
 
 public class PlayerAerialState : PlayerState
 {
-    public PlayerAerialState(PlayerManager playerManager)
-        : base(playerManager)
-    {
-        Priority = 1;
-    }
+    public PlayerAerialState(PlayerManager playerManager) : base(playerManager) { }
     public override void Enter()
     {
         Debug.Log("Aerial State => ENTER");

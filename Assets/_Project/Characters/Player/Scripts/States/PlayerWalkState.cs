@@ -3,11 +3,7 @@ using UnityEngine;
 
 public class PlayerWalkState : PlayerState
 {
-    public PlayerWalkState(PlayerManager playerManager)
-        : base(playerManager)
-    {
-        Priority = 1;
-    }
+    public PlayerWalkState(PlayerManager playerManager): base(playerManager){ }
 
     public override void Enter()
     {

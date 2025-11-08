@@ -13,15 +13,8 @@ public class StateMachine
 
     public void ChangeState(State newState)
     {
-        if (newState.Priority >= CurrentState.Priority)
-        {
-            CurrentState.Exit();
-            CurrentState = newState;
-            CurrentState.Enter();
-        }
-        else
-        {
-            Debug.Log("Check Priority.");
-        }
+        CurrentState.Exit();
+        CurrentState = newState;
+        CurrentState.Enter();
     }
 }

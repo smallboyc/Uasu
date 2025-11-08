@@ -9,18 +9,18 @@ public class CharacterHealthManager : MonoBehaviour
     public int Health => _health;
     public bool IsStunned => _isStunned;
 
-    CharacterAnimationManager characterAnimationManager;
+    // CharacterAnimationManager characterAnimationManager;
 
     private void Awake()
     {
-        characterAnimationManager = GetComponent<CharacterAnimationManager>();
+        // characterAnimationManager = GetComponent<CharacterAnimationManager>();
     }
     public virtual void Hit(float stunnedCooldown = 0.2f)
     {
-        _isStunned = true;
-        characterAnimationManager.PlayHitAnimation();
-        Debug.Log($"{name} has been hit!");
-        StartCoroutine(StunnedCooldown(stunnedCooldown));
+        // _isStunned = true;
+        // characterAnimationManager.PlayHitAnimation();
+        // Debug.Log($"{name} has been hit!");
+        // StartCoroutine(StunnedCooldown(stunnedCooldown));
     }
 
     public virtual void Feal()
