@@ -19,12 +19,21 @@ public class PlayerLockState : PlayerState
         _playerManager.LockManager.TargetLockEnemies();
         //
 
+        // -> Unlock
         if (!_playerManager.LockManager.IsLockedOnEnemy)
         {
+            // -> Walk
             if (_playerManager.LocomotionManager.IsMoving)
                 _playerManager.PlayerStateMachine.ChangeState(_playerManager.WalkState);
-            else
+            else // -> Idle
                 _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);
+        }
+
+        // -> Attack
+        if (PlayerInputManager.Instance.AttackPressed && _playerManager.CanAttack)
+        {
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.AttackState);
+            _playerManager.StartCoroutine(_playerManager.AttackCooldown());
         }
     }
 

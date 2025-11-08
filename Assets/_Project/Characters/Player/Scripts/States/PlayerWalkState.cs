@@ -37,7 +37,6 @@ public class PlayerWalkState : PlayerState
         }
 
         // -> Attack
-        // Vérifie l'attaque uniquement si aucune coroutine de cooldown n'est en cours
         if (PlayerInputManager.Instance.AttackPressed && _playerManager.CanAttack)
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.AttackState);
