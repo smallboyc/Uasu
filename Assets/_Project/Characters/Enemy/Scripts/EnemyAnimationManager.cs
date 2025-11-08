@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EnemyAnimationManager : CharacterAnimationManager
 {
-
     // Patrol
     public void PlayPatrolAnimation()
     {
@@ -12,6 +11,17 @@ public class EnemyAnimationManager : CharacterAnimationManager
     public void StopPatrolAnimation()
     {
         _animator.SetBool("IsPatrolling", false);
+    }
+
+    // Idle
+    public void PlayIdleAnimation()
+    {
+        _animator.SetBool("IsPatrolling", false);
+    }
+
+    public void StopIdleAnimation()
+    {
+        _animator.SetBool("IsPatrolling", true);
     }
 
 
