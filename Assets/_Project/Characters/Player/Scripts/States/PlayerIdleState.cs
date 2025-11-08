@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerState
 {
-    public PlayerIdleState(PlayerManager playerManager): base(playerManager){ }
+    public PlayerIdleState(PlayerManager playerManager) : base(playerManager) { }
 
     public override void Enter()
     {
@@ -12,8 +12,11 @@ public class PlayerIdleState : PlayerState
 
     public override void Update()
     {
-        _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController);
-
+        //
+        _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController, _playerManager.LockManager);
+        _playerManager.LockManager.TargetLockEnemies();
+        //
+        
         // -> Idle
         if (_playerManager.LocomotionManager.IsMoving)
         {
@@ -24,6 +27,12 @@ public class PlayerIdleState : PlayerState
         if (!_playerManager.CharacterController.isGrounded)
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.AerialState);
+        }
+
+        // -> Lock
+        if (_playerManager.LockManager.IsLockedOnEnemy)
+        {
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.LockState);
         }
 
         // -> Attack

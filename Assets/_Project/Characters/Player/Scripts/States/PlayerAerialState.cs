@@ -12,7 +12,11 @@ public class PlayerAerialState : PlayerState
 
     public override void Update()
     {
-        _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController);
+        //
+        _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController, _playerManager.LockManager);
+        _playerManager.LockManager.TargetLockEnemies();
+        //
+
         if (_playerManager.CharacterController.isGrounded)
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);

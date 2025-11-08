@@ -32,15 +32,14 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         _cameraTransform = Camera.main.transform;
     }
 
-    public void HandleAllMovement(CharacterController characterController)
+    public void HandleAllMovement(CharacterController characterController, PlayerLockManager playerLockManager)
     {
         // if (playerAttackManager.IsAttacking)
         //     return;
 
         HandleGroundedMovement();
         HandleAerialMovement(characterController);
-        FreePlayerRotation();
-        // HandleRotationMovement(playerLockManager, playerLockManager.IsLockedOnEnemy);
+        HandleRotationMovement(playerLockManager);
 
         Vector3 move = _moveDirection * _currentSpeed * Time.deltaTime;
         move.y = _verticalVelocity * Time.deltaTime;
@@ -89,9 +88,9 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     }
 
 
-    private void HandleRotationMovement(PlayerLockManager playerLockManager, bool isLockedOnEnemy)
+    private void HandleRotationMovement(PlayerLockManager playerLockManager)
     {
-        if (!isLockedOnEnemy)
+        if (!playerLockManager.IsLockedOnEnemy)
         {
             FreePlayerRotation();
         }
