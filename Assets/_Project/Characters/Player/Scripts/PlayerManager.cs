@@ -13,6 +13,7 @@ public class PlayerManager : CharacterManager
     public PlayerIdleState _idleState;
     public PlayerWalkState _walkState;
     public PlayerAerialState _aerialState;
+    public PlayerLockState _lockState;
     public PlayerAttackState _attackState;
     public PlayerHurtState _hurtState;
 
@@ -21,16 +22,17 @@ public class PlayerManager : CharacterManager
     public PlayerIdleState IdleState => _idleState;
     public PlayerWalkState WalkState => _walkState;
     public PlayerAerialState AerialState => _aerialState;
+    public PlayerLockState LockState => _lockState;
     public PlayerAttackState AttackState => _attackState;
     public PlayerHurtState HurtState => _hurtState;
 
     // Manager
-    public PlayerAnimationManager AnimationManager;
-    public PlayerLocomotionManager LocomotionManager;
-    public PlayerAttackManager AttackManager;
-    public PlayerLockManager LockManager;
-    // private PlayerHealthManager _playerHealthManager;
+    [HideInInspector] public PlayerAnimationManager AnimationManager;
+    [HideInInspector] public PlayerLocomotionManager LocomotionManager;
+    [HideInInspector] public PlayerAttackManager AttackManager;
+    [HideInInspector] public PlayerLockManager LockManager;
 
+    [Header("Attack")]
     [SerializeField] private float _attackCooldown = 1.0f;
     private bool _canAttack = true;
     [HideInInspector] public bool CanAttack => _canAttack;
@@ -55,24 +57,16 @@ public class PlayerManager : CharacterManager
         _idleState = new PlayerIdleState(this);
         _walkState = new PlayerWalkState(this);
         _aerialState = new PlayerAerialState(this);
+        _lockState = new PlayerLockState(this);
         _attackState = new PlayerAttackState(this);
         _hurtState = new PlayerHurtState(this);
-
+    }
+    protected override void Start()
+    {
+        base.Start();
         // State Machine
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_idleState);
-
-
-        // _playerHealthManager = GetComponent<PlayerHealthManager>();
-
-
-
-
-        // // Get Feature Component
-
-        // _playerLockManager = GetComponent<PlayerLockManager>();
-        // _playerAttackManager = GetComponent<PlayerAttackManager>();
-        // _playerHealthManager = GetComponent<PlayerHealthManager>();
     }
 
     protected override void Update()

@@ -23,10 +23,11 @@ public class EnemyManager : CharacterManager
     public EnemyFocusState FocusState => _focusState;
     public EnemyAttackState AttackState => _attackState;
 
-    public EnemyAnimationManager AnimationManager;
-    public EnemyLocomotionManager LocomotionManager;
-    public EnemyAttackManager AttackManager;
-    public EnemyLockManager LockManager;
+    // Manager
+    [HideInInspector] public EnemyAnimationManager AnimationManager;
+    [HideInInspector] public EnemyLocomotionManager LocomotionManager;
+    [HideInInspector] public EnemyAttackManager AttackManager;
+    [HideInInspector] public EnemyLockManager LockManager;
 
     [Header("Attack")]
     [SerializeField] private float _attackCooldown = 1.0f;
