@@ -21,8 +21,6 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
     private bool _enemyTakeABreak;
     private bool _canLookForABreak = true;
     public bool EnemyTakeABreak => _enemyTakeABreak;
-    private EnemyAnimationManager _enemyAnimationManager;
-    public void SetAnimationManager(EnemyAnimationManager enemyAnimationManager) => _enemyAnimationManager = enemyAnimationManager;
 
     public void HandleAllMovement(CharacterController characterController, List<Transform> wayPoints, EnemyLockManager enemyLockManager)
     {
@@ -54,8 +52,6 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
             }
         }
         EnableTargetMovement(characterController);
-        // Animations
-        _enemyAnimationManager.PlayLocomotionAnimation(_enemyTakeABreak, enemyLockManager.HasLockedPlayer);
     }
 
 

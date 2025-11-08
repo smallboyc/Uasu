@@ -3,11 +3,7 @@ using UnityEngine;
 
 public class PlayerHurtState : PlayerState
 {
-    public PlayerHurtState(PlayerManager playerManager)
-        : base(playerManager)
-    {
-        Priority = 3;
-    }
+    public PlayerHurtState(PlayerManager playerManager): base(playerManager){ }
 
     public override void Enter()
     {

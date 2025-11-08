@@ -2,11 +2,7 @@ using UnityEngine;
 
 public class PlayerAttackState : PlayerState
 {
-    public PlayerAttackState(PlayerManager playerManager)
-        : base(playerManager)
-    {
-        Priority = 1;
-    }
+    public PlayerAttackState(PlayerManager playerManager) : base(playerManager){}
 
     public override void Enter()
     {
