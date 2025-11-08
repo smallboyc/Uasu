@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerLocomotionManager))]
@@ -29,6 +30,17 @@ public class PlayerManager : CharacterManager
     public PlayerAttackManager AttackManager;
     public PlayerLockManager LockManager;
     // private PlayerHealthManager _playerHealthManager;
+
+    [SerializeField] private float _attackCooldown = 1.0f;
+    private bool _canAttack = true;
+    [HideInInspector] public bool CanAttack => _canAttack;
+
+    public IEnumerator AttackCooldown()
+    {
+        _canAttack = false;
+        yield return new WaitForSeconds(_attackCooldown);
+        _canAttack = true;
+    }
 
     protected override void Awake()
     {

@@ -35,6 +35,16 @@ public class PlayerAnimationManager : CharacterAnimationManager
         _animator.SetBool("IsGrounded", true);
     }
 
+    public void PlayAttackAnimation()
+    {
+        _animator.SetBool("IsAttacking", true);
+    }
+
+    public void StopAttackAnimation()
+    {
+        _animator.SetBool("IsAttacking", false);
+    }
+
 
     public void PlayLocomotionAnimation(CharacterController characterController, PlayerLocomotionManager playerLocomotionManager, PlayerLockManager playerLockManager)
     {
@@ -64,10 +74,7 @@ public class PlayerAnimationManager : CharacterAnimationManager
         _animator.SetBool("IsGrounded", characterController.isGrounded);
     }
 
-    public void PlayAttackAnimation()
-    {
-        _animator.SetTrigger("Attack");
-    }
+
 
 }
 

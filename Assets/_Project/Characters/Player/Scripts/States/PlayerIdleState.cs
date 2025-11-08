@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class PlayerIdleState : PlayerState
@@ -15,25 +14,34 @@ public class PlayerIdleState : PlayerState
         _playerManager.AnimationManager.PlayIdleAnimation();
     }
 
-
     public override void Update()
     {
         _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController);
 
+        // -> Idle
         if (_playerManager.LocomotionManager.IsMoving)
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.WalkState);
         }
 
+        // -> Aerial
         if (!_playerManager.CharacterController.isGrounded)
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.AerialState);
+        }
+
+        // -> Attack
+        if (PlayerInputManager.Instance.AttackPressed && _playerManager.CanAttack)
+        {
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.AttackState);
+            _playerManager.StartCoroutine(_playerManager.AttackCooldown());
         }
     }
 
     public override void Exit()
     {
-        // clean
+        Debug.Log("Idle State : EXIT");
     }
-}
 
+
+}
