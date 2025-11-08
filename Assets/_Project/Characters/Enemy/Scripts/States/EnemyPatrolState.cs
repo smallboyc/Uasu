@@ -15,10 +15,16 @@ public class EnemyPatrolState : EnemyState
         _enemyManager.LocomotionManager.HandleAllMovement(_enemyManager.CharacterController, _enemyManager.WayPoints, _enemyManager.LockManager);
         _enemyManager.LockManager.TargetLockPlayer();
 
+        // Enemy Found Player => Focus
         if (_enemyManager.LockManager.HasLockedPlayer)
         {
             Debug.Log("ENEMY => Change to EnemyFocusState");
             //=> EnemyFocusState
+        }
+        if (_enemyManager.LocomotionManager.EnemyTakeABreak)
+        {
+            Debug.Log("ENEMY => Change to EnemyIdleState");
+            _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.IdleState);
         }
 
     }
