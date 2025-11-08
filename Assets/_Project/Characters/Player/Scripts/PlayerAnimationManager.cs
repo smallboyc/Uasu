@@ -4,6 +4,38 @@ using UnityEngine.TextCore.Text;
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimationManager : CharacterAnimationManager
 {
+    //Idle
+    public void PlayIdleAnimation()
+    {
+        _animator.SetBool("IsMoving", false);
+        _animator.SetBool("IsGrounded", true);
+    }
+
+    //Walk
+
+    public void PlayWalkAnimation()
+    {
+        _animator.SetBool("IsMoving", true);
+        _animator.SetBool("IsGrounded", true);
+    }
+
+    public void StopWalkAnimation()
+    {
+        _animator.SetBool("IsMoving", false);
+    }
+
+    // Jump
+    public void PlayAerialAnimation()
+    {
+        _animator.SetBool("IsGrounded", false);
+    }
+
+    public void StopAerialAnimation()
+    {
+        _animator.SetBool("IsGrounded", true);
+    }
+
+
     public void PlayLocomotionAnimation(CharacterController characterController, PlayerLocomotionManager playerLocomotionManager, PlayerLockManager playerLockManager)
     {
         _animator.SetBool("IsLock", playerLockManager.IsLockedOnEnemy);
@@ -28,7 +60,7 @@ public class PlayerAnimationManager : CharacterAnimationManager
         }
 
         //Standard state
-        _animator.SetFloat("Intensity", playerLocomotionManager.GetIntensity, 0.1f, Time.deltaTime);
+        // _animator.SetFloat("Intensity", playerLocomotionManager.MoveIntensity, 0.1f, Time.deltaTime);
         _animator.SetBool("IsGrounded", characterController.isGrounded);
     }
 

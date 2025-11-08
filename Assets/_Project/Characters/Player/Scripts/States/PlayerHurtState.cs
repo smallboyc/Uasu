@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerHurtState : PlayerState
 {
-    public PlayerHurtState(PlayerManager playerManager, PlayerAnimationManager animationManager)
-        : base(playerManager, animationManager)
+    public PlayerHurtState(PlayerManager playerManager)
+        : base(playerManager)
     {
         Priority = 2;
     }
