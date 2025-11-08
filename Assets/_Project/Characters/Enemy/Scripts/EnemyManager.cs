@@ -45,12 +45,12 @@ public class EnemyManager : CharacterManager
             if (!_enemyAttackManager.IsAttacking)
             {
                 _enemyLockManager.TargetLockPlayer();
-                _enemyLocomotionManager.HandleAllMovement(characterController, _wayPoints, _enemyLockManager);
+                _enemyLocomotionManager.HandleAllMovement(CharacterController, _wayPoints, _enemyLockManager);
             }
         }
         else
         {
-            _enemyLocomotionManager.HandleKnockback(characterController);
+            _enemyLocomotionManager.HandleKnockback(CharacterController);
         }
     }
 

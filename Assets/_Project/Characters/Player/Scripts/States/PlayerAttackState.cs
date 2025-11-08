@@ -1,14 +1,14 @@
 
 public class PlayerAttackState : PlayerState
 {
-    public PlayerAttackState(PlayerManager playerManager, PlayerAnimationManager animationManager)
-        : base(playerManager, animationManager)
+    public PlayerAttackState(PlayerManager playerManager)
+        : base(playerManager)
     {
         Priority = 1;
     }
     public override void Enter()
     {
-        _animationManager.PlayAttackAnimation();
+        // _playerManager.PlayerAnimationManager.PlayAttackAnimation();
     }
 
     public override void Update()
