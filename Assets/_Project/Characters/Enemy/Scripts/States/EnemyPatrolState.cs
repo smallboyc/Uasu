@@ -18,12 +18,11 @@ public class EnemyPatrolState : EnemyState
         // Enemy Found Player => Focus
         if (_enemyManager.LockManager.HasLockedPlayer)
         {
-            Debug.Log("ENEMY => Change to EnemyFocusState");
-            //=> EnemyFocusState
+            _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.FocusState);
         }
+        // Enemy take a little break during their patrols => Idle State
         if (_enemyManager.LocomotionManager.EnemyTakeABreak)
         {
-            Debug.Log("ENEMY => Change to EnemyIdleState");
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.IdleState);
         }
 

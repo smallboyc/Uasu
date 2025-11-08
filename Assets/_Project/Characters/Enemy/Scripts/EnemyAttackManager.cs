@@ -11,10 +11,6 @@ public class EnemyAttackManager : MonoBehaviour
     private bool _isAttacking;
     public bool IsAttacking => _isAttacking;
 
-    private EnemyAnimationManager _enemyAnimationManager;
-    public void SetAnimationManager(EnemyAnimationManager enemyAnimationManager) => _enemyAnimationManager = enemyAnimationManager;
-
-
     public void HandleAttack(EnemyLockManager enemyLockManager)
     {
         if (enemyLockManager.Player && !_isAttacking && PlayerOnEnemyAttackRange(enemyLockManager))
@@ -43,7 +39,6 @@ public class EnemyAttackManager : MonoBehaviour
     private IEnumerator HandleAttackFlow()
     {
         _isAttacking = true;
-        _enemyAnimationManager.PlayAttackAnimation();
         // Wait a bit before a new attack
         yield return new WaitForSeconds(_attackReloadCooldown);
         _isAttacking = false;

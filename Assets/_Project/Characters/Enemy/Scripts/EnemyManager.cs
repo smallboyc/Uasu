@@ -13,12 +13,14 @@ public class EnemyManager : CharacterManager
     public StateMachine EnemyStateMachine;
     public EnemyIdleState _idleState;
     public EnemyPatrolState _patrolState;
+    public EnemyFocusState _focusState;
     public EnemyAttackState _attackState;
 
 
     // State Getter
     public EnemyIdleState IdleState => _idleState;
     public EnemyPatrolState PatrolState => _patrolState;
+    public EnemyFocusState FocusState => _focusState;
     public EnemyAttackState AttackState => _attackState;
 
     public EnemyAnimationManager AnimationManager;
@@ -59,6 +61,7 @@ public class EnemyManager : CharacterManager
         // States
         _idleState = new EnemyIdleState(this);
         _patrolState = new EnemyPatrolState(this);
+        _focusState = new EnemyFocusState(this);
         _attackState = new EnemyAttackState(this);
     }
 

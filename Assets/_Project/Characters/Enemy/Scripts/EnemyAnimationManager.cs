@@ -7,7 +7,6 @@ public class EnemyAnimationManager : CharacterAnimationManager
     {
         _animator.SetBool("IsPatrolling", true);
     }
-
     public void StopPatrolAnimation()
     {
         _animator.SetBool("IsPatrolling", false);
@@ -18,12 +17,20 @@ public class EnemyAnimationManager : CharacterAnimationManager
     {
         _animator.SetBool("IsPatrolling", false);
     }
-
     public void StopIdleAnimation()
     {
         _animator.SetBool("IsPatrolling", true);
     }
 
+    // Focus
+    public void PlayFocusAnimation()
+    {
+        _animator.SetBool("IsFocus", true);
+    }
+    public void StopFocusAnimation()
+    {
+        _animator.SetBool("IsFocus", false);
+    }
 
     public void PlayLocomotionAnimation(bool enemyTakeABreak, bool hasLockedPlayer)
     {
