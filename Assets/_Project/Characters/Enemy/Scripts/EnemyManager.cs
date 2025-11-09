@@ -35,7 +35,7 @@ public class EnemyManager : CharacterManager
 
 
     [Header("Attack")]
-    [SerializeField] private float _attackCooldown = 1.0f;
+    [SerializeField] private float _attackCooldown = 2.0f;
     private bool _canAttack = true;
     [HideInInspector] public bool CanAttack => _canAttack;
 

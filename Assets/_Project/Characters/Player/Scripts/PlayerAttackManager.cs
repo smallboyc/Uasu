@@ -12,21 +12,21 @@ public class PlayerAttackManager : MonoBehaviour
     // Start at Enter()
     public void TriggerStartAttack()
     {
-        Debug.Log("Trigger Start Attack");
+        // Debug.Log("Trigger Start Attack");
         _isAttacking = true;
     }
 
     // Use as an Event in the Animation
     public void TriggerEndAttack()
     {
-        Debug.Log("Trigger End Attack");
+        // Debug.Log("Trigger End Attack");
         _isAttacking = false;
     }
 
     // Use as an Event in the Animation
     public void TriggerOnAttackHit()
     {
-        Debug.Log("Trigger Hit Attack");
+        // Debug.Log("Trigger Hit Attack");
         Collider[] enemies = Physics.OverlapSphere(transform.position, _attackRadius, _enemyLayer);
         foreach (Collider enemy in enemies)
         {
@@ -36,6 +36,12 @@ public class PlayerAttackManager : MonoBehaviour
             if (Vector3.Angle(transform.forward, dir) < _attackAngle)
             {
                 EnemyHurtManager enemyHurtManager = enemy.gameObject.GetComponent<EnemyHurtManager>();
+                EnemyAttackManager enemyAttackManager = enemy.gameObject.GetComponent<EnemyAttackManager>();
+                if (enemyAttackManager && enemyAttackManager.IsAttacking)
+                {
+                    Debug.Log("CLASH!");
+                    return;
+                }
                 if (enemyHurtManager)
                 {
                     enemyHurtManager.IsHurt = true; // => It will trigger the HurtState from the enemy current state.

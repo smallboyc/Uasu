@@ -5,7 +5,7 @@ public class EnemyFocusState : EnemyState
     public EnemyFocusState(EnemyManager enemyManager) : base(enemyManager) { }
     public override void Enter()
     {
-        Debug.Log("ENEMY => Focus ENTER");
+        // Debug.Log("ENEMY => Focus ENTER");
         _enemyManager.AnimationManager.PlayFocusAnimation();
     }
 
