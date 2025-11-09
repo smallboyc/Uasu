@@ -73,5 +73,15 @@ public class PlayerAnimationManager : CharacterAnimationManager
     {
         _animator.SetBool("IsAttacking", false);
     }
+
+    // Hurt
+    public void PlayHurtAnimation()
+    {
+        _animator.SetBool("IsHurt", true);
+    }
+    public void StopHurtAnimation()
+    {
+        _animator.SetBool("IsHurt", false);
+    }
 }
 

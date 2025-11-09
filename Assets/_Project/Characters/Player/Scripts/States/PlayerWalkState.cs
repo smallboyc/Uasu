@@ -42,6 +42,12 @@ public class PlayerWalkState : PlayerState
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.AttackState);
             _playerManager.StartCoroutine(_playerManager.AttackCooldown());
         }
+
+        // Player has been hurt by enemy => Hurt
+        if (_playerManager.HurtManager.IsHurt)
+        {
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.HurtState);
+        }
     }
 
     public override void Exit()

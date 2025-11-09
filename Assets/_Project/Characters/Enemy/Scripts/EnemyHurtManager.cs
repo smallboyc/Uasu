@@ -10,13 +10,8 @@ public class EnemyHurtManager : MonoBehaviour
         set => _isHurt = value;
     }
 
-    //Start on Enter.
-    // public void StartHurt()
-    // {
-    //     Debug.Log("ANIM = Trigger Start Hurt");
-    //     _isHurt = true;
-    // }
-
+    //!! => equivalent StartHurt() is the player setting IsHurt to true from the PlayerAttackManager.
+    
     //Use as an Event in the Hurt Animation
     public void EndHurt()
     {

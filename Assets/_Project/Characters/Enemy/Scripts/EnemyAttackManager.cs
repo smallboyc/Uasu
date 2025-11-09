@@ -89,6 +89,11 @@ public class EnemyAttackManager : MonoBehaviour
             if (Vector3.Angle(transform.forward, dir) < _attackAngle)
             {
                 Debug.Log("ANIM = Enemy Touched Player");
+                PlayerHurtManager playerHurtManager = player.gameObject.GetComponent<PlayerHurtManager>();
+                if (playerHurtManager)
+                {
+                    playerHurtManager.IsHurt = true; // => It will trigger the HurtState from the player current state.
+                }
             }
             else
             {

@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerLockManager))]
 [RequireComponent(typeof(PlayerAttackManager))]
 [RequireComponent(typeof(PlayerAnimationManager))]
+[RequireComponent(typeof(PlayerHurtManager))]
 public class PlayerManager : CharacterManager
 {
     // State Machine
@@ -30,6 +31,7 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerLocomotionManager LocomotionManager;
     [HideInInspector] public PlayerAttackManager AttackManager;
     [HideInInspector] public PlayerLockManager LockManager;
+    [HideInInspector] public PlayerHurtManager HurtManager;
 
     [Header("Attack")]
     [SerializeField] private float _attackCooldown = 1.0f;
@@ -43,6 +45,8 @@ public class PlayerManager : CharacterManager
         _canAttack = true;
     }
 
+    [HideInInspector] public int Health = 5;
+
     protected override void Awake()
     {
         base.Awake();
@@ -51,6 +55,7 @@ public class PlayerManager : CharacterManager
         LocomotionManager = GetComponent<PlayerLocomotionManager>();
         LockManager = GetComponent<PlayerLockManager>();
         AttackManager = GetComponent<PlayerAttackManager>();
+        HurtManager = GetComponent<PlayerHurtManager>();
 
         // States
         _idleState = new PlayerIdleState(this);
