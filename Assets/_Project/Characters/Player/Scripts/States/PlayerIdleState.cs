@@ -17,7 +17,7 @@ public class PlayerIdleState : PlayerState
         _playerManager.LockManager.TargetLockEnemies();
         //
         
-        // -> Idle
+        // -> Move
         if (_playerManager.LocomotionManager.IsMoving)
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.WalkState);
@@ -41,6 +41,13 @@ public class PlayerIdleState : PlayerState
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.AttackState);
             _playerManager.StartCoroutine(_playerManager.AttackCooldown());
         }
+
+        // Player has been hurt by enemy => Hurt
+        if (_playerManager.HurtManager.IsHurt)
+        {
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.HurtState);
+        }
+        
     }
 
     public override void Exit()
