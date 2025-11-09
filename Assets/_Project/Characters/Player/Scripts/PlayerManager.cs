@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerLockManager))]
 [RequireComponent(typeof(PlayerAttackManager))]
 [RequireComponent(typeof(PlayerAnimationManager))]
-[RequireComponent(typeof(PlayerHealthManager))]
 public class PlayerManager : CharacterManager
 {
     // State Machine

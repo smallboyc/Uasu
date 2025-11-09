@@ -6,7 +6,7 @@ public class PlayerIdleState : PlayerState
 
     public override void Enter()
     {
-        Debug.Log("Idle");
+        // Debug.Log("Idle");
         _playerManager.AnimationManager.PlayIdleAnimation();
     }
 
@@ -45,7 +45,7 @@ public class PlayerIdleState : PlayerState
 
     public override void Exit()
     {
-        Debug.Log("Idle State : EXIT");
+        // Debug.Log("Idle State : EXIT");
     }
 
 

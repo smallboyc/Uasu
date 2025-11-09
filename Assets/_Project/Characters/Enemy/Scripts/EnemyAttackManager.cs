@@ -51,8 +51,8 @@ public class EnemyAttackManager : MonoBehaviour
         GameObject player = PlayerOnEnemyAttackRange(enemyLockManager);
         if (player)
         {
-            PlayerHealthManager playerHealthManager = player.GetComponent<PlayerHealthManager>();
-            playerHealthManager.Hit();
+            // PlayerHealthManager playerHealthManager = player.GetComponent<PlayerHealthManager>();
+            // playerHealthManager.Hit();
             PlayerLocomotionManager playerLocomotionManager = player.GetComponent<PlayerLocomotionManager>();
             StartCoroutine(playerLocomotionManager.SetKnockback(transform.forward, 8.0f));
         }

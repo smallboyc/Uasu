@@ -9,7 +9,7 @@ public class EnemyLockManager : MonoBehaviour
     private bool _hasLockedPlayer;
     private bool _isPlayerOnRange; //Range is the Trigger Sphere (so it doesn't mean the enemy saw the player)
 
-    public bool HasLockedPlayer 
+    [HideInInspector] public bool HasLockedPlayer 
     {
         get => _hasLockedPlayer;
         set => _hasLockedPlayer = value;

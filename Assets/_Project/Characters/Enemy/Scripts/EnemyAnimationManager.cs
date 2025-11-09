@@ -32,6 +32,17 @@ public class EnemyAnimationManager : CharacterAnimationManager
         _animator.SetBool("IsFocus", false);
     }
 
+    // Hurt
+    public void PlayHurtAnimation()
+    {
+        _animator.SetBool("IsHurt", true);
+    }
+    public void StopHurtAnimation()
+    {
+        _animator.SetBool("IsHurt", false);
+    }
+
+
     public void PlayLocomotionAnimation(bool enemyTakeABreak, bool hasLockedPlayer)
     {
         _animator.SetBool("IsTakingABreak", enemyTakeABreak);

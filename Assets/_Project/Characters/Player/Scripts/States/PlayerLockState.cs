@@ -7,7 +7,7 @@ public class PlayerLockState : PlayerState
 
     public override void Enter()
     {
-        Debug.Log("Enter Lock State");
+        // Debug.Log("Enter Lock State");
         _playerManager.AnimationManager.PlayLockAnimation();
     }
 
@@ -39,7 +39,7 @@ public class PlayerLockState : PlayerState
 
     public override void Exit()
     {
-        Debug.Log("Exit Lock State");
+        // Debug.Log("Exit Lock State");
         _playerManager.AnimationManager.StopLockAnimation();
     }
 }

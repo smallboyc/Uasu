@@ -6,7 +6,7 @@ public class EnemyPatrolState : EnemyState
     public EnemyPatrolState(EnemyManager enemyManager) : base(enemyManager) { }
     public override void Enter()
     {
-        Debug.Log("ENEMY => Patrol ENTER");
+        // Debug.Log("ENEMY => Patrol ENTER");
         _enemyManager.AnimationManager.PlayPatrolAnimation();
     }
 
@@ -25,12 +25,17 @@ public class EnemyPatrolState : EnemyState
         {
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.IdleState);
         }
+        // Enemy has been hurt by player => Hurt
+        if (_enemyManager.HurtManager.IsHurt)
+        {
+            _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.HurtState);
+        }
 
     }
 
     public override void Exit()
     {
-        Debug.Log("ENEMY => Patrol EXIT");
+        // Debug.Log("ENEMY => Patrol EXIT");
         _enemyManager.AnimationManager.StopPatrolAnimation();
     }
 }

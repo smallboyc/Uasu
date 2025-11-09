@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class CharacterManager : MonoBehaviour
 {
     [HideInInspector] public CharacterController CharacterController;
+    [SerializeField] protected int _health;
     protected virtual void Awake()
     {
         CharacterController = GetComponent<CharacterController>();

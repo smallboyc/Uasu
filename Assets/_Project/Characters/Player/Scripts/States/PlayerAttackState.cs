@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class PlayerAttackState : PlayerState
 {
-    public PlayerAttackState(PlayerManager playerManager) : base(playerManager){}
+    public PlayerAttackState(PlayerManager playerManager) : base(playerManager) { }
 
     public override void Enter()
     {
-        Debug.Log("Attack State => ENTER");
+        // Debug.Log("Attack State => ENTER");
         _playerManager.AttackManager.TriggerStartAttack();
         _playerManager.AnimationManager.PlayAttackAnimation();
-        //Dès l'entrée faut lui mettre IsAttacking à true, car sinon la frame d'après, le temps que ça passe dans l'animation, ça revient à Idle
     }
 
     public override void Update()
@@ -25,7 +24,7 @@ public class PlayerAttackState : PlayerState
 
     public override void Exit()
     {
-        Debug.Log("Attack State => EXIT");
+        // Debug.Log("Attack State => EXIT");
         _playerManager.AnimationManager.StopAttackAnimation();
     }
 }
