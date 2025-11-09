@@ -35,6 +35,5 @@ public class EnemyIdleState : EnemyState
     public override void Exit()
     {
         // Debug.Log("ENEMY => Idle EXIT");
-        _enemyManager.AnimationManager.StopIdleAnimation();
     }
 }

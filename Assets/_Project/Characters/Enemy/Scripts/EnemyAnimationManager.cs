@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class EnemyAnimationManager : CharacterAnimationManager
 {
+    // Idle
+    public void PlayIdleAnimation()
+    {
+        StopPatrolAnimation();
+        StopFocusAnimation();
+    }
+    
     // Patrol
     public void PlayPatrolAnimation()
     {
@@ -10,16 +17,6 @@ public class EnemyAnimationManager : CharacterAnimationManager
     public void StopPatrolAnimation()
     {
         _animator.SetBool("IsPatrolling", false);
-    }
-
-    // Idle
-    public void PlayIdleAnimation()
-    {
-        _animator.SetBool("IsPatrolling", false);
-    }
-    public void StopIdleAnimation()
-    {
-        _animator.SetBool("IsPatrolling", true);
     }
 
     // Focus
@@ -42,15 +39,14 @@ public class EnemyAnimationManager : CharacterAnimationManager
         _animator.SetBool("IsHurt", false);
     }
 
-
-    public void PlayLocomotionAnimation(bool enemyTakeABreak, bool hasLockedPlayer)
-    {
-        _animator.SetBool("IsTakingABreak", enemyTakeABreak);
-        _animator.SetBool("HasLockedPlayer", hasLockedPlayer);
-    }
-
+    // Attack
     public void PlayAttackAnimation()
     {
-        _animator.SetTrigger("Attack");
+        _animator.SetBool("IsAttacking", true);
+    }
+
+    public void StopAttackAnimation()
+    {
+        _animator.SetBool("IsAttacking", false);
     }
 }
