@@ -5,7 +5,7 @@ public class EnemyFocusState : EnemyState
     public EnemyFocusState(EnemyManager enemyManager) : base(enemyManager) { }
     public override void Enter()
     {
-        // Debug.Log("ENEMY => Focus ENTER");
+        Debug.Log("ENEMY => Focus ENTER");
         _enemyManager.AnimationManager.PlayFocusAnimation();
     }
 
@@ -23,6 +23,12 @@ public class EnemyFocusState : EnemyState
         if (_enemyManager.HurtManager.IsHurt)
         {
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.HurtState);
+        }
+        // Enemy attacks
+        if (_enemyManager.AttackManager.IsPlayerInAttackRange() && _enemyManager.CanAttack)
+        {
+            _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.AttackState);
+            _enemyManager.StartCoroutine(_enemyManager.AttackCooldown());
         }
     }
 

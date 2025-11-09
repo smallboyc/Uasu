@@ -17,9 +17,13 @@ public class PlayerAerialState : PlayerState
         _playerManager.LockManager.TargetLockEnemies();
         //
 
+        // -> Falling and touching the ground
         if (_playerManager.CharacterController.isGrounded)
         {
-            _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);
+            if (_playerManager.LocomotionManager.IsMoving)
+                _playerManager.PlayerStateMachine.ChangeState(_playerManager.WalkState);
+            else
+                _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);
         }
     }
 
