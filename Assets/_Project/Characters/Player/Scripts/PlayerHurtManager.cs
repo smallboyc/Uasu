@@ -15,7 +15,7 @@ public class PlayerHurtManager : MonoBehaviour
     //Use as an Event in the Hurt Animation
     public void EndHurt()
     {
-        Debug.Log("ANIM = Trigger End Hurt");
+        // Debug.Log("ANIM = Trigger End Hurt");
         _isHurt = false;
     }
 }

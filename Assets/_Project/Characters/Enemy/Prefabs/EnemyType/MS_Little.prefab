@@ -465,7 +465,7 @@ MonoBehaviour:
   LockManager: {fileID: 0}
   AttackManager: {fileID: 0}
   HurtManager: {fileID: 0}
-  _attackCooldown: 1
+  _attackCooldown: 2
   _wayPoints: []
   Health: 5
 --- !u!114 &7060040186063306296

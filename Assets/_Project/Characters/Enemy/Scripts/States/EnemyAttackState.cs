@@ -20,7 +20,7 @@ public class EnemyAttackState : EnemyState
 
     public override void Exit()
     {
-        Debug.Log("Stop attack anim");
+        // Debug.Log("Stop attack anim");
         _enemyManager.AnimationManager.StopAttackAnimation();
     }
 }
