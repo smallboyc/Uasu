@@ -8,7 +8,7 @@ public class EnemyAnimationManager : CharacterAnimationManager
         StopPatrolAnimation();
         StopFocusAnimation();
     }
-    
+
     // Patrol
     public void PlayPatrolAnimation()
     {
@@ -48,5 +48,11 @@ public class EnemyAnimationManager : CharacterAnimationManager
     public void StopAttackAnimation()
     {
         _animator.SetBool("IsAttacking", false);
+    }
+
+    // Death
+    public void PlayDeathAnimation()
+    {
+        _animator.SetBool("IsDead", true);
     }
 }

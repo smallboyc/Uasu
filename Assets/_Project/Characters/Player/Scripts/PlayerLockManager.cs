@@ -14,6 +14,7 @@ public class PlayerLockManager : MonoBehaviour
 
     private GameObject _bestEnemy = null;
     private GameObject _targetEnemy;
+    private EnemyManager _targetEnemyManager;
     private GameObject _currentLockIndicator;
     private bool _isLockedOnEnemy;
     private bool _canToggleLock = true;
@@ -34,6 +35,7 @@ public class PlayerLockManager : MonoBehaviour
         HandleLockToggle();
         UpdateLockState();
         SpawnLockIndicator();
+        AutomaticUnlockSituation();
     }
 
     // Private functions
@@ -57,6 +59,10 @@ public class PlayerLockManager : MonoBehaviour
             }
         }
 
+    }
+
+    private void AutomaticUnlockSituation()
+    {
         //If Enemy is locked, but we exit our lock range => unlock the enemy
         if (_isLockedOnEnemy && _targetEnemy != null)
         {
@@ -67,10 +73,11 @@ public class PlayerLockManager : MonoBehaviour
             }
         }
 
-        //The Enemy just die => Unlock
-        if (_isLockedOnEnemy && _targetEnemy == null)
+        //If Enemy is dead
+        if (_targetEnemyManager && _targetEnemyManager.IsDead)
         {
             UnlockEnemy();
+            DestroyLockIndicator();
         }
     }
 
@@ -105,6 +112,7 @@ public class PlayerLockManager : MonoBehaviour
     private void LockEnemy(GameObject enemy)
     {
         _targetEnemy = enemy;
+        _targetEnemyManager = _targetEnemy.GetComponent<EnemyManager>();
         _isLockedOnEnemy = true;
     }
 

@@ -12,11 +12,12 @@ public class EnemyManager : CharacterManager
 
     // State Machine
     public StateMachine EnemyStateMachine;
-    public EnemyIdleState _idleState;
-    public EnemyPatrolState _patrolState;
-    public EnemyFocusState _focusState;
-    public EnemyAttackState _attackState;
-    public EnemyHurtState _hurtState;
+    private EnemyIdleState _idleState;
+    private EnemyPatrolState _patrolState;
+    private EnemyFocusState _focusState;
+    private EnemyAttackState _attackState;
+    private EnemyHurtState _hurtState;
+    private EnemyDeathState _deathState;
 
 
     // State Getter
@@ -25,6 +26,7 @@ public class EnemyManager : CharacterManager
     public EnemyFocusState FocusState => _focusState;
     public EnemyAttackState AttackState => _attackState;
     public EnemyHurtState HurtState => _hurtState;
+    public EnemyDeathState DeathState => _deathState;
 
     // Manager
     [HideInInspector] public EnemyAnimationManager AnimationManager;
@@ -55,7 +57,13 @@ public class EnemyManager : CharacterManager
         _wayPoints = enemySpawnerWaypoints;
     }
 
-    [HideInInspector] public int Health = 5;
+    [HideInInspector]
+    public int Health
+    {
+        get => _health;
+        set => _health = value;
+    }
+
 
     protected override void Awake()
     {
@@ -73,6 +81,7 @@ public class EnemyManager : CharacterManager
         _focusState = new EnemyFocusState(this);
         _attackState = new EnemyAttackState(this);
         _hurtState = new EnemyHurtState(this);
+        _deathState = new EnemyDeathState(this);
     }
 
     protected override void Start()

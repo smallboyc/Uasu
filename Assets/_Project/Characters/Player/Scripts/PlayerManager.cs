@@ -10,12 +10,12 @@ public class PlayerManager : CharacterManager
 {
     // State Machine
     public StateMachine PlayerStateMachine;
-    public PlayerIdleState _idleState;
-    public PlayerWalkState _walkState;
-    public PlayerAerialState _aerialState;
-    public PlayerLockState _lockState;
-    public PlayerAttackState _attackState;
-    public PlayerHurtState _hurtState;
+    private PlayerIdleState _idleState;
+    private PlayerWalkState _walkState;
+    private PlayerAerialState _aerialState;
+    private PlayerLockState _lockState;
+    private PlayerAttackState _attackState;
+    private PlayerHurtState _hurtState;
 
 
     // State Getter
@@ -45,7 +45,12 @@ public class PlayerManager : CharacterManager
         _canAttack = true;
     }
 
-    [HideInInspector] public int Health = 5;
+    [HideInInspector]
+    public int Health
+    {
+        get => _health;
+        set => _health = value;
+    }
 
     protected override void Awake()
     {

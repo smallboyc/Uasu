@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterController: {fileID: 0}
-  _health: 0
+  _health: 3
   AnimationManager: {fileID: 0}
   LocomotionManager: {fileID: 0}
   LockManager: {fileID: 0}
@@ -467,7 +467,6 @@ MonoBehaviour:
   HurtManager: {fileID: 0}
   _attackCooldown: 2
   _wayPoints: []
-  Health: 5
 --- !u!114 &7060040186063306296
 MonoBehaviour:
   m_ObjectHideFlags: 0
