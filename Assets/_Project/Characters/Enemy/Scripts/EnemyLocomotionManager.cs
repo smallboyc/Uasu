@@ -20,7 +20,11 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
     [SerializeField] private float _breakDuration = 3.0f;
     private bool _enemyTakeABreak;
     private bool _canLookForABreak = true;
-    public bool EnemyTakeABreak => _enemyTakeABreak;
+    [HideInInspector] public bool EnemyTakeABreak
+    {
+        get => _enemyTakeABreak;
+        set => _enemyTakeABreak = value;
+    }
 
     public void HandleAllMovement(CharacterController characterController, List<Transform> wayPoints, EnemyLockManager enemyLockManager)
     {

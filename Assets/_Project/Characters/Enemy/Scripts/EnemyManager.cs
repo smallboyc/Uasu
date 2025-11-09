@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyLockManager))]
 [RequireComponent(typeof(EnemyAttackManager))]
 [RequireComponent(typeof(EnemyAnimationManager))]
+[RequireComponent(typeof(EnemyHurtManager))]
 public class EnemyManager : CharacterManager
 {
 
@@ -15,6 +16,7 @@ public class EnemyManager : CharacterManager
     public EnemyPatrolState _patrolState;
     public EnemyFocusState _focusState;
     public EnemyAttackState _attackState;
+    public EnemyHurtState _hurtState;
 
 
     // State Getter
@@ -22,12 +24,15 @@ public class EnemyManager : CharacterManager
     public EnemyPatrolState PatrolState => _patrolState;
     public EnemyFocusState FocusState => _focusState;
     public EnemyAttackState AttackState => _attackState;
+    public EnemyHurtState HurtState => _hurtState;
 
     // Manager
     [HideInInspector] public EnemyAnimationManager AnimationManager;
     [HideInInspector] public EnemyLocomotionManager LocomotionManager;
-    [HideInInspector] public EnemyAttackManager AttackManager;
     [HideInInspector] public EnemyLockManager LockManager;
+    [HideInInspector] public EnemyAttackManager AttackManager;
+    [HideInInspector] public EnemyHurtManager HurtManager;
+
 
     [Header("Attack")]
     [SerializeField] private float _attackCooldown = 1.0f;
@@ -50,6 +55,8 @@ public class EnemyManager : CharacterManager
         _wayPoints = enemySpawnerWaypoints;
     }
 
+    [HideInInspector] public int Health = 5;
+
     protected override void Awake()
     {
         base.Awake();
@@ -58,12 +65,14 @@ public class EnemyManager : CharacterManager
         LocomotionManager = GetComponent<EnemyLocomotionManager>();
         LockManager = GetComponent<EnemyLockManager>();
         AttackManager = GetComponent<EnemyAttackManager>();
+        HurtManager = GetComponent<EnemyHurtManager>();
 
         // States
         _idleState = new EnemyIdleState(this);
         _patrolState = new EnemyPatrolState(this);
         _focusState = new EnemyFocusState(this);
         _attackState = new EnemyAttackState(this);
+        _hurtState = new EnemyHurtState(this);
     }
 
     protected override void Start()

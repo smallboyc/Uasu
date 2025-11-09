@@ -9,21 +9,21 @@ public class PlayerAttackManager : MonoBehaviour
     private bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
 
-
-    // Only use these methods in the Attack Animation !!
+    // Start at Enter()
     public void TriggerStartAttack()
     {
         Debug.Log("Trigger Start Attack");
         _isAttacking = true;
     }
 
+    // Use as an Event in the Animation
     public void TriggerEndAttack()
     {
         Debug.Log("Trigger End Attack");
         _isAttacking = false;
     }
 
-    // Appelé depuis un Animation Event ("AttackHitEvent")
+    // Use as an Event in the Animation
     public void TriggerOnAttackHit()
     {
         Debug.Log("Trigger Hit Attack");
@@ -35,16 +35,10 @@ public class PlayerAttackManager : MonoBehaviour
 
             if (Vector3.Angle(transform.forward, dir) < _attackAngle)
             {
-                if (enemy.TryGetComponent(out EnemyHealthManager enemyHealth))
+                EnemyHurtManager enemyHurtManager = enemy.gameObject.GetComponent<EnemyHurtManager>();
+                if (enemyHurtManager)
                 {
-                    enemyHealth.Hit(0.5f);
-
-                    // if (enemy.TryGetComponent(out EnemyLocomotionManager enemyLocomotion))
-                    // {
-                    //     enemyLocomotion.StartCoroutine(
-                    //         enemyLocomotion.SetKnockback(transform.forward, 3.0f)
-                    //     );
-                    // }
+                    enemyHurtManager.IsHurt = true; // => It will trigger the HurtState from the enemy current state.
                 }
             }
         }

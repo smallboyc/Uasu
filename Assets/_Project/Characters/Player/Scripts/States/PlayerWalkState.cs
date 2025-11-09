@@ -7,7 +7,7 @@ public class PlayerWalkState : PlayerState
 
     public override void Enter()
     {
-        Debug.Log("Walk State : ENTER");
+        // Debug.Log("Walk State : ENTER");
         _playerManager.AnimationManager.PlayWalkAnimation();
     }
 
@@ -46,7 +46,7 @@ public class PlayerWalkState : PlayerState
 
     public override void Exit()
     {
-        Debug.Log("Walk State : EXIT");
+        // Debug.Log("Walk State : EXIT");
         _playerManager.AnimationManager.StopWalkAnimation();
     }
 }
