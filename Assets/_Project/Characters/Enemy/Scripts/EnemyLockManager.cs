@@ -6,11 +6,16 @@ public class EnemyLockManager : MonoBehaviour
     [SerializeField] private float _lockRadius = 5.0f;
     [SerializeField] private LayerMask _playerLayer;
     private GameObject _targetPlayer;
-    private bool _isLockedOnPlayer;
-    private bool _isPlayerOnRange;
+    private bool _hasLockedPlayer;
+    private bool _isPlayerOnRange; //Range is the Trigger Sphere (so it doesn't mean the enemy saw the player)
 
-    public bool IsLockedOnPlayer => _isLockedOnPlayer;
-    public Transform GetPlayerTransform => _targetPlayer != null ? _targetPlayer.transform : null;
+    [HideInInspector] public bool HasLockedPlayer 
+    {
+        get => _hasLockedPlayer;
+        set => _hasLockedPlayer = value;
+    }
+
+    public GameObject Player => _targetPlayer != null ? _targetPlayer : null;
 
     // Main function
     public void TargetLockPlayer()
@@ -32,7 +37,7 @@ public class EnemyLockManager : MonoBehaviour
     private void ResetPlayerDetection()
     {
         _isPlayerOnRange = false;
-        _isLockedOnPlayer = false;
+        _hasLockedPlayer = false;
         _targetPlayer = null;
     }
 
@@ -44,14 +49,14 @@ public class EnemyLockManager : MonoBehaviour
 
         // Enemy detection
         if (angle < _limitAngle)
-            _isLockedOnPlayer = true;
+            _hasLockedPlayer = true;
     }
 
     private void CheckIfEnemyIsTooFar()
     {
         if (_targetPlayer != null && Vector3.Distance(transform.position, _targetPlayer.transform.position) > _lockRadius)
         {
-            _isLockedOnPlayer = false;
+            _hasLockedPlayer = false;
             _targetPlayer = null;
         }
     }
@@ -62,10 +67,11 @@ public class EnemyLockManager : MonoBehaviour
         _isPlayerOnRange = true;
     }
 
+
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = _isLockedOnPlayer ? Color.red : (_isPlayerOnRange ? Color.yellow : Color.magenta);
+        Gizmos.color = _hasLockedPlayer ? Color.red : (_isPlayerOnRange ? Color.yellow : Color.magenta);
         Gizmos.DrawWireSphere(transform.position, _lockRadius);
     }
 #endif

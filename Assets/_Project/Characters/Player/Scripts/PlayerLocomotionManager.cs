@@ -7,6 +7,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 {
     private Transform _cameraTransform;
     private float _currentSpeed = 0.0f;
+    private Vector2 _input;
     [SerializeField] private float _walkingSpeed = 4.0f;
     [SerializeField] private float _gravity = -24.0f;
     [SerializeField] private float _jumpHeight = 1.0f;
@@ -18,23 +19,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [SerializeField] private float _verticalVelocity = 0.0f;
     [SerializeField] private float _moveIntensity;
 
-
-
-    public float GetIntensity
-    {
-        get
-        {
-            return _moveIntensity;
-        }
-    }
-
-    public Vector3 GetMoveDirection
-    {
-        get
-        {
-            return _moveDirection;
-        }
-    }
+    public bool IsMoving => _input != Vector2.zero;
+    public Vector3 GetMoveDirection => _moveDirection;
 
     protected override void Awake()
     {
@@ -48,21 +34,22 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     public void HandleAllMovement(CharacterController characterController, PlayerLockManager playerLockManager)
     {
+        // if (playerAttackManager.IsAttacking)
+        //     return;
+
         HandleGroundedMovement();
         HandleAerialMovement(characterController);
-        HandleRotationMovement(playerLockManager, playerLockManager.IsLockedOnEnemy);
+        HandleRotationMovement(playerLockManager);
 
         Vector3 move = _moveDirection * _currentSpeed * Time.deltaTime;
         move.y = _verticalVelocity * Time.deltaTime;
+
         characterController.Move(move);
     }
 
     private void HandleGroundedMovement()
     {
-        Vector2 input = new(
-            PlayerInputManager.Instance.HorizontalInput,
-            PlayerInputManager.Instance.VerticalInput
-        );
+        _input = new Vector2(PlayerInputManager.Instance.HorizontalInput, PlayerInputManager.Instance.VerticalInput);
 
         //Our camera has its own local coord system. We need to project our player input from this local system to the world.
         //Math => Rworld = Rlocal * input (mat product)
@@ -73,13 +60,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         cameraForward.Normalize();
         cameraRight.Normalize();
 
-        _moveDirection = (cameraForward * input.y + cameraRight * input.x).normalized;
+        _moveDirection = (cameraForward * _input.y + cameraRight * _input.x).normalized;
 
-        _moveIntensity = input.magnitude;
-
-
-        //TODO : We're using the running speed as normal speed for the moment.
-        //Let's define more precisely in the future if we really want a sprint option.
         _currentSpeed = _walkingSpeed;
 
     }
@@ -106,9 +88,9 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     }
 
 
-    private void HandleRotationMovement(PlayerLockManager playerLockManager, bool isLockedOnEnemy)
+    private void HandleRotationMovement(PlayerLockManager playerLockManager)
     {
-        if (!isLockedOnEnemy)
+        if (!playerLockManager.IsLockedOnEnemy)
         {
             FreePlayerRotation();
         }
@@ -155,7 +137,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         Gizmos.DrawLine(start, end);
         Gizmos.DrawSphere(end, 0.1f);
     }
-
 
     //Cooldown before Jumping again.
     private IEnumerator ReloadJump()

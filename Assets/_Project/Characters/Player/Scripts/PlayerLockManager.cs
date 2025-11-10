@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAnimationManager))]
 public class PlayerLockManager : MonoBehaviour
 {
     [Header("Lock Settings")]
@@ -13,12 +14,18 @@ public class PlayerLockManager : MonoBehaviour
 
     private GameObject _bestEnemy = null;
     private GameObject _targetEnemy;
+    private EnemyManager _targetEnemyManager;
     private GameObject _currentLockIndicator;
     private bool _isLockedOnEnemy;
     private bool _canToggleLock = true;
     private Vector3 _lockDirection;
 
-    public bool IsLockedOnEnemy => _isLockedOnEnemy;
+    public bool IsLockedOnEnemy
+    {
+        get => _isLockedOnEnemy;
+        set => _isLockedOnEnemy = value;
+    }
+
     public Vector3 LockDirection => _lockDirection;
 
     // Main function used in the PlayerManager.
@@ -28,6 +35,7 @@ public class PlayerLockManager : MonoBehaviour
         HandleLockToggle();
         UpdateLockState();
         SpawnLockIndicator();
+        AutomaticUnlockSituation();
     }
 
     // Private functions
@@ -51,6 +59,10 @@ public class PlayerLockManager : MonoBehaviour
             }
         }
 
+    }
+
+    private void AutomaticUnlockSituation()
+    {
         //If Enemy is locked, but we exit our lock range => unlock the enemy
         if (_isLockedOnEnemy && _targetEnemy != null)
         {
@@ -59,6 +71,13 @@ public class PlayerLockManager : MonoBehaviour
             {
                 UnlockEnemy();
             }
+        }
+
+        //If Enemy is dead
+        if (_targetEnemyManager && _targetEnemyManager.IsDead)
+        {
+            UnlockEnemy();
+            DestroyLockIndicator();
         }
     }
 
@@ -93,6 +112,7 @@ public class PlayerLockManager : MonoBehaviour
     private void LockEnemy(GameObject enemy)
     {
         _targetEnemy = enemy;
+        _targetEnemyManager = _targetEnemy.GetComponent<EnemyManager>();
         _isLockedOnEnemy = true;
     }
 

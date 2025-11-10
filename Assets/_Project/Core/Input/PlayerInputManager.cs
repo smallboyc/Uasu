@@ -51,7 +51,7 @@ public class PlayerInputManager : MonoBehaviour
             _playerControls.PlayerInteraction.ToggleWeapon.performed += _ => ToggleWeaponPressed = true;
             _playerControls.PlayerInteraction.ToggleWeapon.canceled += _ => ToggleWeaponPressed = false;
             _playerControls.PlayerInteraction.Attack.performed += _ => AttackPressed = true;
-            _playerControls.PlayerInteraction.Attack.performed += _ => AttackPressed = false;
+            _playerControls.PlayerInteraction.Attack.canceled += _ => AttackPressed = false;
         }
 
         _playerControls.Enable();

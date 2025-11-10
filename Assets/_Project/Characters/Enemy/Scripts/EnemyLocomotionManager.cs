@@ -6,8 +6,12 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
 {
     private Vector3 _currentWayPointTarget = Vector3.zero;
     private int _currentWayPointIndex = -1;
-    [SerializeField] private float _moveSpeed = 1.2f;
-    [SerializeField] private float _rotationSpeed = 1.0f;
+    private float _walkSpeed = 1.2f;
+    private float _runSpeed = 1.7f;
+    [SerializeField] private float _moveSpeed;
+    private float _walkRotationSpeed = 1.0f;
+    private float _runRotationSpeed = 1.5f;
+    [SerializeField] private float _rotationSpeed;
     private Vector3 _targetDirection;
 
     // Break
@@ -16,25 +20,32 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
     [SerializeField] private float _breakDuration = 3.0f;
     private bool _enemyTakeABreak;
     private bool _canLookForABreak = true;
-
-    public bool EnemyTakeABreak => _enemyTakeABreak;
+    [HideInInspector] public bool EnemyTakeABreak
+    {
+        get => _enemyTakeABreak;
+        set => _enemyTakeABreak = value;
+    }
 
     public void HandleAllMovement(CharacterController characterController, List<Transform> wayPoints, EnemyLockManager enemyLockManager)
     {
         // Disable movement if enemy takes a break.
-        if (!enemyLockManager.IsLockedOnPlayer && _enemyTakeABreak)
+        if (!enemyLockManager.HasLockedPlayer && _enemyTakeABreak)
         {
             return;
         }
 
         // Enemy lock the player => No break permited, focus the player
-        if (enemyLockManager.IsLockedOnPlayer)
+        if (enemyLockManager.HasLockedPlayer)
         {
+            _moveSpeed = _runSpeed;
+            _rotationSpeed = _runRotationSpeed;
             _enemyTakeABreak = false;
-            _targetDirection = enemyLockManager.GetPlayerTransform.position;
+            _targetDirection = enemyLockManager.Player.transform.position;
         }
         else // Player is not locked => Enemy make a round and can take a break.
         {
+            _moveSpeed = _walkSpeed;
+            _rotationSpeed = _walkRotationSpeed;
             CheckForWayPoints(wayPoints);
             _targetDirection = _currentWayPointTarget;
 
@@ -44,9 +55,10 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
                 StartCoroutine(LookForABreak());
             }
         }
-
         EnableTargetMovement(characterController);
     }
+
+
 
     private IEnumerator LookForABreak()
     {
@@ -90,6 +102,7 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
 
         characterController.Move(transform.forward * _moveSpeed * Time.deltaTime);
 
+        //Enemy is in the air, go back on the ground buddy
         if (!characterController.isGrounded)
         {
             characterController.Move(Vector3.down * 9.81f * Time.deltaTime);

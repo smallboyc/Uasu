@@ -2,45 +2,86 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 
 [RequireComponent(typeof(Animator))]
-public class PlayerAnimationManager : MonoBehaviour
+public class PlayerAnimationManager : CharacterAnimationManager
 {
-    Animator _animator;
-
-    private void Awake()
+    //Idle
+    public void PlayIdleAnimation()
     {
-        _animator = GetComponent<Animator>();
+        StopWalkAnimation();
+        StopAerialAnimation();
     }
 
-    public void HandlePlayerAnimations(CharacterController characterController, PlayerLocomotionManager playerLocomotionManager, bool isLock)
+    //Walk
+    public void PlayWalkAnimation()
     {
-        if (isLock)
-        {
-            _animator.SetBool("IsLock", true);
-
-            Vector3 moveDirection = playerLocomotionManager.GetMoveDirection.normalized;
-
-            // Send dot product btw moveDirection and both forward and right vectors.
-            float forwardDot = Vector3.Dot(moveDirection, transform.forward);
-            float rightDot = Vector3.Dot(moveDirection, transform.right);
-            // Debug.Log("MD . F = " + forwardDot + " | MD . R = " + rightDot);
-
-            // Snap
-            forwardDot = forwardDot > 0.5f ? 1f : (forwardDot < -0.5f ? -1f : 0f);
-            rightDot = rightDot > 0.5f ? 1f : (rightDot < -0.5f ? -1f : 0f);
-
-            _animator.SetFloat("Forward", forwardDot, 0.1f, Time.deltaTime);
-            _animator.SetFloat("Right", rightDot, 0.1f, Time.deltaTime);
-        }
-        else
-        {
-            _animator.SetBool("IsLock", false);
-            // Send intensity for free player movement.
-            _animator.SetFloat("Intensity", playerLocomotionManager.GetIntensity, 0.1f, Time.deltaTime);
-
-        }
-
-        //Jump
-        _animator.SetBool("IsGrounded", characterController.isGrounded);
+        _animator.SetBool("IsMoving", true);
+        _animator.SetBool("IsGrounded", true);
     }
 
+    public void StopWalkAnimation()
+    {
+        _animator.SetBool("IsMoving", false);
+    }
+
+    // Jump
+    public void PlayAerialAnimation()
+    {
+        _animator.SetBool("IsGrounded", false);
+    }
+
+    public void StopAerialAnimation()
+    {
+        _animator.SetBool("IsGrounded", true);
+    }
+
+    // Lock
+    public void PlayLockAnimation()
+    {
+        _animator.SetBool("IsLock", true);
+
+    }
+
+    public void UpdateLockAnimation(PlayerLocomotionManager playerLocomotionManager)
+    {
+        Vector3 moveDirection = playerLocomotionManager.GetMoveDirection.normalized;
+
+        // Send dot product btw moveDirection and both forward and right vectors.
+        float forwardDot = Vector3.Dot(moveDirection, transform.forward);
+        float rightDot = Vector3.Dot(moveDirection, transform.right);
+        // Debug.Log("MD . F = " + forwardDot + " | MD . R = " + rightDot);
+
+        // Snap
+        forwardDot = forwardDot > 0.5f ? 1f : (forwardDot < -0.5f ? -1f : 0f);
+        rightDot = rightDot > 0.5f ? 1f : (rightDot < -0.5f ? -1f : 0f);
+
+        _animator.SetFloat("Forward", forwardDot, 0.1f, Time.deltaTime);
+        _animator.SetFloat("Right", rightDot, 0.1f, Time.deltaTime);
+    }
+
+    public void StopLockAnimation()
+    {
+        _animator.SetBool("IsLock", false);
+    }
+
+    // Attack
+    public void PlayAttackAnimation()
+    {
+        _animator.SetBool("IsAttacking", true);
+    }
+
+    public void StopAttackAnimation()
+    {
+        _animator.SetBool("IsAttacking", false);
+    }
+
+    // Hurt
+    public void PlayHurtAnimation()
+    {
+        _animator.SetBool("IsHurt", true);
+    }
+    public void StopHurtAnimation()
+    {
+        _animator.SetBool("IsHurt", false);
+    }
 }
+

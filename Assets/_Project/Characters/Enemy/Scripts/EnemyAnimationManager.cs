@@ -1,16 +1,58 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-public class EnemyAnimationManager : MonoBehaviour
+public class EnemyAnimationManager : CharacterAnimationManager
 {
-    Animator _animator;
-
-    void Awake()
+    // Idle
+    public void PlayIdleAnimation()
     {
-        _animator = GetComponent<Animator>();
+        StopPatrolAnimation();
+        StopFocusAnimation();
     }
-    public void HandleEnemyAnimations(CharacterController characterController, EnemyLocomotionManager enemyLocomotionManager)
+
+    // Patrol
+    public void PlayPatrolAnimation()
     {
-        _animator.SetBool("IsTakingABreak", enemyLocomotionManager.EnemyTakeABreak);
+        _animator.SetBool("IsPatrolling", true);
+    }
+    public void StopPatrolAnimation()
+    {
+        _animator.SetBool("IsPatrolling", false);
+    }
+
+    // Focus
+    public void PlayFocusAnimation()
+    {
+        _animator.SetBool("IsFocus", true);
+    }
+    public void StopFocusAnimation()
+    {
+        _animator.SetBool("IsFocus", false);
+    }
+
+    // Hurt
+    public void PlayHurtAnimation()
+    {
+        _animator.SetBool("IsHurt", true);
+    }
+    public void StopHurtAnimation()
+    {
+        _animator.SetBool("IsHurt", false);
+    }
+
+    // Attack
+    public void PlayAttackAnimation()
+    {
+        _animator.SetBool("IsAttacking", true);
+    }
+
+    public void StopAttackAnimation()
+    {
+        _animator.SetBool("IsAttacking", false);
+    }
+
+    // Death
+    public void PlayDeathAnimation()
+    {
+        _animator.SetBool("IsDead", true);
     }
 }
