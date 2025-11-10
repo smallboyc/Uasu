@@ -102,7 +102,7 @@ public class EnemyLocomotionManager : CharacterLocomotionManager
 
         characterController.Move(transform.forward * _moveSpeed * Time.deltaTime);
 
-        //Enemy is in the air, go back on the ground body
+        //Enemy is in the air, go back on the ground buddy
         if (!characterController.isGrounded)
         {
             characterController.Move(Vector3.down * 9.81f * Time.deltaTime);

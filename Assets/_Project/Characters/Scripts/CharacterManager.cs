@@ -13,8 +13,10 @@ public abstract class CharacterManager : MonoBehaviour
 
     protected virtual void Start()
     {
+        // -> Next : we will move this block to a higher level Manager like Scene/Game
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
+        //
     }
 
     protected virtual void Update()

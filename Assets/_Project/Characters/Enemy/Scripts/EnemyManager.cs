@@ -96,27 +96,6 @@ public class EnemyManager : CharacterManager
     {
         base.Update();
         EnemyStateMachine.CurrentState.Update();
-        // if (_enemyHealthManager.Health <= 0)
-        // {
-        //     _enemyHealthManager.GiveSoul();
-        //     _enemyHealthManager.Die();
-        //     return;
-        // }
-
-        // if (!_enemyHealthManager.IsStunned)
-        // {
-        //     _enemyAttackManager.HandleAttack(_enemyLockManager);
-
-        //     if (!_enemyAttackManager.IsAttacking)
-        //     {
-        //         _enemyLockManager.TargetLockPlayer();
-        //         _enemyLocomotionManager.HandleAllMovement(CharacterController, _wayPoints, _enemyLockManager);
-        //     }
-        // }
-        // else
-        // {
-        //     _enemyLocomotionManager.HandleKnockback(CharacterController);
-        // }
     }
 
 

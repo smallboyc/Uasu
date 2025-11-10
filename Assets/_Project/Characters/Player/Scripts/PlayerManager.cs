@@ -82,24 +82,6 @@ public class PlayerManager : CharacterManager
     {
         base.Update();
         PlayerStateMachine.CurrentState.Update();
-
-        // if (_playerHealthManager.Health <= 0)
-        // {
-        //     _playerHealthManager.Die();
-        //     return;
-        // }
-
-        // if (!_playerHealthManager.IsStunned)
-        // {
-        //     _playerLockManager.TargetLockEnemies();
-        //     _playerAttackManager.HandleAttack(characterController);
-        //     _playerLocomotionManager.HandleAllMovement(characterController, _playerLockManager, _playerAttackManager);
-        // }
-        // else
-        // {
-        //     Debug.Log("Stun");
-        //     _playerLocomotionManager.HandleKnockback(characterController);
-        // }
     }
 }
 

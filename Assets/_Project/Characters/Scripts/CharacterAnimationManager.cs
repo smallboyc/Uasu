@@ -8,8 +8,4 @@ public class CharacterAnimationManager : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-    public void PlayHitAnimation()
-    {
-        _animator.SetTrigger("Hit");
-    }
 }
