@@ -341,6 +341,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d07adfe6131b4fb8b581ce1760a3dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterController: {fileID: 0}
+  _health: 3
+  IsDead: 0
+  AnimationManager: {fileID: 0}
+  LocomotionManager: {fileID: 0}
+  AttackManager: {fileID: 0}
+  LockManager: {fileID: 0}
+  HurtManager: {fileID: 0}
+  _attackCooldown: 1
 --- !u!114 &7416606695584317001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,13 +415,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRadius: 1.5
-  _limitAngle: 70
-  _hitDelay: 0.3
-  _animationCooldown: 0.7
-  _attackReloadCooldown: 0.5
+  _attackAngle: 50
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  _sorcererMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &1748791925215807943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,4 +434,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b342e26a16da46b285400c63026dbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3

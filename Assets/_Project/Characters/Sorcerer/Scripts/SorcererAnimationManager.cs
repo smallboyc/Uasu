@@ -8,28 +8,10 @@ public class SorcererAnimationManager : CharacterAnimationManager
     {
         _animator.SetBool("IsSleeping", true);
     }
-    public void StopSleepAnimation()
-    {
-        _animator.SetBool("IsSleeping", false);
-    }
 
-    // Idle
-    public void PlayIdleAnimation()
-    {
-
-    }
-    public void StopIdleAnimation()
-    {
-
-    }
-
-    // WakeUp
+    // Wake Up
     public void PlayWakeUpAnimation()
     {
-        _animator.SetBool("IsWakingUp", true);
-    }
-    public void StopWakeUpAnimation()
-    {
-        _animator.SetBool("IsWakingUp", false);
+        _animator.SetBool("IsSleeping", false);
     }
 }

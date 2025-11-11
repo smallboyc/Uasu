@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SorcererAnimationManager))]
+[RequireComponent(typeof(SorcererSleepManager))]
 public class SorcererManager : CharacterManager
 {
     // State Machine
@@ -9,26 +10,25 @@ public class SorcererManager : CharacterManager
     // States
     private SorcererSleepState _sleepState;
     private SorcererWakeUpState _wakeUpState;
-    private SorcererIdleState _idleState;
 
     // State Getter 
     public SorcererSleepState SleepState => _sleepState;
     public SorcererWakeUpState WakeUpState => _wakeUpState;
-    public SorcererIdleState IdleState => _idleState;
 
     // Manager
     [HideInInspector] public SorcererAnimationManager AnimationManager;
+    [HideInInspector] public SorcererSleepManager SleepManager;
 
     protected override void Awake()
     {
         base.Awake();
         // Manager
         AnimationManager = GetComponent<SorcererAnimationManager>();
+        SleepManager = GetComponent<SorcererSleepManager>();
 
         // States
         _sleepState = new SorcererSleepState(this);
         _wakeUpState = new SorcererWakeUpState(this);
-        _idleState = new SorcererIdleState(this);
     }
 
     protected override void Start()

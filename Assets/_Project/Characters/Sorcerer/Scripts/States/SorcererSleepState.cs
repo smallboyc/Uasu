@@ -11,11 +11,13 @@ public class SorcererSleepState : SorcererState
 
     public override void Update()
     {
+        if (!_sorcererManager.SleepManager.IsSleeping)
+        {
+            _sorcererManager.SorcererStateMachine.ChangeState(_sorcererManager.WakeUpState);
+        }
     }
 
     public override void Exit()
     {
-        _sorcererManager.AnimationManager.StopSleepAnimation();
     }
-
 }
