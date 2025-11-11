@@ -8,6 +8,7 @@ TagManager:
   - Magic_Sword
   - HandHolder
   - BackHolder
+  - Sorcerer
   layers:
   - Default
   - TransparentFX
