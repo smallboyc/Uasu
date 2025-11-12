@@ -19,35 +19,48 @@
             "id": 1,
             "speaker": "sorcerer",
             "text": "Oh great!!",
-            "choices": null,
             "next_dialogue": 5
         },
         {
             "id": 2,
             "speaker": "sorcerer",
             "text": "Oh... Why ?",
-            "choices": null,
             "next_dialogue": 3
         },
         {
             "id": 3,
             "speaker": "uasu",
             "text": "I don't want to talk about it.",
-            "choices": null,
             "next_dialogue": 4
         },
         {
             "id": 4,
             "speaker": "sorcerer",
             "text": "I see...",
-            "choices": null,
             "next_dialogue": 5
         },
         {
             "id": 5,
             "speaker": "sorcerer",
-            "text": "Goodbye !",
-            "choices": null,
+            "text": "Hooo, you have the key! Congratulations. Here is your gift...",
+            "required_flags": [
+                "HasMagicKey"
+            ],
+            "effects": [
+                "AddHealth"
+            ],
+            "next_dialogue": 7
+        },
+        {
+            "id": 6,
+            "speaker": "sorcerer",
+            "text": "Take care budy...",
+            "next_dialogue": 7
+        },
+        {
+            "id": 7,
+            "speaker": "sorcerer",
+            "text": "Good bye !",
             "is_end": true
         }
     ]

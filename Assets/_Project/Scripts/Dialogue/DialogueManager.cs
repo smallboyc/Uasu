@@ -20,6 +20,8 @@ public class DialogueEntry
     public string speaker;
     public string text;
     public List<DialogueChoice> choices;
+    public List<string> required_flags;
+    public List<string> effects;
     public int next_dialogue;
     public bool is_end;
 }
@@ -37,52 +39,65 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Language _currentLanguage = Language.EN;
 
     [Header("Dialogue UI")]
-    [SerializeField] private GameObject _dialoguePanel;
-    [SerializeField] private GameObject _dialogueBox;
-    [SerializeField] private Image _dialogueImage;
-    [SerializeField] private TMP_Text _dialogueText;
+    public GameObject DialoguePanel;
+    public GameObject DialogueBox;
+    public Image DialogueImage;
+    public TMP_Text DialogueText;
 
     [Header("Choices UI")]
-    [SerializeField] private GameObject _choiceBox;
-    [SerializeField] private List<Button> _choiceButtons;
+    public GameObject ChoiceBox;
+    public List<Button> ChoiceButtons;
 
     [Header("Settings")]
-    [SerializeField] private float _displayLetterSpeed = 0.02f;
-
+    public float DisplayLetterSpeed = 0.02f;
     private List<DialogueEntry> _dialogues = new();
-    private DialogueEntry _currentDialogue;
+    [HideInInspector] public DialogueEntry CurrentDialogue;
 
-    private bool _canInteract = true;
+    [HideInInspector] public bool PlayerChose;
     private int _startDialogueId = 0;
+
+    // State Machine
+    public StateMachine DialogueStateMachine;
+    // States
+    private DialogueIdleState _idleState;
+    private DialoguePassiveState _passiveState;
+    private DialogueChoiceState _choiceState;
+    // State Getter
+    public DialogueIdleState IdleState => _idleState;
+    public DialoguePassiveState PassiveState => _passiveState;
+    public DialogueChoiceState ChoiceState => _choiceState;
+
+    // Interaction Input gestion
+    [SerializeField] private float _interactionCooldown = 0.2f;
+    private bool _canInteract = true;
+    [HideInInspector] public bool CanInteract => _canInteract;
+
+    public IEnumerator InteractionCooldown()
+    {
+        _canInteract = false;
+        yield return new WaitForSeconds(_interactionCooldown);
+        _canInteract = true;
+    }
 
     private void Awake()
     {
-        _dialoguePanel.SetActive(false);
-        _dialogueBox.SetActive(false);
-        _choiceBox.SetActive(false);
-
-        LoadDialogues();
+        _idleState = new DialogueIdleState(this);
+        _passiveState = new DialoguePassiveState(this);
+        _choiceState = new DialogueChoiceState(this);
     }
 
     private void Start()
     {
-        if (_dialogues != null && _dialogues.Count > 0)
-            _currentDialogue = _dialogues[_startDialogueId];
+        DialogueStateMachine = new StateMachine();
+        DialogueStateMachine.Initialize(IdleState);
+
+        LoadDialogues();
     }
 
     //
     private void Update()
     {
-        if (PlayerInputManager.Instance.InteractPressed && _canInteract)
-        {
-            _dialogueText.text = "";
-            _dialoguePanel.SetActive(true);
-
-            if (DialogueHasChoices())
-                StartCoroutine(DisplayDialogueWithChoice());
-            else
-                StartCoroutine(DisplayDialogue());
-        }
+        DialogueStateMachine.CurrentState.Update();
     }
     //
 
@@ -102,78 +117,68 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogError($"Cannot find language file at: {path}");
         }
+
+        if (_dialogues != null && _dialogues.Count > 0)
+            CurrentDialogue = _dialogues[_startDialogueId];
     }
 
-    private bool DialogueHasChoices() => _currentDialogue.choices != null && _currentDialogue.choices.Count > 0;
+    public bool DialogueHasChoices() => CurrentDialogue.choices != null && CurrentDialogue.choices.Count > 0;
 
-
-
-    private IEnumerator DisplayDialogue()
+    public bool NextDialogue()
     {
-        _dialogueBox.SetActive(true);
-        _choiceBox.SetActive(false);
-        _canInteract = false;
-
-        yield return StartCoroutine(DisplayText(_currentDialogue.text));
-
-        // Wait for player to interact before :
-        // 1 - close the last dialogue
-        // 2 - Display the next dialogue
-        yield return new WaitUntil(() => PlayerInputManager.Instance.InteractPressed);
-
-        if (_currentDialogue.is_end)
+        if (CurrentDialogue.next_dialogue >= 0)
         {
-            StartCoroutine(EndDialogue());
-            yield break;
+            CurrentDialogue = _dialogues.Find(d => d.id == CurrentDialogue.next_dialogue);
+            return true;
         }
+        return false;
+    }
 
-        if (_currentDialogue.next_dialogue >= 0)
-        {
-            _currentDialogue = _dialogues.Find(d => d.id == _currentDialogue.next_dialogue);
+    public bool IsEndDialogue()
+    {
+        return CurrentDialogue.is_end;
+    }
 
-            if (DialogueHasChoices())
-                StartCoroutine(DisplayDialogueWithChoice());
-            else
-                StartCoroutine(DisplayDialogue());
-        }
+    public void OnChoiceSelected(int choiceIndex)
+    {
+        PlayerChose = true;
+        ChoiceBox.SetActive(false);
+
+        int nextId = CurrentDialogue.choices[choiceIndex].next_dialogue;
+        CurrentDialogue = _dialogues.Find(d => d.id == nextId);
+    }
+
+    public void DisplayDialogueCoroutine()
+    {
+        StartCoroutine(DisplayDialogue());
+    }
+
+    public void DisplayDialogueWithChoiceCoroutine()
+    {
+        StartCoroutine(DisplayDialogueWithChoice());
+    }
+
+    public IEnumerator DisplayDialogue()
+    {
+        DialogueBox.SetActive(true);
+        yield return StartCoroutine(DisplayText(CurrentDialogue.text));
     }
 
 
-    private IEnumerator DisplayDialogueWithChoice()
+    public IEnumerator DisplayDialogueWithChoice()
     {
-        _dialogueBox.SetActive(true);
-        _choiceBox.SetActive(false);
-        _canInteract = false;
+        DialogueBox.SetActive(true);
+        yield return StartCoroutine(DisplayDialogue());
 
-        yield return StartCoroutine(DisplayText(_currentDialogue.text));
-
-        DisplayChoices();
-        _canInteract = true;
-    }
-
-    private IEnumerator DisplayText(string text)
-    {
-        _dialogueText.text = "";
-        foreach (char letter in text)
-        {
-            _dialogueText.text += letter;
-            yield return new WaitForSeconds(_displayLetterSpeed);
-        }
-    }
-
-
-    private void DisplayChoices()
-    {
-        _choiceBox.SetActive(true);
-
-        foreach (var btn in _choiceButtons)
+        ChoiceBox.SetActive(true);
+        foreach (var btn in ChoiceButtons)
             btn.gameObject.SetActive(false);
 
-        for (int i = 0; i < _currentDialogue.choices.Count && i < _choiceButtons.Count; i++)
+        for (int i = 0; i < CurrentDialogue.choices.Count && i < ChoiceButtons.Count; i++)
         {
-            var button = _choiceButtons[i];
+            var button = ChoiceButtons[i];
             button.gameObject.SetActive(true);
-            button.GetComponentInChildren<TMP_Text>().text = _currentDialogue.choices[i].text;
+            button.GetComponentInChildren<TMP_Text>().text = CurrentDialogue.choices[i].text;
 
             int index = i; // we need to keep that value (because "i" passed directly to the listener is a ref)
             button.onClick.RemoveAllListeners();
@@ -181,27 +186,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void OnChoiceSelected(int choiceIndex)
+    public IEnumerator DisplayText(string text)
     {
-        _canInteract = false;
-        _choiceBox.SetActive(false);
-
-        int nextId = _currentDialogue.choices[choiceIndex].next_dialogue;
-        _currentDialogue = _dialogues.Find(d => d.id == nextId);
-
-        if (DialogueHasChoices())
-            StartCoroutine(DisplayDialogueWithChoice());
-        else
-            StartCoroutine(DisplayDialogue());
+        foreach (char letter in text)
+        {
+            DialogueText.text += letter;
+            yield return new WaitForSeconds(DisplayLetterSpeed);
+        }
     }
 
-    private IEnumerator EndDialogue()
-    {
-        _dialoguePanel.SetActive(false);
-        _dialogueBox.SetActive(false);
-        _choiceBox.SetActive(false);
-        _dialogueText.text = "";
-        yield return new WaitForSeconds(0.2f);
-        _canInteract = true;
-    }
 }

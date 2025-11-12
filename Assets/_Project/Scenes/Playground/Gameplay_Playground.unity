@@ -519,7 +519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &323146077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1866,15 +1866,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentLanguage: 1
-  _dialoguePanel: {fileID: 323146076}
-  _dialogueBox: {fileID: 928807045}
-  _dialogueImage: {fileID: 186746478}
-  _dialogueText: {fileID: 488239030}
-  _choiceBox: {fileID: 993135711}
-  _choiceButtons:
+  DialoguePanel: {fileID: 323146076}
+  DialogueBox: {fileID: 928807045}
+  DialogueImage: {fileID: 186746478}
+  DialogueText: {fileID: 488239030}
+  ChoiceBox: {fileID: 993135711}
+  ChoiceButtons:
   - {fileID: 962254450}
   - {fileID: 1926580798}
-  _displayLetterSpeed: 0.02
+  DisplayLetterSpeed: 0.02
+  CurrentDialogue:
+    id: 0
+    speaker: 
+    text: 
+    choices: []
+    required_flags: []
+    effects: []
+    next_dialogue: 0
+    is_end: 0
+  PlayerChose: 1
+  _interactionCooldown: 0.2
 --- !u!4 &1531932156
 Transform:
   m_ObjectHideFlags: 0

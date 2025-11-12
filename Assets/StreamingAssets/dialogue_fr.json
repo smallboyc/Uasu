@@ -19,35 +19,30 @@
             "id": 1,
             "speaker": "sorcier",
             "text": "Ah super !!",
-            "choices": null,
             "next_dialogue": 5
         },
         {
             "id": 2,
             "speaker": "sorcier",
             "text": "Oh... Pourquoi ?",
-            "choices": null,
             "next_dialogue": 3
         },
         {
             "id": 3,
             "speaker": "uasu",
             "text": "Je ne veux pas en parler.",
-            "choices": null,
             "next_dialogue": 4
         },
         {
             "id": 4,
             "speaker": "sorcier",
             "text": "Je vois...",
-            "choices": null,
             "next_dialogue": 5
         },
         {
             "id": 5,
             "speaker": "sorcier",
             "text": "Au revoir !",
-            "choices": null,
             "is_end": true
         }
     ]
