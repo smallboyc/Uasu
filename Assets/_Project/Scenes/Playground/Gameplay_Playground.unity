@@ -1874,7 +1874,6 @@ MonoBehaviour:
   ChoiceButtons:
   - {fileID: 962254450}
   - {fileID: 1926580798}
-  DisplayLetterSpeed: 0.02
   CurrentDialogue:
     id: 0
     speaker: 

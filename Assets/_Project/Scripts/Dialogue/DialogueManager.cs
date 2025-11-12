@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -49,12 +50,14 @@ public class DialogueManager : MonoBehaviour
     public List<Button> ChoiceButtons;
 
     [Header("Settings")]
-    public float DisplayLetterSpeed = 0.02f;
+    private float _displayLetterSpeed = 0.02f;
     private List<DialogueEntry> _dialogues = new();
     [HideInInspector] public DialogueEntry CurrentDialogue;
-
     [HideInInspector] public bool PlayerChose;
     private int _startDialogueId = 0;
+
+    // Load images
+    private Dictionary<string, Sprite> _speakerPortraits = new();
 
     // State Machine
     public StateMachine DialogueStateMachine;
@@ -91,6 +94,7 @@ public class DialogueManager : MonoBehaviour
         DialogueStateMachine = new StateMachine();
         DialogueStateMachine.Initialize(IdleState);
 
+        LoadSpeakerPortraits();
         LoadDialogues();
     }
 
@@ -103,6 +107,18 @@ public class DialogueManager : MonoBehaviour
 
     private string GetLanguage(Language language) => language == Language.EN ? "en" : "fr";
     private string GetDialoguePath() => Path.Combine(Application.streamingAssetsPath, $"dialogue_{GetLanguage(_currentLanguage)}.json");
+
+    private void LoadSpeakerPortraits()
+    {
+        Sprite[] portraits = Resources.LoadAll<Sprite>("Dialogue/Portraits");
+        foreach (var sprite in portraits)
+        {
+            _speakerPortraits[sprite.name.ToLower()] = sprite;
+            Debug.Log(sprite.name.ToLower());
+        }
+
+        Debug.Log($"Loaded {_speakerPortraits.Count} portraits");
+    }
 
     private void LoadDialogues()
     {
@@ -161,6 +177,7 @@ public class DialogueManager : MonoBehaviour
     public IEnumerator DisplayDialogue()
     {
         DialogueBox.SetActive(true);
+        DialogueImage.sprite = _speakerPortraits[CurrentDialogue.speaker];
         yield return StartCoroutine(DisplayText(CurrentDialogue.text));
     }
 
@@ -191,7 +208,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in text)
         {
             DialogueText.text += letter;
-            yield return new WaitForSeconds(DisplayLetterSpeed);
+            yield return new WaitForSeconds(_displayLetterSpeed);
         }
     }
 

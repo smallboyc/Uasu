@@ -2,7 +2,7 @@
     "dialogues": [
         {
             "id": 0,
-            "speaker": "sorcier",
+            "speaker": "sorcerer",
             "text": "Hé mon ami, tu vas bien ?",
             "choices": [
                 {
@@ -17,13 +17,13 @@
         },
         {
             "id": 1,
-            "speaker": "sorcier",
+            "speaker": "sorcerer",
             "text": "Ah super !!",
             "next_dialogue": 5
         },
         {
             "id": 2,
-            "speaker": "sorcier",
+            "speaker": "sorcerer",
             "text": "Oh... Pourquoi ?",
             "next_dialogue": 3
         },
@@ -35,13 +35,13 @@
         },
         {
             "id": 4,
-            "speaker": "sorcier",
+            "speaker": "sorcerer",
             "text": "Je vois...",
             "next_dialogue": 5
         },
         {
             "id": 5,
-            "speaker": "sorcier",
+            "speaker": "sorcerer",
             "text": "Au revoir !",
             "is_end": true
         }
