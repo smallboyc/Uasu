@@ -1,4 +1,54 @@
 {
-    "test_001": "Hello there",
-    "test_002": "General Kenobi"
+    "dialogues": [
+        {
+            "id": 0,
+            "speaker": "sorcerer",
+            "text": "Hey buddy, are you okay?",
+            "choices": [
+                {
+                    "text": "Yes",
+                    "next_dialogue": 1
+                },
+                {
+                    "text": "No",
+                    "next_dialogue": 2
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "speaker": "sorcerer",
+            "text": "Oh great!!",
+            "choices": null,
+            "next_dialogue": 5
+        },
+        {
+            "id": 2,
+            "speaker": "sorcerer",
+            "text": "Oh... Why ?",
+            "choices": null,
+            "next_dialogue": 3
+        },
+        {
+            "id": 3,
+            "speaker": "uasu",
+            "text": "I don't want to talk about it.",
+            "choices": null,
+            "next_dialogue": 4
+        },
+        {
+            "id": 4,
+            "speaker": "sorcerer",
+            "text": "I see...",
+            "choices": null,
+            "next_dialogue": 5
+        },
+        {
+            "id": 5,
+            "speaker": "sorcerer",
+            "text": "Goodbye !",
+            "choices": null,
+            "is_end": true
+        }
+    ]
 }
