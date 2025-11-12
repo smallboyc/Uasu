@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerLocomotionManager))]
@@ -33,6 +34,20 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerLockManager LockManager;
     [HideInInspector] public PlayerHurtManager HurtManager;
 
+
+    // Flags : used to determine all achievements unlocked 
+    private HashSet<string> _achievements = new();
+
+    public void AddAchievement(string flag)
+    {
+        _achievements.Add(flag);
+    }
+
+    public bool HasAchievement(string flag)
+    {
+        return _achievements.Contains(flag);
+    }
+
     [Header("Attack")]
     [SerializeField] private float _attackCooldown = 1.0f;
     private bool _canAttack = true;
@@ -55,6 +70,7 @@ public class PlayerManager : CharacterManager
     protected override void Awake()
     {
         base.Awake();
+
         // Manager
         AnimationManager = GetComponent<PlayerAnimationManager>();
         LocomotionManager = GetComponent<PlayerLocomotionManager>();
@@ -76,6 +92,7 @@ public class PlayerManager : CharacterManager
         // State Machine
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_idleState);
+        AddAchievement("HasKey");
     }
 
     protected override void Update()

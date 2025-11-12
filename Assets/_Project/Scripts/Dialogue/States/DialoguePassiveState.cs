@@ -17,9 +17,9 @@ public class DialoguePassiveState : DialogueState
     {
         if (PlayerInputManager.Instance.InteractPressed && _dialogueManager.CanInteract)
         {
-            _dialogueManager.StartCoroutine(_dialogueManager.InteractionCooldown());
+            _dialogueManager.CanInteract = false;
 
-            if (_dialogueManager.IsEndDialogue())
+            if (_dialogueManager.IsEndDialogue() || !_dialogueManager.PlayerCanAccessNextDialogue())
             {
                 _dialogueManager.DialogueStateMachine.ChangeState(_dialogueManager.IdleState);
                 return;

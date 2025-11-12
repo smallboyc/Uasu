@@ -71,17 +71,21 @@ public class DialogueManager : MonoBehaviour
     public DialogueChoiceState ChoiceState => _choiceState;
 
     // Interaction Input gestion
-    [SerializeField] private float _interactionCooldown = 0.2f;
     private bool _canInteract = true;
-    [HideInInspector] public bool CanInteract => _canInteract;
-
-    public IEnumerator InteractionCooldown()
+    [HideInInspector]
+    public bool CanInteract
     {
-        _canInteract = false;
-        yield return new WaitForSeconds(_interactionCooldown);
-        _canInteract = true;
+        get => _canInteract;
+        set => _canInteract = value;
+
     }
 
+    // Player
+    private PlayerManager _playerManagerRef;
+    [HideInInspector] public PlayerManager PlayerManagerRef => _playerManagerRef;
+
+
+    // MAIN //
     private void Awake()
     {
         _idleState = new DialogueIdleState(this);
@@ -91,6 +95,12 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        _playerManagerRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        if (_playerManagerRef == null)
+        {
+            Debug.Log("Error (DialogueManager): Player not found");
+        }
+
         DialogueStateMachine = new StateMachine();
         DialogueStateMachine.Initialize(IdleState);
 
@@ -98,12 +108,11 @@ public class DialogueManager : MonoBehaviour
         LoadDialogues();
     }
 
-    //
     private void Update()
     {
         DialogueStateMachine.CurrentState.Update();
     }
-    //
+    // 
 
     private string GetLanguage(Language language) => language == Language.EN ? "en" : "fr";
     private string GetDialoguePath() => Path.Combine(Application.streamingAssetsPath, $"dialogue_{GetLanguage(_currentLanguage)}.json");
@@ -150,6 +159,11 @@ public class DialogueManager : MonoBehaviour
         return false;
     }
 
+    public bool IsStartDialogue()
+    {
+        return CurrentDialogue.id == 0;
+    }
+
     public bool IsEndDialogue()
     {
         return CurrentDialogue.is_end;
@@ -162,6 +176,23 @@ public class DialogueManager : MonoBehaviour
 
         int nextId = CurrentDialogue.choices[choiceIndex].next_dialogue;
         CurrentDialogue = _dialogues.Find(d => d.id == nextId);
+    }
+
+    public bool PlayerCanAccessNextDialogue()
+    {
+        DialogueEntry nextDialogue = _dialogues.Find(d => d.id == CurrentDialogue.next_dialogue);
+
+        if (nextDialogue == null) return false;
+
+        if (nextDialogue.required_flags == null || nextDialogue.required_flags.Count == 0)
+            return true;
+
+        foreach (string flag in nextDialogue.required_flags)
+        {
+            if (!_playerManagerRef.HasAchievement(flag))
+                return false;
+        }
+        return true;
     }
 
     public void DisplayDialogueCoroutine()
@@ -179,6 +210,7 @@ public class DialogueManager : MonoBehaviour
         DialogueBox.SetActive(true);
         DialogueImage.sprite = _speakerPortraits[CurrentDialogue.speaker];
         yield return StartCoroutine(DisplayText(CurrentDialogue.text));
+        _canInteract = true;
     }
 
 
