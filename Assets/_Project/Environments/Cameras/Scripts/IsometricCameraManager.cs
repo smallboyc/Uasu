@@ -41,10 +41,9 @@ public class IsometricCameraManager : MonoBehaviour
 
     private void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        if (PlayerManager.Instance)
         {
-            _isometricCamera.Follow = player.transform;
+            _isometricCamera.Follow = PlayerManager.Instance.transform;
         }
         _currentCameraAngle = _initialCameraAngle;
         _currentOrthographicSize = _initialOrthographicSize;

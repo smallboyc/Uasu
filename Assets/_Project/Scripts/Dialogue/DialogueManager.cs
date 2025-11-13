@@ -105,11 +105,6 @@ public class DialogueManager : MonoBehaviour
         _canInteract = true;
     }
 
-    // Player
-    private PlayerManager _playerManagerRef;
-    [HideInInspector] public PlayerManager PlayerManagerRef => _playerManagerRef;
-
-
     // MAIN //
     private void Awake()
     {
@@ -129,12 +124,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        _playerManagerRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
-        if (_playerManagerRef == null)
-        {
-            Debug.Log("ERROR (DialogueManager): Player not found");
-        }
-
         DialogueStateMachine = new StateMachine();
         DialogueStateMachine.Initialize(IdleState);
 
@@ -223,7 +212,7 @@ public class DialogueManager : MonoBehaviour
 
         foreach (string flag in nextDialogue.required_flags)
         {
-            if (!_playerManagerRef.HasAchievement(flag))
+            if (!PlayerManager.Instance.HasAchievement(flag))
                 return false;
         }
         return true;
