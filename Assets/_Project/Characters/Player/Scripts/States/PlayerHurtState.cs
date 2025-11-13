@@ -1,9 +1,9 @@
 
 using UnityEngine;
 
-public class PlayerHurtState : PlayerState
+public class PlayerHurtState : State
 {
-    public PlayerHurtState(PlayerManager playerManager) : base(playerManager) { }
+    private PlayerManager _playerManager = PlayerManager.Instance;
 
     public override void Enter()
     {

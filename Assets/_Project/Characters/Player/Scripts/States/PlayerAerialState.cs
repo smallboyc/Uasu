@@ -1,9 +1,9 @@
 
 using UnityEngine;
 
-public class PlayerAerialState : PlayerState
+public class PlayerAerialState : State
 {
-    public PlayerAerialState(PlayerManager playerManager) : base(playerManager) { }
+    private PlayerManager _playerManager = PlayerManager.Instance;
     public override void Enter()
     {
         // Debug.Log("Aerial State => ENTER");

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerIdleState : PlayerState
+public class PlayerIdleState : State
 {
-    public PlayerIdleState(PlayerManager playerManager) : base(playerManager) { }
+    private PlayerManager _playerManager = PlayerManager.Instance;
 
     public override void Enter()
     {
@@ -16,7 +16,7 @@ public class PlayerIdleState : PlayerState
         _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController, _playerManager.LockManager);
         _playerManager.LockManager.TargetLockEnemies();
         //
-        
+
         // -> Move
         if (_playerManager.LocomotionManager.IsMoving)
         {
@@ -47,7 +47,7 @@ public class PlayerIdleState : PlayerState
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.HurtState);
         }
-        
+
     }
 
     public override void Exit()

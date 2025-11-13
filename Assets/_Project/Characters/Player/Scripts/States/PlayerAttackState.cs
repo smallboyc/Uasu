@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerAttackState : PlayerState
+public class PlayerAttackState : State
 {
-    public PlayerAttackState(PlayerManager playerManager) : base(playerManager) { }
+    private PlayerManager _playerManager = PlayerManager.Instance;
 
     public override void Enter()
     {

@@ -1,9 +1,9 @@
 
 using UnityEngine;
 
-public class PlayerWalkState : PlayerState
+public class PlayerWalkState : State
 {
-    public PlayerWalkState(PlayerManager playerManager) : base(playerManager) { }
+    private PlayerManager _playerManager = PlayerManager.Instance;
 
     public override void Enter()
     {

@@ -9,6 +9,19 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerHurtManager))]
 public class PlayerManager : CharacterManager
 {
+    // Singleton => Singleplayer game
+    static PlayerManager _instance;
+    public static PlayerManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.LogError("ERROR (PlayerManager): No Instance found.");
+            }
+            return _instance;
+        }
+    }
     // State Machine
     public StateMachine PlayerStateMachine;
     private PlayerIdleState _idleState;
@@ -71,6 +84,15 @@ public class PlayerManager : CharacterManager
     {
         base.Awake();
 
+        //Singleton
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+            Debug.Log($"ERROR (PlayerManager): ({gameObject.name}) GameObject has been deleted because of the Singleton Pattern");
+            return;
+        }
+        _instance = this;
+
         // Manager
         AnimationManager = GetComponent<PlayerAnimationManager>();
         LocomotionManager = GetComponent<PlayerLocomotionManager>();
@@ -79,12 +101,12 @@ public class PlayerManager : CharacterManager
         HurtManager = GetComponent<PlayerHurtManager>();
 
         // States
-        _idleState = new PlayerIdleState(this);
-        _walkState = new PlayerWalkState(this);
-        _aerialState = new PlayerAerialState(this);
-        _lockState = new PlayerLockState(this);
-        _attackState = new PlayerAttackState(this);
-        _hurtState = new PlayerHurtState(this);
+        _idleState = new PlayerIdleState();
+        _walkState = new PlayerWalkState();
+        _aerialState = new PlayerAerialState();
+        _lockState = new PlayerLockState();
+        _attackState = new PlayerAttackState();
+        _hurtState = new PlayerHurtState();
     }
     protected override void Start()
     {
