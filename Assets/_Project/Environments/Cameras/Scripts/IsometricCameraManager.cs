@@ -20,7 +20,7 @@ public class IsometricCameraManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                Debug.LogError("No Instance found for PlayerInputManager.");
+                Debug.LogError("ERROR (IsometricCameraManager): No Instance found.");
             }
             return _instance;
         }
@@ -31,6 +31,7 @@ public class IsometricCameraManager : MonoBehaviour
         if (_instance != null)
         {
             Destroy(gameObject);
+            Debug.Log("INFO (IsometricCameraManager): An instance has been deleted because of the Singleton Pattern");
             return;
         }
         _instance = this;

@@ -2,9 +2,9 @@
 using UnityEngine;
 
 // Idle State = Dialogue is not active
-public class DialogueIdleState : DialogueState
+public class DialogueIdleState : State
 {
-    public DialogueIdleState(DialogueManager dialogueManager) : base(dialogueManager) { }
+    private DialogueManager _dialogueManager = DialogueManager.Instance;
     public override void Enter()
     {
         Debug.Log("IDLE (enter)");

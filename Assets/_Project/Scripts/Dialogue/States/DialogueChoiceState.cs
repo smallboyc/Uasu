@@ -3,9 +3,9 @@ using UnityEngine;
 
 // Choice state = Player has to make an action (choice between two options)
 // /!\ A choice is an inbetween state => We can't start or end with a choice.
-public class DialogueChoiceState : DialogueState
+public class DialogueChoiceState : State
 {
-    public DialogueChoiceState(DialogueManager dialogueManager) : base(dialogueManager) { }
+    private DialogueManager _dialogueManager = DialogueManager.Instance;
     public override void Enter()
     {
         Debug.Log("CHOICE (enter)");

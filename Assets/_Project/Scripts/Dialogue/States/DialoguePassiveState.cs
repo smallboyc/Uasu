@@ -2,9 +2,9 @@
 using UnityEngine;
 
 // Passive State = Player has just to read and pass the dialogue.
-public class DialoguePassiveState : DialogueState
+public class DialoguePassiveState : State
 {
-    public DialoguePassiveState(DialogueManager dialogueManager) : base(dialogueManager) { }
+    private DialogueManager _dialogueManager = DialogueManager.Instance;
     public override void Enter()
     {
         Debug.Log("PASSIVE (enter)");

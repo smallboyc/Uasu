@@ -38,6 +38,18 @@ public class DialogueData
 
 public class DialogueManager : MonoBehaviour
 {
+    static DialogueManager _instance;
+    public static DialogueManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.LogError("ERROR (DialogueManager): No Instance found.");
+            }
+            return _instance;
+        }
+    }
     private enum Language { EN, FR }
     [SerializeField] private Language _currentLanguage = Language.EN;
 
@@ -101,9 +113,18 @@ public class DialogueManager : MonoBehaviour
     // MAIN //
     private void Awake()
     {
-        _idleState = new DialogueIdleState(this);
-        _passiveState = new DialoguePassiveState(this);
-        _choiceState = new DialogueChoiceState(this);
+        //Singleton
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+            Debug.Log($"ERROR (DialogueManager): ({gameObject.name}) GameObject has been deleted because of the Singleton Pattern");
+            return;
+        }
+        _instance = this;
+
+        _idleState = new DialogueIdleState();
+        _passiveState = new DialoguePassiveState();
+        _choiceState = new DialogueChoiceState();
     }
 
     private void Start()
@@ -111,7 +132,7 @@ public class DialogueManager : MonoBehaviour
         _playerManagerRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         if (_playerManagerRef == null)
         {
-            Debug.Log("Error (DialogueManager): Player not found");
+            Debug.Log("ERROR (DialogueManager): Player not found");
         }
 
         DialogueStateMachine = new StateMachine();
