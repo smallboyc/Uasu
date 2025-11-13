@@ -155,18 +155,26 @@
             "id": 22,
             "speaker": "sorcerer",
             "text": "But you, hero, can call me Sorcerer, if that suffices heh.",
-            "text_variant": "Still waiting, and so are they. Go on, hero.",
-            "next_dialogue": 23,
+            "alternative_text": "Still waiting, and so are they. Go on, hero.",
+            "next_dialogue": 24,
             "effects": "nq_sorcerer_flower"
         },
         {
             "id": 23,
             "speaker": "sorcerer",
+            "text": "Good luck, little hero!",
+            "alternative_text": "Still waiting, and so are they. Go on, hero.",
+            "next_dialogue": 24,
+            "effects": "nq_sorcerer_flower"
+        },
+        {
+            "id": 24,
+            "speaker": "sorcerer",
             "required_flags": [
                 "HasSorcererFlower"
             ],
             "text": "Welcome back hero. You have reunited the triplets? How wonderful, let me see.",
-            "next_dialogue": 24
+            "next_dialogue": 25
         }
     ]
 }

@@ -2,6 +2,7 @@
 using UnityEngine;
 
 // Choice state = Player has to make an action (choice between two options)
+// /!\ A choice is an inbetween state => We can't start or end with a choice.
 public class DialogueChoiceState : DialogueState
 {
     public DialogueChoiceState(DialogueManager dialogueManager) : base(dialogueManager) { }
@@ -19,18 +20,8 @@ public class DialogueChoiceState : DialogueState
         if (_dialogueManager.PlayerChose)
         {
             _dialogueManager.PlayerChose = false;
-
-            //TODO : FOR THE CHOICE, we need to check the "playercanaccessnextdialogue" before clicking on the button.
-            if (_dialogueManager.IsEndDialogue() || !_dialogueManager.PlayerCanAccessNextDialogue())
-            {
-                _dialogueManager.DialogueStateMachine.ChangeState(_dialogueManager.IdleState);
-                return;
-            }
-
-            if (_dialogueManager.DialogueHasChoices())
-                _dialogueManager.DialogueStateMachine.ChangeState(_dialogueManager.ChoiceState);
-            else
-                _dialogueManager.DialogueStateMachine.ChangeState(_dialogueManager.PassiveState);
+            // Choice => Passive state
+            _dialogueManager.DialogueStateMachine.ChangeState(_dialogueManager.PassiveState);
         }
     }
 

@@ -92,7 +92,7 @@ public class PlayerManager : CharacterManager
         // State Machine
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_idleState);
-        AddAchievement("HasKey");
+        AddAchievement("HasSorcererFlower");
     }
 
     protected override void Update()

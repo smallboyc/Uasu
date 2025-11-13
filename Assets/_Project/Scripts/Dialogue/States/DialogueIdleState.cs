@@ -9,6 +9,7 @@ public class DialogueIdleState : DialogueState
     {
         Debug.Log("IDLE (enter)");
         Debug.Log(_dialogueManager.CurrentDialogue.id);
+        _dialogueManager.RestartDialogueCoroutine();
         _dialogueManager.PlayerChose = false;
         _dialogueManager.DialoguePanel.SetActive(false);
         _dialogueManager.DialogueBox.SetActive(false);
@@ -29,7 +30,7 @@ public class DialogueIdleState : DialogueState
             {
                 _dialogueManager.NextDialogue();
             }
-            
+
             // Is the dialogue of "choice" or "passive" type?
             if (_dialogueManager.DialogueHasChoices())
                 _dialogueManager.DialogueStateMachine.ChangeState(_dialogueManager.ChoiceState);

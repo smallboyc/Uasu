@@ -20,6 +20,8 @@ public class DialogueEntry
     public int id;
     public string speaker;
     public string text;
+    public bool visited;
+    public string alternative_text;
     public List<DialogueChoice> choices;
     public List<string> required_flags;
     public List<string> effects;
@@ -54,7 +56,7 @@ public class DialogueManager : MonoBehaviour
     private List<DialogueEntry> _dialogues = new();
     [HideInInspector] public DialogueEntry CurrentDialogue;
     [HideInInspector] public bool PlayerChose;
-    private int _startDialogueId = 0;
+    private int _startDialogueId = 17;
 
     // Load images
     private Dictionary<string, Sprite> _speakerPortraits = new();
@@ -72,12 +74,23 @@ public class DialogueManager : MonoBehaviour
 
     // Interaction Input gestion
     private bool _canInteract = true;
+    private float _restartInteractionCooldown = 0.2f;
+
     [HideInInspector]
     public bool CanInteract
     {
         get => _canInteract;
         set => _canInteract = value;
+    }
 
+    public void RestartDialogueCoroutine()
+    {
+        StartCoroutine(RestartDialogue());
+    }
+    private IEnumerator RestartDialogue()
+    {
+        yield return new WaitForSeconds(_restartInteractionCooldown);
+        _canInteract = true;
     }
 
     // Player
@@ -205,11 +218,17 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(DisplayDialogueWithChoice());
     }
 
-    public IEnumerator DisplayDialogue()
+    private IEnumerator DisplayDialogue()
     {
         DialogueBox.SetActive(true);
         DialogueImage.sprite = _speakerPortraits[CurrentDialogue.speaker];
-        yield return StartCoroutine(DisplayText(CurrentDialogue.text));
+
+        string textToDisplay = CurrentDialogue.text;
+        if (CurrentDialogue.visited && CurrentDialogue.alternative_text != null)
+            textToDisplay = CurrentDialogue.alternative_text;
+
+        yield return StartCoroutine(DisplayText(textToDisplay));
+        CurrentDialogue.visited = true;
         _canInteract = true;
     }
 
