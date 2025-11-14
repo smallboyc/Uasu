@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerLocomotionManager))]
@@ -8,6 +9,19 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerHurtManager))]
 public class PlayerManager : CharacterManager
 {
+    // Singleton => Singleplayer game
+    static PlayerManager _instance;
+    public static PlayerManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.LogError("ERROR (PlayerManager): No Instance found.");
+            }
+            return _instance;
+        }
+    }
     // State Machine
     public StateMachine PlayerStateMachine;
     private PlayerIdleState _idleState;
@@ -33,6 +47,20 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerLockManager LockManager;
     [HideInInspector] public PlayerHurtManager HurtManager;
 
+
+    // Flags : used to determine all achievements unlocked 
+    private HashSet<string> _achievements = new();
+
+    public void AddAchievement(string flag)
+    {
+        _achievements.Add(flag);
+    }
+
+    public bool HasAchievement(string flag)
+    {
+        return _achievements.Contains(flag);
+    }
+
     [Header("Attack")]
     [SerializeField] private float _attackCooldown = 1.0f;
     private bool _canAttack = true;
@@ -55,6 +83,16 @@ public class PlayerManager : CharacterManager
     protected override void Awake()
     {
         base.Awake();
+
+        //Singleton
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+            Debug.Log($"ERROR (PlayerManager): ({gameObject.name}) GameObject has been deleted because of the Singleton Pattern");
+            return;
+        }
+        _instance = this;
+
         // Manager
         AnimationManager = GetComponent<PlayerAnimationManager>();
         LocomotionManager = GetComponent<PlayerLocomotionManager>();
@@ -63,12 +101,12 @@ public class PlayerManager : CharacterManager
         HurtManager = GetComponent<PlayerHurtManager>();
 
         // States
-        _idleState = new PlayerIdleState(this);
-        _walkState = new PlayerWalkState(this);
-        _aerialState = new PlayerAerialState(this);
-        _lockState = new PlayerLockState(this);
-        _attackState = new PlayerAttackState(this);
-        _hurtState = new PlayerHurtState(this);
+        _idleState = new PlayerIdleState();
+        _walkState = new PlayerWalkState();
+        _aerialState = new PlayerAerialState();
+        _lockState = new PlayerLockState();
+        _attackState = new PlayerAttackState();
+        _hurtState = new PlayerHurtState();
     }
     protected override void Start()
     {
@@ -76,6 +114,7 @@ public class PlayerManager : CharacterManager
         // State Machine
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_idleState);
+        // AddAchievement("THE_SORCERER_FLOWER");
     }
 
     protected override void Update()

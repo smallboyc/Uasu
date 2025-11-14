@@ -1,0 +1,180 @@
+{
+    "dialogues": [
+        {
+            "id": 0,
+            "speaker": "sorcerer",
+            "text": "Oh my, I knew I was not alone in this woods...",
+            "next_dialogue": 1
+        },
+        {
+            "id": 1,
+            "speaker": "sorcerer",
+            "text": "How did I know, you ask? Well, I'm a little 'magical', you see.",
+            "next_dialogue": 2
+        },
+        {
+            "id": 2,
+            "speaker": "sorcerer",
+            "text": "Anywho. Greetings little hero, hope you don’t mind me not stretching your hand heh.",
+            "next_dialogue": 3
+        },
+        {
+            "id": 3,
+            "speaker": "sorcerer",
+            "text": "Are you by any chance what they call a 'Siffler' ?",
+            "choices": [
+                {
+                    "text": "Yes I am.",
+                    "next_dialogue": 4
+                },
+                {
+                    "text": "I don't know.",
+                    "next_dialogue": 5
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "speaker": "uasu",
+            "text": "Yes, I believe I am.",
+            "next_dialogue": 6
+        },
+        {
+            "id": 5,
+            "speaker": "uasu",
+            "text": "I'm sorry, I don't really know what I am.",
+            "next_dialogue": 8
+        },
+        {
+            "id": 6,
+            "speaker": "sorcerer",
+            "text": "Fascinating, the dark forces that run savages on this island could not get ahold of you. Truly fascinating.",
+            "next_dialogue": 7
+        },
+        {
+            "id": 7,
+            "speaker": "sorcerer",
+            "text": "Thankfully I know a tad of Siffler from my journeys, what a beautifully witty language you people invented. ",
+            "next_dialogue": 8
+        },
+        {
+            "id": 8,
+            "speaker": "sorcerer",
+            "text": "Anywho. I’ve been wandering this woods looking for its secrets. I feel something hiding not very far from here, I can hear its whistle.",
+            "next_dialogue": 9
+        },
+        {
+            "id": 9,
+            "speaker": "sorcerer",
+            "text": "And this, a stone from the heavens, has fallen into my arms —— well, you know what I mean.",
+            "next_dialogue": 10
+        },
+        {
+            "id": 10,
+            "speaker": "sorcerer",
+            "text": "It hides a purpose so great I cannot begin to fathom it, I am sure of it...",
+            "next_dialogue": 11
+        },
+        {
+            "id": 11,
+            "speaker": "sorcerer",
+            "text": "Wait, it is calling… calling for you.",
+            "next_dialogue": 12
+        },
+        {
+            "id": 12,
+            "speaker": "uasu",
+            "text": "I'm feeling something...",
+            "next_dialogue": 13
+        },
+        {
+            "id": 13,
+            "speaker": "sorcerer",
+            "text": "Mmmm. Very well, I'll pass this talisman onto you, but only if you assist me first.",
+            "next_dialogue": 14
+        },
+        {
+            "id": 14,
+            "speaker": "sorcerer",
+            "text": "You see, I am lacking the so-called arms, so it is a hard task for me to recollect what I am in need of.",
+            "next_dialogue": 15
+        },
+        {
+            "id": 15,
+            "speaker": "sorcerer",
+            "text": "Luckily, you possess not only one but two of them, how good for me.",
+            "next_dialogue": 16
+        },
+        {
+            "id": 16,
+            "speaker": "sorcerer",
+            "text": "Anywho, listen closely...",
+            "next_dialogue": 17
+        },
+        {
+            "id": 17,
+            "speaker": "sorcerer",
+            "text": "Bring me her, who grows and feeds from the feet of the castle (a flower near the castle). Him that hides from the glowing sun cowardly near the exit of the forest. And...",
+            "next_dialogue": 18
+        },
+        {
+            "id": 18,
+            "speaker": "sorcerer",
+            "text": "Come back to me when you find them. I’ll be waiting.",
+            "choices": [
+                {
+                    "text": "Well, I understand.",
+                    "next_dialogue": 19
+                },
+                {
+                    "text": "What's your name?",
+                    "next_dialogue": 20
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "speaker": "uasu",
+            "text": "Well, I understand, I will go looking for it.",
+            "next_dialogue": 23,
+            "effects": "nq_sorcerer_flower"
+        },
+        {
+            "id": 20,
+            "speaker": "uasu",
+            "text": "Before I leave, What's your name?",
+            "next_dialogue": 21
+        },
+        {
+            "id": 21,
+            "speaker": "sorcerer",
+            "text": "My name you ask? A truly wise question. Sadly I have no answer.",
+            "next_dialogue": 22
+        },
+        {
+            "id": 22,
+            "speaker": "sorcerer",
+            "text": "But you, hero, can call me Sorcerer, if that suffices heh.",
+            "next_dialogue": 23
+        },
+        {
+            "id": 23,
+            "speaker": "sorcerer",
+            "text": "Good luck, little hero!",
+            "alternative_text": "Still waiting, and so are they. Go on, hero.",
+            "next_dialogue": 24,
+            "new_achievements": [
+                "GOOD_LUCK_LITTLE_HERO"
+            ]
+        },
+        {
+            "id": 24,
+            "speaker": "sorcerer",
+            "required_achievements": [
+                "THE_SORCERER_FLOWER"
+            ],
+            "text": "Welcome back hero. You have reunited the triplets? How wonderful, let me see.",
+            "next_dialogue": 25
+        }
+    ]
+}

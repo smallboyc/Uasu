@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
 {
+    [Header("Enemy")]
     [SerializeField] private float _attackRadius = 1.5f;
     [SerializeField] private float _attackAngle = 50f;
     [SerializeField] private LayerMask _enemyLayer;
+
+    [Header("Sorcerer : (Attack = Wake up)")]
+    [SerializeField] private float _wakeUpRadius = 1.5f;
+    [SerializeField] private float _wakeUpAngle = 50f;
+    [SerializeField] private LayerMask _sorcererMask;
 
     private bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
@@ -26,6 +32,14 @@ public class PlayerAttackManager : MonoBehaviour
     // Use as an Event in the Animation
     public void TriggerOnAttackHit()
     {
+        TriggerAttackEnemy();
+        TriggerWakeUpSorcerer();
+    }
+
+
+    private void TriggerAttackEnemy()
+    {
+        // ENEMY //
         // Debug.Log("Trigger Hit Attack");
         Collider[] enemies = Physics.OverlapSphere(transform.position, _attackRadius, _enemyLayer);
         foreach (Collider enemy in enemies)
@@ -45,6 +59,27 @@ public class PlayerAttackManager : MonoBehaviour
                 if (enemyHurtManager)
                 {
                     enemyHurtManager.IsHurt = true; // => It will trigger the HurtState from the enemy current state.
+                }
+            }
+        }
+    }
+
+    private void TriggerWakeUpSorcerer()
+    {
+        // SORCERER // => Wake up the Sorcerer and been able to talk with him
+        Collider[] sorcerers = Physics.OverlapSphere(transform.position, _wakeUpRadius, _sorcererMask);
+        foreach (Collider sorcerer in sorcerers)
+        {
+            Vector3 dir = sorcerer.transform.position - transform.position;
+            dir.y = 0;
+
+            if (Vector3.Angle(transform.forward, dir) < _wakeUpAngle)
+            {
+                SorcererSleepManager sorcererSleepManager = sorcerer.gameObject.GetComponent<SorcererSleepManager>();
+                if (sorcererSleepManager && sorcererSleepManager.IsSleeping)
+                {
+                    Debug.Log("WAKE UP !!!");
+                    sorcererSleepManager.WakeUp();
                 }
             }
         }

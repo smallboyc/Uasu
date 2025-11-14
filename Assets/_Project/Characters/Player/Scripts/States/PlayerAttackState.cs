@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerAttackState : PlayerState
+public class PlayerAttackState : State
 {
-    public PlayerAttackState(PlayerManager playerManager) : base(playerManager) { }
+    private PlayerManager _playerManager = PlayerManager.Instance;
 
     public override void Enter()
     {
@@ -13,6 +13,10 @@ public class PlayerAttackState : PlayerState
 
     public override void Update()
     {
+        // -> We don't want to move during dialogue session.
+        if (DialogueManager.Instance.DialogueIsRunning)
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);
+            
         if (!_playerManager.AttackManager.IsAttacking)
         {
             if (_playerManager.LocomotionManager.IsMoving)

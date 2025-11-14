@@ -34,9 +34,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     public void HandleAllMovement(CharacterController characterController, PlayerLockManager playerLockManager)
     {
-        // if (playerAttackManager.IsAttacking)
-        //     return;
-
         HandleGroundedMovement();
         HandleAerialMovement(characterController);
         HandleRotationMovement(playerLockManager);

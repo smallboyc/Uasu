@@ -1,9 +1,9 @@
 
 using UnityEngine;
 
-public class PlayerWalkState : PlayerState
+public class PlayerWalkState : State
 {
-    public PlayerWalkState(PlayerManager playerManager) : base(playerManager) { }
+    private PlayerManager _playerManager = PlayerManager.Instance;
 
     public override void Enter()
     {
@@ -13,6 +13,10 @@ public class PlayerWalkState : PlayerState
 
     public override void Update()
     {
+        // -> We don't want to move during dialogue session.
+        if (DialogueManager.Instance.DialogueIsRunning)
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);
+
         //
         _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController, _playerManager.LockManager);
         _playerManager.LockManager.TargetLockEnemies();

@@ -1,9 +1,9 @@
 
 using UnityEngine;
 
-public class PlayerAerialState : PlayerState
+public class PlayerAerialState : State
 {
-    public PlayerAerialState(PlayerManager playerManager) : base(playerManager) { }
+    private PlayerManager _playerManager = PlayerManager.Instance;
     public override void Enter()
     {
         // Debug.Log("Aerial State => ENTER");
@@ -16,6 +16,10 @@ public class PlayerAerialState : PlayerState
         _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController, _playerManager.LockManager);
         _playerManager.LockManager.TargetLockEnemies();
         //
+
+        // -> We don't want to move during dialogue session.
+        if (DialogueManager.Instance.DialogueIsRunning)
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);
 
         // -> Falling and touching the ground
         if (_playerManager.CharacterController.isGrounded)

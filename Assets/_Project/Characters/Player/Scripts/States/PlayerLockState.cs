@@ -1,9 +1,9 @@
 
 using UnityEngine;
 
-public class PlayerLockState : PlayerState
+public class PlayerLockState : State
 {
-    public PlayerLockState(PlayerManager playerManager) : base(playerManager) { }
+    private PlayerManager _playerManager = PlayerManager.Instance;
 
     public override void Enter()
     {
