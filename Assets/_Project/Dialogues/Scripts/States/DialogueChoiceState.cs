@@ -11,6 +11,7 @@ public class DialogueChoiceState : State
         Debug.Log("CHOICE (enter)");
         Debug.Log(_dialogueManager.CurrentDialogue.id);
         _dialogueManager.DialogueText.text = "";
+        _dialogueManager.AssignNewAchievementToPlayer();
         _dialogueManager.DisplayDialogueWithChoiceCoroutine();
     }
 
@@ -19,7 +20,9 @@ public class DialogueChoiceState : State
         // If a button has been triggered by the player
         if (_dialogueManager.PlayerChose)
         {
+            _dialogueManager.CanInteract = false;
             _dialogueManager.PlayerChose = false;
+
             // Choice => Passive state
             _dialogueManager.DialogueStateMachine.ChangeState(_dialogueManager.PassiveState);
         }

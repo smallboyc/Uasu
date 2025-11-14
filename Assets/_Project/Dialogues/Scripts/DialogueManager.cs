@@ -23,7 +23,8 @@ public class DialogueEntry
     public bool visited;
     public string alternative_text;
     public List<DialogueChoice> choices;
-    public List<string> required_flags;
+    public List<string> required_achievements;
+    public List<string> new_achievements;
     public List<string> effects;
     public int next_dialogue;
     public bool is_end;
@@ -51,6 +52,8 @@ public class DialogueManager : MonoBehaviour
         }
     }
     private enum Language { EN, FR }
+
+    [Header("Dialogue Language")]
     [SerializeField] private Language _currentLanguage = Language.EN;
 
     [Header("Dialogue UI")]
@@ -63,12 +66,27 @@ public class DialogueManager : MonoBehaviour
     public GameObject ChoiceBox;
     public List<Button> ChoiceButtons;
 
-    [Header("Settings")]
+
+    [Header("Player Dialogue Interaction")]
+    public bool CanInteract;
+    public bool DialogueIsRunning;
+    private float _restartInteractionCooldown = 0.2f;
+    [HideInInspector] public bool PlayerChose;
+
+    public void CanInteractCooldownCoroutine()
+    {
+        StartCoroutine(CanInteractCooldown());
+    }
+    private IEnumerator CanInteractCooldown()
+    {
+        yield return new WaitForSeconds(_restartInteractionCooldown);
+        CanInteract = true;
+    }
+
+    // Dialogues data
     private float _displayLetterSpeed = 0.02f;
     private List<DialogueEntry> _dialogues = new();
     [HideInInspector] public DialogueEntry CurrentDialogue;
-    [HideInInspector] public bool PlayerChose;
-    private int _startDialogueId = 17;
 
     // Load images
     private Dictionary<string, Sprite> _speakerPortraits = new();
@@ -84,28 +102,7 @@ public class DialogueManager : MonoBehaviour
     public DialoguePassiveState PassiveState => _passiveState;
     public DialogueChoiceState ChoiceState => _choiceState;
 
-    // Interaction Input gestion
-    private bool _canInteract = true;
-    private float _restartInteractionCooldown = 0.2f;
 
-    [HideInInspector]
-    public bool CanInteract
-    {
-        get => _canInteract;
-        set => _canInteract = value;
-    }
-
-    public void RestartDialogueCoroutine()
-    {
-        StartCoroutine(RestartDialogue());
-    }
-    private IEnumerator RestartDialogue()
-    {
-        yield return new WaitForSeconds(_restartInteractionCooldown);
-        _canInteract = true;
-    }
-
-    // MAIN //
     private void Awake()
     {
         //Singleton
@@ -165,9 +162,12 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogError($"Cannot find language file at: {path}");
         }
+    }
 
-        if (_dialogues != null && _dialogues.Count > 0)
-            CurrentDialogue = _dialogues[_startDialogueId];
+    public void StartDialogue(int startId)
+    {
+        CurrentDialogue = _dialogues.Find(d => d.id == startId);
+        DialogueIsRunning = true;
     }
 
     public bool DialogueHasChoices() => CurrentDialogue.choices != null && CurrentDialogue.choices.Count > 0;
@@ -182,9 +182,9 @@ public class DialogueManager : MonoBehaviour
         return false;
     }
 
-    public bool IsStartDialogue()
+    public int GetCurrentDialogueID()
     {
-        return CurrentDialogue.id == 0;
+        return CurrentDialogue.id;
     }
 
     public bool IsEndDialogue()
@@ -207,17 +207,29 @@ public class DialogueManager : MonoBehaviour
 
         if (nextDialogue == null) return false;
 
-        if (nextDialogue.required_flags == null || nextDialogue.required_flags.Count == 0)
+        if (nextDialogue.required_achievements == null || nextDialogue.required_achievements.Count == 0)
             return true;
 
-        foreach (string flag in nextDialogue.required_flags)
+        foreach (string achievement in nextDialogue.required_achievements)
         {
-            if (!PlayerManager.Instance.HasAchievement(flag))
+            if (!PlayerManager.Instance.HasAchievement(achievement))
                 return false;
         }
         return true;
     }
 
+    public void AssignNewAchievementToPlayer()
+    {
+        if (CurrentDialogue.new_achievements != null)
+            foreach (string achievement in CurrentDialogue.new_achievements)
+            {
+                PlayerManager.Instance.AddAchievement(achievement);
+                Debug.Log($"New Achivement unlocked : {achievement}");
+            }
+    }
+
+
+    #region "Dialogue Display Logic"
     public void DisplayDialogueCoroutine()
     {
         StartCoroutine(DisplayDialogue());
@@ -239,7 +251,7 @@ public class DialogueManager : MonoBehaviour
 
         yield return StartCoroutine(DisplayText(textToDisplay));
         CurrentDialogue.visited = true;
-        _canInteract = true;
+        CanInteract = true;
     }
 
 
@@ -272,5 +284,5 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(_displayLetterSpeed);
         }
     }
-
+    #endregion
 }

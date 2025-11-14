@@ -9,7 +9,8 @@ public class DialogueIdleState : State
     {
         Debug.Log("IDLE (enter)");
         Debug.Log(_dialogueManager.CurrentDialogue.id);
-        _dialogueManager.RestartDialogueCoroutine();
+        _dialogueManager.CanInteractCooldownCoroutine();
+        _dialogueManager.DialogueIsRunning = false; //End of dialogue means => We go back to the Idle State.
         _dialogueManager.PlayerChose = false;
         _dialogueManager.DialoguePanel.SetActive(false);
         _dialogueManager.DialogueBox.SetActive(false);
@@ -19,19 +20,8 @@ public class DialogueIdleState : State
 
     public override void Update()
     {
-        if (PlayerInputManager.Instance.InteractPressed && _dialogueManager.CanInteract)
+        if (_dialogueManager.DialogueIsRunning)
         {
-            _dialogueManager.CanInteract = false;
-
-            // We pass to the next dialogue only if :
-            // - We're not at the beginning/end of the dialogue list.
-            // - We have all necessary achievements required by the next dialogue.
-            if (!_dialogueManager.IsStartDialogue() && !_dialogueManager.IsEndDialogue() && _dialogueManager.PlayerCanAccessNextDialogue())
-            {
-                _dialogueManager.NextDialogue();
-            }
-
-            // Is the dialogue of "choice" or "passive" type?
             if (_dialogueManager.DialogueHasChoices())
                 _dialogueManager.DialogueStateMachine.ChangeState(_dialogueManager.ChoiceState);
             else

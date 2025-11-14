@@ -155,9 +155,7 @@
             "id": 22,
             "speaker": "sorcerer",
             "text": "But you, hero, can call me Sorcerer, if that suffices heh.",
-            "alternative_text": "Still waiting, and so are they. Go on, hero.",
-            "next_dialogue": 24,
-            "effects": "nq_sorcerer_flower"
+            "next_dialogue": 23
         },
         {
             "id": 23,
@@ -165,13 +163,15 @@
             "text": "Good luck, little hero!",
             "alternative_text": "Still waiting, and so are they. Go on, hero.",
             "next_dialogue": 24,
-            "effects": "nq_sorcerer_flower"
+            "new_achievements": [
+                "GOOD_LUCK_LITTLE_HERO"
+            ]
         },
         {
             "id": 24,
             "speaker": "sorcerer",
-            "required_flags": [
-                "HasSorcererFlower"
+            "required_achievements": [
+                "THE_SORCERER_FLOWER"
             ],
             "text": "Welcome back hero. You have reunited the triplets? How wonderful, let me see.",
             "next_dialogue": 25

@@ -81,7 +81,6 @@ public class PlayerAttackManager : MonoBehaviour
                     Debug.Log("WAKE UP !!!");
                     sorcererSleepManager.WakeUp();
                 }
-
             }
         }
     }
