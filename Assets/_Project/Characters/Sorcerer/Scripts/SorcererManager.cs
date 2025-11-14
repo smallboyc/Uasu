@@ -54,5 +54,4 @@ public class SorcererManager : CharacterManager
         base.Update();
         SorcererStateMachine.CurrentState.Update();
     }
-
 }

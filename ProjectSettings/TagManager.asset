@@ -9,6 +9,7 @@ TagManager:
   - HandHolder
   - BackHolder
   - Sorcerer
+  - Rock
   layers:
   - Default
   - TransparentFX
