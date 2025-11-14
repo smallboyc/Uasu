@@ -114,7 +114,7 @@ public class PlayerManager : CharacterManager
         // State Machine
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_idleState);
-        AddAchievement("THE_SORCERER_FLOWER");
+        // AddAchievement("THE_SORCERER_FLOWER");
     }
 
     protected override void Update()

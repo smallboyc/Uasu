@@ -3,35 +3,41 @@ using UnityEngine;
 // This script is attached to an NPC who can dialogue with the player.
 public class DialogueTrigger : MonoBehaviour
 {
+    [SerializeField] private LayerMask _playerLayer;
     public void TriggerDialogue()
     {
+        DialogueManager.Instance.CanInteract = false;
         DialogueManager.Instance.StartDialogue(GetCurrentDialogueID());
     }
 
-    public int GetCurrentDialogueID()
+    public bool PlayerCanDialogue(float playerRangeRadius = 4.0f, float playerRangeAngle = 50.0f)
     {
-        if (PlayerManager.Instance.HasAchievement("THE_SORCERER_FLOWER"))
-        {
-            return 24;
-        }
-        if (PlayerManager.Instance.HasAchievement("GOOD_LUCK_LITTLE_HERO"))
-        {
-            return 23;
-        }
-        return 18;
+        return PlayerInRange(playerRangeRadius, playerRangeAngle) && DialogueIsNotRunning() && DialogueManager.Instance.CanInteract;
     }
 
-    void Update()
+    public bool DialogueIsNotRunning()
     {
-        // We don't want to start a dialogue if it is already running.
-        if (DialogueManager.Instance.DialogueIsRunning)
-            return;
-
-        // If a dialogue is not running and the player interacts with a NPC => Run a new dialogue.
-        if (PlayerInputManager.Instance.InteractPressed && DialogueManager.Instance.CanInteract)
-        {
-            DialogueManager.Instance.CanInteract = false;
-            TriggerDialogue();
-        }
+        return !DialogueManager.Instance.DialogueIsRunning;
     }
+
+    private bool PlayerInRange(float playerRangeRadius, float playerRangeAngle)
+    {
+
+        Collider[] players = Physics.OverlapSphere(transform.position, playerRangeRadius, _playerLayer);
+        foreach (Collider player in players)
+        {
+            Vector3 dir = player.transform.position - transform.position;
+            dir.y = 0;
+            return Vector3.Angle(transform.forward, dir) < playerRangeAngle;
+        }
+        return false;
+    }
+
+    // We want to let NPC choose their own dialogue schema.
+    protected virtual int GetCurrentDialogueID()
+    {
+        return 0;
+    }
+
+
 }

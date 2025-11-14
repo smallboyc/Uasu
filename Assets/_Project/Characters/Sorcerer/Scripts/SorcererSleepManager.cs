@@ -5,13 +5,15 @@ public class SorcererSleepManager : MonoBehaviour
 {
     private bool _isSleeping = true;
     [SerializeField] private float _timeBeforeSleep = 10.0f;
-    public bool IsSleeping
-    {
-        get => _isSleeping;
-    }
+
+    public bool IsSleeping => _isSleeping;
+
+    private Coroutine _sleepCoroutine;
+
     public void WakeUp()
     {
         _isSleeping = false;
+        StopSleepCountdownCoroutine();
     }
 
     public void FallAsleep()
@@ -19,14 +21,28 @@ public class SorcererSleepManager : MonoBehaviour
         _isSleeping = true;
     }
 
-    public void StartSleepCountdown()
-    {
-        StartCoroutine(WaitForNextSleep());
-    }
-
-    private IEnumerator WaitForNextSleep()
+    private IEnumerator SleepCountdown()
     {
         yield return new WaitForSeconds(_timeBeforeSleep);
         _isSleeping = true;
+        _sleepCoroutine = null;
+    }
+
+    public void StartSleepCountdownCoroutine()
+    {
+        if (_sleepCoroutine != null)
+        {
+            StopCoroutine(_sleepCoroutine);
+        }
+        _sleepCoroutine = StartCoroutine(SleepCountdown());
+    }
+
+    public void StopSleepCountdownCoroutine()
+    {
+        if (_sleepCoroutine != null)
+        {
+            StopCoroutine(_sleepCoroutine);
+            _sleepCoroutine = null; 
+        }
     }
 }
