@@ -17,6 +17,10 @@ public class PlayerAerialState : State
         _playerManager.LockManager.TargetLockEnemies();
         //
 
+        // -> We don't want to move during dialogue session.
+        if (DialogueManager.Instance.DialogueIsRunning)
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);
+
         // -> Falling and touching the ground
         if (_playerManager.CharacterController.isGrounded)
         {

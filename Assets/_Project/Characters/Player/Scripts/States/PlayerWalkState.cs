@@ -13,6 +13,10 @@ public class PlayerWalkState : State
 
     public override void Update()
     {
+        // -> We don't want to move during dialogue session.
+        if (DialogueManager.Instance.DialogueIsRunning)
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);
+
         //
         _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController, _playerManager.LockManager);
         _playerManager.LockManager.TargetLockEnemies();
