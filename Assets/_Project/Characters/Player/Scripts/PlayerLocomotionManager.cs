@@ -11,7 +11,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [SerializeField] private float _walkingSpeed = 4.0f;
     [SerializeField] private float _gravity = -24.0f;
     [SerializeField] private float _jumpHeight = 1.0f;
-    [SerializeField] private float _rotationSpeed = 6.0f;
+    [SerializeField] float _rotationSpeed = 6.0f;
     [SerializeField] float _jumpCooldown = 0.6f;
     [SerializeField] bool _jumpCanBePerformed = true;
     private bool _jumpButtonReleased = true;
