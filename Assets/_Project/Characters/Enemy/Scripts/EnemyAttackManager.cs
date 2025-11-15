@@ -33,7 +33,7 @@ public class EnemyAttackManager : MonoBehaviour
                 // Debug.Log("ANIM = Enemy Touched Player");
                 if (PlayerManager.Instance)
                 {
-                    PlayerManager.Instance.HurtManager.IsHurt = true; // => It will trigger the HurtState from the player current state.
+                    PlayerManager.Instance.HealthManager.Hurt(); // => It will trigger the HurtState from the player current state.
                 }
             }
             else

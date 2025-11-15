@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyLockManager))]
 [RequireComponent(typeof(EnemyAttackManager))]
 [RequireComponent(typeof(EnemyAnimationManager))]
-[RequireComponent(typeof(EnemyHurtManager))]
+[RequireComponent(typeof(EnemyHealthManager))]
 public class EnemyManager : CharacterManager
 {
 
@@ -33,7 +33,7 @@ public class EnemyManager : CharacterManager
     [HideInInspector] public EnemyLocomotionManager LocomotionManager;
     [HideInInspector] public EnemyLockManager LockManager;
     [HideInInspector] public EnemyAttackManager AttackManager;
-    [HideInInspector] public EnemyHurtManager HurtManager;
+    [HideInInspector] public EnemyHealthManager HealthManager;
 
 
     [Header("Attack")]
@@ -57,14 +57,6 @@ public class EnemyManager : CharacterManager
         _wayPoints = enemySpawnerWaypoints;
     }
 
-    [HideInInspector]
-    public int Health
-    {
-        get => _health;
-        set => _health = value;
-    }
-
-
     protected override void Awake()
     {
         base.Awake();
@@ -73,7 +65,7 @@ public class EnemyManager : CharacterManager
         LocomotionManager = GetComponent<EnemyLocomotionManager>();
         LockManager = GetComponent<EnemyLockManager>();
         AttackManager = GetComponent<EnemyAttackManager>();
-        HurtManager = GetComponent<EnemyHurtManager>();
+        HealthManager = GetComponent<EnemyHealthManager>();
 
         // States
         _idleState = new EnemyIdleState(this);

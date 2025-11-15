@@ -49,16 +49,16 @@ public class PlayerAttackManager : MonoBehaviour
 
             if (Vector3.Angle(transform.forward, dir) < _attackAngle)
             {
-                EnemyHurtManager enemyHurtManager = enemy.gameObject.GetComponent<EnemyHurtManager>();
+                EnemyHealthManager enemyHealthManager = enemy.gameObject.GetComponent<EnemyHealthManager>();
                 EnemyAttackManager enemyAttackManager = enemy.gameObject.GetComponent<EnemyAttackManager>();
                 if (enemyAttackManager && enemyAttackManager.IsAttacking)
                 {
                     Debug.Log("CLASH!");
                     return;
                 }
-                if (enemyHurtManager)
+                if (enemyHealthManager)
                 {
-                    enemyHurtManager.IsHurt = true; // => It will trigger the HurtState from the enemy current state.
+                    enemyHealthManager.Hurt(); // => It will trigger the HurtState from the enemy current state.
                 }
             }
         }

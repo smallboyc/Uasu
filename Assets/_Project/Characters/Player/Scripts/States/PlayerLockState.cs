@@ -37,7 +37,7 @@ public class PlayerLockState : State
         }
 
         // Player has been hurt by enemy => Hurt
-        if (_playerManager.HurtManager.IsHurt)
+        if (_playerManager.HealthManager.IsHurt)
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.HurtState);
         }

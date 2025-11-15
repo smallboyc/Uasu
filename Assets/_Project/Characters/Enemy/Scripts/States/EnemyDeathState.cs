@@ -6,11 +6,12 @@ public class EnemyDeathState : EnemyState
     public override void Enter()
     {
         Debug.Log("ENEMY : Death State (Enter)");
-        _enemyManager.IsDead = true;
         _enemyManager.AnimationManager.PlayDeathAnimation();
 
         if (_enemyManager.CharacterController)
             _enemyManager.CharacterController.enabled = false;
+
+        _enemyManager.HealthManager.GiveSoul();
     }
 
     public override void Update()

@@ -6,17 +6,15 @@ public class EnemyHurtState : EnemyState
     public override void Enter()
     {
         // Debug.Log("ENEMY => Hurt State ENTER");
-        _enemyManager.Health--;
-        Debug.Log($"Enemy health = {_enemyManager.Health}");
-        // _enemyManager.HurtManager.StartHurt();
+        // _enemyManager.HealthManager.StartHurt();
         _enemyManager.AnimationManager.PlayHurtAnimation();
     }
 
     public override void Update()
     {
-        if (!_enemyManager.HurtManager.IsHurt)
+        if (!_enemyManager.HealthManager.IsHurt)
         {
-            if (_enemyManager.Health <= 0) // Death :(
+            if (_enemyManager.HealthManager.IsDead()) // Death :(
             {
                 _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.DeathState);
             }

@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerLockManager))]
 [RequireComponent(typeof(PlayerAttackManager))]
 [RequireComponent(typeof(PlayerAnimationManager))]
-[RequireComponent(typeof(PlayerHurtManager))]
+[RequireComponent(typeof(PlayerHealthManager))]
 [RequireComponent(typeof(PlayerCollisionManager))]
 public class PlayerManager : CharacterManager
 {
@@ -48,7 +48,7 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerLocomotionManager LocomotionManager;
     [HideInInspector] public PlayerAttackManager AttackManager;
     [HideInInspector] public PlayerLockManager LockManager;
-    [HideInInspector] public PlayerHurtManager HurtManager;
+    [HideInInspector] public PlayerHealthManager HealthManager;
     [HideInInspector] public PlayerCollisionManager CollisionManager;
 
 
@@ -77,12 +77,8 @@ public class PlayerManager : CharacterManager
         _canAttack = true;
     }
 
-    [HideInInspector]
-    public int Health
-    {
-        get => _health;
-        set => _health = value;
-    }
+    [Header("Souls")]
+    public int SoulCounter;
 
     protected override void Awake()
     {
@@ -102,7 +98,7 @@ public class PlayerManager : CharacterManager
         LocomotionManager = GetComponent<PlayerLocomotionManager>();
         LockManager = GetComponent<PlayerLockManager>();
         AttackManager = GetComponent<PlayerAttackManager>();
-        HurtManager = GetComponent<PlayerHurtManager>();
+        HealthManager = GetComponent<PlayerHealthManager>();
         CollisionManager = GetComponent<PlayerCollisionManager>();
 
         // States
