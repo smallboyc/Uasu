@@ -11,7 +11,7 @@ public class PressurePlateAction : MonoBehaviour
         if (_actionSource && !_deactivate)
         {
             Vector3 distance = (_actionSource.transform.position - transform.position).normalized;
-            if (Vector3.Dot(distance, transform.up) > 0.9)
+            if (Vector3.Dot(distance, transform.up) > 0.98)
             {
                 StartCoroutine(Activate());
                 StartCoroutine(Action());
