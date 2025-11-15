@@ -65,18 +65,6 @@ public class PlayerManager : CharacterManager
         return _achievements.Contains(flag);
     }
 
-    [Header("Attack")]
-    [SerializeField] private float _attackCooldown = 1.0f;
-    private bool _canAttack = true;
-    [HideInInspector] public bool CanAttack => _canAttack;
-
-    public IEnumerator AttackCooldown()
-    {
-        _canAttack = false;
-        yield return new WaitForSeconds(_attackCooldown);
-        _canAttack = true;
-    }
-
     [Header("Souls")]
     public int SoulCounter;
 

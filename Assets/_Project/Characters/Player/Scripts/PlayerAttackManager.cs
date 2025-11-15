@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
@@ -11,6 +12,22 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private float _wakeUpRadius = 1.5f;
     [SerializeField] private float _wakeUpAngle = 50f;
     [SerializeField] private LayerMask _sorcererMask;
+
+    [Header("Attack")]
+    [SerializeField] private float _attackCooldown = 1.0f;
+    private bool _canAttack = true;
+    [HideInInspector] public bool CanAttack => _canAttack;
+
+    public void AttackCooldownCoroutine()
+    {
+        StartCoroutine(AttackCooldown());
+    }
+    public IEnumerator AttackCooldown()
+    {
+        _canAttack = false;
+        yield return new WaitForSeconds(_attackCooldown);
+        _canAttack = true;
+    }
 
     private bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;

@@ -35,19 +35,6 @@ public class EnemyManager : CharacterManager
     [HideInInspector] public EnemyAttackManager AttackManager;
     [HideInInspector] public EnemyHealthManager HealthManager;
 
-
-    [Header("Attack")]
-    [SerializeField] private float _attackCooldown = 2.0f;
-    private bool _canAttack = true;
-    [HideInInspector] public bool CanAttack => _canAttack;
-
-    public IEnumerator AttackCooldown()
-    {
-        _canAttack = false;
-        yield return new WaitForSeconds(_attackCooldown);
-        _canAttack = true;
-    }
-
     [Header("Patrol")]
     [SerializeField] private List<Transform> _wayPoints;
     [HideInInspector] public List<Transform> WayPoints => _wayPoints;
