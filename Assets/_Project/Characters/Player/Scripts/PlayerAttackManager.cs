@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
@@ -11,6 +12,22 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private float _wakeUpRadius = 1.5f;
     [SerializeField] private float _wakeUpAngle = 50f;
     [SerializeField] private LayerMask _sorcererMask;
+
+    [Header("Attack")]
+    [SerializeField] private float _attackCooldown = 1.0f;
+    private bool _canAttack = true;
+    [HideInInspector] public bool CanAttack => _canAttack;
+
+    public void AttackCooldownCoroutine()
+    {
+        StartCoroutine(AttackCooldown());
+    }
+    public IEnumerator AttackCooldown()
+    {
+        _canAttack = false;
+        yield return new WaitForSeconds(_attackCooldown);
+        _canAttack = true;
+    }
 
     private bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
@@ -49,16 +66,16 @@ public class PlayerAttackManager : MonoBehaviour
 
             if (Vector3.Angle(transform.forward, dir) < _attackAngle)
             {
-                EnemyHurtManager enemyHurtManager = enemy.gameObject.GetComponent<EnemyHurtManager>();
+                EnemyHealthManager enemyHealthManager = enemy.gameObject.GetComponent<EnemyHealthManager>();
                 EnemyAttackManager enemyAttackManager = enemy.gameObject.GetComponent<EnemyAttackManager>();
                 if (enemyAttackManager && enemyAttackManager.IsAttacking)
                 {
                     Debug.Log("CLASH!");
                     return;
                 }
-                if (enemyHurtManager)
+                if (enemyHealthManager)
                 {
-                    enemyHurtManager.IsHurt = true; // => It will trigger the HurtState from the enemy current state.
+                    enemyHealthManager.Hurt(); // => It will trigger the HurtState from the enemy current state.
                 }
             }
         }

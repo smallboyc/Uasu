@@ -459,12 +459,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterController: {fileID: 0}
-  _health: 3
+  IsDead: 0
   AnimationManager: {fileID: 0}
   LocomotionManager: {fileID: 0}
   LockManager: {fileID: 0}
   AttackManager: {fileID: 0}
-  HurtManager: {fileID: 0}
+  HealthManager: {fileID: 0}
   _attackCooldown: 2
   _wayPoints: []
 --- !u!114 &7060040186063306296
@@ -508,3 +508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66bb36c5106234101a309e58eece2281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 3
+  IsHurt: 0
+  SoulPrefab: {fileID: 3185490620076878535, guid: 01631b5a4bc2146e8842ace58841cf33, type: 3}

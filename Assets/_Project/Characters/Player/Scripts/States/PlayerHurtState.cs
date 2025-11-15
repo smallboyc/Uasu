@@ -8,13 +8,12 @@ public class PlayerHurtState : State
     public override void Enter()
     {
         // Debug.Log("PLAYER => Hurt State ENTER");
-        _playerManager.Health--;
         _playerManager.AnimationManager.PlayHurtAnimation();
     }
 
     public override void Update()
     {
-        if (!_playerManager.HurtManager.IsHurt)
+        if (!_playerManager.HealthManager.IsHurt)
         {
             // -> Walk
             if (_playerManager.LocomotionManager.IsMoving)

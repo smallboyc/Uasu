@@ -20,15 +20,15 @@ public class EnemyFocusState : EnemyState
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.PatrolState);
         }
         // Enemy has been hurt by player => Hurt
-        if (_enemyManager.HurtManager.IsHurt)
+        if (_enemyManager.HealthManager.IsHurt)
         {
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.HurtState);
         }
         // Enemy attacks
-        if (_enemyManager.AttackManager.IsPlayerInAttackRange() && _enemyManager.CanAttack)
+        if (_enemyManager.AttackManager.IsPlayerInAttackRange() && _enemyManager.AttackManager.CanAttack)
         {
+            _enemyManager.AttackManager.AttackCooldownCoroutine();
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.AttackState);
-            _enemyManager.StartCoroutine(_enemyManager.AttackCooldown());
         }
     }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyLockManager))]
 [RequireComponent(typeof(EnemyAttackManager))]
 [RequireComponent(typeof(EnemyAnimationManager))]
-[RequireComponent(typeof(EnemyHurtManager))]
+[RequireComponent(typeof(EnemyHealthManager))]
 public class EnemyManager : CharacterManager
 {
 
@@ -33,20 +33,7 @@ public class EnemyManager : CharacterManager
     [HideInInspector] public EnemyLocomotionManager LocomotionManager;
     [HideInInspector] public EnemyLockManager LockManager;
     [HideInInspector] public EnemyAttackManager AttackManager;
-    [HideInInspector] public EnemyHurtManager HurtManager;
-
-
-    [Header("Attack")]
-    [SerializeField] private float _attackCooldown = 2.0f;
-    private bool _canAttack = true;
-    [HideInInspector] public bool CanAttack => _canAttack;
-
-    public IEnumerator AttackCooldown()
-    {
-        _canAttack = false;
-        yield return new WaitForSeconds(_attackCooldown);
-        _canAttack = true;
-    }
+    [HideInInspector] public EnemyHealthManager HealthManager;
 
     [Header("Patrol")]
     [SerializeField] private List<Transform> _wayPoints;
@@ -57,14 +44,6 @@ public class EnemyManager : CharacterManager
         _wayPoints = enemySpawnerWaypoints;
     }
 
-    [HideInInspector]
-    public int Health
-    {
-        get => _health;
-        set => _health = value;
-    }
-
-
     protected override void Awake()
     {
         base.Awake();
@@ -73,7 +52,7 @@ public class EnemyManager : CharacterManager
         LocomotionManager = GetComponent<EnemyLocomotionManager>();
         LockManager = GetComponent<EnemyLockManager>();
         AttackManager = GetComponent<EnemyAttackManager>();
-        HurtManager = GetComponent<EnemyHurtManager>();
+        HealthManager = GetComponent<EnemyHealthManager>();
 
         // States
         _idleState = new EnemyIdleState(this);

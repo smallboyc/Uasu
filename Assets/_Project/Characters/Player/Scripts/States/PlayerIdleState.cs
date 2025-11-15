@@ -39,14 +39,14 @@ public class PlayerIdleState : State
         }
 
         // -> Attack
-        if (PlayerInputManager.Instance.AttackPressed && _playerManager.CanAttack)
+        if (PlayerInputManager.Instance.AttackPressed && _playerManager.AttackManager.CanAttack)
         {
+            _playerManager.AttackManager.AttackCooldownCoroutine();
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.AttackState);
-            _playerManager.StartCoroutine(_playerManager.AttackCooldown());
         }
 
         // Player has been hurt by enemy => Hurt
-        if (_playerManager.HurtManager.IsHurt)
+        if (_playerManager.HealthManager.IsHurt)
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.HurtState);
         }

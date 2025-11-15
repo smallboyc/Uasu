@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAttackManager : MonoBehaviour
@@ -5,6 +6,24 @@ public class EnemyAttackManager : MonoBehaviour
     [SerializeField] private float _attackRadius = 1.5f;
     [SerializeField] private float _attackAngle = 50.0f;
     [SerializeField] private LayerMask _playerLayer;
+
+    [Header("Attack")]
+    [SerializeField] private float _attackCooldown = 2.0f;
+    private bool _canAttack = true;
+    [HideInInspector] public bool CanAttack => _canAttack;
+
+    public void AttackCooldownCoroutine()
+    {
+        StartCoroutine(AttackCooldown());
+    }
+
+    public IEnumerator AttackCooldown()
+    {
+        _canAttack = false;
+        yield return new WaitForSeconds(_attackCooldown);
+        _canAttack = true;
+    }
+
     private bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
 
@@ -33,7 +52,7 @@ public class EnemyAttackManager : MonoBehaviour
                 // Debug.Log("ANIM = Enemy Touched Player");
                 if (PlayerManager.Instance)
                 {
-                    PlayerManager.Instance.HurtManager.IsHurt = true; // => It will trigger the HurtState from the player current state.
+                    PlayerManager.Instance.HealthManager.Hurt(); // => It will trigger the HurtState from the player current state.
                 }
             }
             else

@@ -26,7 +26,7 @@ public class EnemyIdleState : EnemyState
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.PatrolState);
         }
         // Enemy has been hurt by player => Hurt
-        if (_enemyManager.HurtManager.IsHurt)
+        if (_enemyManager.HealthManager.IsHurt)
         {
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.HurtState);
         }

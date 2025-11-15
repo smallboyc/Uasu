@@ -14,7 +14,7 @@ public class PlayerLockManager : MonoBehaviour
 
     private GameObject _bestEnemy = null;
     private GameObject _targetEnemy;
-    private EnemyManager _targetEnemyManager;
+    private EnemyHealthManager _targetEnemyHealthManager;
     private GameObject _currentLockIndicator;
     private bool _isLockedOnEnemy;
     private bool _canToggleLock = true;
@@ -74,7 +74,7 @@ public class PlayerLockManager : MonoBehaviour
         }
 
         //If Enemy is dead
-        if (_targetEnemyManager && _targetEnemyManager.IsDead)
+        if (_targetEnemyHealthManager && _targetEnemyHealthManager.IsDead())
         {
             UnlockEnemy();
             DestroyLockIndicator();
@@ -112,7 +112,7 @@ public class PlayerLockManager : MonoBehaviour
     private void LockEnemy(GameObject enemy)
     {
         _targetEnemy = enemy;
-        _targetEnemyManager = _targetEnemy.GetComponent<EnemyManager>();
+        _targetEnemyHealthManager = _targetEnemy.GetComponent<EnemyHealthManager>();
         _isLockedOnEnemy = true;
     }
 
