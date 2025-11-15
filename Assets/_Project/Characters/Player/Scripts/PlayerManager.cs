@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerAttackManager))]
 [RequireComponent(typeof(PlayerAnimationManager))]
 [RequireComponent(typeof(PlayerHurtManager))]
+[RequireComponent(typeof(PlayerCollisionManager))]
 public class PlayerManager : CharacterManager
 {
     // Singleton => Singleplayer game
@@ -30,6 +31,7 @@ public class PlayerManager : CharacterManager
     private PlayerLockState _lockState;
     private PlayerAttackState _attackState;
     private PlayerHurtState _hurtState;
+    private PlayerPushState _pushState;
 
 
     // State Getter
@@ -39,6 +41,7 @@ public class PlayerManager : CharacterManager
     public PlayerLockState LockState => _lockState;
     public PlayerAttackState AttackState => _attackState;
     public PlayerHurtState HurtState => _hurtState;
+    public PlayerPushState PushState => _pushState;
 
     // Manager
     [HideInInspector] public PlayerAnimationManager AnimationManager;
@@ -46,6 +49,7 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerAttackManager AttackManager;
     [HideInInspector] public PlayerLockManager LockManager;
     [HideInInspector] public PlayerHurtManager HurtManager;
+    [HideInInspector] public PlayerCollisionManager CollisionManager;
 
 
     // Flags : used to determine all achievements unlocked 
@@ -99,6 +103,7 @@ public class PlayerManager : CharacterManager
         LockManager = GetComponent<PlayerLockManager>();
         AttackManager = GetComponent<PlayerAttackManager>();
         HurtManager = GetComponent<PlayerHurtManager>();
+        CollisionManager = GetComponent<PlayerCollisionManager>();
 
         // States
         _idleState = new PlayerIdleState();
@@ -107,6 +112,7 @@ public class PlayerManager : CharacterManager
         _lockState = new PlayerLockState();
         _attackState = new PlayerAttackState();
         _hurtState = new PlayerHurtState();
+        _pushState = new PlayerPushState();
     }
     protected override void Start()
     {

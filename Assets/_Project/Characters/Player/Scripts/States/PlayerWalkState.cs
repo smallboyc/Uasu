@@ -20,6 +20,7 @@ public class PlayerWalkState : State
         //
         _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController, _playerManager.LockManager);
         _playerManager.LockManager.TargetLockEnemies();
+        _playerManager.CollisionManager.CheckForObstacleCollision();
         //
 
         // -> Idle
@@ -51,6 +52,12 @@ public class PlayerWalkState : State
         if (_playerManager.HurtManager.IsHurt)
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.HurtState);
+        }
+
+        // Player enter
+        if (_playerManager.CollisionManager.IsPushing)
+        {
+            _playerManager.PlayerStateMachine.ChangeState(_playerManager.PushState);
         }
     }
 

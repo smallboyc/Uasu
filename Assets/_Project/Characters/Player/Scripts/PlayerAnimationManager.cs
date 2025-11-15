@@ -83,5 +83,15 @@ public class PlayerAnimationManager : CharacterAnimationManager
     {
         _animator.SetBool("IsHurt", false);
     }
+
+    // Push
+    public void PlayPushAnimation()
+    {
+        _animator.SetBool("IsPushing", true);
+    }
+    public void StopPushAnimation()
+    {
+        _animator.SetBool("IsPushing", false);
+    }
 }
 
