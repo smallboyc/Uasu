@@ -12,6 +12,7 @@ public class PlayerDeathState : State
 
     public override void Update()
     {
+
     }
 
     public override void Exit()

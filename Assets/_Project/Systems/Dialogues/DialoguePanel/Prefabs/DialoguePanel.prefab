@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 178438202540181847}
   - component: {fileID: 1312824154706024576}
   - component: {fileID: 4359135997496044337}
+  - component: {fileID: 333870798281368663}
   m_Layer: 5
   m_Name: DialoguePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &178438202540181847
 RectTransform:
   m_ObjectHideFlags: 0
@@ -77,6 +78,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &333870798281368663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207479817497151810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18aecd488fa96408298ad18235da4e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialoguePanel: {fileID: 1207479817497151810}
+  DialogueBox: {fileID: 4423238569410928336}
+  DialogueImage: {fileID: 8529200844808081942}
+  DialogueText: {fileID: 2205760927595002006}
+  ChoiceBox: {fileID: 4611918085200009608}
+  ChoiceButtons:
+  - {fileID: 5189483188426823494}
+  - {fileID: 4226723331983470138}
 --- !u!1 &2404835450651461372
 GameObject:
   m_ObjectHideFlags: 0

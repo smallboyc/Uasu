@@ -56,17 +56,6 @@ public class DialogueManager : MonoBehaviour
     [Header("Dialogue Language")]
     [SerializeField] private Language _currentLanguage = Language.EN;
 
-    [Header("Dialogue UI")]
-    public GameObject DialoguePanel;
-    public GameObject DialogueBox;
-    public Image DialogueImage;
-    public TMP_Text DialogueText;
-
-    [Header("Choices UI")]
-    public GameObject ChoiceBox;
-    public List<Button> ChoiceButtons;
-
-
     [Header("Player Dialogue Interaction")]
     public bool CanInteract;
     public bool DialogueIsRunning;
@@ -102,7 +91,6 @@ public class DialogueManager : MonoBehaviour
     public DialoguePassiveState PassiveState => _passiveState;
     public DialogueChoiceState ChoiceState => _choiceState;
 
-
     private void Awake()
     {
         //Singleton
@@ -117,10 +105,18 @@ public class DialogueManager : MonoBehaviour
         _idleState = new DialogueIdleState();
         _passiveState = new DialoguePassiveState();
         _choiceState = new DialogueChoiceState();
+
+        // Managers
     }
 
     private void Start()
     {
+        if (DialoguePanelManager.Instance == null)
+        {
+            Debug.Log("ERROR: No panel catched by the DialogueManager");
+            return;
+        }
+
         DialogueStateMachine = new StateMachine();
         DialogueStateMachine.Initialize(IdleState);
 
@@ -195,7 +191,7 @@ public class DialogueManager : MonoBehaviour
     public void OnChoiceSelected(int choiceIndex)
     {
         PlayerChose = true;
-        ChoiceBox.SetActive(false);
+        DialoguePanelManager.Instance.ChoiceBox.SetActive(false);
 
         int nextId = CurrentDialogue.choices[choiceIndex].next_dialogue;
         CurrentDialogue = _dialogues.Find(d => d.id == nextId);
@@ -242,8 +238,8 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator DisplayDialogue()
     {
-        DialogueBox.SetActive(true);
-        DialogueImage.sprite = _speakerPortraits[CurrentDialogue.speaker];
+        DialoguePanelManager.Instance.DialogueBox.SetActive(true);
+        DialoguePanelManager.Instance.DialogueImage.sprite = _speakerPortraits[CurrentDialogue.speaker];
 
         string textToDisplay = CurrentDialogue.text;
         if (CurrentDialogue.visited && CurrentDialogue.alternative_text != null)
@@ -257,16 +253,16 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator DisplayDialogueWithChoice()
     {
-        DialogueBox.SetActive(true);
+        DialoguePanelManager.Instance.DialogueBox.SetActive(true);
         yield return StartCoroutine(DisplayDialogue());
 
-        ChoiceBox.SetActive(true);
-        foreach (var btn in ChoiceButtons)
+        DialoguePanelManager.Instance.ChoiceBox.SetActive(true);
+        foreach (var btn in DialoguePanelManager.Instance.ChoiceButtons)
             btn.gameObject.SetActive(false);
 
-        for (int i = 0; i < CurrentDialogue.choices.Count && i < ChoiceButtons.Count; i++)
+        for (int i = 0; i < CurrentDialogue.choices.Count && i < DialoguePanelManager.Instance.ChoiceButtons.Count; i++)
         {
-            var button = ChoiceButtons[i];
+            var button = DialoguePanelManager.Instance.ChoiceButtons[i];
             button.gameObject.SetActive(true);
             button.GetComponentInChildren<TMP_Text>().text = CurrentDialogue.choices[i].text;
 
@@ -280,7 +276,7 @@ public class DialogueManager : MonoBehaviour
     {
         foreach (char letter in text)
         {
-            DialogueText.text += letter;
+            DialoguePanelManager.Instance.DialogueText.text += letter;
             yield return new WaitForSeconds(_displayLetterSpeed);
         }
     }

@@ -9,7 +9,7 @@ public class DialoguePassiveState : State
     {
         Debug.Log("PASSIVE (enter)");
         Debug.Log(_dialogueManager.CurrentDialogue.id);
-        _dialogueManager.DialogueText.text = "";
+        DialoguePanelManager.Instance.DialogueText.text = "";
         _dialogueManager.AssignNewAchievementToPlayer();
         _dialogueManager.DisplayDialogueCoroutine();
     }
