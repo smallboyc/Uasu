@@ -15,5 +15,11 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
 
     }
+
+    public void GoToMain()
+    {
+        SceneManager.LoadSceneAsync("UI_Menu_Playground");
+
+    }
 }
     
