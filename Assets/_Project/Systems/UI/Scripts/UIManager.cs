@@ -16,8 +16,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    [Header("Panels")]
-    public GameObject GameOverPanel;
+    private GameObject _gameOverPanel;
 
     private void Awake()
     {
@@ -31,16 +30,16 @@ public class UIManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(gameObject);
 
-        GameOverPanel = transform.Find("Canvas/GameOverPanel").gameObject;
-        GameOverPanel.SetActive(false);
+        _gameOverPanel = transform.Find("Canvas/GameOverPanel").gameObject;
+        _gameOverPanel.SetActive(false);
     }
 
 
     public void GameOver()
     {
-        Button button = GameOverPanel.GetComponentInChildren<Button>();
+        Button button = _gameOverPanel.GetComponentInChildren<Button>();
         button.Select();
-        GameOverPanel.SetActive(true);
+        _gameOverPanel.SetActive(true);
     }
 
 

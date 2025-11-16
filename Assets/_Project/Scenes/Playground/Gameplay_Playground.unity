@@ -1401,14 +1401,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 686514609202710826, guid: 143cf4377c6024f61ab4be83bfd7e2bf, type: 3}
-      propertyPath: _pushableLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 1748791925215807943, guid: 143cf4377c6024f61ab4be83bfd7e2bf, type: 3}
-      propertyPath: Health
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6115755347848748658, guid: 143cf4377c6024f61ab4be83bfd7e2bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1505,10 +1497,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1756737875419358233, guid: c3b6224de4baa4c9b84284b6084f1c4c, type: 3}
-      propertyPath: _playerLayer.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 2800220343840291297, guid: c3b6224de4baa4c9b84284b6084f1c4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.44
@@ -1552,10 +1540,6 @@ PrefabInstance:
     - target: {fileID: 3285289331389653851, guid: c3b6224de4baa4c9b84284b6084f1c4c, type: 3}
       propertyPath: m_Name
       value: Sorcerer
-      objectReference: {fileID: 0}
-    - target: {fileID: 3285289331389653851, guid: c3b6224de4baa4c9b84284b6084f1c4c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1768,18 +1752,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6306065643984119508, guid: 705857320b1ab46929d5cbfea285be8b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3505477
-      objectReference: {fileID: 0}
-    - target: {fileID: 6306065643984119508, guid: 705857320b1ab46929d5cbfea285be8b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.350546
-      objectReference: {fileID: 0}
-    - target: {fileID: 6306065643984119508, guid: 705857320b1ab46929d5cbfea285be8b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.3505504
-      objectReference: {fileID: 0}
-    - target: {fileID: 6306065643984119508, guid: 705857320b1ab46929d5cbfea285be8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.73
       objectReference: {fileID: 0}
@@ -1822,10 +1794,6 @@ PrefabInstance:
     - target: {fileID: 6685723278965193838, guid: 705857320b1ab46929d5cbfea285be8b, type: 3}
       propertyPath: m_Name
       value: Sword
-      objectReference: {fileID: 0}
-    - target: {fileID: 6685723278965193838, guid: 705857320b1ab46929d5cbfea285be8b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1948,26 +1916,6 @@ PrefabInstance:
     - target: {fileID: 6066325245299741423, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
       propertyPath: m_Name
       value: UIManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220368877951995336, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
-      propertyPath: ChoiceBox
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220368877951995336, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
-      propertyPath: DialogueBox
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220368877951995336, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
-      propertyPath: DialogueText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220368877951995336, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
-      propertyPath: DialogueImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220368877951995336, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
-      propertyPath: ChoiceButtons.Array.size
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

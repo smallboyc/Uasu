@@ -466,6 +466,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 333870798281368663, guid: f23ac39cc21f94c41850e952f9e27194, type: 3}
+      propertyPath: ChoiceBox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 333870798281368663, guid: f23ac39cc21f94c41850e952f9e27194, type: 3}
+      propertyPath: DialogueBox
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 333870798281368663, guid: f23ac39cc21f94c41850e952f9e27194, type: 3}
+      propertyPath: DialogueText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 333870798281368663, guid: f23ac39cc21f94c41850e952f9e27194, type: 3}
+      propertyPath: DialogueImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 333870798281368663, guid: f23ac39cc21f94c41850e952f9e27194, type: 3}
+      propertyPath: ChoiceButtons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1207479817497151810, guid: f23ac39cc21f94c41850e952f9e27194, type: 3}
       propertyPath: m_Name
       value: DialoguePanel

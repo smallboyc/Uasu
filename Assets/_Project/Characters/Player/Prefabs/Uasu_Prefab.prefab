@@ -276,6 +276,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1748791925215807943}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 686514609202710826}
   m_SourcePrefab: {fileID: 100100000, guid: 84cd9b5c0faf544cba1ff4e12102d413, type: 3}
 --- !u!4 &1127107506157109449 stripped
 Transform:
@@ -342,14 +345,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterController: {fileID: 0}
-  _health: 3
-  IsDead: 0
   AnimationManager: {fileID: 0}
   LocomotionManager: {fileID: 0}
   AttackManager: {fileID: 0}
   LockManager: {fileID: 0}
-  HurtManager: {fileID: 0}
-  _attackCooldown: 1
+  HealthManager: {fileID: 0}
+  CollisionManager: {fileID: 0}
+  SoulCounter: 0
 --- !u!114 &7416606695584317001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,9 +421,12 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  _wakeUpRadius: 1.5
+  _wakeUpAngle: 50
   _sorcererMask:
     serializedVersion: 2
     m_Bits: 128
+  _attackCooldown: 1
 --- !u!114 &1748791925215807943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,3 +439,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b342e26a16da46b285400c63026dbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 4
+  IsHurt: 0
+--- !u!114 &686514609202710826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887226188864423112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09684c2853a145e1b6e7602e08cc308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pushPower: 5
