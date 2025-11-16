@@ -14,6 +14,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         IsHurt = true;
         Health--;
+        PlayerHealthBarManager.Instance.SetHealth(Health);
     }
 
     //Used as an Event in the Hurt Animation
