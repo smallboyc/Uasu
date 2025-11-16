@@ -12,10 +12,10 @@ public class DialogueIdleState : State
         _dialogueManager.CanInteractCooldownCoroutine();
         _dialogueManager.DialogueIsRunning = false; //End of dialogue means => We go back to the Idle State.
         _dialogueManager.PlayerChose = false;
-        DialoguePanelManager.Instance.DialoguePanel.SetActive(false);
-        DialoguePanelManager.Instance.DialogueBox.SetActive(false);
-        DialoguePanelManager.Instance.ChoiceBox.SetActive(false);
-        DialoguePanelManager.Instance.DialogueText.text = "";
+        _dialogueManager.DialoguePanelManager.gameObject.SetActive(false);
+        _dialogueManager.DialoguePanelManager.DialogueBox.SetActive(false);
+        _dialogueManager.DialoguePanelManager.ChoiceBox.SetActive(false);
+        _dialogueManager.DialoguePanelManager.DialogueText.text = "";
     }
 
     public override void Update()
@@ -31,6 +31,6 @@ public class DialogueIdleState : State
 
     public override void Exit()
     {
-        DialoguePanelManager.Instance.DialoguePanel.SetActive(true);
+        _dialogueManager.DialoguePanelManager.gameObject.SetActive(true);
     }
 }

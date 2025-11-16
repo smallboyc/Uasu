@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private GameObject _healthBar;
-
+    [Header("Panels")]
+    public GameObject GameOverPanel;
 
     private void Awake()
     {
@@ -28,5 +29,20 @@ public class UIManager : MonoBehaviour
             return;
         }
         _instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        GameOverPanel = transform.Find("Canvas/GameOverPanel").gameObject;
+        GameOverPanel.SetActive(false);
     }
+
+
+    public void GameOver()
+    {
+        Button button = GameOverPanel.GetComponentInChildren<Button>();
+        button.Select();
+        GameOverPanel.SetActive(true);
+    }
+
+
+
 }

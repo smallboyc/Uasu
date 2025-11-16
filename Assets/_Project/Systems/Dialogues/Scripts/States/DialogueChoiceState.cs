@@ -10,7 +10,7 @@ public class DialogueChoiceState : State
     {
         Debug.Log("CHOICE (enter)");
         Debug.Log(_dialogueManager.CurrentDialogue.id);
-        DialoguePanelManager.Instance.DialogueText.text = "";
+        _dialogueManager.DialoguePanelManager.DialogueText.text = "";
         _dialogueManager.AssignNewAchievementToPlayer();
         _dialogueManager.DisplayDialogueWithChoiceCoroutine();
     }

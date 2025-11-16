@@ -108,7 +108,7 @@ public class PlayerManager : CharacterManager
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_idleState);
         // AddAchievement("THE_SORCERER_FLOWER");
-        PlayerHealthBarManager.Instance.SetHealth(HealthManager.Health);
+        PlayerHealthBarManager.Instance.SetMaxHealth(HealthManager.Health);
     }
 
     protected override void Update()

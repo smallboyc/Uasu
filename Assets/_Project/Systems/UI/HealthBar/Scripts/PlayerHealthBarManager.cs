@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
+[RequireComponent(typeof(Slider))]
 public class PlayerHealthBarManager : MonoBehaviour
 {
     static PlayerHealthBarManager _instance;
@@ -17,6 +17,11 @@ public class PlayerHealthBarManager : MonoBehaviour
         }
     }
 
+    private Slider _slider;
+    public Gradient gradient;
+    public Image fill;
+
+
     private void Awake()
     {
         //Singleton
@@ -27,23 +32,19 @@ public class PlayerHealthBarManager : MonoBehaviour
             return;
         }
         _instance = this;
+
+        _slider = GetComponent<Slider>();
     }
-
-    public Slider slider;
-    public Gradient gradient;
-    public Image fill;
-
 
     public void SetMaxHealth(int health)
     {
-        slider.maxValue = health;
-        slider.value = health;
-        fill.color = gradient.Evaluate(1f);
+        _slider.maxValue = health;
+        SetHealth(health);
     }
     public void SetHealth(int health)
     {
-        slider.value = health;
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        _slider.value = health;
+        fill.color = gradient.Evaluate(_slider.normalizedValue);
     }
 
 

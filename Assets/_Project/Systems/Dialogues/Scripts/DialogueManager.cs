@@ -52,6 +52,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
     private enum Language { EN, FR }
+    public DialoguePanelManager DialoguePanelManager;
 
     [Header("Dialogue Language")]
     [SerializeField] private Language _currentLanguage = Language.EN;
@@ -106,12 +107,12 @@ public class DialogueManager : MonoBehaviour
         _passiveState = new DialoguePassiveState();
         _choiceState = new DialogueChoiceState();
 
-        // Managers
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        if (DialoguePanelManager.Instance == null)
+        if (DialoguePanelManager == null)
         {
             Debug.Log("ERROR: No panel catched by the DialogueManager");
             return;
@@ -191,7 +192,7 @@ public class DialogueManager : MonoBehaviour
     public void OnChoiceSelected(int choiceIndex)
     {
         PlayerChose = true;
-        DialoguePanelManager.Instance.ChoiceBox.SetActive(false);
+        DialoguePanelManager.ChoiceBox.SetActive(false);
 
         int nextId = CurrentDialogue.choices[choiceIndex].next_dialogue;
         CurrentDialogue = _dialogues.Find(d => d.id == nextId);
@@ -238,8 +239,8 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator DisplayDialogue()
     {
-        DialoguePanelManager.Instance.DialogueBox.SetActive(true);
-        DialoguePanelManager.Instance.DialogueImage.sprite = _speakerPortraits[CurrentDialogue.speaker];
+        DialoguePanelManager.DialogueBox.SetActive(true);
+        DialoguePanelManager.DialogueImage.sprite = _speakerPortraits[CurrentDialogue.speaker];
 
         string textToDisplay = CurrentDialogue.text;
         if (CurrentDialogue.visited && CurrentDialogue.alternative_text != null)
@@ -253,18 +254,36 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator DisplayDialogueWithChoice()
     {
-        DialoguePanelManager.Instance.DialogueBox.SetActive(true);
+        DialoguePanelManager.DialogueBox.SetActive(true);
         yield return StartCoroutine(DisplayDialogue());
 
-        DialoguePanelManager.Instance.ChoiceBox.SetActive(true);
-        foreach (var btn in DialoguePanelManager.Instance.ChoiceButtons)
+        DialoguePanelManager.ChoiceBox.SetActive(true);
+        foreach (var btn in DialoguePanelManager.ChoiceButtons)
             btn.gameObject.SetActive(false);
 
-        for (int i = 0; i < CurrentDialogue.choices.Count && i < DialoguePanelManager.Instance.ChoiceButtons.Count; i++)
+        for (int i = 0; i < CurrentDialogue.choices.Count && i < DialoguePanelManager.ChoiceButtons.Count; i++)
         {
-            var button = DialoguePanelManager.Instance.ChoiceButtons[i];
+            var button = DialoguePanelManager.ChoiceButtons[i];
             button.gameObject.SetActive(true);
             button.GetComponentInChildren<TMP_Text>().text = CurrentDialogue.choices[i].text;
+
+            if (i == 0)
+                button.Select();
+
+            Navigation nav = button.navigation;
+            nav.mode = Navigation.Mode.Explicit;
+
+            if (i < CurrentDialogue.choices.Count - 1)
+                nav.selectOnRight = DialoguePanelManager.ChoiceButtons[i + 1];
+            else
+                nav.selectOnRight = null;
+
+            if (i > 0)
+                nav.selectOnLeft = DialoguePanelManager.ChoiceButtons[i - 1];
+            else
+                nav.selectOnLeft = null;
+
+            button.navigation = nav;
 
             int index = i; // we need to keep that value (because "i" passed directly to the listener is a ref)
             button.onClick.RemoveAllListeners();
@@ -276,7 +295,7 @@ public class DialogueManager : MonoBehaviour
     {
         foreach (char letter in text)
         {
-            DialoguePanelManager.Instance.DialogueText.text += letter;
+            DialoguePanelManager.DialogueText.text += letter;
             yield return new WaitForSeconds(_displayLetterSpeed);
         }
     }
