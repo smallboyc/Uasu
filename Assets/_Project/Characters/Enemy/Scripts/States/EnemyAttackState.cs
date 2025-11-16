@@ -12,6 +12,10 @@ public class EnemyAttackState : EnemyState
 
     public override void Update()
     {
+         // Player is dead ? => Enemy chill
+        if (PlayerManager.Instance.HealthManager.IsDead())
+            _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.IdleState);
+            
         if (!_enemyManager.AttackManager.IsAttacking)
         {
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.FocusState);

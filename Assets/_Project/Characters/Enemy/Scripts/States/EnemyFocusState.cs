@@ -14,6 +14,10 @@ public class EnemyFocusState : EnemyState
         _enemyManager.LocomotionManager.HandleAllMovement(_enemyManager.CharacterController, _enemyManager.WayPoints, _enemyManager.LockManager);
         _enemyManager.LockManager.TargetLockPlayer();
 
+        // Player is dead ? => Enemy chill
+        if (PlayerManager.Instance.HealthManager.IsDead())
+            _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.IdleState);
+
         // Enemy lost player focus => Go back to patrolling
         if (!_enemyManager.LockManager.HasLockedPlayer)
         {

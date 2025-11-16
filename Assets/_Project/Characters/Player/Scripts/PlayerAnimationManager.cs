@@ -93,5 +93,11 @@ public class PlayerAnimationManager : CharacterAnimationManager
     {
         _animator.SetBool("IsPushing", false);
     }
+
+    // Death
+    public void PlayDeathAnimation()
+    {
+        _animator.SetBool("IsDead", true);
+    }
 }
 
