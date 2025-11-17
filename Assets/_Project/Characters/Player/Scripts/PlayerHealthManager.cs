@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerHealthManager : MonoBehaviour
 {
-    public int Health = 3;
+    public int Health = 4;
     public bool IsHurt;
 
     public bool IsDead()
@@ -14,6 +14,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         IsHurt = true;
         Health--;
+        PlayerHealthBarManager.Instance.SetHealth(Health);
     }
 
     //Used as an Event in the Hurt Animation

@@ -32,6 +32,7 @@ public class PlayerManager : CharacterManager
     private PlayerAttackState _attackState;
     private PlayerHurtState _hurtState;
     private PlayerPushState _pushState;
+    private PlayerDeathState _deathState;
 
 
     // State Getter
@@ -42,6 +43,7 @@ public class PlayerManager : CharacterManager
     public PlayerAttackState AttackState => _attackState;
     public PlayerHurtState HurtState => _hurtState;
     public PlayerPushState PushState => _pushState;
+    public PlayerDeathState DeathState => _deathState;
 
     // Manager
     [HideInInspector] public PlayerAnimationManager AnimationManager;
@@ -97,6 +99,7 @@ public class PlayerManager : CharacterManager
         _attackState = new PlayerAttackState();
         _hurtState = new PlayerHurtState();
         _pushState = new PlayerPushState();
+        _deathState = new PlayerDeathState();
     }
     protected override void Start()
     {
@@ -105,6 +108,7 @@ public class PlayerManager : CharacterManager
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_idleState);
         // AddAchievement("THE_SORCERER_FLOWER");
+        PlayerHealthBarManager.Instance.SetMaxHealth(HealthManager.Health);
     }
 
     protected override void Update()

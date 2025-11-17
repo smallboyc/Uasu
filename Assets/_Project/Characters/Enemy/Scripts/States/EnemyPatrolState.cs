@@ -15,6 +15,10 @@ public class EnemyPatrolState : EnemyState
         _enemyManager.LocomotionManager.HandleAllMovement(_enemyManager.CharacterController, _enemyManager.WayPoints, _enemyManager.LockManager);
         _enemyManager.LockManager.TargetLockPlayer();
 
+        // Player is dead ? => Enemy chill
+        if (PlayerManager.Instance.HealthManager.IsDead())
+            _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.IdleState);
+
         // Enemy Found Player => Focus
         if (_enemyManager.LockManager.HasLockedPlayer)
         {

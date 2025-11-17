@@ -12,23 +12,26 @@ public class EnemyIdleState : EnemyState
 
     public override void Update()
     {
-        _enemyManager.LocomotionManager.HandleAllMovement(_enemyManager.CharacterController, _enemyManager.WayPoints, _enemyManager.LockManager);
-        _enemyManager.LockManager.TargetLockPlayer();
+        if (!PlayerManager.Instance.HealthManager.IsDead())
+        {
+            _enemyManager.LocomotionManager.HandleAllMovement(_enemyManager.CharacterController, _enemyManager.WayPoints, _enemyManager.LockManager);
+            _enemyManager.LockManager.TargetLockPlayer();
 
-        // Enemy Found Player => Focus
-        if (_enemyManager.LockManager.HasLockedPlayer)
-        {
-            _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.FocusState);
-        }
-        // Enemy wake up from his break => Patrol
-        if (!_enemyManager.LocomotionManager.EnemyTakeABreak)
-        {
-            _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.PatrolState);
-        }
-        // Enemy has been hurt by player => Hurt
-        if (_enemyManager.HealthManager.IsHurt)
-        {
-            _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.HurtState);
+            // Enemy Found Player => Focus
+            if (_enemyManager.LockManager.HasLockedPlayer)
+            {
+                _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.FocusState);
+            }
+            // Enemy wake up from his break => Patrol
+            if (!_enemyManager.LocomotionManager.EnemyTakeABreak)
+            {
+                _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.PatrolState);
+            }
+            // Enemy has been hurt by player => Hurt
+            if (_enemyManager.HealthManager.IsHurt)
+            {
+                _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.HurtState);
+            }
         }
     }
 

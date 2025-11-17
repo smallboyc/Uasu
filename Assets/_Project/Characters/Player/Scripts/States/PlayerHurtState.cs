@@ -15,6 +15,12 @@ public class PlayerHurtState : State
     {
         if (!_playerManager.HealthManager.IsHurt)
         {
+            if (_playerManager.HealthManager.IsDead()) // Death :(
+            {
+                _playerManager.PlayerStateMachine.ChangeState(_playerManager.DeathState);
+                return;
+            }
+
             // -> Walk
             if (_playerManager.LocomotionManager.IsMoving)
             {
