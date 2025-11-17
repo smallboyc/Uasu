@@ -132,7 +132,7 @@ GameObject:
   m_Layer: 0
   m_Name: Level01Loader
   m_TagString: Untagged
-  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -148,9 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf52fed5b40b44eaa69f7ca74e20868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenesToLoad:
-  - Level_01_Gameplay
-  - Level_01_Environment
+  scenes:
+  - {fileID: 102900000, guid: 2eee848f4959c4a46b626901415751b9, type: 3}
+  - {fileID: 102900000, guid: 7a15384da2a5948ef9f5bdfe87422aad, type: 3}
+  - {fileID: 102900000, guid: 9d9c3362620d74832bd3d0d88b90f9d8, type: 3}
 --- !u!4 &1839407313
 Transform:
   m_ObjectHideFlags: 0

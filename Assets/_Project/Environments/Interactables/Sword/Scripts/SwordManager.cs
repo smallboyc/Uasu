@@ -17,6 +17,7 @@ public class SwordManager : MonoBehaviour
 
     void Update()
     {
-        _swordInteractionManager.EnableSwordInteraction();
+        if (PlayerManager.Instance)
+            _swordInteractionManager.EnableSwordInteraction();
     }
 }
