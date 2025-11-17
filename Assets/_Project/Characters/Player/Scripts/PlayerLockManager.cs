@@ -77,7 +77,7 @@ public class PlayerLockManager : MonoBehaviour
         if (_targetEnemyHealthManager && _targetEnemyHealthManager.IsDead())
         {
             UnlockEnemy();
-            DestroyLockIndicator();
+            _targetEnemyHealthManager = null;
         }
     }
 
