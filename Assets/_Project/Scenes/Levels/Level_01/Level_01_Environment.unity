@@ -147,8 +147,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 0.7116087, g: 1, b: 0.57924527, a: 1}
-  m_Intensity: 30
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -301,6 +301,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 143cf4377c6024f61ab4be83bfd7e2bf, type: 3}
+<<<<<<< HEAD
 --- !u!1001 &279347803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -703,6 +704,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1732264807788701268, guid: 7940eb5b62313044089715a4506ab05c, type: 3}
   m_PrefabInstance: {fileID: 535497825}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
 --- !u!1 &667720909
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +814,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1001 &716231764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1029,6 +1033,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1732264807788701268, guid: 7940eb5b62313044089715a4506ab05c, type: 3}
   m_PrefabInstance: {fileID: 739290418}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
 --- !u!1 &749502216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,6 +1063,7 @@ Transform:
   m_LocalPosition: {x: 2.992348, y: 5.3169384, z: 13.348761}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
+<<<<<<< HEAD
   m_Children:
   - {fileID: 7054663823070282260}
   - {fileID: 1048783045}
@@ -1204,6 +1211,11 @@ Transform:
   m_PrefabInstance: {fileID: 833977270}
   m_PrefabAsset: {fileID: 0}
 >>>>>>> 02a630e (Textured Map)
+=======
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
 --- !u!1 &849938886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,6 +1325,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1001 &882702457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1437,6 +1450,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3741389374228287232, guid: d2ca387fe42b68c42a0ab757a15b5aae, type: 3}
   m_PrefabInstance: {fileID: 927366927}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
 --- !u!1001 &1024734097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1494,6 +1509,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 497561f9ec05548d1b58be6ba3085d40, type: 3}
+<<<<<<< HEAD
 --- !u!1001 &1048783044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1565,6 +1581,9 @@ Transform:
   m_PrefabInstance: {fileID: 1048783044}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1530998703
+=======
+--- !u!1001 &1060685048
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1572,6 +1591,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1676252618}
     m_Modifications:
+<<<<<<< HEAD
     - target: {fileID: 2597948757024573183, guid: ca5127786682b48469124caf9f8cea66, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.073393
@@ -1597,17 +1617,53 @@ PrefabInstance:
       value: 0.9996746
       objectReference: {fileID: 0}
     - target: {fileID: 2597948757024573183, guid: ca5127786682b48469124caf9f8cea66, type: 3}
+=======
+    - target: {fileID: -8679921383154817045, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 88.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00002519786
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
       propertyPath: m_LocalRotation.z
       value: 6.277436e-17
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 2597948757024573183, guid: ca5127786682b48469124caf9f8cea66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2597948757024573183, guid: ca5127786682b48469124caf9f8cea66, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
+=======
+    - target: {fileID: -8679921383154817045, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 179.997
+      objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 2597948757024573183, guid: ca5127786682b48469124caf9f8cea66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
@@ -1615,11 +1671,21 @@ PrefabInstance:
     - target: {fileID: 6857271319186322719, guid: ca5127786682b48469124caf9f8cea66, type: 3}
       propertyPath: m_Name
       value: Cone
+=======
+    - target: {fileID: -8679921383154817045, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+      propertyPath: m_Name
+      value: LV1_PLATFORM_FINAL
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+<<<<<<< HEAD
   m_SourcePrefab: {fileID: 100100000, guid: ca5127786682b48469124caf9f8cea66, type: 3}
 --- !u!4 &1530998704 stripped
 Transform:
@@ -1627,11 +1693,16 @@ Transform:
   m_PrefabInstance: {fileID: 1530998703}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1609401533
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: 05852bc2bb6ee0047b63d340ff70b6b1, type: 3}
+--- !u!1001 &1148787428
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
+<<<<<<< HEAD
     m_TransformParent: {fileID: 749502217}
     m_Modifications:
     - target: {fileID: 1732264807788701268, guid: 7940eb5b62313044089715a4506ab05c, type: 3}
@@ -1693,17 +1764,80 @@ PrefabInstance:
     - target: {fileID: 8916831964771625477, guid: 7940eb5b62313044089715a4506ab05c, type: 3}
       propertyPath: m_Name
       value: Cone.001 (7)
+=======
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8874964412867885385, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8874964412867885385, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8874964412867885385, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.8654366
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 42.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 59.97111
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+      propertyPath: m_Name
+      value: LV1_DOOR
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+<<<<<<< HEAD
   m_SourcePrefab: {fileID: 100100000, guid: 7940eb5b62313044089715a4506ab05c, type: 3}
 --- !u!4 &1609401534 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1732264807788701268, guid: 7940eb5b62313044089715a4506ab05c, type: 3}
   m_PrefabInstance: {fileID: 1609401533}
   m_PrefabAsset: {fileID: 0}
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: 53a7ebfd9ca5d414b928ac0dec676d34, type: 3}
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
 --- !u!1 &1676252617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,8 +1866,12 @@ Transform:
   m_LocalPosition: {x: -10.913393, y: 2.3904521, z: -8.03316}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
+<<<<<<< HEAD
   m_Children:
   - {fileID: 1530998704}
+=======
+  m_Children: []
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1745198221
@@ -1793,6 +1931,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956ee89b032d847cb969da1a916782e7, type: 3}
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1001 &2019471527
 =======
@@ -1919,6 +2058,8 @@ Transform:
 =======
   m_SourcePrefab: {fileID: 100100000, guid: 5995817ad34ef164f8acd1e905637963, type: 3}
 >>>>>>> 02a630e (Textured Map)
+=======
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
 --- !u!1001 &2064518320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4664,6 +4805,7 @@ SceneRoots:
   - {fileID: 667720913}
   - {fileID: 1676252618}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 391346972}
   - {fileID: 3974503297126032862}
 =======
@@ -4671,3 +4813,7 @@ SceneRoots:
   - {fileID: 449754726}
   - {fileID: 1888371892}
 >>>>>>> 02a630e (Textured Map)
+=======
+  - {fileID: 1148787428}
+  - {fileID: 1060685048}
+>>>>>>> c032625 (feat: BASE MAP READY to put assets)
