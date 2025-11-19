@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ab35271c84c04cf3b9229b163db19e8
+guid: 8a7f4b1143a0a4b4f981cb67bf2f67ca
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Floor
-    second: {fileID: 2100000, guid: 36b23d542667a48b7a150a9120156360, type: 2}
+      name: Level_01_Gradient
+    second: {fileID: 2100000, guid: 7ec76b936b88adb4fb1e2edb78477ec1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Level_01_Gradient
-    second: {fileID: 2100000, guid: 7ec76b936b88adb4fb1e2edb78477ec1, type: 2}
+      name: Symbol
+    second: {fileID: 2100000, guid: 598eed793bfe245ec8bf35f0b7121d4c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -98,7 +98,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.4
+    globalScale: 0.004
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
