@@ -66,7 +66,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -10
+  near clip plane: -15
   far clip plane: 100
   field of view: 60
   orthographic: 1
@@ -263,7 +263,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60
     OrthographicSize: 7.5
-    NearClipPlane: -10
+    NearClipPlane: -15
     FarClipPlane: 100
     Dutch: 0.66
     ModeOverride: 1
