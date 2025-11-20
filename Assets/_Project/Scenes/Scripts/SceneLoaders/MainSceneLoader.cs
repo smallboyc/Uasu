@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class MainSceneLoader : MonoBehaviour
 {
-    [SerializeField] private string startingLevel = "Level_01_Main";
+    [SerializeField] private string currentSceneToLoad = "SplashScreen";
 
     void Awake()
     {
-        SceneManager.LoadSceneAsync(startingLevel, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(currentSceneToLoad, LoadSceneMode.Additive);
     }
 }

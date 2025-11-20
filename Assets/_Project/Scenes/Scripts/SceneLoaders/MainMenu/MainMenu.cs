@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync("Level_01_Environment");
+        SceneManager.LoadSceneAsync("Level_01_Main");
     }
 
     public void QuitGame()
@@ -18,8 +18,7 @@ public class MainMenu : MonoBehaviour
 
     public void GoToMain()
     {
-        SceneManager.LoadSceneAsync("UI_Menu_Playground");
-
+        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
     }
 }
-    
+
