@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
             return;
         }
         _instance = this;
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
 
         _gameOverPanel = transform.Find("Canvas/GameOverPanel").gameObject;
         _gameOverPanel.SetActive(false);

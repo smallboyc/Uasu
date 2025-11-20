@@ -108,12 +108,16 @@ public class PlayerManager : CharacterManager
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_idleState);
         // AddAchievement("THE_SORCERER_FLOWER");
+        Debug.Log("AHAH");
         PlayerHealthBarManager.Instance.SetMaxHealth(HealthManager.Health);
+        Debug.Log("OHOH");
     }
 
     protected override void Update()
     {
         base.Update();
+        if (!DialogueManager.Instance)
+            return;
         PlayerStateMachine.CurrentState.Update();
     }
 }

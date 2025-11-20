@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 223120f3e6aea444fbfc5ffd5029d68f
+guid: 68d0be0d5610e4eeb98d1747690adc5f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Level_01_Material
+      name: Level_01_Gradient
     second: {fileID: 2100000, guid: 7ec76b936b88adb4fb1e2edb78477ec1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Symbol
+    second: {fileID: 2100000, guid: 598eed793bfe245ec8bf35f0b7121d4c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

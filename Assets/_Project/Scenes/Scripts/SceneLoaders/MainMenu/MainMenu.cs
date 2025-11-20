@@ -7,19 +7,17 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync("Level_01_Environment");
+        SceneManager.LoadScene("Level_01_Main");
     }
 
     public void QuitGame()
     {
         Application.Quit();
-
     }
 
     public void GoToMain()
     {
-        SceneManager.LoadSceneAsync("UI_Menu_Playground");
-
+        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
     }
 }
-    
+

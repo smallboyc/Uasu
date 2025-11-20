@@ -14,7 +14,7 @@ public class PlayerWalkState : State
     public override void Update()
     {
         // -> We don't want to move during dialogue session.
-        if (DialogueManager.Instance.DialogueIsRunning)
+        if (DialogueManager.Instance && DialogueManager.Instance.DialogueIsRunning)
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);
 
         //
