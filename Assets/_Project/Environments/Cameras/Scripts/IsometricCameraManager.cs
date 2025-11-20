@@ -1,7 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-[RequireComponent(typeof(CinemachineCamera))]
 public class IsometricCameraManager : MonoBehaviour
 {
     private static IsometricCameraManager _instance;
@@ -36,7 +35,9 @@ public class IsometricCameraManager : MonoBehaviour
         }
         _instance = this;
 
-        _isometricCamera = GetComponent<CinemachineCamera>();
+        DontDestroyOnLoad(gameObject);
+
+        _isometricCamera = GetComponentInChildren<CinemachineCamera>();
     }
 
     private void Start()
