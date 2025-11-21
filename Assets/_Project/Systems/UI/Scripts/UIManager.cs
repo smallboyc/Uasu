@@ -59,7 +59,6 @@ public class UIManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log(scene.name);
         if (scene.name == "SplashScreen")
         {
             Instance.ShowOnly(PanelType.SplashScreen);
@@ -73,6 +72,8 @@ public class UIManager : MonoBehaviour
             Debug.Log("Main Menu Screen Loaded!");
             return;
         }
+
+        Instance.HideAll();
     }
 
     public void Show(PanelType type)
@@ -93,6 +94,14 @@ public class UIManager : MonoBehaviour
                 kvp.Value.Show();
             else
                 kvp.Value.Hide();
+        }
+    }
+
+    public void HideAll()
+    {
+        foreach (var kvp in panels)
+        {
+            kvp.Value.Hide();
         }
     }
 }

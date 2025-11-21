@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5011469735572080590}
   - component: {fileID: 376795448642675132}
   - component: {fileID: 8283965843976138220}
-  - component: {fileID: -8297852434916880707}
   m_Layer: 5
   m_Name: SplashScreenPanel
   m_TagString: Untagged
@@ -78,18 +77,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-8297852434916880707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136623142430577223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae548065e2afb4465866c45bb4d8beaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2732461467919104890
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +470,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -8297852434916880707}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SplashScreenManager, Assembly-CSharp
         m_MethodName: GoToMain
         m_Mode: 1

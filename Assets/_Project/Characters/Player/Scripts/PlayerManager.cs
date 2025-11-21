@@ -12,17 +12,7 @@ public class PlayerManager : CharacterManager
 {
     // Singleton => Singleplayer game
     static PlayerManager _instance;
-    public static PlayerManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                Debug.LogError("ERROR (PlayerManager): No Instance found.");
-            }
-            return _instance;
-        }
-    }
+    public static PlayerManager Instance => _instance;
     // State Machine
     public StateMachine PlayerStateMachine;
     private PlayerIdleState _idleState;
@@ -108,6 +98,7 @@ public class PlayerManager : CharacterManager
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_idleState);
         // AddAchievement("THE_SORCERER_FLOWER");
+        IsometricCameraManager.Instance.IsometricCamera.Follow = transform;
         Debug.Log("AHAH");
         PlayerHealthBarManager.Instance.SetMaxHealth(HealthManager.Health);
         Debug.Log("OHOH");
