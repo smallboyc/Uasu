@@ -104,4 +104,9 @@ public class UIManager : MonoBehaviour
             kvp.Value.Hide();
         }
     }
+
+    public UIPanel GetPanel(PanelType type)
+    {
+        return panels[type];
+    }
 }

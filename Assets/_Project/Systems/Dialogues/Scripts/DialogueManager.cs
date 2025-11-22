@@ -52,7 +52,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
     private enum Language { EN, FR }
-    public DialoguePanelManager DialoguePanelManager;
+    [HideInInspector] public DialoguePanelManager DialoguePanelManager;
 
     [Header("Dialogue Language")]
     [SerializeField] private Language _currentLanguage = Language.EN;
@@ -112,6 +112,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        DialoguePanelManager = UIManager.Instance.GetPanel(PanelType.Dialogue).panelObject.GetComponent<DialoguePanelManager>();
+
         if (DialoguePanelManager == null)
         {
             Debug.Log("ERROR: No panel catched by the DialogueManager");
@@ -193,6 +195,7 @@ public class DialogueManager : MonoBehaviour
     {
         PlayerChose = true;
         DialoguePanelManager.ChoiceBox.SetActive(false);
+        UIManager.Instance.GetPanel(PanelType.Dialogue).panelObject.GetComponent<DialoguePanelManager>();
 
         int nextId = CurrentDialogue.choices[choiceIndex].next_dialogue;
         CurrentDialogue = _dialogues.Find(d => d.id == nextId);
