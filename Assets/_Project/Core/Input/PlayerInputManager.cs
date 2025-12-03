@@ -28,7 +28,7 @@ public class PlayerInputManager : MonoBehaviour
         }
 
         _instance = this;
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
     }
 
     // --- Input System Setup ---

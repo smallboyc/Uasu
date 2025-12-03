@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 67354a4ef66b82646bfda4b8ffb31f02, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -119,55 +119,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1839407311
-GameObject:
+--- !u!1001 &3810861520250529335
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1839407313}
-  - component: {fileID: 1839407312}
-  m_Layer: 0
-  m_Name: Level01Loader
-  m_TagString: Untagged
-  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1839407312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1839407311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf52fed5b40b44eaa69f7ca74e20868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scenesToLoad:
-  - Level_01_Gameplay
-  - Level_01_Environment
---- !u!4 &1839407313
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1839407311}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 513033412984335009, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513033412984335009, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513033412984335009, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513033412984335009, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 513033412984335009, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513033412984335009, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513033412984335009, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513033412984335009, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513033412984335009, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 513033412984335009, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463717871676045032, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: _isSingleScene
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463717871676045032, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: multipleScenes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463717871676045032, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: 'multipleScenes.Array.data[0]'
+      value: Level_01_Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463717871676045032, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: 'multipleScenes.Array.data[1]'
+      value: Level_01_Gameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 8232613828503628780, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: m_Name
+      value: Level01Loader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1839407313}
+  - {fileID: 3810861520250529335}

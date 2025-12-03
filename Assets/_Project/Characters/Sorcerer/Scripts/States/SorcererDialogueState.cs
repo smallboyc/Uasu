@@ -6,6 +6,7 @@ public class SorcererDialogueState : SorcererState
 
     public override void Enter()
     {
+        UIManager.Instance.Show(PanelType.Dialogue);
         _sorcererManager.DialogueTrigger.TriggerDialogue();
     }
 
@@ -19,6 +20,6 @@ public class SorcererDialogueState : SorcererState
 
     public override void Exit()
     {
-
+        UIManager.Instance.Hide(PanelType.Dialogue);
     }
 }

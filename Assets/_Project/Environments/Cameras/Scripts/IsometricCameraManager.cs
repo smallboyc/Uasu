@@ -1,11 +1,10 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-[RequireComponent(typeof(CinemachineCamera))]
 public class IsometricCameraManager : MonoBehaviour
 {
     private static IsometricCameraManager _instance;
-    private CinemachineCamera _isometricCamera;
+    [HideInInspector] public CinemachineCamera IsometricCamera;
     private float _initialCameraAngle = 35.0f;
     private float _lockCameraAngle = 45.0f;
     private float _currentCameraAngle;
@@ -36,15 +35,13 @@ public class IsometricCameraManager : MonoBehaviour
         }
         _instance = this;
 
-        _isometricCamera = GetComponent<CinemachineCamera>();
+        DontDestroyOnLoad(gameObject);
+
+        IsometricCamera = GetComponentInChildren<CinemachineCamera>();
     }
 
     private void Start()
     {
-        if (PlayerManager.Instance)
-        {
-            _isometricCamera.Follow = PlayerManager.Instance.transform;
-        }
         _currentCameraAngle = _initialCameraAngle;
         _currentOrthographicSize = _initialOrthographicSize;
     }
@@ -71,12 +68,12 @@ public class IsometricCameraManager : MonoBehaviour
     {
         Quaternion targetRotation = Quaternion.Euler(
             _currentCameraAngle,
-            _isometricCamera.transform.eulerAngles.y,
-            _isometricCamera.transform.eulerAngles.z
+            IsometricCamera.transform.eulerAngles.y,
+            IsometricCamera.transform.eulerAngles.z
         );
 
-        _isometricCamera.transform.rotation = Quaternion.Lerp(
-            _isometricCamera.transform.rotation,
+        IsometricCamera.transform.rotation = Quaternion.Lerp(
+            IsometricCamera.transform.rotation,
             targetRotation,
             5.0f * Time.deltaTime
         );
@@ -84,8 +81,8 @@ public class IsometricCameraManager : MonoBehaviour
 
     private void SmoothCameraZoom()
     {
-        _isometricCamera.Lens.OrthographicSize = Mathf.Lerp(
-          _isometricCamera.Lens.OrthographicSize,
+        IsometricCamera.Lens.OrthographicSize = Mathf.Lerp(
+          IsometricCamera.Lens.OrthographicSize,
           _currentOrthographicSize,
           5.0f * Time.deltaTime
       );

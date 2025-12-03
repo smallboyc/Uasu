@@ -16,7 +16,7 @@ public class DialoguePanelManager : MonoBehaviour
 
     private void Awake()
     {
-
+        
         DialogueBox = transform.Find("DialogueBox").gameObject;
         if (DialogueBox != null)
         {
