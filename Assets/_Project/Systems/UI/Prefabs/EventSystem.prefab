@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3656554475121094699}
   - component: {fileID: 1881144652260402114}
   - component: {fileID: 8531423952428803693}
+  - component: {fileID: 4191547505670373909}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -65,11 +66,11 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 9df4850b645ad46479e3b2283aa7247e, type: 3}
-  m_PointAction: {fileID: 0}
+  m_PointAction: {fileID: 585063786391752106, guid: 9df4850b645ad46479e3b2283aa7247e, type: 3}
   m_MoveAction: {fileID: 7150754514397229245, guid: 9df4850b645ad46479e3b2283aa7247e, type: 3}
   m_SubmitAction: {fileID: 1177829689574760270, guid: 9df4850b645ad46479e3b2283aa7247e, type: 3}
   m_CancelAction: {fileID: 175671123987463838, guid: 9df4850b645ad46479e3b2283aa7247e, type: 3}
-  m_LeftClickAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 1623536841542442984, guid: 9df4850b645ad46479e3b2283aa7247e, type: 3}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
   m_ScrollWheelAction: {fileID: 0}
@@ -79,3 +80,15 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!114 &4191547505670373909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886118860865972473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e316ee1c9d6e54034b7e32ea3fe69311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

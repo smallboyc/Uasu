@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Main.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/_Project/Scenes/UI/Menus/SplashScreen.unity
+    path: Assets/_Project/Scenes/UI/SplashScreen.unity
     guid: 2f1ad7ad38a345247b497ff3180a3557
   - enabled: 1
-    path: Assets/_Project/Scenes/UI/Menus/MainMenu.unity
+    path: Assets/_Project/Scenes/UI/MainMenu.unity
     guid: 780b9ad8880874e7da2fdf0a0ef9199d
   - enabled: 1
     path: Assets/_Project/Scenes/Levels/Level_01/Level_01_Main.unity
@@ -24,8 +24,8 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Levels/Level_01/Level_01_Environment.unity
     guid: b6e622c7af6534b62a7d8c63ffe7bda3
   - enabled: 1
-    path: Assets/_Project/Scenes/Levels/Level_01/Level_01_UI.unity
-    guid: 9d9c3362620d74832bd3d0d88b90f9d8
+    path: Assets/_Project/Scenes/Levels/Level_02/Level_02_Main.unity
+    guid: 7882b2f828e154443826e260d6cf1e71
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 9df4850b645ad46479e3b2283aa7247e, type: 3}
   m_UseUCBPForAssetBundles: 0

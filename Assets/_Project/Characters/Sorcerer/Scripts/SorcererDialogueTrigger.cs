@@ -13,6 +13,6 @@ public class SorcererDialogueTrigger : DialogueTrigger
         {
             return 23;
         }
-        return 18;
+        return 0;
     }
 }
