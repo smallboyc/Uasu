@@ -15,8 +15,12 @@ public class EndGame : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            PlayerManager.Instance.gameObject.transform.position = Vector3.zero;
             if (_sceneToLoad != null)
+            {
                 _sceneLoader.LoadSceneByName(_sceneToLoad);
+            }
+
         }
     }
 }

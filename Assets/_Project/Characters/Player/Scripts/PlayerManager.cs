@@ -73,6 +73,8 @@ public class PlayerManager : CharacterManager
         }
         _instance = this;
 
+        DontDestroyOnLoad(gameObject);
+
         // Manager
         AnimationManager = GetComponent<PlayerAnimationManager>();
         LocomotionManager = GetComponent<PlayerLocomotionManager>();
@@ -109,7 +111,9 @@ public class PlayerManager : CharacterManager
         base.Update();
         if (!DialogueManager.Instance)
             return;
-        PlayerStateMachine.CurrentState.Update();
+
+        if (Instance.CharacterController.enabled)
+            PlayerStateMachine.CurrentState.Update();
     }
 }
 

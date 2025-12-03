@@ -107,7 +107,7 @@ public class DialogueManager : MonoBehaviour
         _passiveState = new DialoguePassiveState();
         _choiceState = new DialogueChoiceState();
 
-        // DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

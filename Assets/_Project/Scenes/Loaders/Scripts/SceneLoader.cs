@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// SceneLoader can be include in a gameobject to start some action about loading scenes.
 public class SceneLoader : MonoBehaviour
 {
     [Header("Event Control")]
@@ -49,8 +51,17 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+
+
     public void LoadSceneByName(string sceneName)
     {
+        // When we change to a new scene, we need to stop the character controller to reset the Player position.
+        if (PlayerManager.Instance)
+        {
+            PlayerManager.Instance.PlayerStateMachine.ChangeState(PlayerManager.Instance.IdleState);
+            PlayerManager.Instance.CharacterController.enabled = false;
+        }
+
         if (string.IsNullOrEmpty(sceneName)) return;
 
         if (loadAdditive)

@@ -59,6 +59,12 @@ public class UIManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        //If the player exists, then we need to (re)-activate his character controller.
+        if (PlayerManager.Instance)
+        {
+            PlayerManager.Instance.CharacterController.enabled = true;
+        }
+
         if (scene.name == "SplashScreen")
         {
             Instance.ShowOnly(PanelType.SplashScreen);

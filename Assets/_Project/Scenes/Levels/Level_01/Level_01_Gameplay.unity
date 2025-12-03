@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 220614059327472072, guid: a409bcdb3413b4841808a24fc697c3af, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 518951015629021287, guid: a409bcdb3413b4841808a24fc697c3af, type: 3}
       propertyPath: m_Name
       value: PushingRock
@@ -521,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80a017d02c4a4450b14287d66319283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneToLoad: MainMenu
+  _sceneToLoad: Level_02_Main
 --- !u!114 &2118176662
 MonoBehaviour:
   m_ObjectHideFlags: 0
