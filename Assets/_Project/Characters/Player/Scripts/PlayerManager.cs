@@ -47,6 +47,9 @@ public class PlayerManager : CharacterManager
     [Header("Sounds")]
     public AudioClip[] AttackSounds;
 
+    //Checkpoint
+    public Transform Checkpoint;
+
 
     // Flags : used to determine all achievements unlocked 
     private HashSet<string> _achievements = new();

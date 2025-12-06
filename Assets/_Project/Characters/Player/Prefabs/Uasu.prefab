@@ -339,6 +339,7 @@ MonoBehaviour:
   AttackSounds:
   - {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
   - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  Checkpoint: {fileID: 6076659285950197679, guid: 89b89469a52ba4c0b8a5f93855fb0fff, type: 3}
   SoulCounter: 0
 --- !u!114 &-9037390966968635814
 MonoBehaviour:
