@@ -459,13 +459,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterController: {fileID: 0}
-  IsDead: 0
   AnimationManager: {fileID: 0}
   LocomotionManager: {fileID: 0}
   LockManager: {fileID: 0}
   AttackManager: {fileID: 0}
   HealthManager: {fileID: 0}
-  _attackCooldown: 2
+  HurtSound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
   _wayPoints: []
 --- !u!114 &7060040186063306296
 MonoBehaviour:
@@ -496,6 +495,7 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  _attackCooldown: 2
 --- !u!114 &6303517486263512526
 MonoBehaviour:
   m_ObjectHideFlags: 0

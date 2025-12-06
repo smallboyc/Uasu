@@ -43,6 +43,10 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerHealthManager HealthManager;
     [HideInInspector] public PlayerCollisionManager CollisionManager;
 
+    //Sounds
+    [Header("Sounds")]
+    public AudioClip[] AttackSounds;
+
 
     // Flags : used to determine all achievements unlocked 
     private HashSet<string> _achievements = new();

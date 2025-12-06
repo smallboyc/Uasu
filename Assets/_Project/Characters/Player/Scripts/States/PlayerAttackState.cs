@@ -6,6 +6,7 @@ public class PlayerAttackState : State
 
     public override void Enter()
     {
+        SoundManager.Instance.PlayRandomSoundClip(PlayerManager.Instance.AttackSounds, PlayerManager.Instance.transform);
         // Debug.Log("Attack State => ENTER");
         _playerManager.AttackManager.TriggerStartAttack();
         _playerManager.AnimationManager.PlayAttackAnimation();

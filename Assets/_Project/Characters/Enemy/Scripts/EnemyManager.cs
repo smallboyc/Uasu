@@ -35,6 +35,10 @@ public class EnemyManager : CharacterManager
     [HideInInspector] public EnemyAttackManager AttackManager;
     [HideInInspector] public EnemyHealthManager HealthManager;
 
+    // Sounds
+    [Header("Header")]
+    public AudioClip HurtSound;
+
     [Header("Patrol")]
     [SerializeField] private List<Transform> _wayPoints;
     [HideInInspector] public List<Transform> WayPoints => _wayPoints;
