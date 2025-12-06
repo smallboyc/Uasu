@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 224.274, y: -22.172}
+  m_AnchoredPosition: {x: 224.274, y: -40.540874}
   m_SizeDelta: {x: 448.548, y: 44.344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3514033634899433073
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Edurne Delgado Lozano
+  m_text: 'Edurne Delgado '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
   m_sharedMaterial: {fileID: 3957100860259852744, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
@@ -93,14 +93,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -485,7 +485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 224.274, y: -184.3355}
+  m_AnchoredPosition: {x: 224.274, y: -202.70438}
   m_SizeDelta: {x: 448.548, y: 44.344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &980039561236441920
@@ -543,14 +543,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1251,8 +1251,8 @@ RectTransform:
   - {fileID: 6371296736927087970}
   m_Father: {fileID: 9061635507425668909}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 189.031, y: -38.082}
   m_SizeDelta: {x: 378.062, y: 76.164}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1407,7 +1407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000040054, y: 0.0000095367}
+  m_AnchoredPosition: {x: 0.000040054, y: 23}
   m_SizeDelta: {x: 448.548, y: 324.327}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8760554891738062493
@@ -1427,7 +1427,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -2353,8 +2353,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 653040126923411495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.454, y: 0}
+  m_AnchorMax: {x: 0.454, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3163,7 +3163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 224.274, y: -265.41724}
+  m_AnchoredPosition: {x: 224.274, y: -283.7861}
   m_SizeDelta: {x: 448.548, y: 44.344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3170881447251800939
@@ -3194,7 +3194,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leyre
+  m_text: Leyre Gallud
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
   m_sharedMaterial: {fileID: 3957100860259852744, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
@@ -3221,14 +3221,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3437,8 +3437,8 @@ RectTransform:
   - {fileID: 7419003485059733142}
   m_Father: {fileID: 9061635507425668909}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 189.031, y: -114.246}
   m_SizeDelta: {x: 378.062, y: 76.164}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3745,7 +3745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 224.274, y: -103.25375}
+  m_AnchoredPosition: {x: 224.274, y: -121.62262}
   m_SizeDelta: {x: 448.548, y: 44.344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4268875887776618861
@@ -3776,7 +3776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maxence
+  m_text: Maxence Dupuis
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
   m_sharedMaterial: {fileID: 3957100860259852744, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
@@ -3803,14 +3803,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4575,7 +4575,7 @@ RectTransform:
   m_Father: {fileID: 7987336662360698712}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.454, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
