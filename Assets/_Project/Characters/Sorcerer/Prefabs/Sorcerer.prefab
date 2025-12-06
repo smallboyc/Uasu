@@ -225,6 +225,7 @@ MonoBehaviour:
   AnimationManager: {fileID: 0}
   SleepManager: {fileID: 0}
   DialogueTrigger: {fileID: 0}
+  WakeUpSound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
 --- !u!114 &2486128805584490289
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class SorcererWakeUpState : SorcererState
 
     public override void Enter()
     {
+        SoundManager.Instance.PlaySoundClip(_sorcererManager.WakeUpSound, _sorcererManager.transform);
         _sorcererManager.AnimationManager.PlayWakeUpAnimation();
         _sorcererManager.SleepManager.StartSleepCountdownCoroutine();
     }

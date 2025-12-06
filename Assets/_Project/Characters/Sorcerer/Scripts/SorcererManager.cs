@@ -25,6 +25,10 @@ public class SorcererManager : CharacterManager
     // Trigger => inherit from another external system. (DialogueManager with Dialogue Trigger)
     [HideInInspector] public SorcererDialogueTrigger DialogueTrigger;
 
+    //Sounds
+    [Header("Sounds")]
+    public AudioClip WakeUpSound;
+
 
     protected override void Awake()
     {

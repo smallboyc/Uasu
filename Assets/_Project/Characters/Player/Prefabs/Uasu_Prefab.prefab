@@ -351,6 +351,9 @@ MonoBehaviour:
   LockManager: {fileID: 0}
   HealthManager: {fileID: 0}
   CollisionManager: {fileID: 0}
+  AttackSounds:
+  - {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
+  - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   SoulCounter: 0
 --- !u!114 &7416606695584317001
 MonoBehaviour:
@@ -364,7 +367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f782c939c62ad4a3290435304a4f4283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 0}
   _walkingSpeed: 4
   _gravity: -24
   _jumpHeight: 1
