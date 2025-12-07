@@ -15,8 +15,8 @@ public class SorcererDialogueTrigger : DialogueTrigger
         }
         if (PlayerManager.Instance.HasAchievement("WHAT_IS_CALLING_ME_?"))
         {
-            return 47;
+            return 51;
         }
-        return 40;
+        return 0;
     }
 }

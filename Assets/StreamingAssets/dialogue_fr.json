@@ -3,10 +3,10 @@
         {
             "id": 0,
             "speaker": "sorcerer",
-            "text": "Oh my, good morning. No need to get agressive when you are so defenseless",
+            "text": "Oh my, good morning. I was so deep asleep I didn't see you coming.",
             "choices": [
                 {
-                    "text": "How did you know?",
+                    "text": "What are you?",
                     "next_dialogue": 1
                 },
                 {
@@ -18,7 +18,7 @@
         {
             "id": 1,
             "speaker": "sorcerer",
-            "text": "Because well, I'm a little 'magical', you see.",
+            "text": "Well, I'm a little 'magical', you see.",
             "next_dialogue": 3
         },
         {
@@ -30,13 +30,13 @@
         {
             "id": 3,
             "speaker": "sorcerer",
-            "text": "Anywho. Greetings little hero",
+            "text": "Anywho. Greetings little hero.",
             "next_dialogue": 4
         },
         {
             "id": 4,
             "speaker": "sorcerer",
-            "text": "Hope you don’t mind me not stretching your hand",
+            "text": "Hope you don’t mind me not stretching your hand.",
             "next_dialogue": 5
         },
         {
@@ -75,7 +75,7 @@
         {
             "id": 9,
             "speaker": "sorcerer",
-            "text": "I was not sure about the “other ones”, but you",
+            "text": "I was not sure about the “other ones”, but you.",
             "next_dialogue": 10
         },
         {
@@ -87,7 +87,7 @@
         {
             "id": 11,
             "speaker": "sorcerer",
-            "text": "Thankfully I know a tad of Siflet from my journeys, what a beautifully witty language you people invented",
+            "text": "Thankfully I know a tad of Siflet from my journeys, what a beautifully witty language you people invented.",
             "next_dialogue": 12
         },
         {
@@ -105,13 +105,13 @@
         {
             "id": 14,
             "speaker": "sorcerer",
-            "text": "And this, a stone from the heavens, has fallen into my arms",
+            "text": "And this, a stone from the heavens, has fallen into my arms.",
             "next_dialogue": 15
         },
         {
             "id": 15,
             "speaker": "sorcerer",
-            "text": "Or whatever that means heh.",
+            "text": "On my hat, to be precise, heh.",
             "next_dialogue": 16
         },
         {
@@ -123,7 +123,7 @@
         {
             "id": 17,
             "speaker": "sorcerer",
-            "text": "Wait, it is calling…",
+            "text": "Wait, it is calling...",
             "next_dialogue": 18
         },
         {
@@ -256,7 +256,7 @@
             "required_achievements": [
                 "THE_SORCERER_FLOWER"
             ],
-            "text": "Welcome back hero. ",
+            "text": "Welcome back hero.",
             "next_dialogue": 33
         },
         {
@@ -268,7 +268,7 @@
         {
             "id": 34,
             "speaker": "sorcerer",
-            "text": "...",
+            "text": "......",
             "next_dialogue": 35
         },
         {
@@ -323,7 +323,7 @@
                     "next_dialogue": 43
                 },
                 {
-                    "text": "It's not important",
+                    "text": "It's not important.",
                     "next_dialogue": 46
                 }
             ]
@@ -343,9 +343,8 @@
         {
             "id": 45,
             "speaker": "sorcerer",
-            "text": "Farwell, UASU",
-            "alternative_text": "I’ll stay here, do not fret. I am always here heh.",
-            
+            "text": "Farwell, UASU.",
+            "is_end": true,
             "new_achievements": [
                 "WHAT_IS_CALLING_ME_?"
             ]
@@ -360,12 +359,17 @@
         {
             "id": 47,
             "speaker": "sorcerer",
-            "text": "Goodbye then, and good luck little bird.",
-            "alternative_text": "I’ll stay here, do not fret. I am always here heh",
-
+            "text": "Goodbye then, and good luck little bird.",            
+            "is_end": true,
             "new_achievements": [
                 "WHAT_IS_CALLING_ME_?"
             ]
+        },
+        {
+            "id": 51,
+            "speaker": "sorcerer",
+            "text": "I’ll stay here, do not fret. I am always here, heh.",
+            "is_end": true
         }
 
     ]
