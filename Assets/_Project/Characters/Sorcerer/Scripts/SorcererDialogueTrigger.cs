@@ -7,12 +7,16 @@ public class SorcererDialogueTrigger : DialogueTrigger
     {
         if (PlayerManager.Instance.HasAchievement("THE_SORCERER_FLOWER"))
         {
-            return 24;
+            return 32;
         }
         if (PlayerManager.Instance.HasAchievement("GOOD_LUCK_LITTLE_HERO"))
         {
-            return 23;
+            return 31;
         }
-        return 0;
+        if (PlayerManager.Instance.HasAchievement("WHAT_IS_CALLING_ME_?"))
+        {
+            return 47;
+        }
+        return 40;
     }
 }

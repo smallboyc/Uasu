@@ -213,7 +213,7 @@
             "text": "Come back to me when you find them. I’ll be waiting.",
             "choices": [
                 {
-                    "text": "Could you repeat, please?",
+                    "text": "Could you repeat?",
                     "next_dialogue": 25
                 },
                 {
@@ -344,7 +344,12 @@
             "id": 45,
             "speaker": "sorcerer",
             "text": "Farwell, UASU",
-            "alternative_text": "I’ll stay here, do not fret. I am always here heh."
+            "alternative_text": "I’ll stay here, do not fret. I am always here heh.",
+            
+            "new_achievements": [
+                "WHAT_IS_CALLING_ME_?"
+            ]
+
         },
         {
             "id": 46,
@@ -356,7 +361,12 @@
             "id": 47,
             "speaker": "sorcerer",
             "text": "Goodbye then, and good luck little bird.",
-            "alternative_text": "I’ll stay here, do not fret. I am always here heh"
+            "alternative_text": "I’ll stay here, do not fret. I am always here heh",
+
+            "new_achievements": [
+                "WHAT_IS_CALLING_ME_?"
+            ]
         }
+
     ]
 }
