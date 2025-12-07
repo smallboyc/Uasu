@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2065870816566224501, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
+    - target: {fileID: 2065870816566224501, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065870816566224501, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3957100860259852744, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
+    - target: {fileID: 2065870816566224501, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963165383627087877, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2963165383627087877, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
       value: 0.3820755
@@ -30,6 +50,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2963165383627087877, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963165383627087877, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 1970753514, guid: 306b9b4b42a093746baea775217b69e4, type: 3}
+    - target: {fileID: 2963165383627087877, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 1666286584, guid: daecda1251f4ee746971eb0d18920ca8, type: 3}
+    - target: {fileID: 2963165383627087877, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: -2107207355, guid: ba7e76ad87c6e294a8b9ffa561352ff1, type: 3}
+    - target: {fileID: 4689477262442793558, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689477262442793558, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1666286584, guid: daecda1251f4ee746971eb0d18920ca8, type: 3}
+    - target: {fileID: 4689477262442793558, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689477262442793558, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689477262442793558, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5405092845845015326, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
@@ -67,6 +119,14 @@ PrefabInstance:
     - target: {fileID: 7092822734768780203, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
       propertyPath: m_SizeDelta.y
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092822734768780203, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092822734768780203, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7092822734768780203, guid: 1daa2378f7826457a8f021fcd8a109ed, type: 3}
       propertyPath: m_LocalPosition.x
