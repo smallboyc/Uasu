@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class Breakable : MonoBehaviour
 {
     [SerializeField] private GameObject _intactObject;
@@ -7,9 +8,12 @@ public class Breakable : MonoBehaviour
     [SerializeField] private GameObject _target;
     private GameObject _targetInstance;
     private float _offset = 0.95f;
+    private Collider _collider;
     [SerializeField] private LayerMask _layer;
     void Awake()
     {
+        _collider = GetComponent<Collider>();
+
         if (_intactObject)
         {
             _intactObject.SetActive(true);
@@ -28,6 +32,9 @@ public class Breakable : MonoBehaviour
         Destroy(_intactObject);
         Destroy(_targetInstance);
         _breakObject.SetActive(true);
+
+        ApplyDamage(collision);
+        _collider.enabled = false;
     }
 
     void FixedUpdate()
@@ -41,5 +48,15 @@ public class Breakable : MonoBehaviour
                 Debug.DrawRay(transform.position, -transform.up * hit.distance, Color.red);
             }
         }
+    }
+
+    void ApplyDamage(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerManager.Instance.HealthManager.Hurt();
+        }
+
+        //TODO : Same thing for the enemy here.
     }
 }
