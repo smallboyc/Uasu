@@ -22,6 +22,8 @@ public class PlayerHealthBarManager : MonoBehaviour
     public Image fill;
 
 
+
+
     private void Awake()
     {
         //Singleton
@@ -47,5 +49,7 @@ public class PlayerHealthBarManager : MonoBehaviour
         fill.color = gradient.Evaluate(_slider.normalizedValue);
     }
 
+
+    public float GetMaxHealth() => _slider.maxValue;
 
 }

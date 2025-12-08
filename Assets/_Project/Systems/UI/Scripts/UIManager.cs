@@ -79,6 +79,13 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        if (GameObject.FindWithTag("Player"))
+        {
+            Instance.ShowOnly(PanelType.HUD);
+            Debug.Log("Player HUD Loaded!");
+            return;
+        }
+
         Instance.HideAll();
     }
 

@@ -17,6 +17,15 @@ public class PlayerHealthManager : MonoBehaviour
         PlayerHealthBarManager.Instance.SetHealth(Health);
     }
 
+    public void Heal()
+    {
+        if (Health == PlayerHealthBarManager.Instance.GetMaxHealth())
+            return;
+
+        Health++;
+        PlayerHealthBarManager.Instance.SetHealth(Health);
+    }
+
     //Used as an Event in the Hurt Animation
     public void EndHurt()
     {
