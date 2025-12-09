@@ -1,24 +1,24 @@
 using UnityEngine;
 
-public class HealthBarelManager : MonoBehaviour
+public class HealthBarrelManager : MonoBehaviour
 {
     [Header("Prefabs")]
-    [SerializeField] private GameObject _emptyBarel;
-    [SerializeField] private GameObject _filledBarel;
+    [SerializeField] private GameObject _emptyBarrel;
+    [SerializeField] private GameObject _filledBarrel;
     [SerializeField] private GameObject _healthItem;
     [Header("Health Data")]
     [SerializeField] private int _minHealth = 1;
     [SerializeField] private int _maxHealth = 2;
     //
-    private GameObject _currentBarel;
+    private GameObject _currentBarrel;
     private bool _playerInRange;
     private bool _used;
 
 
     void Start()
     {
-        if (_filledBarel)
-            _currentBarel = Instantiate(_filledBarel, transform.position, Quaternion.Euler(90f, 0f, 0f));
+        if (_filledBarrel)
+            _currentBarrel = Instantiate(_filledBarrel, transform.position, Quaternion.Euler(90f, 0f, 0f));
     }
 
     void Update()
@@ -29,9 +29,9 @@ public class HealthBarelManager : MonoBehaviour
         if (PlayerInputManager.Instance.InteractPressed && !_used)
         {
             _used = true;
-            Destroy(_currentBarel);
-            if (_emptyBarel)
-                _currentBarel = Instantiate(_emptyBarel, transform.position, Quaternion.Euler(90f, 0f, 0f));
+            Destroy(_currentBarrel);
+            if (_emptyBarrel)
+                _currentBarrel = Instantiate(_emptyBarrel, transform.position, Quaternion.Euler(90f, 0f, 0f));
             InstantiateHealth();
         }
     }

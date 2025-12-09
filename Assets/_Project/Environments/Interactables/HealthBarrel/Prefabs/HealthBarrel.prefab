@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 978241306123084720}
   - component: {fileID: 3746523310986701805}
   m_Layer: 0
-  m_Name: HealthBarel
+  m_Name: HealthBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822a091e2c6ba4e12b04225a06189e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _emptyBarel: {fileID: 2472290678067413444, guid: 8548e919c13de40df8e32e3722db8209, type: 3}
-  _filledBarel: {fileID: 398549447363884367, guid: 0f58ff52c748841e0957d831774979d9, type: 3}
+  _emptyBarrel: {fileID: 2472290678067413444, guid: 8548e919c13de40df8e32e3722db8209, type: 3}
+  _filledBarrel: {fileID: 398549447363884367, guid: 0f58ff52c748841e0957d831774979d9, type: 3}
   _healthItem: {fileID: 1337736715375648906, guid: 7bb734c52b1224aa7afef01e6ca984c4, type: 3}
   _minHealth: 1
   _maxHealth: 3
