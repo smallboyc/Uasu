@@ -50,6 +50,21 @@ public class PlayerManager : CharacterManager
     //Checkpoint
     public Transform Checkpoint;
 
+    //Inventory
+    [HideInInspector] public enum CollectableItems { Sword, Lever, Health }
+    public Dictionary<CollectableItems, GameObject> Collectables = new();
+    public Transform HandHolder;
+    public Transform BackHolder;
+    public bool HoldSword;
+
+    private void GetHolders()
+    {
+        if (HandHolder == null)
+            HandHolder = GameObject.FindGameObjectWithTag("HandHolder").transform;
+        if (BackHolder == null)
+            BackHolder = GameObject.FindGameObjectWithTag("BackHolder").transform;
+    }
+
 
     // Flags : used to determine all achievements unlocked 
     private HashSet<string> _achievements = new();
@@ -108,9 +123,8 @@ public class PlayerManager : CharacterManager
         PlayerStateMachine.Initialize(_idleState);
         // AddAchievement("THE_SORCERER_FLOWER");
         IsometricCameraManager.Instance.IsometricCamera.Follow = transform;
-        Debug.Log("AHAH");
         PlayerHealthBarManager.Instance.SetMaxHealth(HealthManager.Health);
-        Debug.Log("OHOH");
+        GetHolders();
     }
 
     protected override void Update()
