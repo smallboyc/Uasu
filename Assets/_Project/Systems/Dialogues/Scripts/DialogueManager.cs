@@ -51,7 +51,7 @@ public class DialogueManager : MonoBehaviour
             return _instance;
         }
     }
-    private enum Language { EN, FR }
+    private enum Language { ES, EN }
     [HideInInspector] public DialoguePanelManager DialoguePanelManager;
 
     [Header("Dialogue Language")]
@@ -133,7 +133,7 @@ public class DialogueManager : MonoBehaviour
     }
     // 
 
-    private string GetLanguage(Language language) => language == Language.EN ? "en" : "fr";
+    private string GetLanguage(Language language) => language == Language.EN ? "en" : "es";
     private string GetDialoguePath() => Path.Combine(Application.streamingAssetsPath, $"dialogue_{GetLanguage(_currentLanguage)}.json");
 
     private void LoadSpeakerPortraits()

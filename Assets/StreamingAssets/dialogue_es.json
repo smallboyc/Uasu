@@ -3,14 +3,14 @@
         {
             "id": 0,
             "speaker": "sorcerer",
-            "text": "Oh my, good morning. I was so deep asleep I didn't see you coming.",
+            "text": "Oh vaya, buenos días. Estaba tan profundamente dormido que no te vi venir.",
             "choices": [
                 {
-                    "text": "What are you?",
+                    "text": "¿Qué eres?",
                     "next_dialogue": 1
                 },
                 {
-                    "text": "Who are you?",
+                    "text": "¿Quién eres?",
                     "next_dialogue": 4
                 }
             ]
@@ -18,68 +18,68 @@
         {
             "id": 1,
             "speaker": "uasu",
-            "text": "You don't look like other stuff around here.",
+            "text": "No te ves como que pertenezcas a este lugar.",
             "next_dialogue": 2
         },
         {
             "id": 2,
             "speaker": "uasu",
-            "text": "What are you?",
+            "text": "¿Qué eres?",
             "next_dialogue": 3
         },
         {
             "id": 4,
             "speaker": "uasu",
-            "text": "You are not like the others. You talk.",
+            "text": "No eres como los demás. Puedes hablar.",
             "next_dialogue": 5
         },
         {
             "id": 5,
             "speaker": "uasu",
-            "text": "Who are you?",
+            "text": "¿Quién eres?",
             "next_dialogue": 6
         },
         {
             "id": 3,
             "speaker": "sorcerer",
-            "text": "Well, I'm a little 'magical', you see.",
+            "text": "Bueno, podría decrise que soy un poco ‘mágico’.",
             "next_dialogue": 8
         },
         {
             "id": 6,
             "speaker": "sorcerer",
-            "text": "Me? Oh, no one. I am just a creature.",
+            "text": "¿Yo? Oh, nadie. Solo soy una criatura.",
             "next_dialogue": 7
         },
         {
             "id": 7,
             "speaker": "sorcerer",
-            "text": "Sometimes I am here. Sometimes I am there...",
+            "text": "A veces estoy aquí. A veces estoy allá...",
             "next_dialogue": 3
         },
         {
             "id": 8,
             "speaker": "sorcerer",
-            "text": "Anywho. Greetings little hero.",
+            "text": "En fin. Saludos pequeño héroe.",
             "next_dialogue": 9
         },
         {
             "id": 9,
             "speaker": "sorcerer",
-            "text": "Hope you don’t mind me not stretching your hand.",
+            "text": "Espero que no te moleste que no estreche mi mano.",
             "next_dialogue": 10
         },
         {
             "id": 10,
             "speaker": "sorcerer",
-            "text": "Are you by any chance what they call a 'Siffler'?",
+            "text": "¿Podría ser que sea lo que llaman ‘Siffler’?",
             "choices": [
                 {
-                    "text": "Yes I am.",
+                    "text": "Sí, lo soy.",
                     "next_dialogue": 11
                 },
                 {
-                    "text": "I... don't know.",
+                    "text": "Yo... no lo sé.",
                     "next_dialogue": 13
                 }
             ]
@@ -87,146 +87,146 @@
         {
             "id": 11,
             "speaker": "uasu",
-            "text": "Yes, I believe I am.",
+            "text": "Sí, creo que lo soy.",
             "next_dialogue": 12
         },
         {
             "id": 12,
             "speaker": "uasu",
-            "text": "My memories though, are a bit fuzzy...",
+            "text": "Aunque mis recuerdos están un poco borrosos...",
             "next_dialogue": 15
         },
         {
             "id": 13,
             "speaker": "uasu",
-            "text": "I... don't know.",
+            "text": "Yo... no lo sé.",
             "next_dialogue": 14
         },
         {
             "id": 14,
             "speaker": "uasu",
-            "text": "I'm quite confused. This island, these creatures. I can't even remember what I am.",
+            "text": "Estoy bastante confundido. Esta isla, estas criaturas. Ni siquiera puedo recordar qué soy.",
             "next_dialogue": 17
         },
         {
             "id": 15,
             "speaker": "sorcerer",
-            "text": "Fascinating, the dark forces that run savages on this island could not get a hold of you.",
+            "text": "Fascinante, las fuerzas oscuras que causan estragos en esta isla no han logrado atraparte.",
             "next_dialogue": 16
         },
         {
             "id": 16,
             "speaker": "sorcerer",
-            "text": "Truly fascinating.",
+            "text": "Verdaderamente fascinante.",
             "next_dialogue": 20
         },
         {
             "id": 17,
             "speaker": "sorcerer",
-            "text": "Oh, but you are a Siffler.",
+            "text": "Oh, pero tú eres un Siffler.",
             "next_dialogue": 18
         },
         {
             "id": 18,
             "speaker": "sorcerer",
-            "text": "I was not sure about the “other ones”, but you.",
+            "text": "No estaba seguro acerca de los “otros”, pero tú...",
             "next_dialogue": 19
         },
         {
             "id": 19,
             "speaker": "sorcerer",
-            "text": "You are one of them, just not like those ones...",
+            "text": "Tú eres uno de ellos, solo que no como esos...",
             "next_dialogue": 15
         },
         {
             "id": 20,
             "speaker": "sorcerer",
-            "text": "Thankfully I know a tad of Siflet from my journeys, what a beautifully witty language you people invented.",
+            "text": "Por suerte sé un poco de Siflet por mis viajes, qué idioma tan bellamente ingenioso habeis inventado.",
             "next_dialogue": 21
         },
         {
             "id": 21,
             "speaker": "sorcerer",
-            "text": "Anywho. I’ve been wandering this woods looking for its secrets.",
+            "text": "En fin. He estado vagando por estos bosques buscando sus secretos.",
             "next_dialogue": 22
         },
         {
             "id": 22,
             "speaker": "sorcerer",
-            "text": "I feel something hiding not very far from here. I can hear its whistle.",
+            "text": "Siento que algo se esconde no muy lejos de aquí. Puedo oír su silbido.",
             "next_dialogue": 23
         },
         {
             "id": 23,
             "speaker": "sorcerer",
-            "text": "And this, a stone from the heavens, has fallen into my arms.",
+            "text": "Y esto, una piedra de los cielos, ha caído en mis brazos.",
             "next_dialogue": 24
         },
         {
             "id": 24,
             "speaker": "sorcerer",
-            "text": "On my hat, to be precise, heh.",
+            "text": "En mi sombrero, para ser preciso, je.",
             "next_dialogue": 25
         },
         {
             "id": 25,
             "speaker": "sorcerer",
-            "text": "It hides a purpose so great I cannot begin to fathom it, I am sure of it.",
+            "text": "Esconde un propósito tan grande que no puedo ni empezar a comprenderlo, estoy seguro.",
             "next_dialogue": 26
         },
         {
             "id": 26,
             "speaker": "sorcerer",
-            "text": "Wait, it is calling...",
+            "text": "Espera, está llamando...",
             "next_dialogue": 27
         },
         {
             "id": 27,
             "speaker": "sorcerer",
-            "text": "Calling for you.",
+            "text": "Llamándote a ti.",
             "next_dialogue": 28
         },
         {
             "id": 28,
             "speaker": "sorcerer",
-            "text": "Mmmm. Very well, I'll pass this talisman onto you.",
+            "text": "Mmmm. Muy bien, te daré este talismán.",
             "next_dialogue": 29
         },
         {
             "id": 29,
             "speaker": "sorcerer",
-            "text": "But only if you assist me first.",
+            "text": "Pero solo si me ayudas primero.",
             "next_dialogue": 30
         },
         {
             "id": 30,
             "speaker": "sorcerer",
-            "text": "You see, I am lacking those so-called arms, so it is a hard task for me to recollect what I am seeking.",
+            "text": "Verás, carezco de lo que se conoce como brazos, así que es una tarea difícil para mí recolectar lo que busco.",
             "next_dialogue": 31
         },
         {
             "id": 31,
             "speaker": "sorcerer",
-            "text": "Luckily, you possess not only one but two of them.",
+            "text": "Por suerte, tú posees no solo uno, sino dos de ellos.",
             "next_dialogue": 32
         },
         {
             "id": 32,
             "speaker": "sorcerer",
-            "text": "How good for me.",
+            "text": "Qué suerte la mia",
             "next_dialogue": 33
         },
         {
             "id": 33,
             "speaker": "sorcerer",
-            "text": "Will you help me then, hero?",
+            "text": "¿Me ayudarás entonces, héroe?",
             "choices": [
                 {
-                    "text": "Of course.",
+                    "text": "Por supuesto.",
                     "next_dialogue": 34
                 },
                 {
-                    "text": "I guess...",
+                    "text": "Supongo...",
                     "next_dialogue": 35
                 }
             ]
@@ -234,56 +234,56 @@
         {
             "id": 34,
             "speaker": "uasu",
-            "text": "Of course. I'll do whathever I can to help.",
+            "text": "Por supuesto. Haré lo que pueda para ayudar.",
             "next_dialogue": 36
         },
         {
             "id": 35,
             "speaker": "uasu",
-            "text": "Yes... I suppose. But I don't really know y-",
+            "text": "Sí... supongo. Pero realmente no te conoz-",
             "next_dialogue": 36
         },
         {
             "id": 36,
             "speaker": "sorcerer",
-            "text": "Wonderful!",
+            "text": "¡Maravilloso!",
             "next_dialogue": 37
         },
         {
             "id": 37,
             "speaker": "sorcerer",
-            "text": "Anywho, listen closely...",
+            "text": "En fin, escucha atentamente...",
             "next_dialogue": 38
         },
         {
             "id": 38,
             "speaker": "sorcerer",
-            "text": "Bring me HER, who grows and feeds from the path to the castle.",
+            "text": "Tráeme a ELLA, quien crece y se alimenta del camino hacia el castillo.",
             "next_dialogue": 39
         },
         {
             "id": 39,
             "speaker": "sorcerer",
-            "text": "HIM, who used to fly, hides cowardly from the glowing sun near the statue of your people.",
+            "text": "A ÉL, quien solía volar, se esconde cobardemente del sol brillante cerca de la estatua de tu gente.",
             "next_dialogue": 40
         },
         {
             "id": 40,
             "speaker": "sorcerer",
-            "text": "And IT, a piece of the sky, broken next to some rocks.",
+            "text": "Y a ELLO, un pedazo del cielo, roto junto a unas rocas.",
             "next_dialogue": 41
         },
         {
             "id": 41,
             "speaker": "sorcerer",
-            "text": "Come back to me when you find them. I’ll be waiting.",
+            "text": "Vuelve cuando los encuentres. Estaré esperando.",
             "choices": [
                 {
-                    "text": "Could you repeat?",
+                    "text": "¿Podrías repetir?",
                     "next_dialogue": 42
                 },
                 {
-                    "text": "Wait, what's your name?",
+                    "text": "Espera, ¿cómo te llamas?",
                     "next_dialogue": 43
                 }
             ]
@@ -291,44 +291,44 @@
         {
             "id": 42,
             "speaker": "uasu",
-            "text": "Could you repeat the riddles? I don't think I got them.",
+            "text": "¿Podrías repetir los acertijos? Creo que no los he entendido.",
             "next_dialogue": 38
         },
         {
             "id": 43,
             "speaker": "uasu",
-            "text": "Got it. But one last thing.",
+            "text": "Entendido. Pero una última cosa.",
             "next_dialogue": 44
         },
         {
             "id": 44,
             "speaker": "uasu",
-            "text": "Could I know your name before I go?",
+            "text": "¿Podría saber tu nombre antes de irme?",
             "next_dialogue": 45
         },
         {
             "id": 45,
             "speaker": "sorcerer",
-            "text": "My name you ask? A truly wise question.",
+            "text": "¿Mi nombre? Una pregunta realmente sabia.",
             "next_dialogue": 46
         },
         {
             "id": 46,
             "speaker": "sorcerer",
-            "text": "Sadly I have no answer.",
+            "text": "Lamentablemente no tengo respuesta.",
             "next_dialogue": 47
         },
         {
             "id": 47,
             "speaker": "sorcerer",
-            "text": "But you can call me Sorcerer, if that suffices, heh.",
+            "text": "Pero puedes llamarme Hechicero, si eso te basta, je.",
             "next_dialogue": 48
         },
         {
             "id": 48,
             "speaker": "sorcerer",
-            "text": "Now, good luck, little hero!",
-            "alternative_text": "Still waiting, and so are they. Go on, hero.",
+            "text": "Ahora, ¡buena suerte, pequeño héroe!",
+            "alternative_text": "Sigo esperando, y ellos también. Adelante, héroe.",
             "next_dialogue": 49,
             "new_achievements": [
                 "GOOD_LUCK_LITTLE_HERO"
@@ -340,13 +340,13 @@
             "required_achievements": [
                 "THE_SORCERER_FLOWER"
             ],
-            "text": "Welcome back hero.",
+            "text": "Bienvenido de nuevo, héroe.",
             "next_dialogue": 50
         },
         {
             "id": 50,
             "speaker": "sorcerer",
-            "text": "You have reunited the triplets? How wonderful, let me see.",
+            "text": "¿Has reunido a los trillizos? Maravilloso, déjame ver.",
             "next_dialogue": 51
         },
         {
@@ -358,56 +358,56 @@
         {
             "id": 52,
             "speaker": "sorcerer",
-            "text": "Back together and back with me, as always.",
+            "text": "De nuevo juntos y de nuevo conmigo, como siempre.",
             "next_dialogue": 53
         },
         {
             "id": 53,
             "speaker": "sorcerer",
-            "text": "I suppose this belongs to you now.",
+            "text": "Supongo que esto ahora te pertenece.",
             "next_dialogue": 54
         },
         {
             "id": 54,
             "speaker": "sorcerer",
-            "text": " 'YOU RECEIVED THE ARTIFACT' ",
+            "text": " 'HAS RECIBIDO EL ARTEFACTO' ",
             "next_dialogue": 55
         },
         {
             "id": 55,
             "speaker": "sorcerer",
-            "text": "Must be sad seeing your people turn into those malicious entities.",
+            "text": "Debe ser triste ver a tu gente convertirse en esas entidades maliciosas.",
             "next_dialogue": 56
         },
         {
             "id": 56,
             "speaker": "sorcerer",
-            "text": "But do not lose hope, hero, what you need to save them it's hidden somewhere in these woods.",
+            "text": "Pero no pierdas la esperanza, héroe, lo que necesitas para salvarlos está escondido en algún lugar de estos bosques.",
             "next_dialogue": 57
         },
         {
             "id": 57,
             "speaker": "sorcerer",
-            "text": "You just have to let it find you.",
+            "text": "Solo tienes que dejar que te encuentre.",
             "next_dialogue": 58
         },
         {
             "id": 58,
             "speaker": "sorcerer",
-            "text": "Oh silly me, I almost forgot.",
+            "text": "Ay, qué tonto soy, casi lo olvido.",
             "next_dialogue": 59
         },
         {
             "id": 59,
             "speaker": "sorcerer",
-            "text": "May I ask, perhaps, the hero’s name?",
+            "text": "¿Puedo preguntar el nombre del héroe?",
             "choices": [
                 {
-                    "text": "My name is...",
+                    "text": "Mi nombre es...",
                     "next_dialogue": 60
                 },
                 {
-                    "text": "I don't remember.",
+                    "text": "No lo recuerdo.",
                     "next_dialogue": 62
                 }
             ]
@@ -415,7 +415,7 @@
         {
             "id": 60,
             "speaker": "uasu",
-            "text": "I think I remember. It was something like...",
+            "text": "Creo que lo recuerdo. Era algo como...",
             "next_dialogue": 61
         },
         {
@@ -427,47 +427,46 @@
         {
             "id": 62,
             "speaker": "uasu",
-            "text": "I'm sorry. I don't remember.",
+            "text": "Lo siento. No lo recuerdo.",
             "next_dialogue": 63
         },
         {
             "id": 63,
             "speaker": "uasu",
-            "text": "Something in this island...",
+            "text": "Algo en esta isla tiene la culpa...",
             "next_dialogue": 67
         },
         {
             "id": 64,
             "speaker": "sorcerer",
-            "text": "UASU?",
+            "text": "¿UASU?",
             "next_dialogue": 65
         },
         {
             "id": 65,
             "speaker": "sorcerer",
-            "text": "... Of course. Of course it’s you.",
+            "text": "... Por supuesto. Por supuesto que eres tú.",
             "next_dialogue": 66
         },
         {
             "id": 66,
             "speaker": "sorcerer",
-            "text": "Farwell, UASU.",
+            "text": "Adiós, UASU.",
             "is_end": true,
             "new_achievements": [
                 "WHAT_IS_CALLING_ME_?"
             ]
-
         },
         {
             "id": 67,
             "speaker": "sorcerer",
-            "text": "Misterious, I understand.",
+            "text": "Misterioso, lo entiendo.",
             "next_dialogue": 68
         },
         {
             "id": 68,
             "speaker": "sorcerer",
-            "text": "Goodbye then and good luck, little bird.",
+            "text": "Entonces adiós y buena suerte, pajarillo.",
             "is_end": true,
             "new_achievements": [
                 "WHAT_IS_CALLING_ME_?"
@@ -476,9 +475,8 @@
         {
             "id": 69,
             "speaker": "sorcerer",
-            "text": "I’ll stay here, do not fret. I am always here, heh.",
+            "text": "Me quedaré aquí, no temas. Siempre estoy aquí, je.",
             "is_end": true
         }
-
     ]
 }
