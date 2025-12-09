@@ -5,14 +5,19 @@ public class SorcererDialogueTrigger : DialogueTrigger
 {
     protected override int GetCurrentDialogueID()
     {
+        if (PlayerManager.Instance.HasAchievement("WHAT_IS_CALLING_ME_?"))
+        {
+            return 69;
+        }
         if (PlayerManager.Instance.HasAchievement("THE_SORCERER_FLOWER"))
         {
-            return 24;
+            return 49;
         }
         if (PlayerManager.Instance.HasAchievement("GOOD_LUCK_LITTLE_HERO"))
         {
-            return 23;
+            return 48;
         }
+       
         return 0;
     }
 }

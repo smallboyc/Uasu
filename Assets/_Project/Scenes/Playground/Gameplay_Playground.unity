@@ -927,6 +927,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4609155709904463969, guid: 664a731bc49d441ff9f0d0fee75268cc, type: 3}
+      propertyPath: _currentLanguage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609155709904463969, guid: 664a731bc49d441ff9f0d0fee75268cc, type: 3}
       propertyPath: DialoguePanelManager
       value: 
       objectReference: {fileID: 1195409699}
