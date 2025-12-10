@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165bdc2d5d29a404b8df3bc4e7229524, type: 3}
+  m_Name: Key
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 617585393629430205, guid: 619e426e8162c6a45b91da0a1953cb25, type: 3}
+  type: 2
+  description: The key to your heart
