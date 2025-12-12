@@ -9,7 +9,8 @@ public enum PanelType
     HUD,
     Dialogue,
     Pause,
-    GameOver
+    GameOver,
+    Transition
 }
 
 [System.Serializable]
@@ -81,7 +82,9 @@ public class UIManager : MonoBehaviour
 
         if (GameObject.FindWithTag("Player"))
         {
-            Instance.ShowOnly(PanelType.HUD);
+            Instance.HideAll();
+            Instance.Show(PanelType.HUD);
+            Instance.Show(PanelType.Transition);
             Debug.Log("Player HUD Loaded!");
             return;
         }

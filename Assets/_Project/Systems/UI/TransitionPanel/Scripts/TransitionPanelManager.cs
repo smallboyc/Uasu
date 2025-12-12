@@ -4,24 +4,33 @@ using UnityEngine;
 public class TransitionPanelManager : MonoBehaviour
 {
     private UnityEngine.UI.Image _image;
+    [SerializeField] private Color color;
     [SerializeField] private float _fadeDuration = 4.0f;
+    private float _currentTime;
     void Awake()
     {
         _image = GetComponent<UnityEngine.UI.Image>();
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        // _image.color = Color.white;
-        // _image.color.a
+        gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
+    private void OnEnable()
+    {
+        color.a = 1.0f;
+        _image.color = color;
+        _currentTime = 0.0f;
+    }
+
     void Update()
     {
-        if (Time.time > 5.0f)
+        if (_currentTime < _fadeDuration)
         {
-            _image.color = Color.red;
+            _currentTime += Time.deltaTime;
+            color.a = Mathf.Clamp01(1.0f - (_currentTime / _fadeDuration));
+            _image.color = color;
+        }
+        else
+        {
+            gameObject.SetActive(false);
         }
 
     }
