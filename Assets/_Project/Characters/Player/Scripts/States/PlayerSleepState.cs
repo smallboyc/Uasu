@@ -6,6 +6,7 @@ public class PlayerSleepState : State
     private PlayerManager _playerManager = PlayerManager.Instance;
     public override void Enter()
     {
+        IsometricCameraManager.Instance.ActiveCameraZoomEffect(2.0f);
         _playerManager.AnimationManager.PlaySleepAnimation();
     }
 
@@ -20,5 +21,6 @@ public class PlayerSleepState : State
     public override void Exit()
     {
         _playerManager.AnimationManager.StopSleepAnimation();
+        IsometricCameraManager.Instance.CancelCameraZoomEffect(2.5f);
     }
 }
