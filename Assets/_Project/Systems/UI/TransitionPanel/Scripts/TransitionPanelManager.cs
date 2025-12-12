@@ -10,7 +10,6 @@ public class TransitionPanelManager : MonoBehaviour
     void Awake()
     {
         _image = GetComponent<UnityEngine.UI.Image>();
-        gameObject.SetActive(false);
     }
 
     private void OnEnable()
