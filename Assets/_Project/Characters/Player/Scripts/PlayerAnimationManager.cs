@@ -4,6 +4,15 @@ using UnityEngine.TextCore.Text;
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimationManager : CharacterAnimationManager
 {
+    //Sleep
+    public void PlaySleepAnimation()
+    {
+        _animator.SetBool("IsSleeping", true);
+    }
+    public void StopSleepAnimation()
+    {
+        _animator.SetBool("IsSleeping", false);
+    }
     //Idle
     public void PlayIdleAnimation()
     {

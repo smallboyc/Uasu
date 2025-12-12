@@ -15,6 +15,7 @@ public class PlayerManager : CharacterManager
     public static PlayerManager Instance => _instance;
     // State Machine
     public StateMachine PlayerStateMachine;
+    private PlayerSleepState _sleepState;
     private PlayerIdleState _idleState;
     private PlayerWalkState _walkState;
     private PlayerAerialState _aerialState;
@@ -26,6 +27,7 @@ public class PlayerManager : CharacterManager
 
 
     // State Getter
+    public PlayerSleepState SleepState => _sleepState;
     public PlayerIdleState IdleState => _idleState;
     public PlayerWalkState WalkState => _walkState;
     public PlayerAerialState AerialState => _aerialState;
@@ -42,6 +44,14 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerLockManager LockManager;
     [HideInInspector] public PlayerHealthManager HealthManager;
     [HideInInspector] public PlayerCollisionManager CollisionManager;
+
+    //Player Can Start play
+    public bool IsPlayerActive;
+
+    public void ActivePlayer()
+    {
+        IsPlayerActive = true;
+    }
 
     //Sounds
     [Header("Sounds")]
@@ -106,6 +116,7 @@ public class PlayerManager : CharacterManager
         CollisionManager = GetComponent<PlayerCollisionManager>();
 
         // States
+        _sleepState = new PlayerSleepState();
         _idleState = new PlayerIdleState();
         _walkState = new PlayerWalkState();
         _aerialState = new PlayerAerialState();
@@ -120,7 +131,7 @@ public class PlayerManager : CharacterManager
         base.Start();
         // State Machine
         PlayerStateMachine = new StateMachine();
-        PlayerStateMachine.Initialize(_idleState);
+        PlayerStateMachine.Initialize(_sleepState);
         // AddAchievement("THE_SORCERER_FLOWER");
         IsometricCameraManager.Instance.IsometricCamera.Follow = transform;
         PlayerHealthBarManager.Instance.SetMaxHealth(HealthManager.Health);
