@@ -85,7 +85,6 @@ public class UIManager : MonoBehaviour
 
         if (scene.name.Contains("Cinematic"))
         {
-            Instance.HideAll();
             Instance.Show(PanelType.Video);
             return;
         }
@@ -117,6 +116,17 @@ public class UIManager : MonoBehaviour
     {
         foreach (var kvp in panels)
         {
+            kvp.Value.Hide();
+        }
+    }
+
+
+    public void HideAllExcept(PanelType type)
+    {
+        foreach (var kvp in panels)
+        {
+            if (kvp.Value.type == type)
+                continue;
             kvp.Value.Hide();
         }
     }

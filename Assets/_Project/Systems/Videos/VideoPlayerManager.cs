@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
@@ -19,7 +20,18 @@ public class VideoPlayerManager : MonoBehaviour
         _videoPlayer.clip = _video;
         _videoPlayer.loopPointReached += OnVideoFinished;
         _videoPlayer.playbackSpeed = _speed;
+
+        //little trick to hide the cliping video eheh,
+        StartCoroutine(RemovePanels());
     }
+
+    private IEnumerator RemovePanels()
+    {
+        yield return new WaitForSeconds(2.0f);
+        UIManager.Instance.HideAllExcept(PanelType.Video);
+    }
+
+
 
     void Update()
     {
