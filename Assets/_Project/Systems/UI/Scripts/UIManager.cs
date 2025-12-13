@@ -92,6 +92,7 @@ public class UIManager : MonoBehaviour
 
         if (scene.name == "Level_01_Main" && GameObject.FindWithTag("Player"))
         {
+            DialogueManager.Instance.DialogueIsActive = true;
             Instance.HideAll();
             // Instance.HideAll();
             Instance.Show(PanelType.Transition);
