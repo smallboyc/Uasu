@@ -9,6 +9,7 @@ public enum PanelType
     HUD,
     Dialogue,
     Pause,
+    Options,
     GameOver,
     Transition,
     Video,
@@ -99,6 +100,11 @@ public class UIManager : MonoBehaviour
             Debug.Log("Player HUD Loaded!");
             return;
         }
+    }
+
+    public void ShowOptions()
+    {
+        panels[PanelType.Options].Show();
     }
 
     public void Show(PanelType type)
