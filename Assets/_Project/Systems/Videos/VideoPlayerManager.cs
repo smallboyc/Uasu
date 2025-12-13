@@ -4,20 +4,26 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 [RequireComponent(typeof(VideoPlayer))]
+[RequireComponent(typeof(AudioSource))]
 public class VideoPlayerManager : MonoBehaviour
 {
     [SerializeField] private VideoClip _video;
     [SerializeField] private float _speed = 1.0f;
     [SerializeField] private string _sceneToLoad;
     private VideoPlayer _videoPlayer;
+    private AudioSource _audioSource;
 
     void Awake()
     {
         _videoPlayer = GetComponent<VideoPlayer>();
+        _audioSource = GetComponent<AudioSource>();
     }
     void Start()
     {
         _videoPlayer.clip = _video;
+        _audioSource.volume = SoundManager.Instance.GetVolume();
+        _videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        _videoPlayer.SetTargetAudioSource(0, _audioSource);
         _videoPlayer.loopPointReached += OnVideoFinished;
         _videoPlayer.playbackSpeed = _speed;
 
@@ -46,4 +52,5 @@ public class VideoPlayerManager : MonoBehaviour
     {
         SceneManager.LoadScene(_sceneToLoad);
     }
+
 }
