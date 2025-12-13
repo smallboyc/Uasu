@@ -12,43 +12,46 @@ public class PlayerIdleState : State
 
     public override void Update()
     {
-        // -> We don't want to move during dialogue session.
-        if (DialogueManager.Instance.DialogueIsRunning)
-            return;
-        //
-        _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController, _playerManager.LockManager);
-        _playerManager.LockManager.TargetLockEnemies();
-        //
-
-        // -> Move
-        if (_playerManager.LocomotionManager.IsMoving)
+        if (_playerManager.IsPlayerActive)
         {
-            _playerManager.PlayerStateMachine.ChangeState(_playerManager.WalkState);
-        }
+            // -> We don't want to move during dialogue session.
+            if (DialogueManager.Instance.DialogueIsRunning)
+                return;
+            //
+            _playerManager.LocomotionManager.HandleAllMovement(_playerManager.CharacterController, _playerManager.LockManager);
+            _playerManager.LockManager.TargetLockEnemies();
+            //
 
-        // -> Aerial
-        if (!_playerManager.CharacterController.isGrounded)
-        {
-            _playerManager.PlayerStateMachine.ChangeState(_playerManager.AerialState);
-        }
+            // -> Move
+            if (_playerManager.LocomotionManager.IsMoving)
+            {
+                _playerManager.PlayerStateMachine.ChangeState(_playerManager.WalkState);
+            }
 
-        // -> Lock
-        if (_playerManager.LockManager.IsLockedOnEnemy)
-        {
-            _playerManager.PlayerStateMachine.ChangeState(_playerManager.LockState);
-        }
+            // -> Aerial
+            if (!_playerManager.CharacterController.isGrounded)
+            {
+                _playerManager.PlayerStateMachine.ChangeState(_playerManager.AerialState);
+            }
 
-        // -> Attack
-        if (PlayerInputManager.Instance.AttackPressed && _playerManager.AttackManager.CanAttack)
-        {
-            _playerManager.AttackManager.AttackCooldownCoroutine();
-            _playerManager.PlayerStateMachine.ChangeState(_playerManager.AttackState);
-        }
+            // -> Lock
+            if (_playerManager.LockManager.IsLockedOnEnemy)
+            {
+                _playerManager.PlayerStateMachine.ChangeState(_playerManager.LockState);
+            }
 
-        // Player has been hurt by enemy => Hurt
-        if (_playerManager.HealthManager.IsHurt)
-        {
-            _playerManager.PlayerStateMachine.ChangeState(_playerManager.HurtState);
+            // -> Attack
+            if (PlayerInputManager.Instance.AttackPressed && _playerManager.AttackManager.CanAttack)
+            {
+                _playerManager.AttackManager.AttackCooldownCoroutine();
+                _playerManager.PlayerStateMachine.ChangeState(_playerManager.AttackState);
+            }
+
+            // Player has been hurt by enemy => Hurt
+            if (_playerManager.HealthManager.IsHurt)
+            {
+                _playerManager.PlayerStateMachine.ChangeState(_playerManager.HurtState);
+            }
         }
 
     }

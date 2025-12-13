@@ -9,7 +9,9 @@ public enum PanelType
     HUD,
     Dialogue,
     Pause,
-    GameOver
+    GameOver,
+    Transition,
+    Video,
 }
 
 [System.Serializable]
@@ -67,26 +69,36 @@ public class UIManager : MonoBehaviour
 
         if (scene.name == "SplashScreen")
         {
-            Instance.ShowOnly(PanelType.SplashScreen);
+            Instance.HideAll();
+            Instance.Show(PanelType.SplashScreen);
             Debug.Log("Splash Screen Loaded!");
             return;
         }
 
         if (scene.name == "MainMenu")
         {
-            Instance.ShowOnly(PanelType.MainMenu);
+            Instance.HideAll();
+            Instance.Show(PanelType.MainMenu);
             Debug.Log("Main Menu Screen Loaded!");
             return;
         }
 
-        if (GameObject.FindWithTag("Player"))
+        if (scene.name.Contains("Cinematic"))
         {
-            Instance.ShowOnly(PanelType.HUD);
-            Debug.Log("Player HUD Loaded!");
+            Instance.Show(PanelType.Video);
             return;
         }
 
-        Instance.HideAll();
+        if (scene.name == "Level_01_Main" && GameObject.FindWithTag("Player"))
+        {
+            Instance.HideAll();
+            // Instance.HideAll();
+            Instance.Show(PanelType.Transition);
+            Instance.Show(PanelType.HUD);
+            Debug.Log(scene.name);
+            Debug.Log("Player HUD Loaded!");
+            return;
+        }
     }
 
     public void Show(PanelType type)
@@ -96,24 +108,25 @@ public class UIManager : MonoBehaviour
 
     public void Hide(PanelType type)
     {
+        Debug.Log("NON");
         panels[type].Hide();
-    }
-
-    public void ShowOnly(PanelType type)
-    {
-        foreach (var kvp in panels)
-        {
-            if (kvp.Key == type)
-                kvp.Value.Show();
-            else
-                kvp.Value.Hide();
-        }
     }
 
     public void HideAll()
     {
         foreach (var kvp in panels)
         {
+            kvp.Value.Hide();
+        }
+    }
+
+
+    public void HideAllExcept(PanelType type)
+    {
+        foreach (var kvp in panels)
+        {
+            if (kvp.Value.type == type)
+                continue;
             kvp.Value.Hide();
         }
     }

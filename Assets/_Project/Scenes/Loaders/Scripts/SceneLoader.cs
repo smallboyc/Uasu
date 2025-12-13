@@ -51,7 +51,17 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    public void LoadSceneByNameWithTransition(string sceneName)
+    {
+        UIManager.Instance.Show(PanelType.Transition);
+        StartCoroutine(LoadSceneCoroutine(sceneName));
+    }
 
+    private IEnumerator LoadSceneCoroutine(string sceneName)
+    {
+        yield return new WaitForSeconds(5.0f);
+        LoadSceneByName(sceneName);
+    }
 
     public void LoadSceneByName(string sceneName)
     {

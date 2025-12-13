@@ -11,7 +11,10 @@ public class IsometricCameraManager : MonoBehaviour
 
     private float _initialOrthographicSize = 7.5f;
     private float _lockOrthographicSize = 7.0f;
+    private float _zoomOrthographicSize = 4.0f;
     private float _currentOrthographicSize;
+
+    private float _smoothTransitionSpeed = 5.0f;
 
     public static IsometricCameraManager Instance
     {
@@ -43,7 +46,7 @@ public class IsometricCameraManager : MonoBehaviour
     private void Start()
     {
         _currentCameraAngle = _initialCameraAngle;
-        _currentOrthographicSize = _initialOrthographicSize;
+        _currentOrthographicSize = _zoomOrthographicSize;
     }
 
     private void Update()
@@ -52,15 +55,29 @@ public class IsometricCameraManager : MonoBehaviour
         SmoothCameraZoom();
     }
 
-    public void ActiveCameraLockEffect()
+    public void ActiveCameraLockEffect(float speed = 5.0f)
     {
+        _smoothTransitionSpeed = speed;
         _currentCameraAngle = _lockCameraAngle;
         _currentOrthographicSize = _lockOrthographicSize;
     }
 
-    public void CancelCameraLockEffect()
+    public void CancelCameraLockEffect(float speed = 5.0f)
     {
+        _smoothTransitionSpeed = speed;
         _currentCameraAngle = _initialCameraAngle;
+        _currentOrthographicSize = _initialOrthographicSize;
+    }
+
+    public void ActiveCameraZoomEffect(float speed = 5.0f)
+    {
+        _smoothTransitionSpeed = speed;
+        _currentOrthographicSize = _zoomOrthographicSize;
+    }
+
+    public void CancelCameraZoomEffect(float speed = 5.0f)
+    {
+        _smoothTransitionSpeed = speed;
         _currentOrthographicSize = _initialOrthographicSize;
     }
 
@@ -75,7 +92,7 @@ public class IsometricCameraManager : MonoBehaviour
         IsometricCamera.transform.rotation = Quaternion.Lerp(
             IsometricCamera.transform.rotation,
             targetRotation,
-            5.0f * Time.deltaTime
+            _smoothTransitionSpeed * Time.deltaTime
         );
     }
 
@@ -84,7 +101,7 @@ public class IsometricCameraManager : MonoBehaviour
         IsometricCamera.Lens.OrthographicSize = Mathf.Lerp(
           IsometricCamera.Lens.OrthographicSize,
           _currentOrthographicSize,
-          5.0f * Time.deltaTime
+          _smoothTransitionSpeed * Time.deltaTime
       );
     }
 }

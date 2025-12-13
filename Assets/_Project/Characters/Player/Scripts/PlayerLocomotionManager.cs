@@ -34,14 +34,17 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     public void HandleAllMovement(CharacterController characterController, PlayerLockManager playerLockManager)
     {
-        HandleGroundedMovement();
         HandleAerialMovement(characterController);
-        HandleRotationMovement(playerLockManager);
+        if (PlayerManager.Instance.IsPlayerActive)
+        {
+            HandleGroundedMovement();
+            HandleRotationMovement(playerLockManager);
 
-        Vector3 move = _moveDirection * _currentSpeed * Time.deltaTime;
-        move.y = _verticalVelocity * Time.deltaTime;
+            Vector3 move = _moveDirection * _currentSpeed * Time.deltaTime;
+            move.y = _verticalVelocity * Time.deltaTime;
 
-        characterController.Move(move);
+            characterController.Move(move);
+        }
     }
 
     private void HandleGroundedMovement()
