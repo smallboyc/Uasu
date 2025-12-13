@@ -26,6 +26,7 @@ public class VideoPlayerManager : MonoBehaviour
         _videoPlayer.SetTargetAudioSource(0, _audioSource);
         _videoPlayer.loopPointReached += OnVideoFinished;
         _videoPlayer.playbackSpeed = _speed;
+        _videoPlayer.Play();
 
         //little trick to hide the cliping video eheh,
         StartCoroutine(RemovePanels());
