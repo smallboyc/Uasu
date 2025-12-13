@@ -42,7 +42,7 @@
         {
             "id": 3,
             "speaker": "sorcerer",
-            "text": "Bueno, podría decrise que soy un poco ‘mágico’.",
+            "text": "Bueno, podría decirse que soy un poco ‘mágico’.",
             "next_dialogue": 8
         },
         {
@@ -213,7 +213,7 @@
         {
             "id": 32,
             "speaker": "sorcerer",
-            "text": "Qué suerte la mia",
+            "text": "Qué suerte la mía.",
             "next_dialogue": 33
         },
         {

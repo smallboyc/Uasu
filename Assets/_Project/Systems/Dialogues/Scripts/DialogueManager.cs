@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -56,6 +54,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Dialogue Language")]
     [SerializeField] private Language _currentLanguage = Language.EN;
+    [HideInInspector] public bool DialogueIsActive;
 
     [Header("Player Dialogue Interaction")]
     public bool CanInteract;
@@ -75,7 +74,7 @@ public class DialogueManager : MonoBehaviour
 
     // Dialogues data
     private float _displayLetterSpeed = 0.02f;
-    private List<DialogueEntry> _dialogues = new();
+    [HideInInspector] public List<DialogueEntry> Dialogues = new();
     [HideInInspector] public DialogueEntry CurrentDialogue;
 
     // Load images
@@ -124,17 +123,13 @@ public class DialogueManager : MonoBehaviour
         DialogueStateMachine.Initialize(IdleState);
 
         LoadSpeakerPortraits();
-        LoadDialogues();
     }
 
     private void Update()
     {
-        DialogueStateMachine.CurrentState.Update();
+        if (DialogueIsActive)
+            DialogueStateMachine.CurrentState.Update();
     }
-    // 
-
-    private string GetLanguage(Language language) => language == Language.EN ? "en" : "es";
-    private string GetDialoguePath() => Path.Combine(Application.streamingAssetsPath, $"dialogue_{GetLanguage(_currentLanguage)}.json");
 
     private void LoadSpeakerPortraits()
     {
@@ -148,24 +143,11 @@ public class DialogueManager : MonoBehaviour
         Debug.Log($"Loaded {_speakerPortraits.Count} portraits");
     }
 
-    private void LoadDialogues()
-    {
-        string path = GetDialoguePath();
 
-        if (File.Exists(path))
-        {
-            string jsonDialogue = File.ReadAllText(path);
-            _dialogues = JsonUtility.FromJson<DialogueData>(jsonDialogue).dialogues;
-        }
-        else
-        {
-            Debug.LogError($"Cannot find language file at: {path}");
-        }
-    }
 
     public void StartDialogue(int startId)
     {
-        CurrentDialogue = _dialogues.Find(d => d.id == startId);
+        CurrentDialogue = Dialogues.Find(d => d.id == startId);
         DialogueIsRunning = true;
     }
 
@@ -175,7 +157,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (CurrentDialogue.next_dialogue >= 0)
         {
-            CurrentDialogue = _dialogues.Find(d => d.id == CurrentDialogue.next_dialogue);
+            CurrentDialogue = Dialogues.Find(d => d.id == CurrentDialogue.next_dialogue);
             return true;
         }
         return false;
@@ -198,12 +180,12 @@ public class DialogueManager : MonoBehaviour
         UIManager.Instance.GetPanel(PanelType.Dialogue).panelObject.GetComponent<DialoguePanelManager>();
 
         int nextId = CurrentDialogue.choices[choiceIndex].next_dialogue;
-        CurrentDialogue = _dialogues.Find(d => d.id == nextId);
+        CurrentDialogue = Dialogues.Find(d => d.id == nextId);
     }
 
     public bool PlayerCanAccessNextDialogue()
     {
-        DialogueEntry nextDialogue = _dialogues.Find(d => d.id == CurrentDialogue.next_dialogue);
+        DialogueEntry nextDialogue = Dialogues.Find(d => d.id == CurrentDialogue.next_dialogue);
 
         if (nextDialogue == null) return false;
 

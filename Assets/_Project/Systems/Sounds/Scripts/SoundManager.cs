@@ -1,9 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     [SerializeField] private AudioSource _audioSourcePrefab;
+    public Slider volumeSlider;
+    public float GetVolume()
+    {
+        return volumeSlider.value;
+    }
 
     void Awake()
     {
@@ -22,6 +28,7 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource audioSource = Instantiate(_audioSourcePrefab, transform.position, Quaternion.identity);
         audioSource.clip = clip;
+        audioSource.volume = volumeSlider.value;
         audioSource.Play();
 
         Destroy(audioSource.gameObject, audioSource.clip.length);
