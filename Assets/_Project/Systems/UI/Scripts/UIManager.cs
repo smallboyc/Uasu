@@ -9,6 +9,7 @@ public enum PanelType
     HUD,
     Dialogue,
     Pause,
+    Options,
     GameOver,
     Transition,
     Video,
@@ -91,6 +92,7 @@ public class UIManager : MonoBehaviour
 
         if (scene.name == "Level_01_Main" && GameObject.FindWithTag("Player"))
         {
+            DialogueManager.Instance.DialogueIsActive = true;
             Instance.HideAll();
             // Instance.HideAll();
             Instance.Show(PanelType.Transition);
@@ -99,6 +101,11 @@ public class UIManager : MonoBehaviour
             Debug.Log("Player HUD Loaded!");
             return;
         }
+    }
+
+    public void ShowOptions()
+    {
+        panels[PanelType.Options].Show();
     }
 
     public void Show(PanelType type)
