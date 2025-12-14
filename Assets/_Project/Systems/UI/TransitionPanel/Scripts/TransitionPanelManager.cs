@@ -41,9 +41,13 @@ public class TransitionPanelManager : MonoBehaviour
             _currentTime += Time.deltaTime;
             if (_currentTransition == TransitionType.FadeIn)
                 color.a = Mathf.Clamp01(1.0f - (_currentTime / _fadeDuration));
-            else
+            else 
                 color.a = Mathf.Clamp01(_currentTime / _fadeDuration);
             _image.color = color;
+        }
+        else if (_currentTransition == TransitionType.FadeIn)
+        {
+            UIManager.Instance.Hide(PanelType.Transition);
         }
     }
 }
