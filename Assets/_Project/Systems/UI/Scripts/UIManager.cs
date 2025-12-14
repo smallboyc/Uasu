@@ -31,6 +31,10 @@ public class UIPanel
 
 public class UIManager : MonoBehaviour
 {
+
+    public bool GamePaused { get; private set; }
+
+
     public static UIManager Instance { get; private set; }
 
     [SerializeField] private List<UIPanel> panelsList = new();
@@ -56,7 +60,11 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-               ShowPauseMenu();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ShowPauseMenu();
+        }
+              
     }
     void OnEnable()
     {
@@ -122,13 +130,19 @@ public class UIManager : MonoBehaviour
 
     public void ShowPauseMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            panels[PanelType.Pause].Show();
-         
-        }
-    }
 
+        GamePaused = true;
+        panels[PanelType.Pause].Show();
+
+    }    
+
+    public void ResumeGame()
+    {
+
+        GamePaused = false;
+        panels[PanelType.Pause].Hide();
+
+    }
 
     public void Show(PanelType type)
     {

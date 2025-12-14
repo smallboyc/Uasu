@@ -1987,6 +1987,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6084751958317391924, guid: 732e2936415b9ef4a9b2d5ec3bc70d6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084751958317391924, guid: 732e2936415b9ef4a9b2d5ec3bc70d6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3671304891006431427}
+    - target: {fileID: 6084751958317391924, guid: 732e2936415b9ef4a9b2d5ec3bc70d6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084751958317391924, guid: 732e2936415b9ef4a9b2d5ec3bc70d6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145154506061830071, guid: 732e2936415b9ef4a9b2d5ec3bc70d6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3671304891006431427}
+    - target: {fileID: 6145154506061830071, guid: 732e2936415b9ef4a9b2d5ec3bc70d6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowOptions
+      objectReference: {fileID: 0}
     - target: {fileID: 8637129060412468661, guid: 732e2936415b9ef4a9b2d5ec3bc70d6a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
