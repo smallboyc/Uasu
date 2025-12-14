@@ -14,10 +14,11 @@ public class KeyItemUIIcon : MonoBehaviour
     public void ShowSwordIcon()
     {
         KeyItemSlot_Sword.enabled = true;
+       
     }
 
-    //public void HideSwordIcon()
-    //{
-   //     KeyItemSlot_Sword.enabled = false;
-   // }
+    public void HideSwordIcon()
+    {
+       KeyItemSlot_Sword.enabled = false;
+    }
 }

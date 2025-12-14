@@ -5,8 +5,6 @@ public class SwordManager : MonoBehaviour
 {
     [SerializeField] private Collider _pickupCollider;
  
-
-
     private bool _playerCanGetSword;
     private bool _isInteractionLocked;
 
@@ -34,6 +32,11 @@ public class SwordManager : MonoBehaviour
         AttachTo(PlayerManager.Instance.HandHolder);
 
         PlayerManager.Instance.Collectables.Add(PlayerManager.CollectableItems.Sword, gameObject);
+
+        if (UIManager.Instance != null)
+    {
+        UIManager.Instance.ShowSwordIcon();
+    }
         
         
     }

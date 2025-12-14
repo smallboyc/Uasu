@@ -93,16 +93,18 @@ public class UIManager : MonoBehaviour
         }
 
         if (scene.name == "Level_01_Main" && GameObject.FindWithTag("Player"))
-        {
+{
             DialogueManager.Instance.DialogueIsActive = true;
-            Instance.HideAll();
-            // Instance.HideAll();
+
+            Instance.HideAll(keepHUD: true); 
             Instance.Show(PanelType.Transition);
             Instance.Show(PanelType.HUD);
+
             Debug.Log(scene.name);
             Debug.Log("Player HUD Loaded!");
-            return;
-        }
+         return;
+}
+
     }
 
     public void ShowOptions()
@@ -121,13 +123,16 @@ public class UIManager : MonoBehaviour
         panels[type].Hide();
     }
 
-    public void HideAll()
+ public void HideAll(bool keepHUD = false)
+{
+    foreach (var kvp in panels)
     {
-        foreach (var kvp in panels)
-        {
-            kvp.Value.Hide();
-        }
+        if (keepHUD && kvp.Key == PanelType.HUD)
+            continue;
+
+        kvp.Value.Hide();
     }
+}
 
 
     public void HideAllExcept(PanelType type)
