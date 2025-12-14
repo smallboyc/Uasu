@@ -14,6 +14,7 @@ public enum PanelType
     Transition,
     Video,
     Weapon,
+    
 
 }
 [System.Serializable]
