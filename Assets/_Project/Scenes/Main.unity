@@ -224,25 +224,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4609155709904463969, guid: 664a731bc49d441ff9f0d0fee75268cc, type: 3}
-      propertyPath: _dropDownLanguage
-      value: 
-      objectReference: {fileID: 1742134971}
     - target: {fileID: 7571515694769457082, guid: 664a731bc49d441ff9f0d0fee75268cc, type: 3}
       propertyPath: m_Name
       value: DialogueManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7571515694769457082, guid: 664a731bc49d441ff9f0d0fee75268cc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7571515694769457082, guid: 664a731bc49d441ff9f0d0fee75268cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 938810143}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 664a731bc49d441ff9f0d0fee75268cc, type: 3}
 --- !u!1001 &927623351
 PrefabInstance:
@@ -309,23 +298,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce80e63d7727c46ccb75371f2ebfe87b, type: 3}
---- !u!1 &938810142 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7571515694769457082, guid: 664a731bc49d441ff9f0d0fee75268cc, type: 3}
-  m_PrefabInstance: {fileID: 905095940}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &938810143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938810142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 316f7161343294501bcfddfe520c241d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &958026369 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4360521883305341247, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
@@ -668,11 +640,6 @@ MonoBehaviour:
   singleScene: SplashScreen
   loadAdditive: 0
   multipleScenes: []
---- !u!1 &1742134971 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2026030513970250016, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
-  m_PrefabInstance: {fileID: 1251618453}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
