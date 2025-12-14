@@ -4,6 +4,7 @@ using UnityEngine;
 public class SwordManager : MonoBehaviour
 {
     [SerializeField] private Collider _pickupCollider;
+ 
 
 
     private bool _playerCanGetSword;
@@ -72,4 +73,6 @@ public class SwordManager : MonoBehaviour
             _playerCanGetSword = false;
         }
     }
+
+
 }

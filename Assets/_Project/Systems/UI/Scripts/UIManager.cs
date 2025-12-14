@@ -14,8 +14,8 @@ public enum PanelType
     Transition,
     Video,
 }
-
 [System.Serializable]
+
 public class UIPanel
 {
     public PanelType type;
@@ -29,6 +29,8 @@ public class UIPanel
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+
+    [SerializeField] private KeyItemUIIcon keyItemUIIcon;
 
     [SerializeField] private List<UIPanel> panelsList = new();
     private Dictionary<PanelType, UIPanel> panels;
@@ -142,4 +144,15 @@ public class UIManager : MonoBehaviour
     {
         return panels[type];
     }
+
+        public void ShowSwordIcon()
+{
+    if (keyItemUIIcon == null)
+    {
+        Debug.LogError("KeyItemsUI no está asignado en UIManager");
+        return;
+    }
+
+    keyItemUIIcon.ShowSwordIcon();
+}
 }
