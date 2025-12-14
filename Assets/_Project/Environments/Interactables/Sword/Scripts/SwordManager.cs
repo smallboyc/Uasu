@@ -4,6 +4,7 @@ using UnityEngine;
 public class SwordManager : MonoBehaviour
 {
     [SerializeField] private Collider _pickupCollider;
+ 
     private bool _playerCanGetSword;
     private bool _isInteractionLocked;
 
@@ -31,6 +32,10 @@ public class SwordManager : MonoBehaviour
         AttachTo(PlayerManager.Instance.HandHolder);
 
         PlayerManager.Instance.Collectables.Add(PlayerManager.CollectableItems.Sword, gameObject);
+
+        UIManager.Instance.Show(PanelType.Weapon);
+
+        
     }
     private IEnumerator ToggleWeapon()
     {
@@ -68,4 +73,6 @@ public class SwordManager : MonoBehaviour
             _playerCanGetSword = false;
         }
     }
+
+
 }
