@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 6041367508644524390}
   - component: {fileID: 3711624764287419854}
   - component: {fileID: 3757659569146361947}
+  - component: {fileID: 2461659190351035104}
   m_Layer: 5
   m_Name: DropdownLanguage
   m_TagString: Untagged
@@ -545,8 +546,32 @@ MonoBehaviour:
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2461659190351035104}
+        m_TargetAssemblyTypeName: LanguageManager, Assembly-CSharp
+        m_MethodName: LoadDialogues
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &2461659190351035104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026030513970250016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316f7161343294501bcfddfe520c241d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4380848812620931050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,6 +1818,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1395525164280042939, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: -2107207355, guid: ba7e76ad87c6e294a8b9ffa561352ff1, type: 3}
     - target: {fileID: 1462332788598736151, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1800,7 +1829,7 @@ PrefabInstance:
     - target: {fileID: 1474777075328493573, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6d83cf7758e19d647b1ccb0082954102, type: 3}
+      objectReference: {fileID: 1666286584, guid: daecda1251f4ee746971eb0d18920ca8, type: 3}
     - target: {fileID: 1886442494710874556, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_sharedMaterial
       value: 
@@ -1837,14 +1866,22 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.13207549
       objectReference: {fileID: 0}
+    - target: {fileID: 3438106158128827530, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: -2107207355, guid: ba7e76ad87c6e294a8b9ffa561352ff1, type: 3}
     - target: {fileID: 3990839595295671154, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4195653061167135824, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: -2107207355, guid: ba7e76ad87c6e294a8b9ffa561352ff1, type: 3}
     - target: {fileID: 4562321801489438485, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6d83cf7758e19d647b1ccb0082954102, type: 3}
+      objectReference: {fileID: 1666286584, guid: daecda1251f4ee746971eb0d18920ca8, type: 3}
     - target: {fileID: 5504926358580880640, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_sharedMaterial
       value: 
@@ -2036,7 +2073,11 @@ PrefabInstance:
     - target: {fileID: 6783350547762233085, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6d83cf7758e19d647b1ccb0082954102, type: 3}
+      objectReference: {fileID: 1666286584, guid: daecda1251f4ee746971eb0d18920ca8, type: 3}
+    - target: {fileID: 7082627862545022027, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: -2107207355, guid: ba7e76ad87c6e294a8b9ffa561352ff1, type: 3}
     - target: {fileID: 7446826981597369972, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_Name
       value: ControllerScheme
@@ -2048,11 +2089,15 @@ PrefabInstance:
     - target: {fileID: 8385397627282454328, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6d83cf7758e19d647b1ccb0082954102, type: 3}
+      objectReference: {fileID: 1666286584, guid: daecda1251f4ee746971eb0d18920ca8, type: 3}
+    - target: {fileID: 8708520889503724894, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: -2107207355, guid: ba7e76ad87c6e294a8b9ffa561352ff1, type: 3}
     - target: {fileID: 8708520889503724894, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_SpriteState.m_HighlightedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6d83cf7758e19d647b1ccb0082954102, type: 3}
+      objectReference: {fileID: -2107207355, guid: ba7e76ad87c6e294a8b9ffa561352ff1, type: 3}
     - target: {fileID: 8721868740013088939, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
       propertyPath: m_Name
       value: OptionsPanel
@@ -2085,10 +2130,10 @@ PrefabInstance:
       insertIndex: 2
       addedObject: {fileID: 7999988519684640615}
     - targetCorrespondingSourceObject: {fileID: 6689654843659717813, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 4586514912971298502}
     - targetCorrespondingSourceObject: {fileID: 6689654843659717813, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 4239000393762844270}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4de4bcc9d44464dd19a22ee7da64f052, type: 3}
