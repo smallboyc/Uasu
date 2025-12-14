@@ -53,6 +53,11 @@ public class UIManager : MonoBehaviour
             panels[panel.type] = panel;
         }
     }
+
+    void Update()
+    {
+               ShowPauseMenu();
+    }
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -113,6 +118,17 @@ public class UIManager : MonoBehaviour
     {
         panels[PanelType.Options].Show();
     }
+
+
+    public void ShowPauseMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            panels[PanelType.Pause].Show();
+         
+        }
+    }
+
 
     public void Show(PanelType type)
     {
