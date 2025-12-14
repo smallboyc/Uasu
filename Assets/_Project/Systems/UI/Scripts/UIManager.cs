@@ -13,6 +13,8 @@ public enum PanelType
     GameOver,
     Transition,
     Video,
+    Weapon,
+
 }
 [System.Serializable]
 
@@ -29,8 +31,6 @@ public class UIPanel
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
-
-    [SerializeField] private KeyItemUIIcon keyItemUIIcon;
 
     [SerializeField] private List<UIPanel> panelsList = new();
     private Dictionary<PanelType, UIPanel> panels;
@@ -100,6 +100,7 @@ public class UIManager : MonoBehaviour
             Instance.Show(PanelType.Transition);
             Instance.Show(PanelType.HUD);
 
+
             Debug.Log(scene.name);
             Debug.Log("Player HUD Loaded!");
          return;
@@ -123,16 +124,16 @@ public class UIManager : MonoBehaviour
         panels[type].Hide();
     }
 
- public void HideAll(bool keepHUD = false)
-{
-    foreach (var kvp in panels)
+    public void HideAll(bool keepHUD = false)
     {
-        if (keepHUD && kvp.Key == PanelType.HUD)
-            continue;
+     foreach (var kvp in panels)
+        {
+         if (keepHUD && kvp.Key == PanelType.HUD)
+                continue;
 
-        kvp.Value.Hide();
+         kvp.Value.Hide();
+        }
     }
-}
 
 
     public void HideAllExcept(PanelType type)
@@ -149,15 +150,4 @@ public class UIManager : MonoBehaviour
     {
         return panels[type];
     }
-
-        public void ShowSwordIcon()
-{
-    if (keyItemUIIcon == null)
-    {
-        Debug.LogError("KeyItemsUI no está asignado en UIManager");
-        return;
-    }
-
-    keyItemUIIcon.ShowSwordIcon();
-}
 }

@@ -33,11 +33,8 @@ public class SwordManager : MonoBehaviour
 
         PlayerManager.Instance.Collectables.Add(PlayerManager.CollectableItems.Sword, gameObject);
 
-        if (UIManager.Instance != null)
-    {
-        UIManager.Instance.ShowSwordIcon();
-    }
-        
+        UIManager.Instance.Show(PanelType.Weapon);
+
         
     }
     private IEnumerator ToggleWeapon()
