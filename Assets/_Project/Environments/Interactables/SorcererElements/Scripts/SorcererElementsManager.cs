@@ -23,7 +23,7 @@ public class SorcererElementsManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     public enum ElementType { Flower, Mirror, Feather };
-    [SerializeField] private string _achievementName = "THE_SORCERER_FLOWER";
+    [SerializeField] private string _achievementName = "THE_SORCERER_ELEMENTS";
     [SerializeField] private List<ElementType> _collectedElements = new();
 
     public void AddTask(ElementType element)

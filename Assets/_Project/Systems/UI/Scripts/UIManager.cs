@@ -41,6 +41,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<UIPanel> panelsList = new();
     private Dictionary<PanelType, UIPanel> panels;
 
+    private bool _talismanPanelActive;
+
 
     private void Awake()
     {
@@ -72,6 +74,13 @@ public class UIManager : MonoBehaviour
             {
                 ResumeGame();
             }
+        }
+
+        if (!_talismanPanelActive && PlayerManager.Instance.HasAchievement("THE_ARTIFACT"))
+        {
+            _talismanPanelActive = true;
+            Instance.Show(PanelType.Talisman);
+            return;
         }
     }
 
@@ -146,14 +155,6 @@ public class UIManager : MonoBehaviour
             Debug.Log("Player HUD Loaded!");
             return;
         }
-
-        if (PlayerManager.Instance.HasAchievement("GOOD_LUCK_LITTLE_HERO"))
-        {
-           Instance.Show(PanelType.Talisman);
-           return;
-           
-        }
-
     }
 
     public void ShowOptions()
