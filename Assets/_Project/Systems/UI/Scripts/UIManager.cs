@@ -6,7 +6,8 @@ public enum PanelType
 {
     SplashScreen,
     MainMenu,
-    HUD,
+    HUD_Souls,
+    HUD_Health,
     Dialogue,
     Pause,
     Options,
@@ -121,7 +122,8 @@ public class UIManager : MonoBehaviour
 
             Instance.HideAll();
             Instance.Show(PanelType.Transition);
-            Instance.Show(PanelType.HUD);
+            Instance.Show(PanelType.HUD_Health);
+            Instance.Show(PanelType.HUD_Souls);
 
 
             Debug.Log(scene.name);
@@ -146,13 +148,10 @@ public class UIManager : MonoBehaviour
         panels[type].Hide();
     }
 
-    public void HideAll(bool keepHUD = false)
+    public void HideAll()
     {
         foreach (var kvp in panels)
         {
-            if (keepHUD && kvp.Key == PanelType.HUD)
-                continue;
-
             kvp.Value.Hide();
         }
     }
