@@ -77,7 +77,8 @@ public class EnemyManager : CharacterManager
 
     protected override void Update()
     {
-        if (UIManager.Instance.GamePaused)
+    
+        if (UIManager.Instance && UIManager.Instance.GamePaused)
             
             return;
 

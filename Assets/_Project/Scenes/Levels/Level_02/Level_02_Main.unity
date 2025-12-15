@@ -167,6 +167,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3463717871676045032, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: _isSingleScene
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463717871676045032, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: multipleScenes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463717871676045032, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: 'multipleScenes.Array.data[0]'
+      value: Level_02_Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463717871676045032, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
+      propertyPath: 'multipleScenes.Array.data[1]'
+      value: Level_02_Gameplay
+      objectReference: {fileID: 0}
     - target: {fileID: 8232613828503628780, guid: 8719fbc7f444c41ec860669f325b8c0d, type: 3}
       propertyPath: m_Name
       value: Level02Loader
