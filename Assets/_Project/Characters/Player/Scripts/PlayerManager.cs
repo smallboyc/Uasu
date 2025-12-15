@@ -53,6 +53,9 @@ public class PlayerManager : CharacterManager
         IsPlayerActive = true;
     }
 
+    //Transition between scenes
+    public bool IsTransitioning;
+
     //Sounds
     [Header("Sounds")]
     public AudioClip[] AttackSounds;
