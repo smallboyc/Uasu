@@ -48,9 +48,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7931770620195316483, guid: 8f438c2a7600f4a8d8a5fef644417b9d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75702
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8f438c2a7600f4a8d8a5fef644417b9d, type: 3}
       propertyPath: m_Name
       value: Bridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959026864319903636, guid: 8f438c2a7600f4a8d8a5fef644417b9d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75702
       objectReference: {fileID: 0}
     - target: {fileID: 3959026864319903636, guid: 8f438c2a7600f4a8d8a5fef644417b9d, type: 3}
       propertyPath: m_LocalRotation.w
