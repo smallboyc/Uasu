@@ -15,7 +15,9 @@ public class SorcererDialogueTrigger : DialogueTrigger
         }
         if (PlayerManager.Instance.HasAchievement("GOOD_LUCK_LITTLE_HERO"))
         {
+        
             return 48;
+           
         }
        
         return 0;

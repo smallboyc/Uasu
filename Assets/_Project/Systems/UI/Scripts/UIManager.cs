@@ -15,6 +15,7 @@ public enum PanelType
     Transition,
     Video,
     Weapon,
+    Talisman,
 
 
 }
@@ -140,9 +141,17 @@ public class UIManager : MonoBehaviour
             Instance.Show(PanelType.HUD_Health);
             Instance.Show(PanelType.HUD_Souls);
 
+
             Debug.Log(scene.name);
             Debug.Log("Player HUD Loaded!");
             return;
+        }
+
+        if (PlayerManager.Instance.HasAchievement("GOOD_LUCK_LITTLE_HERO"))
+        {
+           Instance.Show(PanelType.Talisman);
+           return;
+           
         }
 
     }
