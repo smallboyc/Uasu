@@ -51,9 +51,6 @@ public class DialogueManager : MonoBehaviour
     }
     private enum Language { ES, EN }
     [HideInInspector] public DialoguePanelManager DialoguePanelManager;
-
-    [Header("Dialogue Language")]
-    [SerializeField] private Language _currentLanguage = Language.EN;
     [HideInInspector] public bool DialogueIsActive;
 
     [Header("Player Dialogue Interaction")]
