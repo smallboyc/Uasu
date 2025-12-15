@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8823116736207471684
+--- !u!1 &6953675932922063854
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5087681014501140102}
-  - component: {fileID: 6090668080960614974}
-  - component: {fileID: 6923240495007410650}
-  - component: {fileID: 609060836107852192}
+  - component: {fileID: 8439351987389552798}
+  - component: {fileID: 6768830099632171156}
+  - component: {fileID: 6943464923788444594}
+  - component: {fileID: 4916962536809879547}
   m_Layer: 0
   m_Name: Spawn_B_01
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5087681014501140102
+--- !u!4 &8439351987389552798
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8823116736207471684}
+  m_GameObject: {fileID: 6953675932922063854}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: -4.84}
+  m_LocalPosition: {x: 0, y: 1.55, z: -4.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6090668080960614974
+--- !u!114 &6768830099632171156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8823116736207471684}
+  m_GameObject: {fileID: 6953675932922063854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cf52fed5b40b44eaa69f7ca74e20868, type: 3}
@@ -51,27 +51,27 @@ MonoBehaviour:
   singleScene: 
   loadAdditive: 0
   multipleScenes: []
---- !u!114 &6923240495007410650
+--- !u!114 &6943464923788444594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8823116736207471684}
+  m_GameObject: {fileID: 6953675932922063854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f64c9505b6eac4cfaa5e776ab4da26cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneToLoad: Scene_A
-  _newSpawnTransform: {fileID: 5180894739054065774, guid: cf0c52aa0d1574c44ab4cadd266981ee, type: 3}
---- !u!65 &609060836107852192
+  _newSpawnTransform: {fileID: 1954712453783977654, guid: 24e965ffd6c68445a82ce046bffe8b6c, type: 3}
+--- !u!65 &4916962536809879547
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8823116736207471684}
+  m_GameObject: {fileID: 6953675932922063854}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
