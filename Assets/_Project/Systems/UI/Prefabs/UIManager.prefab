@@ -123,12 +123,12 @@ RectTransform:
   - {fileID: 2799237396903032340}
   - {fileID: 8075454845629566624}
   - {fileID: 5541807885628016529}
-  - {fileID: 6933980503687671579}
   - {fileID: 3919125469123335504}
   - {fileID: 4895082214244238863}
-  - {fileID: 9087374287129709378}
   - {fileID: 8885517604434613889}
   - {fileID: 2195544503619896782}
+  - {fileID: 6933980503687671579}
+  - {fileID: 9087374287129709378}
   m_Father: {fileID: 2191033972566446965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1687,15 +1687,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 758907087389967296, guid: f07586f9bc7429542915c5dd2628a673, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1472582217941378077, guid: f07586f9bc7429542915c5dd2628a673, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1472582217941378077, guid: f07586f9bc7429542915c5dd2628a673, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2578921106961152505, guid: f07586f9bc7429542915c5dd2628a673, type: 3}
       propertyPath: m_Pivot.x

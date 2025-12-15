@@ -65,16 +65,26 @@ public class UIManager : MonoBehaviour
         {
             if (!GamePaused)
             {
-                GamePaused = true;
-                panels[PanelType.Pause].Show();
+                PauseGame();
             }
             else
             {
-                GamePaused = false;
-                panels[PanelType.Pause].Hide();
+                ResumeGame();
             }
         }
+    }
 
+    void PauseGame()
+    {
+        GamePaused = true;
+        panels[PanelType.Pause].Show();
+    }
+
+    void ResumeGame()
+    {
+        GamePaused = false;
+        panels[PanelType.Options].Hide();
+        panels[PanelType.Pause].Hide();
     }
     void OnEnable()
     {
