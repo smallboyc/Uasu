@@ -5385,7 +5385,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 0.4017016, g: 0.94341797, b: 0.9547169, a: 1}
+  m_Color: {r: 0.50619435, g: 0.90943396, b: 0.8873893, a: 1}
   m_Intensity: 150
   m_Range: 150
   m_SpotAngle: 30
@@ -10811,7 +10811,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 0.90943396, g: 0.88485247, b: 0.513058, a: 1}
+  m_Color: {r: 0.88235295, g: 0.7254902, b: 0.4862745, a: 1}
   m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
@@ -11546,8 +11546,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1075489793}
   - {fileID: 1929832902}
+  - {fileID: 1075489793}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1992206596
