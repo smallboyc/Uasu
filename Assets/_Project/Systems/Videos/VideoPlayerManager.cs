@@ -42,6 +42,11 @@ public class VideoPlayerManager : MonoBehaviour
 
     void Update()
     {
+        if (UIManager.Instance.GamePaused)
+        {
+            _videoPlayer.Pause();
+        }
+
         if (Input.GetKey(KeyCode.P))
         {
             _videoPlayer.Stop();

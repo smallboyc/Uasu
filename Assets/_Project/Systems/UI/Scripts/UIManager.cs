@@ -14,7 +14,7 @@ public enum PanelType
     Transition,
     Video,
     Weapon,
-    
+
 
 }
 [System.Serializable]
@@ -62,9 +62,18 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ShowPauseMenu();
+            if (!GamePaused)
+            {
+                GamePaused = true;
+                panels[PanelType.Pause].Show();
+            }
+            else
+            {
+                GamePaused = false;
+                panels[PanelType.Pause].Hide();
+            }
         }
-              
+
     }
     void OnEnable()
     {
@@ -107,41 +116,24 @@ public class UIManager : MonoBehaviour
         }
 
         if (scene.name == "Level_01_Main" && GameObject.FindWithTag("Player"))
-{
+        {
             DialogueManager.Instance.DialogueIsActive = true;
 
-            Instance.HideAll(keepHUD: true); 
+            Instance.HideAll();
             Instance.Show(PanelType.Transition);
             Instance.Show(PanelType.HUD);
 
 
             Debug.Log(scene.name);
             Debug.Log("Player HUD Loaded!");
-         return;
-}
+            return;
+        }
 
     }
 
     public void ShowOptions()
     {
         panels[PanelType.Options].Show();
-    }
-
-
-    public void ShowPauseMenu()
-    {
-
-        GamePaused = true;
-        panels[PanelType.Pause].Show();
-
-    }    
-
-    public void ResumeGame()
-    {
-
-        GamePaused = false;
-        panels[PanelType.Pause].Hide();
-
     }
 
     public void Show(PanelType type)
@@ -151,18 +143,17 @@ public class UIManager : MonoBehaviour
 
     public void Hide(PanelType type)
     {
-        Debug.Log("NON");
         panels[type].Hide();
     }
 
     public void HideAll(bool keepHUD = false)
     {
-     foreach (var kvp in panels)
+        foreach (var kvp in panels)
         {
-         if (keepHUD && kvp.Key == PanelType.HUD)
+            if (keepHUD && kvp.Key == PanelType.HUD)
                 continue;
 
-         kvp.Value.Hide();
+            kvp.Value.Hide();
         }
     }
 
