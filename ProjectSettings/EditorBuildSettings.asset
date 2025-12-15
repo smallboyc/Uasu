@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Levels/Level_01/Level_01_Environment.unity
     guid: b6e622c7af6534b62a7d8c63ffe7bda3
   - enabled: 1
-    path: Assets/_Project/Scenes/Levels/Level_02/Level_02_Main.unity
+    path: Assets/_Project/Scenes/Levels/Level_02/Level_02.1/Level_02_Main.unity
     guid: 7882b2f828e154443826e260d6cf1e71
   - enabled: 1
     path: Assets/_Project/Scenes/Cinematics/Cinematic_01.unity
