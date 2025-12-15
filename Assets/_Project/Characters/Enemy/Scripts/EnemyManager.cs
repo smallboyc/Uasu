@@ -77,8 +77,15 @@ public class EnemyManager : CharacterManager
 
     protected override void Update()
     {
+        if (UIManager.Instance.GamePaused)
+            
+            return;
+
+        
         base.Update();
         EnemyStateMachine.CurrentState.Update();
+
+       
     }
 
 

@@ -12,6 +12,7 @@ public class VideoPlayerManager : MonoBehaviour
     [SerializeField] private string _sceneToLoad;
     private VideoPlayer _videoPlayer;
     private AudioSource _audioSource;
+    private bool _canPlayOnPause;
 
     void Awake()
     {
@@ -42,6 +43,20 @@ public class VideoPlayerManager : MonoBehaviour
 
     void Update()
     {
+        if (UIManager.Instance.GamePaused)
+        {
+            _canPlayOnPause = true;
+            _videoPlayer.Pause();
+        }
+
+        if (!UIManager.Instance.GamePaused && _canPlayOnPause)
+        {
+            _canPlayOnPause = false;
+            _audioSource.volume = SoundManager.Instance.GetVolume();
+            _videoPlayer.Play();
+        }
+
+
         if (Input.GetKey(KeyCode.P))
         {
             _videoPlayer.Stop();

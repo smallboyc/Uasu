@@ -6,7 +6,8 @@ public enum PanelType
 {
     SplashScreen,
     MainMenu,
-    HUD,
+    HUD_Souls,
+    HUD_Health,
     Dialogue,
     Pause,
     Options,
@@ -14,7 +15,7 @@ public enum PanelType
     Transition,
     Video,
     Weapon,
-    
+
 
 }
 [System.Serializable]
@@ -31,6 +32,10 @@ public class UIPanel
 
 public class UIManager : MonoBehaviour
 {
+
+    public bool GamePaused { get; private set; }
+
+
     public static UIManager Instance { get; private set; }
 
     [SerializeField] private List<UIPanel> panelsList = new();
@@ -52,6 +57,34 @@ public class UIManager : MonoBehaviour
         {
             panels[panel.type] = panel;
         }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!GamePaused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
+    }
+
+    void PauseGame()
+    {
+        GamePaused = true;
+        panels[PanelType.Pause].Show();
+    }
+
+    void ResumeGame()
+    {
+        GamePaused = false;
+        panels[PanelType.Options].Hide();
+        panels[PanelType.Pause].Hide();
     }
     void OnEnable()
     {
@@ -94,18 +127,19 @@ public class UIManager : MonoBehaviour
         }
 
         if (scene.name == "Level_01_Main" && GameObject.FindWithTag("Player"))
-{
+        {
             DialogueManager.Instance.DialogueIsActive = true;
 
-            Instance.HideAll(keepHUD: true); 
+            Instance.HideAll();
             Instance.Show(PanelType.Transition);
-            Instance.Show(PanelType.HUD);
+            Instance.Show(PanelType.HUD_Health);
+            Instance.Show(PanelType.HUD_Souls);
 
 
             Debug.Log(scene.name);
             Debug.Log("Player HUD Loaded!");
-         return;
-}
+            return;
+        }
 
     }
 
@@ -121,18 +155,14 @@ public class UIManager : MonoBehaviour
 
     public void Hide(PanelType type)
     {
-        Debug.Log("NON");
         panels[type].Hide();
     }
 
-    public void HideAll(bool keepHUD = false)
+    public void HideAll()
     {
-     foreach (var kvp in panels)
+        foreach (var kvp in panels)
         {
-         if (keepHUD && kvp.Key == PanelType.HUD)
-                continue;
-
-         kvp.Value.Hide();
+            kvp.Value.Hide();
         }
     }
 
