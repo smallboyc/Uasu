@@ -32,14 +32,14 @@ public class UIPanel
 
 public class UIManager : MonoBehaviour
 {
-
+    private bool _canPause;
     public bool GamePaused { get; private set; }
-
 
     public static UIManager Instance { get; private set; }
 
     [SerializeField] private List<UIPanel> panelsList = new();
     private Dictionary<PanelType, UIPanel> panels;
+
 
     private void Awake()
     {
@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (_canPause && Input.GetKeyDown(KeyCode.Escape))
         {
             if (!GamePaused)
             {
@@ -104,6 +104,11 @@ public class UIManager : MonoBehaviour
             PlayerManager.Instance.CharacterController.enabled = true;
         }
 
+        if (scene.name == "SplashScreen" || scene.name == "MainMenu")
+            _canPause = false;
+        else
+            _canPause = true;
+
         if (scene.name == "SplashScreen")
         {
             Instance.HideAll();
@@ -134,7 +139,6 @@ public class UIManager : MonoBehaviour
             Instance.Show(PanelType.Transition);
             Instance.Show(PanelType.HUD_Health);
             Instance.Show(PanelType.HUD_Souls);
-
 
             Debug.Log(scene.name);
             Debug.Log("Player HUD Loaded!");
