@@ -36,7 +36,7 @@ public class VideoPlayerManager : MonoBehaviour
     private IEnumerator RemovePanels()
     {
         yield return new WaitForSeconds(2.0f);
-        UIManager.Instance.HideAllExcept(PanelType.Video);
+        UIManager.Instance.HideAllExcept(PanelType.Cinematic);
     }
 
 

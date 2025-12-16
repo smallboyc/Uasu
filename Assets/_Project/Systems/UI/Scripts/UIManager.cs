@@ -13,7 +13,7 @@ public enum PanelType
     Options,
     GameOver,
     Transition,
-    Video,
+    Cinematic,
     Weapon,
     Talisman,
 
@@ -137,7 +137,7 @@ public class UIManager : MonoBehaviour
 
         if (scene.name.Contains("Cinematic"))
         {
-            Instance.Show(PanelType.Video);
+            Instance.Show(PanelType.Cinematic);
             return;
         }
 

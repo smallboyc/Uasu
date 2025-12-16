@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Language :'
+  m_text: 'Dialogues :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
   m_sharedMaterial: {fileID: -5398210821326981229, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
@@ -3006,6 +3006,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -5398210821326981229, guid: d7ce3b06083925d4db2223acc3d15ea4, type: 2}
+    - target: {fileID: 5569548949339831009, guid: 380b42e70aae54837a9a4882701be8d6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 14.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5851707645314035197, guid: 380b42e70aae54837a9a4882701be8d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -3160,7 +3164,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2165220740373722999, guid: 33ec239ac7315496b927448166d4272c, type: 3}
       propertyPath: m_Name
-      value: VideoPanel
+      value: CinematicPanel
       objectReference: {fileID: 0}
     - target: {fileID: 2562125577273998908, guid: 33ec239ac7315496b927448166d4272c, type: 3}
       propertyPath: m_Pivot.x
