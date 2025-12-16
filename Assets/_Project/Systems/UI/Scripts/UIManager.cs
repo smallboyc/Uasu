@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        if (!_talismanPanelActive && PlayerManager.Instance.HasAchievement("THE_ARTIFACT"))
+        if (PlayerManager.Instance && !_talismanPanelActive && PlayerManager.Instance.HasAchievement("THE_ARTIFACT"))
         {
             _talismanPanelActive = true;
             Instance.Show(PanelType.Talisman);
