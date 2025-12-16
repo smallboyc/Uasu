@@ -5,7 +5,7 @@ using UnityEngine.Video;
 
 [RequireComponent(typeof(VideoPlayer))]
 [RequireComponent(typeof(AudioSource))]
-public class VideoPlayerManager : MonoBehaviour
+public class CinematicPlayerManager : MonoBehaviour
 {
     [SerializeField] private VideoClip _video;
     [SerializeField] private float _speed = 1.0f;

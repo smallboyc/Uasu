@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 814661985937631353}
   - component: {fileID: 5143724250451590634}
   m_Layer: 0
-  m_Name: VideoPlayer
+  m_Name: CinematicPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
