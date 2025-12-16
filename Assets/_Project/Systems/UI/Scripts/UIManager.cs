@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -154,6 +155,13 @@ public class UIManager : MonoBehaviour
             Debug.Log("Player HUD Loaded!");
             return;
         }
+
+        if (PlayerManager.Instance && PlayerManager.Instance.IsTransitioning)
+        {
+            Show(PanelType.Loading);
+            StartCoroutine(EndTransition());
+        }
+
     }
 
     public void ShowOptions()
@@ -193,5 +201,11 @@ public class UIManager : MonoBehaviour
     public UIPanel GetPanel(PanelType type)
     {
         return panels[type];
+    }
+
+    private IEnumerator EndTransition()
+    {
+        yield return new WaitForSeconds(2.0f);
+        Hide(PanelType.Loading);
     }
 }

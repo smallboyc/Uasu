@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(SceneLoader))]
@@ -17,15 +18,11 @@ public class SpawnTrigger : MonoBehaviour
         if (other.CompareTag("Player") && !PlayerManager.Instance.IsTransitioning)
         {
             Debug.Log("ENTER!");
+            PlayerManager.Instance.CharacterController.enabled = false;
+            PlayerManager.Instance.PlayerStateMachine.ChangeState(PlayerManager.Instance.IdleState);
             PlayerManager.Instance.IsTransitioning = true;
-
-            if (_newSpawnTransform)
-                PlayerManager.Instance.gameObject.transform.position = _newSpawnTransform.position;
-
-            if (_sceneToLoad != null)
-            {
-                _sceneLoader.LoadSceneByName(_sceneToLoad);
-            }
+            UIManager.Instance.Show(PanelType.Transition);
+            StartCoroutine(LoadSceneTransition());
         }
     }
 
@@ -35,6 +32,18 @@ public class SpawnTrigger : MonoBehaviour
         {
             PlayerManager.Instance.IsTransitioning = false;
             Debug.Log("EXIT!");
+        }
+    }
+
+    private IEnumerator LoadSceneTransition()
+    {
+        yield return new WaitForSeconds(2.0f);
+        if (_newSpawnTransform)
+            PlayerManager.Instance.gameObject.transform.position = _newSpawnTransform.position;
+
+        if (_sceneToLoad != null)
+        {
+            _sceneLoader.LoadSceneByName(_sceneToLoad);
         }
     }
 }

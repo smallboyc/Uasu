@@ -1,53 +1,95 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(UnityEngine.UI.Image))]
 public class TransitionPanelManager : MonoBehaviour
 {
-    private enum TransitionType { FadeIn, FadeOut };
-    private TransitionType _currentTransition = TransitionType.FadeIn;
-    private UnityEngine.UI.Image _image;
+    public static TransitionPanelManager Instance;
+    public bool IsActiveTransition;
+    public enum TransitionType { FadeIn, FadeOut }; //In => 1 -> 0 / Out => 0 -> 1
+    private TransitionType _currentTransition;
+    public enum TransitionColor
+    {
+        White, Black
+    };
+    [SerializeField] private UnityEngine.UI.Image _image;
     private Color color;
     [SerializeField] private float _fadeDuration = 4.0f;
     private float _currentTime;
     void Awake()
     {
-        _image = GetComponent<UnityEngine.UI.Image>();
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            Debug.Log($"ERROR (TransitionPanelManager): ({gameObject.name}) GameObject has been deleted because of the Singleton Pattern");
+            return;
+        }
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
-    private void OnEnable()
+    public void NewTransition(TransitionType transitionType, TransitionColor transitionColor)
     {
+        IsActiveTransition = true;
+        _currentTransition = transitionType;
+        color.a = _currentTransition == TransitionType.FadeOut ? 0.0f : 1.0f;
+        color = transitionColor == TransitionColor.White ? Color.white : Color.black;
+        _image.color = color;
+
+        UIManager.Instance.Show(PanelType.Transition);
         _currentTime = 0.0f;
-        if (SceneManager.GetActiveScene().name == "MainMenu")
+    }
+
+    private void FadeIn()
+    {
+        if (_currentTime < _fadeDuration)
         {
-            _currentTransition = TransitionType.FadeOut;
-            color.a = 0.0f;
-            color = Color.black;
+            _currentTime += Time.deltaTime;
+            color.a = Mathf.Clamp01(1.0f - (_currentTime / _fadeDuration));
             _image.color = color;
         }
         else
         {
-            _currentTransition = TransitionType.FadeIn;
-            color.a = 1.0f;
-            color = Color.white;
+            IsActiveTransition = false;
+            UIManager.Instance.Hide(PanelType.Transition);
+        }
+    }
+
+    private void FadeOut()
+    {
+        if (_currentTime < _fadeDuration)
+        {
+            _currentTime += Time.deltaTime;
+            color.a = Mathf.Clamp01(_currentTime / _fadeDuration);
             _image.color = color;
+        }
+        else
+        {
+            IsActiveTransition = false;
         }
     }
 
     void Update()
     {
-        if (_currentTime < _fadeDuration)
+        if (IsActiveTransition)
         {
-            _currentTime += Time.deltaTime;
             if (_currentTransition == TransitionType.FadeIn)
-                color.a = Mathf.Clamp01(1.0f - (_currentTime / _fadeDuration));
-            else 
-                color.a = Mathf.Clamp01(_currentTime / _fadeDuration);
-            _image.color = color;
+                FadeIn(); //In => 1 -> 0
+            else
+                FadeOut(); // Out => 0 -> 1
         }
-        else if (_currentTransition == TransitionType.FadeIn)
-        {
-            UIManager.Instance.Hide(PanelType.Transition);
-        }
+        // if (_currentTime < _fadeDuration)
+        // {
+        //     _currentTime += Time.deltaTime;
+        //     if (_currentTransitionType == TransitionType.FadeIn)
+        //         color.a = Mathf.Clamp01(1.0f - (_currentTime / _fadeDuration));
+        //     else
+        //         color.a = Mathf.Clamp01(_currentTime / _fadeDuration);
+        //     _image.color = color;
+        // }
+        // else if (_currentTransitionType == TransitionType.FadeIn)
+        // {
+        //     UIManager.Instance.Hide(PanelType.Transition);
+        // }
     }
 }
