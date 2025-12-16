@@ -16,8 +16,7 @@ public enum PanelType
     Cinematic,
     Weapon,
     Talisman,
-
-
+    Loading,
 }
 [System.Serializable]
 
