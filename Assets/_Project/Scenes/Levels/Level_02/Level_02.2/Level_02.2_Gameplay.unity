@@ -435,7 +435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298d8603b0f254ae597207b062609543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneToLoad: Level_02.2_Main
 --- !u!114 &1023410682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,7 +467,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -717,6 +716,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad23fe5ebb6118a4691debcefb1a100c, type: 3}
+--- !u!4 &2321792696647952173 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4167716737879310619, guid: ad23fe5ebb6118a4691debcefb1a100c, type: 3}
+  m_PrefabInstance: {fileID: 2321792696647952172}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2444750405029203662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -782,6 +786,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3962451980435579040, guid: d9e5e80e7a90ed14bb95fbe3e87224a2, type: 3}
+      propertyPath: _checkpointTransform
+      value: 
+      objectReference: {fileID: 2321792696647952173}
     - target: {fileID: 4957136593947408735, guid: d9e5e80e7a90ed14bb95fbe3e87224a2, type: 3}
       propertyPath: m_Name
       value: Checkpoint_Statue_02
