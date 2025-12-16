@@ -74,22 +74,9 @@ public class TransitionPanelManager : MonoBehaviour
         if (IsActiveTransition)
         {
             if (_currentTransition == TransitionType.FadeIn)
-                FadeIn(); //In => 1 -> 0
+                FadeIn(); //In => 1 -> 0 + Automatic panel disabled in the end
             else
-                FadeOut(); // Out => 0 -> 1
+                FadeOut(); // Out => 0 -> 1 + NOT Automatic panel disabled in the end (sometime we want to keep the color)
         }
-        // if (_currentTime < _fadeDuration)
-        // {
-        //     _currentTime += Time.deltaTime;
-        //     if (_currentTransitionType == TransitionType.FadeIn)
-        //         color.a = Mathf.Clamp01(1.0f - (_currentTime / _fadeDuration));
-        //     else
-        //         color.a = Mathf.Clamp01(_currentTime / _fadeDuration);
-        //     _image.color = color;
-        // }
-        // else if (_currentTransitionType == TransitionType.FadeIn)
-        // {
-        //     UIManager.Instance.Hide(PanelType.Transition);
-        // }
     }
 }

@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
     private Dictionary<PanelType, UIPanel> panels;
 
     private bool _talismanPanelActive;
+    private bool _loadFromMainMenu;
 
 
     private void Awake()
@@ -129,6 +130,7 @@ public class UIManager : MonoBehaviour
 
         if (scene.name == "MainMenu")
         {
+            _loadFromMainMenu = true;
             Instance.HideAll();
             Instance.Show(PanelType.MainMenu);
             Debug.Log("Main Menu Screen Loaded!");
@@ -141,12 +143,13 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (scene.name == "Level_01_Main" && GameObject.FindWithTag("Player"))
+        if (_loadFromMainMenu && scene.name == "Level_01_Main")
         {
+            _loadFromMainMenu = false;
             DialogueManager.Instance.DialogueIsActive = true;
 
             Instance.HideAll();
-            Instance.Show(PanelType.Transition);
+            TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeIn, TransitionPanelManager.TransitionColor.White);
             Instance.Show(PanelType.HUD_Health);
             Instance.Show(PanelType.HUD_Souls);
 
@@ -205,7 +208,8 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator EndTransition()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(LoadingPlayerManager.Instance.LoadingDuration);
+        TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeIn, TransitionPanelManager.TransitionColor.Black);
         Hide(PanelType.Loading);
     }
 }

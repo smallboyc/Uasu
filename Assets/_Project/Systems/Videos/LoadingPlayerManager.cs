@@ -4,12 +4,22 @@ using UnityEngine.Video;
 [RequireComponent(typeof(VideoPlayer))]
 public class LoadingPlayerManager : MonoBehaviour
 {
+    public static LoadingPlayerManager Instance;
     private VideoPlayer _videoPlayer;
+    public float LoadingDuration = 3.0f;
 
     void Awake()
     {
-        _videoPlayer = GetComponent<VideoPlayer>();
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        _videoPlayer = GetComponent<VideoPlayer>();
     }
     void OnEnable()
     {
