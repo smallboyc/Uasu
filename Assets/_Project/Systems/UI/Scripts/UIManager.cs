@@ -15,6 +15,7 @@ public enum PanelType
     Transition,
     Video,
     Weapon,
+    Talisman,
 
 
 }
@@ -39,6 +40,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private List<UIPanel> panelsList = new();
     private Dictionary<PanelType, UIPanel> panels;
+
+    private bool _talismanPanelActive;
 
 
     private void Awake()
@@ -71,6 +74,13 @@ public class UIManager : MonoBehaviour
             {
                 ResumeGame();
             }
+        }
+
+        if (!_talismanPanelActive && PlayerManager.Instance.HasAchievement("THE_ARTIFACT"))
+        {
+            _talismanPanelActive = true;
+            Instance.Show(PanelType.Talisman);
+            return;
         }
     }
 
@@ -140,11 +150,11 @@ public class UIManager : MonoBehaviour
             Instance.Show(PanelType.HUD_Health);
             Instance.Show(PanelType.HUD_Souls);
 
+
             Debug.Log(scene.name);
             Debug.Log("Player HUD Loaded!");
             return;
         }
-
     }
 
     public void ShowOptions()

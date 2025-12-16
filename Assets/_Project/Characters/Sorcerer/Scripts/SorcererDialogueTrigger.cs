@@ -9,7 +9,7 @@ public class SorcererDialogueTrigger : DialogueTrigger
         {
             return 69;
         }
-        if (PlayerManager.Instance.HasAchievement("THE_SORCERER_FLOWER"))
+        if (PlayerManager.Instance.HasAchievement("THE_SORCERER_ELEMENTS"))
         {
             return 49;
         }
@@ -17,7 +17,6 @@ public class SorcererDialogueTrigger : DialogueTrigger
         {
             return 48;
         }
-       
         return 0;
     }
 }

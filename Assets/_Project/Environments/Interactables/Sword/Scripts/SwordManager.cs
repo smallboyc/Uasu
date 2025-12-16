@@ -33,6 +33,7 @@ public class SwordManager : MonoBehaviour
 
         PlayerManager.Instance.Collectables.Add(PlayerManager.CollectableItems.Sword, gameObject);
 
+        UIManager.Instance.Hide(PanelType.Talisman);
         UIManager.Instance.Show(PanelType.Weapon);
 
         

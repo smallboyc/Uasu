@@ -338,7 +338,7 @@
             "id": 49,
             "speaker": "sorcerer",
             "required_achievements": [
-                "THE_SORCERER_FLOWER"
+                "THE_SORCERER_ELEMENTS"
             ],
             "text": "Bienvenido de nuevo, héroe.",
             "next_dialogue": 50
@@ -371,7 +371,10 @@
             "id": 54,
             "speaker": "sorcerer",
             "text": " 'HAS RECIBIDO EL ARTEFACTO' ",
-            "next_dialogue": 55
+            "next_dialogue": 55,
+            "new_achievements": [
+                "THE_ARTIFACT"
+            ]
         },
         {
             "id": 55,
