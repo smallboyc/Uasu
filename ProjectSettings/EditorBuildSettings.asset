@@ -54,7 +54,7 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Levels/Level_02/Level_02.3/Level_02.3_Main.unity
     guid: 2da70ee8a85f6614b9c077deca4393d6
   - enabled: 1
-    path: Assets/_Project/Scenes/Levels/Sanctuary/Sanctuary_Enviroment.unity
+    path: Assets/_Project/Scenes/Levels/Sanctuary/Sanctuary_Environment.unity
     guid: 9bd8f68814c7a9147adbaa6f01a18762
   - enabled: 1
     path: Assets/_Project/Scenes/Levels/Sanctuary/Sanctuary_Gameplay.unity

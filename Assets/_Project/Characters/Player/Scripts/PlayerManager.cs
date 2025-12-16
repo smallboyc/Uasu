@@ -135,8 +135,11 @@ public class PlayerManager : CharacterManager
         // State Machine
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_sleepState);
-        IsometricCameraManager.Instance.IsometricCamera.Follow = transform;
-        PlayerHealthBarManager.Instance.SetMaxHealth(HealthManager.Health);
+        // AddAchievement("THE_SORCERER_FLOWER");
+        if (IsometricCameraManager.Instance)
+            IsometricCameraManager.Instance.IsometricCamera.Follow = transform;
+        if (PlayerHealthBarManager.Instance)
+            PlayerHealthBarManager.Instance.SetMaxHealth(HealthManager.Health);
         GetHolders();
     }
 

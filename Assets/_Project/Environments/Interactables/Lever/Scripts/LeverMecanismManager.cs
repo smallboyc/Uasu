@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -10,7 +11,7 @@ public class LeverMecanismManager : MonoBehaviour
     private bool _playerInRange;
     private Transform _leverPosition;
     private Animator _leverMecanismAnimator;
-    [SerializeField] GameObject _targetBridge;
+    [SerializeField] List<GameObject> _targetBridges;
 
     void Awake()
     {
@@ -56,8 +57,13 @@ public class LeverMecanismManager : MonoBehaviour
 
     private void UnlockBridge() //Call in the end of the lever animation.
     {
-        if (_targetBridge)
-            _targetBridge.GetComponent<Animator>().SetBool("IsOpen", true);
+        if (_targetBridges.Count != 0)
+        {
+            foreach (GameObject bridge in _targetBridges)
+            {
+                bridge.transform.Find("BridgePlate").GetComponent<Animator>().SetBool("IsOpen", true);
+            }
+        }
     }
 
     private void AttachTo(Transform newParent)
