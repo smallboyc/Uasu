@@ -4,7 +4,6 @@ using UnityEngine;
 public class DeathZone : MonoBehaviour
 {
     private SceneLoader _sceneLoader;
-    [SerializeField] string _sceneToLoad;
 
     void Awake()
     {
@@ -15,10 +14,15 @@ public class DeathZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerManager.Instance.gameObject.transform.position = PlayerManager.Instance.Checkpoint.position;
-            if (_sceneToLoad != null)
+            if (PlayerManager.Instance)
             {
-                _sceneLoader.LoadSceneByName(_sceneToLoad);
+                PlayerManager.Instance.SoulCounter = 0;
+                
+                if (PlayerManager.Instance.Checkpoint != null)
+                {
+                    PlayerManager.Instance.gameObject.transform.position = PlayerManager.Instance.Checkpoint.position;
+                    _sceneLoader.LoadSceneByName(PlayerManager.Instance.Checkpoint.scene);
+                }
             }
 
         }

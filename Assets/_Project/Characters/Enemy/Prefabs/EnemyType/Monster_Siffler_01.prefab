@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   IsHurt: 0
-  SoulPrefab: {fileID: 3185490620076878535, guid: 01631b5a4bc2146e8842ace58841cf33, type: 3}
+  SoulPrefab: {fileID: 5102409286065993262, guid: ee1acebe740b84491a5acb643e94e661, type: 3}
 --- !u!114 &7163081172736926523
 MonoBehaviour:
   m_ObjectHideFlags: 0

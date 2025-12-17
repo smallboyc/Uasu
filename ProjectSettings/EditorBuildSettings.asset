@@ -30,8 +30,47 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Levels/Level_02/Level_02.1/Level_02_Main.unity
     guid: 7882b2f828e154443826e260d6cf1e71
   - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Level_02/Level_02.1/Level_02_Gameplay.unity
+    guid: fcd9383edb023274183b89ae48f05ccd
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Level_02/Level_02.1/Level_02_Environment.unity
+    guid: 14549ba56a6712d48a4a5f151b23aea6
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Level_02/Level_02.2/Level_02.2_Environment.unity
+    guid: 726d2e1492cd1494092a19706a5cbbec
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Level_02/Level_02.2/Level_02.2_Gameplay.unity
+    guid: 9fbff2eeebaff074cab9002bc3d810c7
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Level_02/Level_02.2/Level_02.2_Main.unity
+    guid: b50f0f87dd375794299f655a866d9599
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Level_02/Level_02.3/Level_02.3_Environment.unity
+    guid: fc79b560ab347cb4cb6cf47e1e362660
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Level_02/Level_02.3/Level_02.3_Gameplay.unity
+    guid: edd033906c5dfd44fbf12c517832e7ec
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Level_02/Level_02.3/Level_02.3_Main.unity
+    guid: 2da70ee8a85f6614b9c077deca4393d6
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Sanctuary/Sanctuary_Environment.unity
+    guid: 9bd8f68814c7a9147adbaa6f01a18762
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Sanctuary/Sanctuary_Gameplay.unity
+    guid: 58a77e2b77b4baf439a384e2ec1b2c0b
+  - enabled: 1
+    path: Assets/_Project/Scenes/Levels/Sanctuary/Sanctuary_Main.unity
+    guid: c560a8367c1a7a04cbb2701f87dfcd9d
+  - enabled: 1
     path: Assets/_Project/Scenes/Cinematics/Cinematic_01.unity
     guid: 07d97b30aa8b64d0db592a46a8247780
+  - enabled: 1
+    path: Assets/_Project/Scenes/Playground/Spawn/Scene_A.unity
+    guid: bb40515df58f94ae2a3ec82f95b7207a
+  - enabled: 1
+    path: Assets/_Project/Scenes/Playground/Spawn/Scene_B.unity
+    guid: 77aeed8042a674ae5bec17a318b896f7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 9df4850b645ad46479e3b2283aa7247e, type: 3}
   m_UseUCBPForAssetBundles: 0

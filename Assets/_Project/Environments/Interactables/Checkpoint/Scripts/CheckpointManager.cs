@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckpointManager : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class CheckpointManager : MonoBehaviour
 
     public void SetCheckpoint()
     {
-        PlayerManager.Instance.Checkpoint = _checkpointTransform;
+        PlayerManager.Instance.Checkpoint.position = _checkpointTransform.position;
+        PlayerManager.Instance.Checkpoint.scene = SceneManager.GetActiveScene().name;
         _set = true;
     }
 

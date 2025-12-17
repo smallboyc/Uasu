@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Checkpoint
+{
+    public Vector3 position;
+    public string scene;
+}
+
 [RequireComponent(typeof(PlayerLocomotionManager))]
 [RequireComponent(typeof(PlayerLockManager))]
 [RequireComponent(typeof(PlayerAttackManager))]
@@ -10,6 +16,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerCollisionManager))]
 public class PlayerManager : CharacterManager
 {
+
     // Singleton => Singleplayer game
     static PlayerManager _instance;
     public static PlayerManager Instance => _instance;
@@ -53,12 +60,15 @@ public class PlayerManager : CharacterManager
         IsPlayerActive = true;
     }
 
+    //Transition between scenes
+    public bool IsTransitioning;
+
     //Sounds
     [Header("Sounds")]
     public AudioClip[] AttackSounds;
 
     //Checkpoint
-    public Transform Checkpoint;
+    public Checkpoint Checkpoint = new();
 
     //Inventory
     [HideInInspector] public enum CollectableItems { Sword, Lever, Health }
@@ -132,9 +142,14 @@ public class PlayerManager : CharacterManager
         // State Machine
         PlayerStateMachine = new StateMachine();
         PlayerStateMachine.Initialize(_sleepState);
-        IsometricCameraManager.Instance.IsometricCamera.Follow = transform;
-        PlayerHealthBarManager.Instance.SetMaxHealth(HealthManager.Health);
+        // AddAchievement("THE_SORCERER_FLOWER");
+        if (IsometricCameraManager.Instance)
+            IsometricCameraManager.Instance.IsometricCamera.Follow = transform;
+        if (PlayerHealthBarManager.Instance)
+            PlayerHealthBarManager.Instance.SetMaxHealth(HealthManager.Health);
         GetHolders();
+        Checkpoint.position = transform.position;
+        Checkpoint.scene = "Level_01_Main";
     }
 
     protected override void Update()

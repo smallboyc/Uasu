@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,11 +14,10 @@ public enum PanelType
     Options,
     GameOver,
     Transition,
-    Video,
+    Cinematic,
     Weapon,
     Talisman,
-
-
+    Loading,
 }
 [System.Serializable]
 
@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
     private Dictionary<PanelType, UIPanel> panels;
 
     private bool _talismanPanelActive;
+    private bool _loadFromMainMenu;
 
 
     private void Awake()
@@ -76,7 +77,7 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        if (!_talismanPanelActive && PlayerManager.Instance.HasAchievement("THE_ARTIFACT"))
+        if (PlayerManager.Instance && !_talismanPanelActive && PlayerManager.Instance.HasAchievement("THE_ARTIFACT"))
         {
             _talismanPanelActive = true;
             Instance.Show(PanelType.Talisman);
@@ -129,6 +130,7 @@ public class UIManager : MonoBehaviour
 
         if (scene.name == "MainMenu")
         {
+            _loadFromMainMenu = true;
             Instance.HideAll();
             Instance.Show(PanelType.MainMenu);
             Debug.Log("Main Menu Screen Loaded!");
@@ -137,16 +139,17 @@ public class UIManager : MonoBehaviour
 
         if (scene.name.Contains("Cinematic"))
         {
-            Instance.Show(PanelType.Video);
+            Instance.Show(PanelType.Cinematic);
             return;
         }
 
-        if (scene.name == "Level_01_Main" && GameObject.FindWithTag("Player"))
+        if (_loadFromMainMenu && scene.name == "Level_01_Main")
         {
+            _loadFromMainMenu = false;
             DialogueManager.Instance.DialogueIsActive = true;
 
             Instance.HideAll();
-            Instance.Show(PanelType.Transition);
+            TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeIn, TransitionPanelManager.TransitionColor.White);
             Instance.Show(PanelType.HUD_Health);
             Instance.Show(PanelType.HUD_Souls);
 
@@ -155,6 +158,13 @@ public class UIManager : MonoBehaviour
             Debug.Log("Player HUD Loaded!");
             return;
         }
+
+        if (PlayerManager.Instance && PlayerManager.Instance.IsTransitioning)
+        {
+            Show(PanelType.Loading);
+            StartCoroutine(EndTransition());
+        }
+
     }
 
     public void ShowOptions()
@@ -194,5 +204,12 @@ public class UIManager : MonoBehaviour
     public UIPanel GetPanel(PanelType type)
     {
         return panels[type];
+    }
+
+    private IEnumerator EndTransition()
+    {
+        yield return new WaitForSeconds(LoadingPlayerManager.Instance.LoadingDuration);
+        TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeIn, TransitionPanelManager.TransitionColor.Black);
+        Hide(PanelType.Loading);
     }
 }

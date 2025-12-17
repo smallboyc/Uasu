@@ -4,15 +4,22 @@ using UnityEngine;
 public class SwordManager : MonoBehaviour
 {
     [SerializeField] private Collider _pickupCollider;
- 
+
     private bool _playerCanGetSword;
     private bool _isInteractionLocked;
 
     void Update()
     {
+        if (!PlayerManager.Instance.HasAchievement("THE_ARTIFACT"))
+            return;
+
         if (!PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Sword))
         {
-            if (PlayerInputManager.Instance.InteractPressed && _playerCanGetSword) GetSword();
+            if (PlayerInputManager.Instance.InteractPressed && _playerCanGetSword)
+            {
+                GetSword();
+                PlayerManager.Instance.AddAchievement("THE_SWORD");
+            }
         }
         else
         {
@@ -36,7 +43,7 @@ public class SwordManager : MonoBehaviour
         UIManager.Instance.Hide(PanelType.Talisman);
         UIManager.Instance.Show(PanelType.Weapon);
 
-        
+
     }
     private IEnumerator ToggleWeapon()
     {

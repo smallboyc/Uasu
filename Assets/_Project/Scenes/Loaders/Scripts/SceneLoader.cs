@@ -53,7 +53,8 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadSceneByNameWithTransition(string sceneName)
     {
-        UIManager.Instance.Show(PanelType.Transition);
+        // UIManager.Instance.Show(PanelType.Transition);
+        TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeOut, TransitionPanelManager.TransitionColor.Black);
         StartCoroutine(LoadSceneCoroutine(sceneName));
     }
 

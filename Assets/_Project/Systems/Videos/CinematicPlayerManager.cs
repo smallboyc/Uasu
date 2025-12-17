@@ -5,7 +5,7 @@ using UnityEngine.Video;
 
 [RequireComponent(typeof(VideoPlayer))]
 [RequireComponent(typeof(AudioSource))]
-public class VideoPlayerManager : MonoBehaviour
+public class CinematicPlayerManager : MonoBehaviour
 {
     [SerializeField] private VideoClip _video;
     [SerializeField] private float _speed = 1.0f;
@@ -36,7 +36,7 @@ public class VideoPlayerManager : MonoBehaviour
     private IEnumerator RemovePanels()
     {
         yield return new WaitForSeconds(2.0f);
-        UIManager.Instance.HideAllExcept(PanelType.Video);
+        UIManager.Instance.HideAllExcept(PanelType.Cinematic);
     }
 
 

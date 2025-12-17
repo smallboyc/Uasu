@@ -37,6 +37,10 @@ public class FallingRockManager : MonoBehaviour
 
     void Update()
     {
+        if (PlayerManager.Instance.HasAchievement("THE_SWORD"))
+        {
+            _isFallingRockSessionActive = true;
+        }
         if (_isFallingRockSessionActive && _selectRockToFall)
         {
             int rand = Random.Range(0, _fallingRockSpawns.Count);

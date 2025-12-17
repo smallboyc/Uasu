@@ -4,10 +4,17 @@ using UnityEngine;
 public class PressurePlateAction : MonoBehaviour
 {
     [SerializeField] private GameObject _actionTarget;
+    [SerializeField] private string _achievementNameToForceAction;
     private GameObject _actionSource;
     private bool _deactivate;
     void Update()
     {
+        if (PlayerManager.Instance.HasAchievement(_achievementNameToForceAction))
+        {
+            StartCoroutine(Action());
+            return;
+        }
+        
         if (_actionSource && !_deactivate)
         {
             Vector3 distance = (_actionSource.transform.position - transform.position).normalized;
