@@ -21,6 +21,8 @@ public class CinematicPlayerManager : MonoBehaviour
     }
     void Start()
     {
+        SoundManager.Instance.StopMusic();
+        
         _videoPlayer.clip = _video;
         _audioSource.volume = SoundManager.Instance.GetVolume();
         _videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;

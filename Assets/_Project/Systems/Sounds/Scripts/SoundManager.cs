@@ -46,16 +46,19 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
-        // Si es la misma música y ya está sonando, no hacer nada
         if (musicSource.clip == clip && musicSource.isPlaying)
             return;
 
-        // Si es distinta, se para la anterior automáticamente
         musicSource.Stop();
 
         musicSource.clip = clip;
         musicSource.loop = true;
         musicSource.volume = volumeSlider.value;
         musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
 }
