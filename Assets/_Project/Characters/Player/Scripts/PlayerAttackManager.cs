@@ -73,7 +73,7 @@ public class PlayerAttackManager : MonoBehaviour
                     Debug.Log("CLASH!");
                     return;
                 }
-                if (enemyHealthManager && PlayerManager.Instance.HoldSword)
+                if (enemyHealthManager)
                 {
                     enemyHealthManager.Hurt(); // => It will trigger the HurtState from the enemy current state.
                 }

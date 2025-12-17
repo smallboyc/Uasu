@@ -14,10 +14,15 @@ public class DeathZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (PlayerManager.Instance && PlayerManager.Instance.Checkpoint != null)
+            if (PlayerManager.Instance)
             {
-                PlayerManager.Instance.gameObject.transform.position = PlayerManager.Instance.Checkpoint.position;
-                _sceneLoader.LoadSceneByName(PlayerManager.Instance.Checkpoint.scene);
+                PlayerManager.Instance.SoulCounter = 0;
+                
+                if (PlayerManager.Instance.Checkpoint != null)
+                {
+                    PlayerManager.Instance.gameObject.transform.position = PlayerManager.Instance.Checkpoint.position;
+                    _sceneLoader.LoadSceneByName(PlayerManager.Instance.Checkpoint.scene);
+                }
             }
 
         }
