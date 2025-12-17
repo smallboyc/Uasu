@@ -6890,6 +6890,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sanctuary_Map
       objectReference: {fileID: 0}
+    - target: {fileID: 56359351978192340, guid: ac46d8cfd20f11245be04e045f0f6d5c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 541893025108943585, guid: ac46d8cfd20f11245be04e045f0f6d5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 829764199539160942, guid: ac46d8cfd20f11245be04e045f0f6d5c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.13642183
@@ -6941,6 +6949,30 @@ PrefabInstance:
     - target: {fileID: 829764199539160942, guid: ac46d8cfd20f11245be04e045f0f6d5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214608491542150388, guid: ac46d8cfd20f11245be04e045f0f6d5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517243195039964805, guid: ac46d8cfd20f11245be04e045f0f6d5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040222315905621421, guid: ac46d8cfd20f11245be04e045f0f6d5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148059382297195286, guid: ac46d8cfd20f11245be04e045f0f6d5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421485970925555861, guid: ac46d8cfd20f11245be04e045f0f6d5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702583497076871520, guid: ac46d8cfd20f11245be04e045f0f6d5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

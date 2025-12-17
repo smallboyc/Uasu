@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -25,6 +26,11 @@ public class Breakable : MonoBehaviour
 
         if (_breakObject)
             _breakObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        StartCoroutine(DeleteRocks());
     }
 
     void OnCollisionEnter(Collision collision)
@@ -58,5 +64,11 @@ public class Breakable : MonoBehaviour
         }
 
         //TODO : Same thing for the enemy here.
+    }
+
+    private IEnumerator DeleteRocks()
+    {
+        yield return new WaitForSeconds(7.0F);
+        Destroy(gameObject);
     }
 }

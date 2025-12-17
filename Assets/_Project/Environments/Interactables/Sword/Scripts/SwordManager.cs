@@ -15,7 +15,11 @@ public class SwordManager : MonoBehaviour
 
         if (!PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Sword))
         {
-            if (PlayerInputManager.Instance.InteractPressed && _playerCanGetSword) GetSword();
+            if (PlayerInputManager.Instance.InteractPressed && _playerCanGetSword)
+            {
+                GetSword();
+                PlayerManager.Instance.AddAchievement("THE_SWORD");
+            }
         }
         else
         {
