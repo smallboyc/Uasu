@@ -5,6 +5,9 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     [SerializeField] private AudioSource _audioSourcePrefab;
+
+    [SerializeField] private AudioSource musicSource;
+
     public Slider volumeSlider;
     public float GetVolume()
     {
@@ -39,5 +42,20 @@ public class SoundManager : MonoBehaviour
     {
         int rand = Random.Range(0, clipList.Length);
         PlaySoundClip(clipList[rand], transform);
+    }
+
+    public void PlayMusic(AudioClip clip)
+    {
+        // Si es la misma música y ya está sonando, no hacer nada
+        if (musicSource.clip == clip && musicSource.isPlaying)
+            return;
+
+        // Si es distinta, se para la anterior automáticamente
+        musicSource.Stop();
+
+        musicSource.clip = clip;
+        musicSource.loop = true;
+        musicSource.volume = volumeSlider.value;
+        musicSource.Play();
     }
 }
