@@ -5,10 +5,15 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     [SerializeField] private AudioSource _audioSourcePrefab;
-    public Slider volumeSlider;
-    public float GetVolume()
+    [SerializeField] private AudioSource musicSource;
+
+    [HideInInspector] public bool ManageSoundOnPause;
+
+    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider musicSlider;
+    public float GetMusic()
     {
-        return volumeSlider.value;
+        return musicSlider.value;
     }
 
     void Awake()
@@ -22,6 +27,25 @@ public class SoundManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    void Update()
+    {
+        if (UIManager.Instance.GamePaused)
+        {
+            ManageSoundOnPause = true;
+
+            if (CinematicPlayerManager.Instance)
+                CinematicPlayerManager.Instance.PausePlayer();
+        }
+
+        if (!UIManager.Instance.GamePaused && ManageSoundOnPause)
+        {
+            ManageSoundOnPause = false;
+            if (CinematicPlayerManager.Instance)
+                CinematicPlayerManager.Instance.StartPlayer();
+        }
+
     }
 
     public void PlaySoundClip(AudioClip clip, Transform transform)
@@ -39,5 +63,29 @@ public class SoundManager : MonoBehaviour
     {
         int rand = Random.Range(0, clipList.Length);
         PlaySoundClip(clipList[rand], transform);
+    }
+
+    public void PlayMusic(AudioClip clip)
+    {
+        if (musicSource.clip == clip && musicSource.isPlaying)
+            return;
+
+        musicSource.Stop();
+
+        musicSource.clip = clip;
+        musicSource.loop = true;
+        musicSource.volume = musicSlider.value;
+        musicSource.Play();
+    }
+
+    public void AdjustMusic()
+    {
+        musicSource.volume = musicSlider.value;
+    }
+
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
 }

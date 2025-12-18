@@ -2547,6 +2547,7 @@ GameObject:
   - component: {fileID: 849610704765837461}
   - component: {fileID: 7503775293565445890}
   - component: {fileID: 4334875913315559865}
+  - component: {fileID: 6186346833480714281}
   m_Layer: 0
   m_Name: MainMenuPanel
   m_TagString: Untagged
@@ -2613,6 +2614,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6186346833480714281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7180033931990420532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f4a8a3a34dbb144ba9c5be4eac2afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuMusic: {fileID: 8300000, guid: c34376a7a43ae3847a5eb2668b061fbc, type: 3}
 --- !u!1 &7300179594712792399
 GameObject:
   m_ObjectHideFlags: 0
