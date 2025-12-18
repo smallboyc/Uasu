@@ -12,9 +12,9 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Slider musicSlider;
-    public float GetVolume()
+    public float GetMusic()
     {
-        return volumeSlider.value;
+        return musicSlider.value;
     }
 
     void Awake()
@@ -76,7 +76,7 @@ public class SoundManager : MonoBehaviour
 
         musicSource.clip = clip;
         musicSource.loop = true;
-        musicSource.volume = volumeSlider.value;
+        musicSource.volume = musicSlider.value;
         musicSource.Play();
     }
 
