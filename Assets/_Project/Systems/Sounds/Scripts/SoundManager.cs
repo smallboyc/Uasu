@@ -8,7 +8,10 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicSource;
 
-    public Slider volumeSlider;
+    [HideInInspector] public bool ManageSoundOnPause;
+
+    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider musicSlider;
     public float GetVolume()
     {
         return volumeSlider.value;
@@ -25,6 +28,26 @@ public class SoundManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    void Update()
+    {
+        if (UIManager.Instance.GamePaused)
+        {
+            ManageSoundOnPause = true;
+
+            if (CinematicPlayerManager.Instance)
+                CinematicPlayerManager.Instance.PausePlayer();
+        }
+
+        if (!UIManager.Instance.GamePaused && ManageSoundOnPause)
+        {
+            ManageSoundOnPause = false;
+            musicSource.volume = musicSlider.value;
+            if (CinematicPlayerManager.Instance)
+                CinematicPlayerManager.Instance.StartPlayer();
+        }
+
     }
 
     public void PlaySoundClip(AudioClip clip, Transform transform)
@@ -56,6 +79,8 @@ public class SoundManager : MonoBehaviour
         musicSource.volume = volumeSlider.value;
         musicSource.Play();
     }
+
+
 
     public void StopMusic()
     {

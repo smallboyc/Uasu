@@ -169,8 +169,18 @@ public class UIManager : MonoBehaviour
 
     public void ShowOptions()
     {
+        GamePaused = true;
         panels[PanelType.Options].Show();
     }
+
+    public void HideOptions()
+    {
+        GamePaused = false;
+        panels[PanelType.Options].Hide();
+    }
+
+
+
 
     public void Show(PanelType type)
     {
