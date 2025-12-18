@@ -175,7 +175,6 @@ public class UIManager : MonoBehaviour
 
     public void HideOptions()
     {
-        GamePaused = false;
         panels[PanelType.Options].Hide();
     }
 
