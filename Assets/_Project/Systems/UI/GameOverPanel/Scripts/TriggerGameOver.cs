@@ -32,6 +32,8 @@ public class TriggerGameOver : MonoBehaviour
             PlayerManager.Instance.SoulCounter = 0;
             PlayerManager.Instance.HealthManager.Health = 4;
             PlayerHealthBarManager.Instance.SetHealth(PlayerManager.Instance.HealthManager.Health);
+            
+            PlayerManager.Instance.LockManager.IsLockedOnEnemy = false;
 
             if (PlayerManager.Instance.Checkpoint != null)
             {
