@@ -26,6 +26,8 @@ public class SorcererElementsManager : MonoBehaviour
     [SerializeField] private string _achievementName = "THE_SORCERER_ELEMENTS";
     [SerializeField] private List<ElementType> _collectedElements = new();
 
+    public List<ElementType> CollectedElements() => _collectedElements;
+
     public void AddTask(ElementType element)
     {
         _collectedElements.Add(element);
