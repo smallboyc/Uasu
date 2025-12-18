@@ -5,7 +5,6 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     [SerializeField] private AudioSource _audioSourcePrefab;
-
     [SerializeField] private AudioSource musicSource;
 
     [HideInInspector] public bool ManageSoundOnPause;
@@ -43,7 +42,6 @@ public class SoundManager : MonoBehaviour
         if (!UIManager.Instance.GamePaused && ManageSoundOnPause)
         {
             ManageSoundOnPause = false;
-            musicSource.volume = musicSlider.value;
             if (CinematicPlayerManager.Instance)
                 CinematicPlayerManager.Instance.StartPlayer();
         }
@@ -80,6 +78,10 @@ public class SoundManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void AdjustMusic()
+    {
+        musicSource.volume = musicSlider.value;
+    }
 
 
     public void StopMusic()
