@@ -169,7 +169,6 @@ public class UIManager : MonoBehaviour
 
     public void ShowOptions()
     {
-        GamePaused = true;
         panels[PanelType.Options].Show();
     }
 

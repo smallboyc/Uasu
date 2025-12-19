@@ -108,5 +108,9 @@ public class PlayerAnimationManager : CharacterAnimationManager
     {
         _animator.SetBool("IsDead", true);
     }
+    public void StopDeathAnimation()
+    {
+        _animator.SetBool("IsDead", false);
+    }
 }
 

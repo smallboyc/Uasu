@@ -8,7 +8,7 @@ public class PlayerDeathState : State
     public override void Enter()
     {
         _playerManager.AnimationManager.PlayDeathAnimation();
-        // UIManager.Instance.Show(PanelType.GameOver);
+        UIManager.Instance.Show(PanelType.GameOver);
     }
 
     public override void Update()
@@ -18,5 +18,7 @@ public class PlayerDeathState : State
 
     public override void Exit()
     {
+        _playerManager.AnimationManager.StopDeathAnimation();
+        UIManager.Instance.Hide(PanelType.GameOver);
     }
 }
