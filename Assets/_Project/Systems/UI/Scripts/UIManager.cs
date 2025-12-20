@@ -18,6 +18,7 @@ public enum PanelType
     Weapon,
     Talisman,
     Loading,
+    Help,
 }
 [System.Serializable]
 

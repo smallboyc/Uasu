@@ -34,10 +34,18 @@ public class LeverMecanismManager : MonoBehaviour
     {
         if (_playerInRange)
         {
-            if (_currentState == State.MissingLever && PlayerInputManager.Instance.InteractPressed && PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever)) ReadyToActivate();
-            if (_currentState == State.LeverAttached && PlayerInputManager.Instance.AttackPressed) Activate();
-        }
+            if (_currentState == State.MissingLever && PlayerInputManager.Instance.InteractPressed && PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever))
+            {
+                ReadyToActivate();
+                UIManager.Instance.Hide(PanelType.Help);
+            }
+            if (_currentState == State.LeverAttached && PlayerInputManager.Instance.AttackPressed)
+            {
+                Activate();
+                UIManager.Instance.Hide(PanelType.Help);
+            }
 
+        }
     }
 
     private void ReadyToActivate()
@@ -86,9 +94,21 @@ public class LeverMecanismManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
             _playerInRange = true;
 
+            if (_currentState == State.MissingLever && PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever))
+            {
+                HelpManager.Instance.SetHelpText("<Interact> to link the lever");
+            }
+            else if (_currentState == State.LeverAttached)
+            {
+                HelpManager.Instance.SetHelpText("<Attack> to activate the mechanism");
+            }
+            else
+            {
+                HelpManager.Instance.SetHelpText("Looks like a mechanism...");
+            }
+            UIManager.Instance.Show(PanelType.Help);
         }
     }
 
@@ -97,6 +117,7 @@ public class LeverMecanismManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerInRange = false;
+            UIManager.Instance.Hide(PanelType.Help);
         }
     }
 }

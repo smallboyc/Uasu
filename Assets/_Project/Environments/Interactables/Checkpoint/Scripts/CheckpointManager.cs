@@ -22,12 +22,13 @@ public class CheckpointManager : MonoBehaviour
     {
         if (_set)
             return;
-            
+
         if (_canInteract && PlayerInputManager.Instance.InteractPressed)
         {
             SoundManager.Instance.PlaySoundClip(Checkpoint, transform);
             Debug.Log("Change checkpoint");
             SetCheckpoint();
+            UIManager.Instance.Hide(PanelType.Help);
         }
     }
 
@@ -36,6 +37,11 @@ public class CheckpointManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _canInteract = true;
+            if (!_set)
+            {
+                HelpManager.Instance.SetHelpText("<Interact> to active Checkpoint");
+                UIManager.Instance.Show(PanelType.Help);
+            }
         }
     }
 
@@ -44,6 +50,7 @@ public class CheckpointManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _canInteract = false;
+            UIManager.Instance.Hide(PanelType.Help);
         }
     }
 }

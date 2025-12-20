@@ -35,6 +35,7 @@ public class HealthBarrelManager : MonoBehaviour
             SoundManager.Instance.PlaySoundClip(Interact, transform);
             _used = true;
             Destroy(_currentBarrel);
+            UIManager.Instance.Hide(PanelType.Help);
             if (_emptyBarrel)
                 _currentBarrel = Instantiate(_emptyBarrel, transform.position, Quaternion.Euler(90f, 0f, 0f));
             InstantiateHealth();
@@ -58,6 +59,11 @@ public class HealthBarrelManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerInRange = true;
+            if (!_used)
+            {
+                HelpManager.Instance.SetHelpText("<Interact>");
+                UIManager.Instance.Show(PanelType.Help);
+            }
         }
     }
 
@@ -66,6 +72,7 @@ public class HealthBarrelManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerInRange = false;
+            UIManager.Instance.Hide(PanelType.Help);
         }
     }
 }

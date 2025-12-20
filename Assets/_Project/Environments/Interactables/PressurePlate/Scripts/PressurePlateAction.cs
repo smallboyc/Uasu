@@ -15,12 +15,12 @@ public class PressurePlateAction : MonoBehaviour
 
     void Update()
     {
-        if (PlayerManager.Instance.HasAchievement(_achievementNameToForceAction))
+        if (PlayerManager.Instance && PlayerManager.Instance.HasAchievement(_achievementNameToForceAction))
         {
             StartCoroutine(Action());
             return;
         }
-        
+
         if (_actionSource && !_deactivate)
         {
             Vector3 distance = (_actionSource.transform.position - transform.position).normalized;
