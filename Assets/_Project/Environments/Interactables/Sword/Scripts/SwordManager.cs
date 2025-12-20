@@ -10,6 +10,9 @@ public class SwordManager : MonoBehaviour
 
     void Update()
     {
+        if (!PlayerManager.Instance)
+            return;
+
         if (!PlayerManager.Instance.HasAchievement("THE_ARTIFACT"))
             return;
 
@@ -19,6 +22,7 @@ public class SwordManager : MonoBehaviour
             {
                 GetSword();
                 PlayerManager.Instance.AddAchievement("THE_SWORD");
+                UIManager.Instance.Hide(PanelType.Help);
             }
         }
         else
@@ -42,8 +46,6 @@ public class SwordManager : MonoBehaviour
 
         UIManager.Instance.Hide(PanelType.Talisman);
         UIManager.Instance.Show(PanelType.Weapon);
-
-
     }
     private IEnumerator ToggleWeapon()
     {
@@ -71,6 +73,11 @@ public class SwordManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerCanGetSword = true;
+            if (!PlayerManager.Instance.HasAchievement("THE_ARTIFACT"))
+                HelpManager.Instance.SetHelpText("I can't get this Sword.");
+            else
+                HelpManager.Instance.SetHelpText("<Interact> to get the Sword");
+            UIManager.Instance.Show(PanelType.Help);
         }
     }
 
@@ -79,6 +86,7 @@ public class SwordManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerCanGetSword = false;
+            UIManager.Instance.Hide(PanelType.Help);
         }
     }
 

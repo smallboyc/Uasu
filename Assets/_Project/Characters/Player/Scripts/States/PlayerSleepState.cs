@@ -8,11 +8,13 @@ public class PlayerSleepState : State
     {
         IsometricCameraManager.Instance.ActiveCameraZoomEffect(2.0f);
         _playerManager.AnimationManager.PlaySleepAnimation();
+        HelpManager.Instance.SetHelpText("<Interact> to Wake Up !");
+        UIManager.Instance.Show(PanelType.Help);
     }
 
     public override void Update()
     {
-        if (PlayerInputManager.Instance.InteractPressed)
+        if (PlayerInputManager.Instance.InteractPressed && !UIManager.Instance.GamePaused)
         {
             _playerManager.PlayerStateMachine.ChangeState(_playerManager.IdleState);
         }
@@ -22,5 +24,6 @@ public class PlayerSleepState : State
     {
         _playerManager.AnimationManager.StopSleepAnimation();
         IsometricCameraManager.Instance.CancelCameraZoomEffect(2.5f);
+        UIManager.Instance.Hide(PanelType.Help);
     }
 }

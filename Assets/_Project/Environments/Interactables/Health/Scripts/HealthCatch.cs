@@ -12,6 +12,7 @@ public class HealthCatch : MonoBehaviour
         if (PlayerInputManager.Instance.InteractPressed)
         {
             PlayerManager.Instance.HealthManager.Heal();
+            UIManager.Instance.Hide(PanelType.Help);
             Destroy(gameObject);
         }
     }
@@ -23,6 +24,8 @@ public class HealthCatch : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerInRange = true;
+            HelpManager.Instance.SetHelpText("<Interact> to get health");
+            UIManager.Instance.Show(PanelType.Help);
         }
     }
 
@@ -31,6 +34,7 @@ public class HealthCatch : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerInRange = false;
+            UIManager.Instance.Hide(PanelType.Help);
         }
     }
 }

@@ -12,6 +12,9 @@ public class EnemyPatrolState : EnemyState
 
     public override void Update()
     {
+        if (!PlayerManager.Instance)
+            return;
+            
         _enemyManager.LocomotionManager.HandleAllMovement(_enemyManager.CharacterController, _enemyManager.WayPoints, _enemyManager.LockManager);
         _enemyManager.LockManager.TargetLockPlayer();
 
