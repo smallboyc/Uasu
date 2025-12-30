@@ -50,6 +50,7 @@ MonoBehaviour:
   _healthItem: {fileID: 1337736715375648906, guid: 7bb734c52b1224aa7afef01e6ca984c4, type: 3}
   _minHealth: 1
   _maxHealth: 3
+  Interact: {fileID: 8300000, guid: d990779f24613414bb79cc329726c2aa, type: 3}
 --- !u!135 &3746523310986701805
 SphereCollider:
   m_ObjectHideFlags: 0

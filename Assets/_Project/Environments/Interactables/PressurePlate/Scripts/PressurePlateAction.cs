@@ -10,6 +10,7 @@ public class PressurePlateAction : MonoBehaviour
 
     //Sounds
     [Header("Sounds")]
+    public AudioClip PlateDown;
     public AudioClip DoorOpening;
 
     void Update()
@@ -34,8 +35,10 @@ public class PressurePlateAction : MonoBehaviour
 
     private IEnumerator Activate()
     {
+        SoundManager.Instance.PlaySoundClip(PlateDown, transform);
         yield return new WaitForSeconds(1.0f);
         transform.Translate(Vector3.down * 0.2f);
+        SoundManager.Instance.PlaySoundClip(DoorOpening, transform);
     }
 
     private IEnumerator Action()
@@ -45,9 +48,10 @@ public class PressurePlateAction : MonoBehaviour
             Animator animator = _actionTarget.GetComponent<Animator>();
             if (animator)
             {
+                
                 yield return new WaitForSeconds(1.0f);
                 animator.SetBool("IsOpen", true);
-                SoundManager.Instance.PlaySoundClip(DoorOpening, transform);
+                
             }
         }
     }
