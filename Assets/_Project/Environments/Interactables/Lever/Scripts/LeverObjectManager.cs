@@ -10,12 +10,12 @@ public class LeverObjectManager : MonoBehaviour
     [Header("Sounds")]
     public AudioClip TakeLever;
 
+
     void Update()
     {
 
         if (PlayerInputManager.Instance.InteractPressed && _playerCanGetLever) 
-            GetLever();
-            SoundManager.Instance.PlaySoundClip(TakeLever, transform);
+            GetLever();           
 
         if (PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever))
             if (PlayerManager.Instance.HoldSword)
@@ -34,7 +34,7 @@ public class LeverObjectManager : MonoBehaviour
         }
 
         AttachTo(PlayerManager.Instance.HandHolder);
-
+        SoundManager.Instance.PlaySoundClip(TakeLever, transform);
         PlayerManager.Instance.Collectables.Add(PlayerManager.CollectableItems.Lever, gameObject);
     }
 
