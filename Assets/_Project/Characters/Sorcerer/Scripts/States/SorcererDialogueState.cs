@@ -6,6 +6,7 @@ public class SorcererDialogueState : SorcererState
 
     public override void Enter()
     {
+        SoundManager.Instance.PlaySoundClip(_sorcererManager.Interact, _sorcererManager.transform);
         UIManager.Instance.Show(PanelType.Dialogue);
         _sorcererManager.DialogueTrigger.TriggerDialogue();
     }
