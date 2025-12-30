@@ -5,6 +5,7 @@ public class EnemyAttackState : EnemyState
     public EnemyAttackState(EnemyManager enemyManager) : base(enemyManager) { }
     public override void Enter()
     {
+        SoundManager.Instance.PlaySoundClip(_enemyManager.AttackSound, _enemyManager.transform);
         _enemyManager.AttackManager.EnemyStartAttack();
         _enemyManager.AnimationManager.PlayAttackAnimation();
 

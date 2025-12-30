@@ -8,6 +8,7 @@ public class PlayerHurtState : State
     public override void Enter()
     {
         // Debug.Log("PLAYER => Hurt State ENTER");
+        SoundManager.Instance.PlaySoundClip(_playerManager.HurtSounds, _playerManager.transform);
         _playerManager.AnimationManager.PlayHurtAnimation();
     }
 

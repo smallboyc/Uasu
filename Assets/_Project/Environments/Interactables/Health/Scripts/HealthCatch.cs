@@ -4,6 +4,10 @@ public class HealthCatch : MonoBehaviour
 {
     private bool _playerInRange;
 
+    //Sounds
+    [Header("Sounds")]
+    public AudioClip GainHealth;
+
     void Update()
     {
         if (!_playerInRange)
@@ -11,6 +15,7 @@ public class HealthCatch : MonoBehaviour
 
         if (PlayerInputManager.Instance.InteractPressed)
         {
+            SoundManager.Instance.PlaySoundClip(GainHealth, transform);
             PlayerManager.Instance.HealthManager.Heal();
             Destroy(gameObject);
         }
@@ -33,4 +38,7 @@ public class HealthCatch : MonoBehaviour
             _playerInRange = false;
         }
     }
+
+    
+
 }

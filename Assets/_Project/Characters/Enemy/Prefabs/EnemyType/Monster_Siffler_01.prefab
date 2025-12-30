@@ -214,6 +214,7 @@ MonoBehaviour:
   AttackManager: {fileID: 0}
   HealthManager: {fileID: 0}
   HurtSound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
+  AttackSound: {fileID: 8300000, guid: 56703418e3aed4c47a5f6622816b8e41, type: 3}
   _wayPoints: []
 --- !u!143 &6670340420478885585
 CharacterController:

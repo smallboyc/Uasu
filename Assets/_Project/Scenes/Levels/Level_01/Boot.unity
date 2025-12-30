@@ -127,6 +127,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2884884897328021729, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
+      propertyPath: HurtSounds
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
+    - target: {fileID: 2884884897328021729, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
+      propertyPath: WalkSounds
+      value: 
+      objectReference: {fileID: 8300000, guid: 023ea3ddeaa8dd146b7633a0800e5a0e, type: 3}
     - target: {fileID: 3495424416765799659, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
       propertyPath: m_Name
       value: Uasu
