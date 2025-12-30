@@ -10,6 +10,7 @@ TagManager:
   - BackHolder
   - Sorcerer
   - Rock
+  - Deadzone
   layers:
   - Default
   - TransparentFX
