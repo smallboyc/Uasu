@@ -7,6 +7,7 @@ public class PlayerAerialState : State
     public override void Enter()
     {
         // Debug.Log("Aerial State => ENTER");
+        SoundManager.Instance.PlaySoundClip(_playerManager.JumpSounds, _playerManager.transform);
         _playerManager.AnimationManager.PlayAerialAnimation();
     }
 

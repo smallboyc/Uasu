@@ -69,7 +69,8 @@ public class PlayerManager : CharacterManager
     public AudioClip LockSounds;
     public AudioClip WalkSounds;
     public AudioClip HurtSounds;
-    
+    public AudioClip JumpSounds;
+
 
     //Checkpoint
     public Checkpoint Checkpoint = new();
