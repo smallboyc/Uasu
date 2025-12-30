@@ -39,6 +39,7 @@ public class EnemyManager : CharacterManager
     [Header("Header")]
     public AudioClip HurtSound;
     public AudioClip AttackSound;
+    public AudioClip DeathSound;
 
     [Header("Patrol")]
     [SerializeField] private List<Transform> _wayPoints;

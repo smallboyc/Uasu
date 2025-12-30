@@ -824,6 +824,10 @@ PrefabInstance:
       value: DoorMecanism2
       objectReference: {fileID: 0}
     - target: {fileID: 5058590902902039426, guid: a2effbdd894784afb929219e4ca0a46b, type: 3}
+      propertyPath: DoorOpening
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f0a86407a9ee0941949adf81a5f85c8, type: 3}
+    - target: {fileID: 5058590902902039426, guid: a2effbdd894784afb929219e4ca0a46b, type: 3}
       propertyPath: _actionTarget
       value: 
       objectReference: {fileID: 1321626443}

@@ -66,6 +66,7 @@ public class PlayerManager : CharacterManager
     //Sounds
     [Header("Sounds")]
     public AudioClip[] AttackSounds;
+    public AudioClip LockSounds;
     public AudioClip WalkSounds;
     public AudioClip HurtSounds;
     

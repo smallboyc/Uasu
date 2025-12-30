@@ -7,6 +7,11 @@ public class PressurePlateAction : MonoBehaviour
     [SerializeField] private string _achievementNameToForceAction;
     private GameObject _actionSource;
     private bool _deactivate;
+
+    //Sounds
+    [Header("Sounds")]
+    public AudioClip DoorOpening;
+
     void Update()
     {
         if (PlayerManager.Instance.HasAchievement(_achievementNameToForceAction))
@@ -42,6 +47,7 @@ public class PressurePlateAction : MonoBehaviour
             {
                 yield return new WaitForSeconds(1.0f);
                 animator.SetBool("IsOpen", true);
+                SoundManager.Instance.PlaySoundClip(DoorOpening, transform);
             }
         }
     }
@@ -49,8 +55,9 @@ public class PressurePlateAction : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Rock"))
         {
-            if (_actionSource == null)
-                _actionSource = collision.gameObject;
+            if (_actionSource == null)               
+            _actionSource = collision.gameObject;
+            
         }
     }
 

@@ -7,6 +7,7 @@ public class EnemyDeathState : EnemyState
     {
         Debug.Log("ENEMY : Death State (Enter)");
         _enemyManager.AnimationManager.PlayDeathAnimation();
+        SoundManager.Instance.PlaySoundClip(_enemyManager.DeathSound, _enemyManager.transform);
 
         if (_enemyManager.CharacterController)
             _enemyManager.CharacterController.enabled = false;

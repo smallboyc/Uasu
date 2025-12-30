@@ -8,6 +8,7 @@ public class PlayerLockState : State
     public override void Enter()
     {
         // Debug.Log("Enter Lock State");
+        SoundManager.Instance.PlaySoundClip(_playerManager.LockSounds, _playerManager.transform);
         _playerManager.AnimationManager.PlayLockAnimation();
     }
 
