@@ -7,6 +7,7 @@ public class PlayerPushState : State
 
     public override void Enter()
     {
+        SoundManager.Instance.PlayLoopClip(_playerManager.PushSounds, _playerManager.transform);
         _playerManager.AnimationManager.PlayPushAnimation();
     }
 
@@ -32,6 +33,7 @@ public class PlayerPushState : State
 
     public override void Exit()
     {
+        SoundManager.Instance.StopLoopSound();
         _playerManager.AnimationManager.StopPushAnimation();
     }
 }

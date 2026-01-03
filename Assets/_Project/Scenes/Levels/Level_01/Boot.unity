@@ -140,6 +140,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 79e6baad2fd414b82a6d49ce1568d2e5, type: 3}
     - target: {fileID: 2884884897328021729, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
+      propertyPath: PushSounds
+      value: 
+      objectReference: {fileID: 8300000, guid: e3fe09aec8b42854e8649e1ff5ef9735, type: 3}
+    - target: {fileID: 2884884897328021729, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
       propertyPath: WalkSounds
       value: 
       objectReference: {fileID: 8300000, guid: 61ac1a4fab47a764ab7b4b07acd22437, type: 3}

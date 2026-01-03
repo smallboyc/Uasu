@@ -71,6 +71,7 @@ public class PlayerManager : CharacterManager
     public AudioClip HurtSounds;
     public AudioClip JumpSounds;
     public AudioClip WakingUpSounds;
+    public AudioClip PushSounds;
 
 
     //Checkpoint
