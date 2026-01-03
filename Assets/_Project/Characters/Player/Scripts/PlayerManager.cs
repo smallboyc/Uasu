@@ -70,6 +70,7 @@ public class PlayerManager : CharacterManager
     public AudioClip WalkSounds;
     public AudioClip HurtSounds;
     public AudioClip JumpSounds;
+    public AudioClip WakingUpSounds;
 
 
     //Checkpoint
