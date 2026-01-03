@@ -6,11 +6,13 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
     [SerializeField] private AudioSource _audioSourcePrefab;
     [SerializeField] private AudioSource musicSource;
+    private AudioSource loopAudioSource;
 
     [HideInInspector] public bool ManageSoundOnPause;
 
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Slider musicSlider;
+
     public float GetMusic()
     {
         return musicSlider.value;
@@ -87,5 +89,34 @@ public class SoundManager : MonoBehaviour
     public void StopMusic()
     {
         musicSource.Stop();
+    }
+
+    public void PlayLoopClip(AudioClip clip, Transform transform)
+    {
+        // Si ya hay un loop sonando, no crear otro
+        if (loopAudioSource != null)
+            return;
+
+        loopAudioSource = Instantiate(_audioSourcePrefab, transform.position, Quaternion.identity);
+        loopAudioSource.clip = clip;
+        loopAudioSource.loop = true;
+        loopAudioSource.volume = volumeSlider.value;
+        loopAudioSource.Play();
+    }
+
+    public void StopLoopSound()
+    {
+        if (loopAudioSource == null)
+            return;
+
+        loopAudioSource.Stop();
+        Destroy(loopAudioSource.gameObject);
+        loopAudioSource = null;
+    }
+
+    public void AdjustLoopVolume()
+    {
+        if (loopAudioSource != null)
+            loopAudioSource.volume = volumeSlider.value;
     }
 }
