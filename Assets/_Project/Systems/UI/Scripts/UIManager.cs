@@ -33,6 +33,12 @@ public class UIPanel
 
 public class UIManager : MonoBehaviour
 {
+
+    [Header("UI Sounds")]
+    [SerializeField] private AudioClip uiClick;
+    [SerializeField] private AudioClip uiHover;
+    [SerializeField] private AudioClip uiNavigate;
+
     private bool _canPause;
     public bool GamePaused { get; private set; }
 
@@ -219,5 +225,20 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(LoadingPlayerManager.Instance.LoadingDuration);
         TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeIn, TransitionPanelManager.TransitionColor.Black);
         Hide(PanelType.Loading);
+    }
+
+    public void PlayUIClick()
+    {
+        SoundManager.Instance.PlaySoundClip(uiClick, transform);
+    }
+
+    public void PlayUIHover()
+    {
+        SoundManager.Instance.PlaySoundClip(uiHover, transform);
+    }
+
+    public void PlayUINavigation()
+    {
+        SoundManager.Instance.PlaySoundClip(uiHover, transform);
     }
 }
