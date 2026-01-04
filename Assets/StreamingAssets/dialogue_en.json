@@ -3,7 +3,7 @@
         {
             "id": 0,
             "speaker": "sorcerer",
-            "text": "Oh my, good morning. I was so deep asleep I didn't see you coming.",
+            "text": "Oh my, good morning. I was so deep asleep I didn't see you coming.",           
             "choices": [
                 {
                     "text": "What are you?",
@@ -19,6 +19,7 @@
             "id": 1,
             "speaker": "uasu",
             "text": "You don't look like other stuff around here.",
+            "dialogueAudioClip": "UasuV_1",
             "next_dialogue": 2
         },
         {
@@ -31,6 +32,7 @@
             "id": 4,
             "speaker": "uasu",
             "text": "You are not like the others. You talk.",
+            "dialogueAudioClip": "UasuV_1",
             "next_dialogue": 5
         },
         {
@@ -49,6 +51,7 @@
             "id": 6,
             "speaker": "sorcerer",
             "text": "Me? Oh, no one. I am just a creature.",
+            "dialogueAudioClip": "SorcererSounds_5",
             "next_dialogue": 7
         },
         {
@@ -61,6 +64,7 @@
             "id": 8,
             "speaker": "sorcerer",
             "text": "Anywho. Greetings little hero.",
+            "dialogueAudioClip": "SorcererSounds_2",
             "next_dialogue": 9
         },
         {
@@ -73,6 +77,7 @@
             "id": 10,
             "speaker": "sorcerer",
             "text": "Are you by any chance what they call a 'Siffler'?",
+            "dialogueAudioClip": "SorcererSounds_4",
             "choices": [
                 {
                     "text": "Yes I am.",
@@ -88,6 +93,7 @@
             "id": 11,
             "speaker": "uasu",
             "text": "Yes, I believe I am.",
+            "dialogueAudioClip": "UasuV_2",
             "next_dialogue": 12
         },
         {
@@ -100,6 +106,7 @@
             "id": 13,
             "speaker": "uasu",
             "text": "I... don't know.",
+            "dialogueAudioClip": "UasuV_4",
             "next_dialogue": 14
         },
         {
@@ -112,6 +119,7 @@
             "id": 15,
             "speaker": "sorcerer",
             "text": "Fascinating, the dark forces that run savages on this island could not get a hold of you.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 16
         },
         {
@@ -124,6 +132,7 @@
             "id": 17,
             "speaker": "sorcerer",
             "text": "Oh, but you are a Siffler.",
+            "dialogueAudioClip": "SorcererSounds_5",
             "next_dialogue": 18
         },
         {
@@ -142,6 +151,7 @@
             "id": 20,
             "speaker": "sorcerer",
             "text": "Thankfully I know a tad of Siflet from my journeys, what a beautifully witty language you people invented.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "next_dialogue": 21
         },
         {
@@ -154,6 +164,7 @@
             "id": 22,
             "speaker": "sorcerer",
             "text": "I feel something hiding not very far from here. I can hear its whistle.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 23
         },
         {
@@ -166,6 +177,7 @@
             "id": 24,
             "speaker": "sorcerer",
             "text": "On my hat, to be precise, heh.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "next_dialogue": 25
         },
         {
@@ -190,6 +202,7 @@
             "id": 28,
             "speaker": "sorcerer",
             "text": "Mmmm. Very well, I'll pass this talisman onto you.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 29
         },
         {
@@ -202,6 +215,7 @@
             "id": 30,
             "speaker": "sorcerer",
             "text": "You see, I am lacking those so-called arms, so it is a hard task for me to recollect what I am seeking.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "next_dialogue": 31
         },
         {
@@ -214,6 +228,7 @@
             "id": 32,
             "speaker": "sorcerer",
             "text": "How good for me.",
+            "dialogueAudioClip": "SorcererSounds_5",
             "next_dialogue": 33
         },
         {
@@ -235,18 +250,21 @@
             "id": 34,
             "speaker": "uasu",
             "text": "Of course. I'll do whathever I can to help.",
+            "dialogueAudioClip": "UasuV_5",
             "next_dialogue": 36
         },
         {
             "id": 35,
             "speaker": "uasu",
             "text": "Yes... I suppose. But I don't really know y-",
+            "dialogueAudioClip": "UasuV_3",
             "next_dialogue": 36
         },
         {
             "id": 36,
             "speaker": "sorcerer",
             "text": "Wonderful!",
+            "dialogueAudioClip": "SorcererSounds_2",
             "next_dialogue": 37
         },
         {
@@ -277,6 +295,7 @@
             "id": 41,
             "speaker": "sorcerer",
             "text": "Come back to me when you find them. I’ll be waiting.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "choices": [
                 {
                     "text": "Could you repeat?",
@@ -292,6 +311,7 @@
             "id": 42,
             "speaker": "uasu",
             "text": "Could you repeat the riddles? I don't think I got them.",
+            "dialogueAudioClip": "UasuV_1",
             "next_dialogue": 38
         },
         {
@@ -304,12 +324,14 @@
             "id": 44,
             "speaker": "uasu",
             "text": "Could I know your name before I go?",
+            "dialogueAudioClip": "UasuV_2",
             "next_dialogue": 45
         },
         {
             "id": 45,
             "speaker": "sorcerer",
             "text": "My name you ask? A truly wise question.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 46
         },
         {
@@ -321,7 +343,7 @@
         {
             "id": 47,
             "speaker": "sorcerer",
-            "text": "But you can call me Sorcerer, if that suffices, heh.",
+            "text": "But you can call me Sorcerer, if that suffices, heh.",           
             "next_dialogue": 48
         },
         {
@@ -329,6 +351,7 @@
             "speaker": "sorcerer",
             "text": "Now, good luck, little hero!",
             "alternative_text": "Still waiting, and so are they. Go on, hero.",
+            "dialogueAudioClip": "SorcererSounds_5",
             "next_dialogue": 49,
             "new_achievements": [
                 "GOOD_LUCK_LITTLE_HERO"
@@ -341,6 +364,7 @@
                 "THE_SORCERER_ELEMENTS"
             ],
             "text": "Welcome back hero.",
+            "dialogueAudioClip": "SorcererSounds_1",
             "next_dialogue": 50
         },
         {
@@ -359,6 +383,7 @@
             "id": 52,
             "speaker": "sorcerer",
             "text": "Back together and back with me, as always.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "next_dialogue": 53
         },
         {
@@ -371,6 +396,7 @@
             "id": 54,
             "speaker": "sorcerer",
             "text": " 'YOU RECEIVED THE ARTIFACT' ",
+            "dialogueAudioClip": "Artifact",
             "next_dialogue": 55,
             "new_achievements": [
                 "THE_ARTIFACT"
@@ -380,6 +406,7 @@
             "id": 55,
             "speaker": "sorcerer",
             "text": "Must be sad seeing your people turn into those malicious entities.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 56
         },
         {
@@ -425,12 +452,14 @@
             "id": 61,
             "speaker": "uasu",
             "text": "UASU",
+            "dialogueAudioClip": "UasuV_4",
             "next_dialogue": 64
         },
         {
             "id": 62,
             "speaker": "uasu",
             "text": "I'm sorry. I don't remember.",
+            "dialogueAudioClip": "UasuV_5",
             "next_dialogue": 63
         },
         {
@@ -449,12 +478,14 @@
             "id": 65,
             "speaker": "sorcerer",
             "text": "... Of course. Of course it’s you.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 66
         },
         {
             "id": 66,
             "speaker": "sorcerer",
             "text": "Farwell, UASU.",
+            "dialogueAudioClip": "SorcererSounds_5",
             "is_end": true,
             "new_achievements": [
                 "WHAT_IS_CALLING_ME_?"
@@ -465,6 +496,7 @@
             "id": 67,
             "speaker": "sorcerer",
             "text": "Misterious, I understand.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "next_dialogue": 68
         },
         {
