@@ -6,10 +6,16 @@ public class LeverObjectManager : MonoBehaviour
     [SerializeField] private Collider _pickupCollider;
     private bool _playerCanGetLever;
 
+    //Sounds
+    [Header("Sounds")]
+    public AudioClip TakeLever;
+
+
     void Update()
     {
 
-        if (PlayerInputManager.Instance.InteractPressed && _playerCanGetLever) GetLever();
+        if (PlayerInputManager.Instance.InteractPressed && _playerCanGetLever) 
+            GetLever();           
 
         if (PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever))
             if (PlayerManager.Instance.HoldSword)
@@ -28,7 +34,7 @@ public class LeverObjectManager : MonoBehaviour
         }
 
         AttachTo(PlayerManager.Instance.HandHolder);
-
+        SoundManager.Instance.PlaySoundClip(TakeLever, transform);
         PlayerManager.Instance.Collectables.Add(PlayerManager.CollectableItems.Lever, gameObject);
     }
 

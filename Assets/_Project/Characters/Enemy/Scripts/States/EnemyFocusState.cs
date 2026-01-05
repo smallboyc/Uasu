@@ -6,6 +6,7 @@ public class EnemyFocusState : EnemyState
     public override void Enter()
     {
         // Debug.Log("ENEMY => Focus ENTER");
+        SoundManager.Instance.PlaySoundClip(_enemyManager.FocusSound, _enemyManager.transform);
         _enemyManager.AnimationManager.PlayFocusAnimation();
     }
 

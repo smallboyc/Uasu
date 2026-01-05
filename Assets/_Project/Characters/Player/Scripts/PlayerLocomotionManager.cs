@@ -19,12 +19,17 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [SerializeField] private float _verticalVelocity = 0.0f;
     [SerializeField] private float _moveIntensity;
 
+
+    private PlayerManager _playerManager;
+
+
     public bool IsMoving => _input != Vector2.zero;
     public Vector3 GetMoveDirection => _moveDirection;
 
     protected override void Awake()
     {
         base.Awake();
+        _playerManager = PlayerManager.Instance;
     }
 
     private void Start()
@@ -76,6 +81,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             if (PlayerInputManager.Instance.JumpPressed && _jumpButtonReleased && _jumpCanBePerformed)
             {
                 _verticalVelocity = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
+
+                if (_playerManager.JumpSounds != null)
+                    SoundManager.Instance.PlaySoundClip(_playerManager.JumpSounds, _playerManager.transform);
+
                 StartCoroutine(ReloadJump());
             }
         }

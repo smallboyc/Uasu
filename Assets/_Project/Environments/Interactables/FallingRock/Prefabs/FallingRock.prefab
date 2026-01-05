@@ -54,6 +54,9 @@ MonoBehaviour:
   _layer:
     serializedVersion: 2
     m_Bits: 512
+  FallingSounds:
+  - {fileID: 8300000, guid: e0fcb57cfa2232647acb993624b0e6ba, type: 3}
+  - {fileID: 8300000, guid: c056fd724a4f29c43a379343ba94da5a, type: 3}
 --- !u!65 &1425766059869426106
 BoxCollider:
   m_ObjectHideFlags: 0

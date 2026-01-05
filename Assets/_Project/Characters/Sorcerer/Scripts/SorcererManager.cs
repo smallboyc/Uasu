@@ -28,6 +28,7 @@ public class SorcererManager : CharacterManager
     //Sounds
     [Header("Sounds")]
     public AudioClip WakeUpSound;
+    public AudioClip Interact;
 
 
     protected override void Awake()

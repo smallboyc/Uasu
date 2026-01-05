@@ -6,6 +6,10 @@ public class SoulManager : MonoBehaviour
     [SerializeField] float _elevationSpeed = 0.5f;
     [SerializeField] float _rotationSpeed = 90f;
 
+    //Sounds
+    [Header("Sounds")]
+    public AudioClip SoulCaught;
+
     private float _currentTime;
 
     void Start()
@@ -28,6 +32,7 @@ public class SoulManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            SoundManager.Instance.PlaySoundClip(SoulCaught, transform);
             PlayerManager.Instance.SoulCounter++;
             Destroy(gameObject);
         }

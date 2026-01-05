@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _elementType: 1
+  ItemCatch: {fileID: 8300000, guid: e503a1d4d7e6de84e8737abbcff92b8b, type: 3}
 --- !u!65 &7989291976505405594
 BoxCollider:
   m_ObjectHideFlags: 0

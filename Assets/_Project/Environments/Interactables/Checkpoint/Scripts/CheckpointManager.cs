@@ -7,6 +7,10 @@ public class CheckpointManager : MonoBehaviour
     private bool _canInteract;
     private bool _set;
 
+    //Sounds
+    [Header("Sounds")]
+    public AudioClip Checkpoint;
+
     public void SetCheckpoint()
     {
         PlayerManager.Instance.Checkpoint.position = _checkpointTransform.position;
@@ -21,6 +25,7 @@ public class CheckpointManager : MonoBehaviour
             
         if (_canInteract && PlayerInputManager.Instance.InteractPressed)
         {
+            SoundManager.Instance.PlaySoundClip(Checkpoint, transform);
             Debug.Log("Change checkpoint");
             SetCheckpoint();
         }

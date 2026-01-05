@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pickupCollider: {fileID: 7442650483332003786}
+  TakeLever: {fileID: 8300000, guid: e503a1d4d7e6de84e8737abbcff92b8b, type: 3}

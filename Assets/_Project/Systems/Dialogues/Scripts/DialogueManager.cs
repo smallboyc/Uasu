@@ -26,7 +26,11 @@ public class DialogueEntry
     public List<string> effects;
     public int next_dialogue;
     public bool is_end;
+
+    public string dialogueAudioClip;
 }
+
+
 
 [System.Serializable]
 public class DialogueData
@@ -89,7 +93,7 @@ public class DialogueManager : MonoBehaviour
     public DialogueChoiceState ChoiceState => _choiceState;
 
     private void Awake()
-    {
+    {  
         //Singleton
         if (_instance != null)
         {
@@ -120,6 +124,7 @@ public class DialogueManager : MonoBehaviour
         DialogueStateMachine.Initialize(IdleState);
 
         LoadSpeakerPortraits();
+        LoadDialogueAudioClips();
     }
 
     private void Update()
@@ -224,6 +229,14 @@ public class DialogueManager : MonoBehaviour
         DialoguePanelManager.DialogueBox.SetActive(true);
         DialoguePanelManager.DialogueImage.sprite = _speakerPortraits[CurrentDialogue.speaker];
 
+
+        if (!string.IsNullOrEmpty(CurrentDialogue.dialogueAudioClip) &&
+        _dialogueAudioClips.TryGetValue(CurrentDialogue.dialogueAudioClip, out AudioClip clip))
+        {
+            SoundManager.Instance.PlaySoundClip(clip, SoundManager.Instance.transform);
+        }
+
+
         string textToDisplay = CurrentDialogue.text;
         if (CurrentDialogue.visited && CurrentDialogue.alternative_text != null)
             textToDisplay = CurrentDialogue.alternative_text;
@@ -273,6 +286,18 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private Dictionary<string, AudioClip> _dialogueAudioClips = new();
+
+    private void LoadDialogueAudioClips()
+    {
+        AudioClip[] clips = Resources.LoadAll<AudioClip>("Dialogue/DialogueSounds");
+        foreach (var clip in clips)
+        {
+            _dialogueAudioClips[clip.name] = clip;
+        }
+        Debug.Log($"Loaded {_dialogueAudioClips.Count} Dialogue DialogueSounds clips");
+    }
+
     public IEnumerator DisplayText(string text)
     {
         foreach (char letter in text)
@@ -282,4 +307,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
     #endregion
+
+  
 }

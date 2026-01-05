@@ -213,7 +213,10 @@ MonoBehaviour:
   LockManager: {fileID: 0}
   AttackManager: {fileID: 0}
   HealthManager: {fileID: 0}
-  HurtSound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
+  HurtSound: {fileID: 8300000, guid: 7c47b20bb9874304a809dc5580d403ba, type: 3}
+  AttackSound: {fileID: 8300000, guid: 56703418e3aed4c47a5f6622816b8e41, type: 3}
+  DeathSound: {fileID: 8300000, guid: b7f8695cf65a4f24eb37544298821146, type: 3}
+  FocusSound: {fileID: 8300000, guid: 1b8abde8e4c84eb41a28913f599fcd54, type: 3}
   _wayPoints: []
 --- !u!143 &6670340420478885585
 CharacterController:

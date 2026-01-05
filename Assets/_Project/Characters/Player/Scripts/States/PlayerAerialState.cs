@@ -6,7 +6,7 @@ public class PlayerAerialState : State
     private PlayerManager _playerManager = PlayerManager.Instance;
     public override void Enter()
     {
-        // Debug.Log("Aerial State => ENTER");
+        // Debug.Log("Aerial State => ENTER");        
         _playerManager.AnimationManager.PlayAerialAnimation();
     }
 

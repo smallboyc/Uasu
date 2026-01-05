@@ -13,6 +13,11 @@ public class LeverMecanismManager : MonoBehaviour
     private Animator _leverMecanismAnimator;
     [SerializeField] List<GameObject> _targetBridges;
 
+    //Sounds
+    [Header("Sounds")]
+    public AudioClip HitLever;
+    public AudioClip FallingBridge;
+
     void Awake()
     {
         _leverPosition = transform.Find("LeverObjectPosition");
@@ -52,7 +57,9 @@ public class LeverMecanismManager : MonoBehaviour
 
     private void Activate()
     {
+        SoundManager.Instance.PlaySoundClip(HitLever, transform);
         _leverMecanismAnimator.SetBool("IsActivated", true);
+        
     }
 
     private void UnlockBridge() //Call in the end of the lever animation.
@@ -62,6 +69,7 @@ public class LeverMecanismManager : MonoBehaviour
             foreach (GameObject bridge in _targetBridges)
             {
                 bridge.transform.Find("BridgePlate").GetComponent<Animator>().SetBool("IsOpen", true);
+                SoundManager.Instance.PlaySoundClip(FallingBridge, transform);
             }
         }
     }

@@ -11,6 +11,11 @@ public class Breakable : MonoBehaviour
     private float _offset = 0.95f;
     private Collider _collider;
     [SerializeField] private LayerMask _layer;
+
+    //Sounds
+    [Header("Sounds")]
+    public AudioClip[] FallingSounds;
+
     void Awake()
     {
         _collider = GetComponent<Collider>();
@@ -35,6 +40,7 @@ public class Breakable : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        SoundManager.Instance.PlayRandomSoundClip(FallingSounds, transform);
         Destroy(_intactObject);
         Destroy(_targetInstance);
         _breakObject.SetActive(true);

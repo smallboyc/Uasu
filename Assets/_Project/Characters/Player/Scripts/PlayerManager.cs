@@ -66,6 +66,13 @@ public class PlayerManager : CharacterManager
     //Sounds
     [Header("Sounds")]
     public AudioClip[] AttackSounds;
+    public AudioClip LockSounds;
+    public AudioClip WalkSounds;
+    public AudioClip HurtSounds;
+    public AudioClip JumpSounds;
+    public AudioClip WakingUpSounds;
+    public AudioClip PushSounds;
+
 
     //Checkpoint
     public Checkpoint Checkpoint = new();

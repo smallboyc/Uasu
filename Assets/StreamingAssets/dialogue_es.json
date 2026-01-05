@@ -19,6 +19,7 @@
             "id": 1,
             "speaker": "uasu",
             "text": "No te ves como que pertenezcas a este lugar.",
+            "dialogueAudioClip": "UasuV_1",
             "next_dialogue": 2
         },
         {
@@ -31,6 +32,7 @@
             "id": 4,
             "speaker": "uasu",
             "text": "No eres como los demás. Puedes hablar.",
+            "dialogueAudioClip": "UasuV_1",
             "next_dialogue": 5
         },
         {
@@ -49,6 +51,7 @@
             "id": 6,
             "speaker": "sorcerer",
             "text": "¿Yo? Oh, nadie. Solo soy una criatura.",
+            "dialogueAudioClip": "SorcererSounds_5",
             "next_dialogue": 7
         },
         {
@@ -61,6 +64,7 @@
             "id": 8,
             "speaker": "sorcerer",
             "text": "En fin. Saludos pequeño héroe.",
+            "dialogueAudioClip": "SorcererSounds_2",
             "next_dialogue": 9
         },
         {
@@ -73,6 +77,7 @@
             "id": 10,
             "speaker": "sorcerer",
             "text": "¿Podría ser que sea lo que llaman ‘Siffler’?",
+            "dialogueAudioClip": "SorcererSounds_4",
             "choices": [
                 {
                     "text": "Sí, lo soy.",
@@ -88,6 +93,7 @@
             "id": 11,
             "speaker": "uasu",
             "text": "Sí, creo que lo soy.",
+            "dialogueAudioClip": "UasuV_2",
             "next_dialogue": 12
         },
         {
@@ -100,6 +106,7 @@
             "id": 13,
             "speaker": "uasu",
             "text": "Yo... no lo sé.",
+            "dialogueAudioClip": "UasuV_4",
             "next_dialogue": 14
         },
         {
@@ -112,6 +119,7 @@
             "id": 15,
             "speaker": "sorcerer",
             "text": "Fascinante, las fuerzas oscuras que causan estragos en esta isla no han logrado atraparte.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 16
         },
         {
@@ -124,6 +132,7 @@
             "id": 17,
             "speaker": "sorcerer",
             "text": "Oh, pero tú eres un Siffler.",
+            "dialogueAudioClip": "SorcererSounds_5",
             "next_dialogue": 18
         },
         {
@@ -142,6 +151,7 @@
             "id": 20,
             "speaker": "sorcerer",
             "text": "Por suerte sé un poco de Siflet por mis viajes, qué idioma tan bellamente ingenioso habeis inventado.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "next_dialogue": 21
         },
         {
@@ -154,6 +164,7 @@
             "id": 22,
             "speaker": "sorcerer",
             "text": "Siento que algo se esconde no muy lejos de aquí. Puedo oír su silbido.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 23
         },
         {
@@ -166,6 +177,7 @@
             "id": 24,
             "speaker": "sorcerer",
             "text": "En mi sombrero, para ser preciso, je.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "next_dialogue": 25
         },
         {
@@ -190,6 +202,7 @@
             "id": 28,
             "speaker": "sorcerer",
             "text": "Mmmm. Muy bien, te daré este talismán.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 29
         },
         {
@@ -202,6 +215,7 @@
             "id": 30,
             "speaker": "sorcerer",
             "text": "Verás, carezco de lo que se conoce como brazos, así que es una tarea difícil para mí recolectar lo que busco.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "next_dialogue": 31
         },
         {
@@ -214,6 +228,7 @@
             "id": 32,
             "speaker": "sorcerer",
             "text": "Qué suerte la mía.",
+            "dialogueAudioClip": "SorcererSounds_5",
             "next_dialogue": 33
         },
         {
@@ -235,18 +250,21 @@
             "id": 34,
             "speaker": "uasu",
             "text": "Por supuesto. Haré lo que pueda para ayudar.",
+            "dialogueAudioClip": "UasuV_5",
             "next_dialogue": 36
         },
         {
             "id": 35,
             "speaker": "uasu",
             "text": "Sí... supongo. Pero realmente no te conoz-",
+            "dialogueAudioClip": "UasuV_3",
             "next_dialogue": 36
         },
         {
             "id": 36,
             "speaker": "sorcerer",
             "text": "¡Maravilloso!",
+            "dialogueAudioClip": "SorcererSounds_2",
             "next_dialogue": 37
         },
         {
@@ -277,6 +295,7 @@
             "id": 41,
             "speaker": "sorcerer",
             "text": "Vuelve cuando los encuentres. Estaré esperando.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "choices": [
                 {
                     "text": "¿Podrías repetir?",
@@ -292,6 +311,7 @@
             "id": 42,
             "speaker": "uasu",
             "text": "¿Podrías repetir los acertijos? Creo que no los he entendido.",
+            "dialogueAudioClip": "UasuV_1",
             "next_dialogue": 38
         },
         {
@@ -304,12 +324,14 @@
             "id": 44,
             "speaker": "uasu",
             "text": "¿Podría saber tu nombre antes de irme?",
+            "dialogueAudioClip": "UasuV_2",
             "next_dialogue": 45
         },
         {
             "id": 45,
             "speaker": "sorcerer",
             "text": "¿Mi nombre? Una pregunta realmente sabia.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 46
         },
         {
@@ -329,6 +351,7 @@
             "speaker": "sorcerer",
             "text": "Ahora, ¡buena suerte, pequeño héroe!",
             "alternative_text": "Sigo esperando, y ellos también. Adelante, héroe.",
+            "dialogueAudioClip": "SorcererSounds_5",
             "next_dialogue": 49,
             "new_achievements": [
                 "GOOD_LUCK_LITTLE_HERO"
@@ -341,6 +364,7 @@
                 "THE_SORCERER_ELEMENTS"
             ],
             "text": "Bienvenido de nuevo, héroe.",
+            "dialogueAudioClip": "SorcererSounds_1",
             "next_dialogue": 50
         },
         {
@@ -359,6 +383,7 @@
             "id": 52,
             "speaker": "sorcerer",
             "text": "De nuevo juntos y de nuevo conmigo, como siempre.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "next_dialogue": 53
         },
         {
@@ -371,6 +396,7 @@
             "id": 54,
             "speaker": "sorcerer",
             "text": " 'HAS RECIBIDO EL ARTEFACTO' ",
+            "dialogueAudioClip": "Artifact",
             "next_dialogue": 55,
             "new_achievements": [
                 "THE_ARTIFACT"
@@ -380,6 +406,7 @@
             "id": 55,
             "speaker": "sorcerer",
             "text": "Debe ser triste ver a tu gente convertirse en esas entidades maliciosas.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 56
         },
         {
@@ -425,12 +452,14 @@
             "id": 61,
             "speaker": "uasu",
             "text": "UASU",
+            "dialogueAudioClip": "UasuV_4",
             "next_dialogue": 64
         },
         {
             "id": 62,
             "speaker": "uasu",
             "text": "Lo siento. No lo recuerdo.",
+            "dialogueAudioClip": "UasuV_5",
             "next_dialogue": 63
         },
         {
@@ -449,12 +478,14 @@
             "id": 65,
             "speaker": "sorcerer",
             "text": "... Por supuesto. Por supuesto que eres tú.",
+            "dialogueAudioClip": "SorcererSounds_4",
             "next_dialogue": 66
         },
         {
             "id": 66,
             "speaker": "sorcerer",
             "text": "Adiós, UASU.",
+            "dialogueAudioClip": "SorcererSounds_5",
             "is_end": true,
             "new_achievements": [
                 "WHAT_IS_CALLING_ME_?"
@@ -464,6 +495,7 @@
             "id": 67,
             "speaker": "sorcerer",
             "text": "Misterioso, lo entiendo.",
+            "dialogueAudioClip": "SorcererSounds_3",
             "next_dialogue": 68
         },
         {

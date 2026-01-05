@@ -14,6 +14,10 @@ public class HealthBarrelManager : MonoBehaviour
     private bool _playerInRange;
     private bool _used;
 
+    //Sounds
+    [Header("Sounds")]
+    public AudioClip Interact;
+
 
     void Start()
     {
@@ -28,6 +32,7 @@ public class HealthBarrelManager : MonoBehaviour
 
         if (PlayerInputManager.Instance.InteractPressed && !_used)
         {
+            SoundManager.Instance.PlaySoundClip(Interact, transform);
             _used = true;
             Destroy(_currentBarrel);
             if (_emptyBarrel)
