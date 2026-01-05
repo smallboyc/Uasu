@@ -3,7 +3,7 @@
         {
             "id": 0,
             "speaker": "sorcerer",
-            "text": "Oh my, good morning. I was so deep asleep I didn't see you coming.",           
+            "text": "Oh my, good morning. I was so deep asleep I didn't see you coming.",
             "choices": [
                 {
                     "text": "What are you?",
@@ -343,7 +343,7 @@
         {
             "id": 47,
             "speaker": "sorcerer",
-            "text": "But you can call me Sorcerer, if that suffices, heh.",           
+            "text": "But you can call me Sorcerer, if that suffices, heh.",
             "next_dialogue": 48
         },
         {
@@ -490,7 +490,6 @@
             "new_achievements": [
                 "WHAT_IS_CALLING_ME_?"
             ]
-
         },
         {
             "id": 67,
@@ -514,6 +513,5 @@
             "text": "I’ll stay here, do not fret. I am always here, heh.",
             "is_end": true
         }
-
     ]
 }
