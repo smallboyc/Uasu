@@ -11,6 +11,8 @@ TagManager:
   - Sorcerer
   - Rock
   - Deadzone
+  - Camera
+  - IsometricCamera
   layers:
   - Default
   - TransparentFX

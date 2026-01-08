@@ -83,25 +83,31 @@ public class IsometricCameraManager : MonoBehaviour
 
     private void SmoothCameraRotation()
     {
-        Quaternion targetRotation = Quaternion.Euler(
-            _currentCameraAngle,
-            IsometricCamera.transform.eulerAngles.y,
-            IsometricCamera.transform.eulerAngles.z
-        );
+        if (IsometricCamera)
+        {
+            Quaternion targetRotation = Quaternion.Euler(
+                _currentCameraAngle,
+                IsometricCamera.transform.eulerAngles.y,
+                IsometricCamera.transform.eulerAngles.z
+            );
 
-        IsometricCamera.transform.rotation = Quaternion.Lerp(
-            IsometricCamera.transform.rotation,
-            targetRotation,
-            _smoothTransitionSpeed * Time.deltaTime
-        );
+            IsometricCamera.transform.rotation = Quaternion.Lerp(
+                IsometricCamera.transform.rotation,
+                targetRotation,
+                _smoothTransitionSpeed * Time.deltaTime
+            );
+        }
     }
 
     private void SmoothCameraZoom()
     {
-        IsometricCamera.Lens.OrthographicSize = Mathf.Lerp(
-          IsometricCamera.Lens.OrthographicSize,
-          _currentOrthographicSize,
-          _smoothTransitionSpeed * Time.deltaTime
-      );
+        if (IsometricCamera)
+        {
+            IsometricCamera.Lens.OrthographicSize = Mathf.Lerp(
+              IsometricCamera.Lens.OrthographicSize,
+              _currentOrthographicSize,
+              _smoothTransitionSpeed * Time.deltaTime
+          );
+        }
     }
 }
