@@ -48,9 +48,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f170b355f72d84dc38bef8e6e9931b4b, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f170b355f72d84dc38bef8e6e9931b4b, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f170b355f72d84dc38bef8e6e9931b4b, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f170b355f72d84dc38bef8e6e9931b4b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f170b355f72d84dc38bef8e6e9931b4b, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ec76b936b88adb4fb1e2edb78477ec1, type: 2}
     - target: {fileID: 919132149155446097, guid: f170b355f72d84dc38bef8e6e9931b4b, type: 3}
       propertyPath: m_Name
       value: Cloud_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f170b355f72d84dc38bef8e6e9931b4b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -77,9 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e9563527fc88d4696908bc3c62ca99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 0.5
-  maxSpeed: 2
-  resetX: -20
-  targetX: 20
-  minY: -2
-  maxY: 4
+  speed: 1
+  maxX: 60
+  minX: -60
