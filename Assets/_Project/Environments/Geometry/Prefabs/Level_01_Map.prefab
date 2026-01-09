@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level_01_Map
       objectReference: {fileID: 0}
+    - target: {fileID: 4980679285671053492, guid: aa714ee6c7ba1413c843366ddeadd46f, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5170817472663839199, guid: aa714ee6c7ba1413c843366ddeadd46f, type: 3}
       propertyPath: m_LocalPosition.y
       value: 7.8698444
