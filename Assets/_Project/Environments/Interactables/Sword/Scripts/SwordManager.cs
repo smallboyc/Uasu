@@ -76,7 +76,7 @@ public class SwordManager : MonoBehaviour
             if (!PlayerManager.Instance.HasAchievement("THE_ARTIFACT"))
                 HelpManager.Instance.SetHelpText("I can't get this Sword.");
             else
-                HelpManager.Instance.SetHelpText("<Interact> to get the Sword");
+                HelpManager.Instance.SetHelpText("INTERACT to get the Sword");
             UIManager.Instance.Show(PanelType.Help);
         }
     }

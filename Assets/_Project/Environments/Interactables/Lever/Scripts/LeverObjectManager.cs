@@ -52,7 +52,7 @@ public class LeverObjectManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerCanGetLever = true;
-            HelpManager.Instance.SetHelpText("<Interact>");
+            HelpManager.Instance.SetHelpText("INTERACT");
             UIManager.Instance.Show(PanelType.Help);
         }
     }

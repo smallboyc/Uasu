@@ -29,7 +29,7 @@ public class HealthCatch : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerInRange = true;
-            HelpManager.Instance.SetHelpText("<Interact> to get health");
+            HelpManager.Instance.SetHelpText("INTERACT to get health");
             UIManager.Instance.Show(PanelType.Help);
         }
     }
@@ -43,6 +43,6 @@ public class HealthCatch : MonoBehaviour
         }
     }
 
-    
+
 
 }

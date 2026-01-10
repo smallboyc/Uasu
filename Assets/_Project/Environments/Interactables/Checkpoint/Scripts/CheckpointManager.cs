@@ -39,7 +39,7 @@ public class CheckpointManager : MonoBehaviour
             _canInteract = true;
             if (!_set)
             {
-                HelpManager.Instance.SetHelpText("<Interact> to active Checkpoint");
+                HelpManager.Instance.SetHelpText("INTERACT to activate Checkpoint");
                 UIManager.Instance.Show(PanelType.Help);
             }
         }

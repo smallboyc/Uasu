@@ -61,7 +61,7 @@ public class HealthBarrelManager : MonoBehaviour
             _playerInRange = true;
             if (!_used)
             {
-                HelpManager.Instance.SetHelpText("<Interact>");
+                HelpManager.Instance.SetHelpText("INTERACT");
                 UIManager.Instance.Show(PanelType.Help);
             }
         }

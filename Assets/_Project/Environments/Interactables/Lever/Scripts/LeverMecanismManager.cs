@@ -67,7 +67,7 @@ public class LeverMecanismManager : MonoBehaviour
     {
         SoundManager.Instance.PlaySoundClip(HitLever, transform);
         _leverMecanismAnimator.SetBool("IsActivated", true);
-        
+
     }
 
     private void UnlockBridge() //Call in the end of the lever animation.
@@ -98,7 +98,7 @@ public class LeverMecanismManager : MonoBehaviour
 
             if (_currentState == State.MissingLever && PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever))
             {
-                HelpManager.Instance.SetHelpText("<Interact> to link the lever");
+                HelpManager.Instance.SetHelpText("INTERACT to link the lever");
             }
             else if (_currentState == State.LeverAttached)
             {
