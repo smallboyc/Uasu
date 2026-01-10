@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -79,6 +80,31 @@ public class SceneLoader : MonoBehaviour
             SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         else
             SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGameToMainMenu(string sceneName)
+    {
+        var allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        foreach (var obj in allObjects)
+        {
+            if (IsCameraRelated(obj))
+                continue;
+
+            if (obj.scene.name == "DontDestroyOnLoad")
+            {
+                Destroy(obj);
+            }
+        }
+
+        LoadSceneByName(sceneName);
+    }
+
+    bool IsCameraRelated(GameObject obj)
+    {
+        return obj.GetComponentInChildren<Camera>() != null ||
+               obj.GetComponentInChildren<CinemachineCamera>() != null ||
+               obj.GetComponentInChildren<CinemachineBrain>() != null;
     }
 
     public void OnClickQuit()

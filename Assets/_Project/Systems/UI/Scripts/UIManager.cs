@@ -18,6 +18,7 @@ public enum PanelType
     Weapon,
     Talisman,
     Loading,
+    Help,
 }
 [System.Serializable]
 
@@ -41,6 +42,7 @@ public class UIManager : MonoBehaviour
 
     private bool _canPause;
     public bool GamePaused { get; private set; }
+    public bool IsLoading;
 
     public static UIManager Instance { get; private set; }
 
@@ -168,6 +170,7 @@ public class UIManager : MonoBehaviour
         if (PlayerManager.Instance && PlayerManager.Instance.IsTransitioning)
         {
             Show(PanelType.Loading);
+            IsLoading = true;
             StartCoroutine(EndTransition());
         }
 
@@ -225,6 +228,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(LoadingPlayerManager.Instance.LoadingDuration);
         TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeIn, TransitionPanelManager.TransitionColor.Black);
         Hide(PanelType.Loading);
+        IsLoading = false;
     }
 
     public void PlayUIClick()

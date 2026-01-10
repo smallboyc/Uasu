@@ -165,7 +165,10 @@ public class PlayerManager : CharacterManager
         if (!DialogueManager.Instance)
             return;
 
-        if (UIManager.Instance.GamePaused)
+        if (UIManager.Instance && UIManager.Instance.IsLoading)
+            return;
+
+        if (UIManager.Instance.GamePaused && PlayerStateMachine.CurrentState != _sleepState)
         {
             PlayerStateMachine.ChangeState(_idleState);
             return;

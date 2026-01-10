@@ -1436,6 +1436,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7841168679360883542, guid: 0678d551b388940f5b5ab2a7158ae9d3, type: 3}
+      propertyPath: _requireAchievement
+      value: THE_ARTIFACT
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

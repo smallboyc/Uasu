@@ -7,6 +7,7 @@ public class SpawnTrigger : MonoBehaviour
     private SceneLoader _sceneLoader;
     [SerializeField] string _sceneToLoad;
     [SerializeField] Transform _newSpawnTransform;
+    [SerializeField] private string _requireAchievement;
 
     void Awake()
     {
@@ -15,6 +16,11 @@ public class SpawnTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (_requireAchievement != "" && !PlayerManager.Instance.HasAchievement(_requireAchievement))
+        {
+            return;
+        }
+
         if (other.CompareTag("Player") && !PlayerManager.Instance.IsTransitioning)
         {
             Debug.Log("ENTER!");
@@ -28,6 +34,11 @@ public class SpawnTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        if (_requireAchievement != "" && !PlayerManager.Instance.HasAchievement(_requireAchievement))
+        {
+            return;
+        }
+
         if (other.CompareTag("Player"))
         {
             PlayerManager.Instance.IsTransitioning = false;

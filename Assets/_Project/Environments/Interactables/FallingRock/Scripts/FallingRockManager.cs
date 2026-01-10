@@ -37,6 +37,9 @@ public class FallingRockManager : MonoBehaviour
 
     void Update()
     {
+        if (!PlayerManager.Instance)
+            return;
+            
         if (PlayerManager.Instance.HasAchievement("THE_SWORD"))
         {
             _isFallingRockSessionActive = true;

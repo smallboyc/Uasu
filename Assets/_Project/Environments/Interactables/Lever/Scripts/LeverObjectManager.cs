@@ -13,15 +13,16 @@ public class LeverObjectManager : MonoBehaviour
 
     void Update()
     {
+        if (PlayerInputManager.Instance)
+        {
+            if (PlayerInputManager.Instance.InteractPressed && _playerCanGetLever) GetLever();
 
-        if (PlayerInputManager.Instance.InteractPressed && _playerCanGetLever) 
-            GetLever();           
-
-        if (PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever))
-            if (PlayerManager.Instance.HoldSword)
-                AttachTo(PlayerManager.Instance.BackHolder);
-            else
-                AttachTo(PlayerManager.Instance.HandHolder);
+            if (PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever))
+                if (PlayerManager.Instance.HoldSword)
+                    AttachTo(PlayerManager.Instance.BackHolder);
+                else
+                    AttachTo(PlayerManager.Instance.HandHolder);
+        }
     }
 
     private void GetLever()
@@ -36,6 +37,7 @@ public class LeverObjectManager : MonoBehaviour
         AttachTo(PlayerManager.Instance.HandHolder);
         SoundManager.Instance.PlaySoundClip(TakeLever, transform);
         PlayerManager.Instance.Collectables.Add(PlayerManager.CollectableItems.Lever, gameObject);
+        UIManager.Instance.Hide(PanelType.Help);
     }
 
     private void AttachTo(Transform newParent)
@@ -50,6 +52,8 @@ public class LeverObjectManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerCanGetLever = true;
+            HelpManager.Instance.SetHelpText("INTERACT");
+            UIManager.Instance.Show(PanelType.Help);
         }
     }
 
@@ -58,6 +62,7 @@ public class LeverObjectManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerCanGetLever = false;
+            UIManager.Instance.Hide(PanelType.Help);
         }
     }
 }
