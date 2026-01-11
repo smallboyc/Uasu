@@ -15,6 +15,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool InteractPressed { get; private set; }
     public bool ToggleWeaponPressed { get; private set; }
     public bool AttackPressed { get; private set; }
+    public bool PausePressed { get; private set; }
 
     private PlayerControls _playerControls;
 
@@ -52,6 +53,11 @@ public class PlayerInputManager : MonoBehaviour
             _playerControls.PlayerInteraction.ToggleWeapon.canceled += _ => ToggleWeaponPressed = false;
             _playerControls.PlayerInteraction.Attack.performed += _ => AttackPressed = true;
             _playerControls.PlayerInteraction.Attack.canceled += _ => AttackPressed = false;
+
+            //UI
+            _playerControls.UI.Pause.performed += _ => PausePressed = true;
+            _playerControls.UI.Pause.canceled += _ => PausePressed = false;
+
         }
 
         _playerControls.Enable();
