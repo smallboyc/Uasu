@@ -19,6 +19,8 @@ public enum PanelType
     Talisman,
     Loading,
     Help,
+    Controller,
+    Credits,
 }
 [System.Serializable]
 
@@ -73,8 +75,13 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (_canPause && Input.GetKeyDown(KeyCode.Escape))
+        if (!PlayerInputManager.Instance)
+            return;
+
+        if (_canPause && (Input.GetKeyDown(KeyCode.Escape) || PlayerInputManager.Instance.PausePressed))
         {
+            PauseCooldownCoroutine();
+
             if (!GamePaused)
             {
                 PauseGame();
@@ -179,11 +186,20 @@ public class UIManager : MonoBehaviour
     public void ShowOptions()
     {
         panels[PanelType.Options].Show();
+        if (!GamePaused)
+            panels[PanelType.MainMenu].Hide();
+        else
+            panels[PanelType.Pause].Hide();
+
     }
 
     public void HideOptions()
     {
         panels[PanelType.Options].Hide();
+        if (!GamePaused)
+            panels[PanelType.MainMenu].Show();
+        else
+            panels[PanelType.Pause].Show();
     }
 
 
@@ -244,5 +260,37 @@ public class UIManager : MonoBehaviour
     public void PlayUINavigation()
     {
         SoundManager.Instance.PlaySoundClip(uiHover, transform);
+    }
+
+    public void ShowController()
+    {
+        panels[PanelType.Controller].Show();
+        panels[PanelType.Options].Hide();
+    }
+    public void HideController()
+    {
+        panels[PanelType.Controller].Hide();
+        panels[PanelType.Options].Show();
+    }
+    public void ShowCredits()
+    {
+        panels[PanelType.Credits].Show();
+        panels[PanelType.MainMenu].Hide();
+    }
+    public void HideCredits()
+    {
+        panels[PanelType.Credits].Hide();
+        panels[PanelType.MainMenu].Show();
+    }
+
+    public void PauseCooldownCoroutine()
+    {
+        StartCoroutine(PauseCooldown());
+    }
+    public IEnumerator PauseCooldown()
+    {
+        _canPause = false;
+        yield return new WaitForSeconds(0.1f);
+        _canPause = true;
     }
 }

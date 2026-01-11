@@ -37,6 +37,9 @@ public class FallingRockManager : MonoBehaviour
 
     void Update()
     {
+        if (UIManager.Instance && UIManager.Instance.GamePaused)
+            return;
+            
         if (!PlayerManager.Instance)
             return;
             
