@@ -3,13 +3,14 @@ using UnityEngine.EventSystems;
 
 public class UIButtonSound : MonoBehaviour,
     IPointerEnterHandler,
-    IPointerClickHandler
+    ISubmitHandler,
+    ISelectHandler
 {
     public enum UISoundType
     {
         Click,
         Hover,
-       
+
     }
 
     [SerializeField] private UISoundType soundType;
@@ -23,18 +24,13 @@ public class UIButtonSound : MonoBehaviour,
             UIManager.Instance.PlayUIHover();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnSubmit(BaseEventData eventData)
     {
         if (UIManager.Instance == null)
             return;
 
-        switch (soundType)
-        {
-            case UISoundType.Click:
-                UIManager.Instance.PlayUIClick();
-                break;
-           
-        }
+        if (soundType == UISoundType.Click)
+            UIManager.Instance.PlayUIClick();
     }
 
     public void OnSelect(BaseEventData eventData)

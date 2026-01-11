@@ -19,6 +19,7 @@ public enum PanelType
     Talisman,
     Loading,
     Help,
+    Controller,
 }
 [System.Serializable]
 
@@ -179,11 +180,13 @@ public class UIManager : MonoBehaviour
     public void ShowOptions()
     {
         panels[PanelType.Options].Show();
+        panels[PanelType.MainMenu].Hide();
     }
 
     public void HideOptions()
     {
         panels[PanelType.Options].Hide();
+        panels[PanelType.MainMenu].Show();
     }
 
 
@@ -244,5 +247,16 @@ public class UIManager : MonoBehaviour
     public void PlayUINavigation()
     {
         SoundManager.Instance.PlaySoundClip(uiHover, transform);
+    }
+
+    public void ShowController()
+    {
+        panels[PanelType.Controller].Show();
+        panels[PanelType.Options].Hide();
+    }
+    public void HideController()
+    {
+        panels[PanelType.Controller].Hide();
+        panels[PanelType.Options].Show();
     }
 }
