@@ -20,6 +20,7 @@ public enum PanelType
     Loading,
     Help,
     Controller,
+    Credits,
 }
 [System.Serializable]
 
@@ -258,5 +259,15 @@ public class UIManager : MonoBehaviour
     {
         panels[PanelType.Controller].Hide();
         panels[PanelType.Options].Show();
+    }
+    public void ShowCredits()
+    {
+        panels[PanelType.Credits].Show();
+        panels[PanelType.MainMenu].Hide();
+    }
+    public void HideCredits()
+    {
+        panels[PanelType.Credits].Hide();
+        panels[PanelType.MainMenu].Show();
     }
 }
