@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class CheckpointManager : MonoBehaviour
 {
     [SerializeField] private Transform _checkpointTransform;
+    [SerializeField] private int _checkpointID;
     private bool _canInteract;
     private bool _set;
 
@@ -11,9 +12,16 @@ public class CheckpointManager : MonoBehaviour
     [Header("Sounds")]
     public AudioClip Checkpoint;
 
+    public void Start()
+    {
+        if (PlayerManager.Instance.Checkpoint.id == _checkpointID)
+            _set = true;
+    }
+
     public void SetCheckpoint()
     {
         PlayerManager.Instance.Checkpoint.position = _checkpointTransform.position;
+        PlayerManager.Instance.Checkpoint.id = _checkpointID;
         PlayerManager.Instance.Checkpoint.scene = SceneManager.GetActiveScene().name;
         _set = true;
     }
