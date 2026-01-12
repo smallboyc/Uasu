@@ -8,6 +8,9 @@ public class DoorInteract : MonoBehaviour
     private bool _doorOpened;
     private Animator _animator;
 
+    [Header("Sounds")]
+    public AudioClip DoorOpening;
+
     void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -33,6 +36,9 @@ public class DoorInteract : MonoBehaviour
         // Activar animaci�n (igual que PressurePlateAction)
         if (_animator)
             _animator.SetBool("IsOpen", true);
+
+        if (SoundManager.Instance)
+            SoundManager.Instance.PlaySoundClip(DoorOpening, transform);
     }
 
     void OnTriggerEnter(Collider other)
@@ -48,7 +54,7 @@ public class DoorInteract : MonoBehaviour
         if (PlayerManager.Instance.SoulCounter >= _soulsRequired)
             HelpManager.Instance.SetHelpText("INTERACT");
         else
-            HelpManager.Instance.SetHelpText($"Door cannot open : {_soulsRequired} souls required.");
+            HelpManager.Instance.SetHelpText($"{_soulsRequired} souls...");
 
         UIManager.Instance.Show(PanelType.Help);
     }
