@@ -21,7 +21,8 @@ public class CinematicPlayerManager : MonoBehaviour
 
     public void StartPlayer()
     {
-        _audioSource.volume = SoundManager.Instance.GetMusic();
+        if (SoundManager.Instance)
+            _audioSource.volume = SoundManager.Instance.GetMusic();
         _videoPlayer.Play();
     }
 
@@ -40,7 +41,8 @@ public class CinematicPlayerManager : MonoBehaviour
     }
     void Start()
     {
-        SoundManager.Instance.StopMusic();
+        if (SoundManager.Instance)
+            SoundManager.Instance.StopMusic();
 
         _videoPlayer.clip = _video;
         _videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;

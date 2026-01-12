@@ -24,13 +24,13 @@ public class DoorInteract : MonoBehaviour
         if (PlayerManager.Instance.SoulCounter < _soulsRequired)
             return;
 
-        // Interacción con la puerta
+        // Interacciï¿½n con la puerta
         _doorOpened = true;
 
         // Ocultar ayuda
         UIManager.Instance.Hide(PanelType.Help);
 
-        // Activar animación (igual que PressurePlateAction)
+        // Activar animaciï¿½n (igual que PressurePlateAction)
         if (_animator)
             _animator.SetBool("IsOpen", true);
     }
@@ -48,7 +48,7 @@ public class DoorInteract : MonoBehaviour
         if (PlayerManager.Instance.SoulCounter >= _soulsRequired)
             HelpManager.Instance.SetHelpText("INTERACT");
         else
-            HelpManager.Instance.SetHelpText("You need more souls");
+            HelpManager.Instance.SetHelpText($"Door cannot open : {_soulsRequired} souls required.");
 
         UIManager.Instance.Show(PanelType.Help);
     }
