@@ -19,6 +19,5 @@ public class PlayerDeathState : State
     public override void Exit()
     {
         _playerManager.AnimationManager.StopDeathAnimation();
-        UIManager.Instance.Hide(PanelType.GameOver);
     }
 }

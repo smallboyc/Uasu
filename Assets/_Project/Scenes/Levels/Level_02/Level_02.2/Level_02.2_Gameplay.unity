@@ -1275,10 +1275,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3962451980435579040, guid: d9e5e80e7a90ed14bb95fbe3e87224a2, type: 3}
-      propertyPath: _checkpointID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3962451980435579040, guid: d9e5e80e7a90ed14bb95fbe3e87224a2, type: 3}
       propertyPath: _checkpointTransform
       value: 
       objectReference: {fileID: 2321792696647952173}
