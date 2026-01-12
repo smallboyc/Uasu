@@ -10,9 +10,15 @@ public class LeverObjectManager : MonoBehaviour
     [Header("Sounds")]
     public AudioClip TakeLever;
 
+    void Start()
+    {
+        if (PlayerInputManager.Instance && PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever))
+            Destroy(gameObject);
+    }
 
     void Update()
     {
+
         if (PlayerInputManager.Instance)
         {
             if (PlayerInputManager.Instance.InteractPressed && _playerCanGetLever) GetLever();
@@ -49,6 +55,9 @@ public class LeverObjectManager : MonoBehaviour
     // TRIGGER //
     private void OnTriggerEnter(Collider other)
     {
+        if (PlayerInputManager.Instance && PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever))
+            return;
+
         if (other.CompareTag("Player"))
         {
             _playerCanGetLever = true;
@@ -59,6 +68,9 @@ public class LeverObjectManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (PlayerInputManager.Instance && PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Lever))
+            return;
+
         if (other.CompareTag("Player"))
         {
             _playerCanGetLever = false;
