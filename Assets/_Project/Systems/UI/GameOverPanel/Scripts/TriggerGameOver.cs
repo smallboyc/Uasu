@@ -32,17 +32,18 @@ public class TriggerGameOver : MonoBehaviour
             PlayerManager.Instance.SoulCounter = 0;
             PlayerManager.Instance.HealthManager.Health = 4;
             PlayerHealthBarManager.Instance.SetHealth(PlayerManager.Instance.HealthManager.Health);
-            
+
             PlayerManager.Instance.LockManager.IsLockedOnEnemy = false;
 
             if (PlayerManager.Instance.Checkpoint != null)
             {
                 PlayerManager.Instance.gameObject.transform.position = PlayerManager.Instance.Checkpoint.position;
+                if (IsometricCameraManager.Instance)
+                    IsometricCameraManager.Instance.IsometricCamera.Follow = PlayerManager.Instance.gameObject.transform;
                 _sceneLoader.LoadSceneByName(PlayerManager.Instance.Checkpoint.scene);
             }
         }
-
-
+        UIManager.Instance.Hide(PanelType.GameOver);
     }
 
 }
