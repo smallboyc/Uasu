@@ -246,11 +246,20 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator EndTransition()
     {
+        StartCoroutine(ResetLoading());
         yield return new WaitForSeconds(LoadingPlayerManager.Instance.LoadingDuration);
         TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeIn, TransitionPanelManager.TransitionColor.Black);
         Hide(PanelType.Loading);
+    }
+
+    private IEnumerator ResetLoading()
+    {
+        yield return new WaitForSeconds(LoadingPlayerManager.Instance.LoadingDuration - 0.3f);
         IsLoading = false;
     }
+
+
+
 
     public void PlayUIClick()
     {

@@ -30,11 +30,6 @@ public class TriggerGameOver : MonoBehaviour
     {
         if (PlayerManager.Instance)
         {
-            PlayerManager.Instance.PlayerStateMachine.ChangeState(PlayerManager.Instance.IdleState);
-            PlayerManager.Instance.SoulCounter = 0;
-            PlayerManager.Instance.HealthManager.Health = 4;
-            PlayerHealthBarManager.Instance.SetHealth(PlayerManager.Instance.HealthManager.Health);
-
             PlayerManager.Instance.LockManager.IsLockedOnEnemy = false;
 
             if (PlayerManager.Instance.Checkpoint != null)
@@ -51,6 +46,12 @@ public class TriggerGameOver : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
 
         UIManager.Instance.Loading();
+
+        PlayerManager.Instance.PlayerStateMachine.ChangeState(PlayerManager.Instance.IdleState);
+        PlayerManager.Instance.SoulCounter = 0;
+        PlayerManager.Instance.HealthManager.Health = 4;
+        PlayerHealthBarManager.Instance.SetHealth(PlayerManager.Instance.HealthManager.Health);
+
         PlayerManager.Instance.gameObject.transform.position = PlayerManager.Instance.Checkpoint.position;
         if (IsometricCameraManager.Instance)
             IsometricCameraManager.Instance.IsometricCamera.Follow = PlayerManager.Instance.gameObject.transform;
