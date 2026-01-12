@@ -27,6 +27,7 @@ public class SpawnTrigger : MonoBehaviour
             PlayerManager.Instance.CharacterController.enabled = false;
             PlayerManager.Instance.PlayerStateMachine.ChangeState(PlayerManager.Instance.IdleState);
             PlayerManager.Instance.IsTransitioning = true;
+
             TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeOut, TransitionPanelManager.TransitionColor.Black);
             StartCoroutine(LoadSceneTransition());
         }
@@ -46,7 +47,7 @@ public class SpawnTrigger : MonoBehaviour
         }
     }
 
-    private IEnumerator LoadSceneTransition()
+    public IEnumerator LoadSceneTransition()
     {
         yield return new WaitForSeconds(2.0f);
         if (_newSpawnTransform)
