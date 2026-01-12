@@ -42,6 +42,9 @@ public class DoorInteract : MonoBehaviour
 
         _playerInRange = true;
 
+        if (_doorOpened)
+            return;
+
         if (PlayerManager.Instance.SoulCounter >= _soulsRequired)
             HelpManager.Instance.SetHelpText("INTERACT");
         else
