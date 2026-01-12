@@ -66,6 +66,9 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Cinematics/Cinematic_01.unity
     guid: 07d97b30aa8b64d0db592a46a8247780
   - enabled: 1
+    path: Assets/_Project/Scenes/Cinematics/Cinematic_02.unity
+    guid: 14f6b820206b86a4f92f4e92daf17e7f
+  - enabled: 1
     path: Assets/_Project/Scenes/Playground/Spawn/Scene_A.unity
     guid: bb40515df58f94ae2a3ec82f95b7207a
   - enabled: 1

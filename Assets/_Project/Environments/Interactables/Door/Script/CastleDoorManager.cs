@@ -1,12 +1,8 @@
 using UnityEngine;
 
-public class CastleDoorManager : MonoBehaviour
+public class DoorInteract : MonoBehaviour
 {
-    [Header("Souls")]
     [SerializeField] private int _soulsRequired = 4;
-
-    [Header("Interaction")]
-    [SerializeField] private KeyCode _interactKey = KeyCode.E;
 
     private bool _playerInRange;
     private bool _doorOpened;
@@ -22,13 +18,21 @@ public class CastleDoorManager : MonoBehaviour
         if (!_playerInRange || _doorOpened)
             return;
 
-        if (PlayerManager.Instance.SoulCounter >= _soulsRequired)
-        {
-            if (Input.GetKeyDown(_interactKey))
-            {
-                Interact();
-            }
-        }
+        if (!PlayerInputManager.Instance.InteractPressed)
+            return;
+
+        if (PlayerManager.Instance.SoulCounter < _soulsRequired)
+            return;
+
+        // Interacción con la puerta
+        _doorOpened = true;
+
+        // Ocultar ayuda
+        UIManager.Instance.Hide(PanelType.Help);
+
+        // Activar animación (igual que PressurePlateAction)
+        if (_animator)
+            _animator.SetBool("IsOpen", true);
     }
 
     void OnTriggerEnter(Collider other)
@@ -39,13 +43,9 @@ public class CastleDoorManager : MonoBehaviour
         _playerInRange = true;
 
         if (PlayerManager.Instance.SoulCounter >= _soulsRequired)
-        {
             HelpManager.Instance.SetHelpText("INTERACT");
-        }
         else
-        {
             HelpManager.Instance.SetHelpText("You need more souls");
-        }
 
         UIManager.Instance.Show(PanelType.Help);
     }
@@ -57,22 +57,5 @@ public class CastleDoorManager : MonoBehaviour
 
         _playerInRange = false;
         UIManager.Instance.Hide(PanelType.Help);
-    }
-
-    private void Interact()
-    {
-        _doorOpened = true;
-
-        // Ocultar ayuda
-        UIManager.Instance.Hide(PanelType.Help);
-
-        // Activar animación (misma que PressurePlateAction)
-        if (_animator)
-        {
-            _animator.SetBool("IsOpen", true);
-        }
-
-        // Opcional: consumir souls
-        // PlayerManager.Instance.SoulCounter -= _soulsRequired;
     }
 }
