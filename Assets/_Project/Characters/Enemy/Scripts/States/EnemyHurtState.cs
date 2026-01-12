@@ -7,7 +7,8 @@ public class EnemyHurtState : EnemyState
     {
         // Debug.Log("ENEMY => Hurt State ENTER");
         // _enemyManager.HealthManager.StartHurt();
-        SoundManager.Instance.PlaySoundClip(_enemyManager.HurtSound, _enemyManager.transform);
+        if (SoundManager.Instance)
+            SoundManager.Instance.PlaySoundClip(_enemyManager.HurtSound, _enemyManager.transform);
         _enemyManager.AnimationManager.PlayHurtAnimation();
     }
 

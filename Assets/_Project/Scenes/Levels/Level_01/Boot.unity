@@ -127,30 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2884884897328021729, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
-      propertyPath: HurtSounds
-      value: 
-      objectReference: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
-    - target: {fileID: 2884884897328021729, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
-      propertyPath: JumpSounds
-      value: 
-      objectReference: {fileID: 8300000, guid: 599a154e29529634bac862947235dd6f, type: 3}
-    - target: {fileID: 2884884897328021729, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
-      propertyPath: LockSounds
-      value: 
-      objectReference: {fileID: 8300000, guid: 79e6baad2fd414b82a6d49ce1568d2e5, type: 3}
-    - target: {fileID: 2884884897328021729, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
-      propertyPath: PushSounds
-      value: 
-      objectReference: {fileID: 8300000, guid: e3fe09aec8b42854e8649e1ff5ef9735, type: 3}
-    - target: {fileID: 2884884897328021729, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
-      propertyPath: WalkSounds
-      value: 
-      objectReference: {fileID: 8300000, guid: 61ac1a4fab47a764ab7b4b07acd22437, type: 3}
-    - target: {fileID: 2884884897328021729, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
-      propertyPath: WakingUpSounds
-      value: 
-      objectReference: {fileID: 8300000, guid: 301f30ec2ece9044eaf031d59c8c6f4f, type: 3}
     - target: {fileID: 3495424416765799659, guid: 31dad5586b1ff46f3a33caeb2763a9c8, type: 3}
       propertyPath: m_Name
       value: Uasu

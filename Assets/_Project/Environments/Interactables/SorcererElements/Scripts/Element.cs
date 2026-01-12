@@ -21,7 +21,8 @@ public class Element : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SoundManager.Instance.PlaySoundClip(ItemCatch, transform);
+            if (SoundManager.Instance)
+                SoundManager.Instance.PlaySoundClip(ItemCatch, transform);
             SorcererElementsManager.Instance.AddTask(_elementType);
             Destroy(gameObject);
         }

@@ -93,7 +93,7 @@ public class DialogueManager : MonoBehaviour
     public DialogueChoiceState ChoiceState => _choiceState;
 
     private void Awake()
-    {  
+    {
         //Singleton
         if (_instance != null)
         {
@@ -233,7 +233,8 @@ public class DialogueManager : MonoBehaviour
         if (!string.IsNullOrEmpty(CurrentDialogue.dialogueAudioClip) &&
         _dialogueAudioClips.TryGetValue(CurrentDialogue.dialogueAudioClip, out AudioClip clip))
         {
-            SoundManager.Instance.PlaySoundClip(clip, SoundManager.Instance.transform);
+            if (SoundManager.Instance)
+                SoundManager.Instance.PlaySoundClip(clip, SoundManager.Instance.transform);
         }
 
 
@@ -308,5 +309,5 @@ public class DialogueManager : MonoBehaviour
     }
     #endregion
 
-  
+
 }

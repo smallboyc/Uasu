@@ -8,7 +8,8 @@ public class PlayerWalkState : State
     public override void Enter()
     {
         // Debug.Log("Walk State : ENTER");
-        SoundManager.Instance.PlayLoopClip(_playerManager.WalkSounds, _playerManager.transform);
+        if (SoundManager.Instance)
+            SoundManager.Instance.PlayLoopClip(_playerManager.WalkSounds, _playerManager.transform);
         _playerManager.AnimationManager.PlayWalkAnimation();
     }
 
@@ -65,7 +66,8 @@ public class PlayerWalkState : State
     public override void Exit()
     {
         // Debug.Log("Walk State : EXIT");
-        SoundManager.Instance.StopLoopSound();
+        if (SoundManager.Instance)
+            SoundManager.Instance.StopLoopSound();
         _playerManager.AnimationManager.StopWalkAnimation();
     }
 }

@@ -23,7 +23,8 @@ public class PlayerSleepState : State
     public override void Exit()
     {
         _playerManager.AnimationManager.StopSleepAnimation();
-        SoundManager.Instance.PlaySoundClip(_playerManager.WakingUpSounds, _playerManager.transform);
+        if (SoundManager.Instance)
+            SoundManager.Instance.PlaySoundClip(_playerManager.WakingUpSounds, _playerManager.transform);
         IsometricCameraManager.Instance.CancelCameraZoomEffect(2.5f);
         UIManager.Instance.Hide(PanelType.Help);
     }

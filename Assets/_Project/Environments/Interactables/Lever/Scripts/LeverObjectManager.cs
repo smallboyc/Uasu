@@ -41,7 +41,8 @@ public class LeverObjectManager : MonoBehaviour
         }
 
         AttachTo(PlayerManager.Instance.HandHolder);
-        SoundManager.Instance.PlaySoundClip(TakeLever, transform);
+        if (SoundManager.Instance)
+            SoundManager.Instance.PlaySoundClip(TakeLever, transform);
         PlayerManager.Instance.Collectables.Add(PlayerManager.CollectableItems.Lever, gameObject);
         UIManager.Instance.Hide(PanelType.Help);
     }

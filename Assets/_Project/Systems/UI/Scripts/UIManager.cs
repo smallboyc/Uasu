@@ -263,17 +263,20 @@ public class UIManager : MonoBehaviour
 
     public void PlayUIClick()
     {
-        SoundManager.Instance.PlaySoundClip(uiClick, transform);
+        if (SoundManager.Instance)
+            SoundManager.Instance.PlaySoundClip(uiClick, transform);
     }
 
     public void PlayUIHover()
     {
-        SoundManager.Instance.PlaySoundClip(uiHover, transform);
+        if (SoundManager.Instance)
+            SoundManager.Instance.PlaySoundClip(uiHover, transform);
     }
 
     public void PlayUINavigation()
     {
-        SoundManager.Instance.PlaySoundClip(uiHover, transform);
+        if (SoundManager.Instance)
+            SoundManager.Instance.PlaySoundClip(uiHover, transform);
     }
 
     public void ShowController()

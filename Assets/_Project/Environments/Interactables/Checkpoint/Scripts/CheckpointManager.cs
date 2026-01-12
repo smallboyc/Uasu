@@ -33,7 +33,8 @@ public class CheckpointManager : MonoBehaviour
 
         if (_canInteract && PlayerInputManager.Instance.InteractPressed)
         {
-            SoundManager.Instance.PlaySoundClip(Checkpoint, transform);
+            if (SoundManager.Instance)
+                SoundManager.Instance.PlaySoundClip(Checkpoint, transform);
             Debug.Log("Change checkpoint");
             SetCheckpoint();
             UIManager.Instance.Hide(PanelType.Help);
