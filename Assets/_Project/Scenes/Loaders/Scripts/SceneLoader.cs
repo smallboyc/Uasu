@@ -52,16 +52,17 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    //Used when we Start the game
     public void LoadSceneByNameWithTransition(string sceneName)
     {
-        // UIManager.Instance.Show(PanelType.Transition);
         TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeOut, TransitionPanelManager.TransitionColor.Black);
+        //After getting a full black screen, we load the scene
         StartCoroutine(LoadSceneCoroutine(sceneName));
     }
 
     private IEnumerator LoadSceneCoroutine(string sceneName)
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(5.0f); // _fadeDuration + 1
         LoadSceneByName(sceneName);
     }
 

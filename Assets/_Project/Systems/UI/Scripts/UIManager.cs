@@ -176,11 +176,16 @@ public class UIManager : MonoBehaviour
 
         if (PlayerManager.Instance && PlayerManager.Instance.IsTransitioning)
         {
-            Show(PanelType.Loading);
-            IsLoading = true;
-            StartCoroutine(EndTransition());
+            Loading();
         }
 
+    }
+
+    public void Loading()
+    {
+        Show(PanelType.Loading);
+        IsLoading = true;
+        StartCoroutine(EndTransition());
     }
 
     public void ShowOptions()
