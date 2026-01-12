@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f51454f8605da4c9986277df0df734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _soulsRequired: 6
+  _soulsRequired: 4
 --- !u!1001 &423714350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -443,95 +443,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee1acebe740b84491a5acb643e94e661, type: 3}
---- !u!1001 &872215750
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 451366057581328597, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.8436909
-      objectReference: {fileID: 0}
-    - target: {fileID: 451366057581328597, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -21.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 451366057581328597, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 76.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 451366057581328597, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 451366057581328597, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451366057581328597, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451366057581328597, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451366057581328597, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451366057581328597, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451366057581328597, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974469033112349856, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_Size.x
-      value: 7.902882
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974469033112349856, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_Size.y
-      value: 4.522505
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974469033112349856, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_Center.x
-      value: 0.66325307
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974469033112349856, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_Center.y
-      value: 1.2415705
-      objectReference: {fileID: 0}
-    - target: {fileID: 4900129826315014411, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: singleScene
-      value: Cinematic_02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4900129826315014411, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: _isLoadOnEvent
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4900129826315014411, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: _isSingleScene
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6858623852829629099, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: m_Name
-      value: Spawn
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101222302013325839, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
-      propertyPath: _sceneToLoad
-      value: Cinematic_02
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7faa7f443c120447194896c65c4f1cf2, type: 3}
 --- !u!1001 &992670460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1261,4 +1172,3 @@ SceneRoots:
   - {fileID: 175232867}
   - {fileID: 1418798179}
   - {fileID: 686226637}
-  - {fileID: 872215750}
