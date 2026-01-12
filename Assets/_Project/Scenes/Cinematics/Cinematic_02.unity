@@ -132,8 +132,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 32900000, guid: dbc783ed1c530ee4081dd0019f65ab0a, type: 3}
     - target: {fileID: 814661985937631353, guid: 4c0d7f974af9c4769a2b943b7fc19237, type: 3}
+      propertyPath: _isEndGame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 814661985937631353, guid: 4c0d7f974af9c4769a2b943b7fc19237, type: 3}
       propertyPath: _sceneToLoad
-      value: SplashScreen
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513500300342699971, guid: 4c0d7f974af9c4769a2b943b7fc19237, type: 3}
+      propertyPath: _isLoadOnEvent
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1811150039601227206, guid: 4c0d7f974af9c4769a2b943b7fc19237, type: 3}
       propertyPath: m_Name
