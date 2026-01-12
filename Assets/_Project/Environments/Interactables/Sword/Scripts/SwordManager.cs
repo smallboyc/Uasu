@@ -8,6 +8,14 @@ public class SwordManager : MonoBehaviour
     private bool _playerCanGetSword;
     private bool _isInteractionLocked;
 
+    void Start()
+    {
+        if (!PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Sword))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Update()
     {
         if (!PlayerManager.Instance)

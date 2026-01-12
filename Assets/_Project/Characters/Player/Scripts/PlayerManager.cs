@@ -6,6 +6,7 @@ public class Checkpoint
 {
     public Vector3 position;
     public string scene;
+    public int id;
 }
 
 [RequireComponent(typeof(PlayerLocomotionManager))]

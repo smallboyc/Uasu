@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 #if UNITY_EDITOR
 using UnityEditor;
 
@@ -28,21 +30,35 @@ public class TriggerGameOver : MonoBehaviour
     {
         if (PlayerManager.Instance)
         {
-            PlayerManager.Instance.PlayerStateMachine.ChangeState(PlayerManager.Instance.IdleState);
-            PlayerManager.Instance.SoulCounter = 0;
-            PlayerManager.Instance.HealthManager.Health = 4;
-            PlayerHealthBarManager.Instance.SetHealth(PlayerManager.Instance.HealthManager.Health);
-            
             PlayerManager.Instance.LockManager.IsLockedOnEnemy = false;
 
             if (PlayerManager.Instance.Checkpoint != null)
             {
-                PlayerManager.Instance.gameObject.transform.position = PlayerManager.Instance.Checkpoint.position;
-                _sceneLoader.LoadSceneByName(PlayerManager.Instance.Checkpoint.scene);
+                TransitionPanelManager.Instance.NewTransition(TransitionPanelManager.TransitionType.FadeOut, TransitionPanelManager.TransitionColor.Black);
+                StartCoroutine(RespawnSceneTransition());
             }
         }
 
+    }
 
+    public IEnumerator RespawnSceneTransition()
+    {
+        yield return new WaitForSeconds(5.0f);
+
+        UIManager.Instance.Loading();
+
+        PlayerManager.Instance.PlayerStateMachine.ChangeState(PlayerManager.Instance.IdleState);
+        PlayerManager.Instance.SoulCounter = 0;
+        PlayerManager.Instance.HealthManager.Health = 4;
+        PlayerHealthBarManager.Instance.SetHealth(PlayerManager.Instance.HealthManager.Health);
+
+        PlayerManager.Instance.gameObject.transform.position = PlayerManager.Instance.Checkpoint.position;
+        if (IsometricCameraManager.Instance)
+            IsometricCameraManager.Instance.IsometricCamera.Follow = PlayerManager.Instance.gameObject.transform;
+
+        _sceneLoader.LoadSceneByName(PlayerManager.Instance.Checkpoint.scene);
+
+        UIManager.Instance.Hide(PanelType.GameOver);
     }
 
 }
