@@ -26,6 +26,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     public bool IsMoving => _input != Vector2.zero;
     public Vector3 GetMoveDirection => _moveDirection;
 
+    public bool IsJumping => _verticalVelocity > 0.0f;
+
     protected override void Awake()
     {
         base.Awake();
