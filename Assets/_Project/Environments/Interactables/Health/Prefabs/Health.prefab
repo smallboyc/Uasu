@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GainHealth: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
-  HealthParticles: {fileID: 6501893606739035894, guid: 8aa5e4830c5449a40b21f49fad2dc934, type: 3}
+  HealthParticles: {fileID: 2795676779387287702}
 --- !u!135 &6119853248379216328
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -223,6 +223,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aa5e4830c5449a40b21f49fad2dc934, type: 3}
+--- !u!198 &2795676779387287702 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6501893606739035894, guid: 8aa5e4830c5449a40b21f49fad2dc934, type: 3}
+  m_PrefabInstance: {fileID: 9004772626458984032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4002867365588690344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5438776424646663112, guid: 8aa5e4830c5449a40b21f49fad2dc934, type: 3}
