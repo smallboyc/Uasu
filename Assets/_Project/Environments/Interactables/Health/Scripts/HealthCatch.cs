@@ -7,6 +7,7 @@ public class HealthCatch : MonoBehaviour
     //Sounds
     [Header("Sounds")]
     public AudioClip GainHealth;
+    public ParticleSystem HealthParticles;
 
     void Update()
     {
@@ -15,6 +16,7 @@ public class HealthCatch : MonoBehaviour
 
         if (PlayerInputManager.Instance.InteractPressed)
         {
+            PlayHealthParticles();
             if (SoundManager.Instance)
                 SoundManager.Instance.PlaySoundClip(GainHealth, transform);
             PlayerManager.Instance.HealthManager.Heal();
@@ -44,6 +46,10 @@ public class HealthCatch : MonoBehaviour
         }
     }
 
+    void PlayHealthParticles()
+    {
+        HealthParticles.Play();
+    }
 
 
 }

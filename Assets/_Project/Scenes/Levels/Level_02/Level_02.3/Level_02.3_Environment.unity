@@ -1718,6 +1718,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.35738078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.035179723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.690566
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.5670288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.24537553
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.90943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 2521589699281411470}
@@ -10326,6 +10350,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.35738078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.035179723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.690566
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.5670288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.24537553
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.90943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 2521589699281411470}
@@ -10385,6 +10433,30 @@ PrefabInstance:
     - target: {fileID: 4603135295315659303, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.35738078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.035179723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.690566
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.5670288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.24537553
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.90943396
       objectReference: {fileID: 0}
     - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
@@ -10886,6 +10958,30 @@ PrefabInstance:
       value: -45.588
       objectReference: {fileID: 0}
     - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.35738078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.035179723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.690566
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.5670288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.24537553
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.90943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 2521589699281411470}
@@ -11310,6 +11406,30 @@ PrefabInstance:
     - target: {fileID: 4603135295315659303, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.35738078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.035179723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.690566
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.5670288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.24537553
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.90943396
       objectReference: {fileID: 0}
     - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
@@ -12608,6 +12728,30 @@ PrefabInstance:
     - target: {fileID: 4603135295315659303, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.35738078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.035179723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.690566
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.5670288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.24537553
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.90943396
       objectReference: {fileID: 0}
     - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
@@ -14679,6 +14823,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.35738078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.035179723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.690566
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.5670288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.24537553
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.90943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
       value: 
       objectReference: {fileID: 2521589699281411470}
@@ -16073,6 +16241,30 @@ PrefabInstance:
     - target: {fileID: 4603135295315659303, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.35738078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.035179723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.690566
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.5670288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.24537553
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.90943396
       objectReference: {fileID: 0}
     - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
@@ -17862,6 +18054,30 @@ PrefabInstance:
     - target: {fileID: 4603135295315659303, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.35738078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.035179723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.690566
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.5670288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.24537553
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.90943396
       objectReference: {fileID: 0}
     - target: {fileID: 8939546737265684899, guid: 24b883087b75113478c5898cb65d70da, type: 3}
       propertyPath: 'CollisionModule.m_Planes.Array.data[0]'

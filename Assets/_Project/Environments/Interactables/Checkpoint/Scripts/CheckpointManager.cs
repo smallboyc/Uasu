@@ -11,6 +11,7 @@ public class CheckpointManager : MonoBehaviour
     //Sounds
     [Header("Sounds")]
     public AudioClip Checkpoint;
+    public ParticleSystem CheckpointParticles;
 
     public void Start()
     {
@@ -36,6 +37,7 @@ public class CheckpointManager : MonoBehaviour
             if (SoundManager.Instance)
                 SoundManager.Instance.PlaySoundClip(Checkpoint, transform);
             Debug.Log("Change checkpoint");
+            PlayCheckpointParticles();
             SetCheckpoint();
             UIManager.Instance.Hide(PanelType.Help);
         }
@@ -61,5 +63,10 @@ public class CheckpointManager : MonoBehaviour
             _canInteract = false;
             UIManager.Instance.Hide(PanelType.Help);
         }
+    }
+
+    void PlayCheckpointParticles()
+    {
+       CheckpointParticles.Play();
     }
 }
