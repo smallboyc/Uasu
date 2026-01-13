@@ -5,7 +5,8 @@ public class EnemyAttackState : EnemyState
     public EnemyAttackState(EnemyManager enemyManager) : base(enemyManager) { }
     public override void Enter()
     {
-        SoundManager.Instance.PlaySoundClip(_enemyManager.AttackSound, _enemyManager.transform);
+        if (SoundManager.Instance)
+            SoundManager.Instance.PlaySoundClip(_enemyManager.AttackSound, _enemyManager.transform);
         _enemyManager.AttackManager.EnemyStartAttack();
         _enemyManager.AnimationManager.PlayAttackAnimation();
 
@@ -13,10 +14,10 @@ public class EnemyAttackState : EnemyState
 
     public override void Update()
     {
-         // Player is dead ? => Enemy chill
+        // Player is dead ? => Enemy chill
         if (PlayerManager.Instance.HealthManager.IsDead())
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.IdleState);
-            
+
         if (!_enemyManager.AttackManager.IsAttacking)
         {
             _enemyManager.EnemyStateMachine.ChangeState(_enemyManager.FocusState);

@@ -10,7 +10,7 @@ public class SwordManager : MonoBehaviour
 
     void Start()
     {
-        if (!PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Sword))
+        if (PlayerManager.Instance.Collectables.ContainsKey(PlayerManager.CollectableItems.Sword))
         {
             Destroy(gameObject);
         }

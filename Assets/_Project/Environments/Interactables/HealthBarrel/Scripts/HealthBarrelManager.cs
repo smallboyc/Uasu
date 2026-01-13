@@ -32,7 +32,8 @@ public class HealthBarrelManager : MonoBehaviour
 
         if (PlayerInputManager.Instance.InteractPressed && !_used)
         {
-            SoundManager.Instance.PlaySoundClip(Interact, transform);
+            if (SoundManager.Instance)
+                SoundManager.Instance.PlaySoundClip(Interact, transform);
             _used = true;
             Destroy(_currentBarrel);
             UIManager.Instance.Hide(PanelType.Help);

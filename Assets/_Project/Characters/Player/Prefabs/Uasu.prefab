@@ -72,15 +72,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b0847aa37eae947fb81ecd4f4e79a6bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 28.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b0847aa37eae947fb81ecd4f4e79a6bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -29.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b0847aa37eae947fb81ecd4f4e79a6bd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 23.92
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b0847aa37eae947fb81ecd4f4e79a6bd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -336,10 +336,20 @@ MonoBehaviour:
   LockManager: {fileID: 0}
   HealthManager: {fileID: 0}
   CollisionManager: {fileID: 0}
+  IsPlayerActive: 0
+  IsTransitioning: 0
   AttackSounds:
   - {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
   - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
-  Checkpoint: {fileID: 6076659285950197679, guid: 89b89469a52ba4c0b8a5f93855fb0fff, type: 3}
+  LockSounds: {fileID: 8300000, guid: 79e6baad2fd414b82a6d49ce1568d2e5, type: 3}
+  WalkSounds: {fileID: 8300000, guid: 61ac1a4fab47a764ab7b4b07acd22437, type: 3}
+  HurtSounds: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
+  JumpSounds: {fileID: 8300000, guid: 599a154e29529634bac862947235dd6f, type: 3}
+  WakingUpSounds: {fileID: 8300000, guid: 301f30ec2ece9044eaf031d59c8c6f4f, type: 3}
+  PushSounds: {fileID: 8300000, guid: e3fe09aec8b42854e8649e1ff5ef9735, type: 3}
+  HandHolder: {fileID: 0}
+  BackHolder: {fileID: 0}
+  HoldSword: 0
   SoulCounter: 0
 --- !u!114 &-9037390966968635814
 MonoBehaviour:

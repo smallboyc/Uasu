@@ -15,7 +15,8 @@ public class HealthCatch : MonoBehaviour
 
         if (PlayerInputManager.Instance.InteractPressed)
         {
-            SoundManager.Instance.PlaySoundClip(GainHealth, transform);
+            if (SoundManager.Instance)
+                SoundManager.Instance.PlaySoundClip(GainHealth, transform);
             PlayerManager.Instance.HealthManager.Heal();
             UIManager.Instance.Hide(PanelType.Help);
             Destroy(gameObject);

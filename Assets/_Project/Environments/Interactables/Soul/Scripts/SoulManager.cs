@@ -32,7 +32,8 @@ public class SoulManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SoundManager.Instance.PlaySoundClip(SoulCaught, transform);
+            if (SoundManager.Instance)
+                SoundManager.Instance.PlaySoundClip(SoulCaught, transform);
             PlayerManager.Instance.SoulCounter++;
             Destroy(gameObject);
         }

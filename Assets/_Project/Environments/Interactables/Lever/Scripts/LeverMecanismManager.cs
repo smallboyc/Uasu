@@ -65,7 +65,8 @@ public class LeverMecanismManager : MonoBehaviour
 
     private void Activate()
     {
-        SoundManager.Instance.PlaySoundClip(HitLever, transform);
+        if (SoundManager.Instance)
+            SoundManager.Instance.PlaySoundClip(HitLever, transform);
         _leverMecanismAnimator.SetBool("IsActivated", true);
 
     }
@@ -77,7 +78,8 @@ public class LeverMecanismManager : MonoBehaviour
             foreach (GameObject bridge in _targetBridges)
             {
                 bridge.transform.Find("BridgePlate").GetComponent<Animator>().SetBool("IsOpen", true);
-                SoundManager.Instance.PlaySoundClip(FallingBridge, transform);
+                if (SoundManager.Instance)
+                    SoundManager.Instance.PlaySoundClip(FallingBridge, transform);
             }
         }
     }
