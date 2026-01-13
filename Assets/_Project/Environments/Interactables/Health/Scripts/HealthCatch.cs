@@ -11,15 +11,16 @@ public class HealthCatch : MonoBehaviour
 
     void Update()
     {
+
         if (!_playerInRange)
             return;
 
         if (PlayerInputManager.Instance.InteractPressed)
         {
-            PlayHealthParticles();
             if (SoundManager.Instance)
                 SoundManager.Instance.PlaySoundClip(GainHealth, transform);
             PlayerManager.Instance.HealthManager.Heal();
+            PlayHealthParticles();
             UIManager.Instance.Hide(PanelType.Help);
             Destroy(gameObject);
         }
@@ -48,7 +49,9 @@ public class HealthCatch : MonoBehaviour
 
     void PlayHealthParticles()
     {
-        HealthParticles.Play();
+        ParticleSystem particles = Instantiate(HealthParticles, transform.position, Quaternion.identity);
+        particles.Play();
+        Destroy(particles.gameObject, particles.main.duration);
     }
 
 
