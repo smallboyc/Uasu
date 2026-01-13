@@ -81,10 +81,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             if (PlayerInputManager.Instance.JumpPressed && _jumpButtonReleased && _jumpCanBePerformed)
             {
                 _verticalVelocity = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
-
-                if (_playerManager.JumpSounds != null && SoundManager.Instance)
-                    SoundManager.Instance.PlaySoundClip(_playerManager.JumpSounds, _playerManager.transform);
-
                 StartCoroutine(ReloadJump());
             }
         }
