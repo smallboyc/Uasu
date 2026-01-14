@@ -2,11 +2,13 @@ using System.Collections;
 using UnityEngine;
 
 public class SwordManager : MonoBehaviour
+
 {
     [SerializeField] private Collider _pickupCollider;
 
     private bool _playerCanGetSword;
     private bool _isInteractionLocked;
+    public ParticleSystem SwordParticles;
 
     void Start()
     {
@@ -52,6 +54,7 @@ public class SwordManager : MonoBehaviour
 
         PlayerManager.Instance.Collectables.Add(PlayerManager.CollectableItems.Sword, gameObject);
 
+        PlaySwordParticles();
         UIManager.Instance.Hide(PanelType.Talisman);
         UIManager.Instance.Show(PanelType.Weapon);
     }
@@ -96,6 +99,13 @@ public class SwordManager : MonoBehaviour
             _playerCanGetSword = false;
             UIManager.Instance.Hide(PanelType.Help);
         }
+    }
+
+    void PlaySwordParticles()
+    {
+        ParticleSystem particles = Instantiate(SwordParticles, transform.position, Quaternion.identity);
+        particles.Play();
+        Destroy(particles.gameObject, particles.main.duration);
     }
 
 

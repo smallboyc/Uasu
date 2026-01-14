@@ -65,8 +65,10 @@ public class CheckpointManager : MonoBehaviour
         }
     }
 
-    void PlayCheckpointParticles()
+     void PlayCheckpointParticles()
     {
-       CheckpointParticles.Play();
+        ParticleSystem particles = Instantiate(CheckpointParticles, transform.position, Quaternion.identity);
+        particles.Play();
+        Destroy(particles.gameObject, particles.main.duration);
     }
 }
