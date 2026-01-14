@@ -7,9 +7,11 @@ public class HealthCatch : MonoBehaviour
     //Sounds
     [Header("Sounds")]
     public AudioClip GainHealth;
+    public ParticleSystem HealthParticles;
 
     void Update()
     {
+
         if (!_playerInRange)
             return;
 
@@ -18,6 +20,7 @@ public class HealthCatch : MonoBehaviour
             if (SoundManager.Instance)
                 SoundManager.Instance.PlaySoundClip(GainHealth, transform);
             PlayerManager.Instance.HealthManager.Heal();
+            PlayHealthParticles();
             UIManager.Instance.Hide(PanelType.Help);
             Destroy(gameObject);
         }
@@ -44,6 +47,12 @@ public class HealthCatch : MonoBehaviour
         }
     }
 
+    void PlayHealthParticles()
+    {
+        ParticleSystem particles = Instantiate(HealthParticles, transform.position, Quaternion.identity);
+        particles.Play();
+        Destroy(particles.gameObject, particles.main.duration);
+    }
 
 
 }
