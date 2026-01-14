@@ -12,6 +12,7 @@ public class PressurePlateAction : MonoBehaviour
     [Header("Sounds")]
     public AudioClip PlateDown;
     public AudioClip DoorOpening;
+    public ParticleSystem PressurePlateParticles;
 
     void Update()
     {
@@ -41,6 +42,7 @@ public class PressurePlateAction : MonoBehaviour
         transform.Translate(Vector3.down * 0.2f);
         if (SoundManager.Instance)
             SoundManager.Instance.PlaySoundClip(DoorOpening, transform);
+        PlayPressurePlateParticles();
     }
 
     private IEnumerator Action()
@@ -74,4 +76,12 @@ public class PressurePlateAction : MonoBehaviour
             _actionSource = null;
         }
     }
+
+     void PlayPressurePlateParticles()
+    {
+        ParticleSystem particles = Instantiate(PressurePlateParticles, transform.position, Quaternion.identity);
+        particles.Play();
+        Destroy(particles.gameObject, particles.main.duration);
+    }
+
 }

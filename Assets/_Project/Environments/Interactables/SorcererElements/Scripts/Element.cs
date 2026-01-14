@@ -10,6 +10,7 @@ public class Element : MonoBehaviour
     //Sounds
     [Header("Sounds")]
     public AudioClip ItemCatch;
+    public ParticleSystem ElementParticles;
 
     void Start()
     {
@@ -24,7 +25,16 @@ public class Element : MonoBehaviour
             if (SoundManager.Instance)
                 SoundManager.Instance.PlaySoundClip(ItemCatch, transform);
             SorcererElementsManager.Instance.AddTask(_elementType);
+            PlayElementParticles();
             Destroy(gameObject);
         }
     }
+
+    void PlayElementParticles()
+    {
+        ParticleSystem particles = Instantiate(ElementParticles, transform.position, Quaternion.identity);
+        particles.Play();
+        Destroy(particles.gameObject, particles.main.duration);
+    }
+
 }
