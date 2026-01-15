@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &679578274 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3757659569146361947, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
+  m_PrefabInstance: {fileID: 1251618453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &735508264 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5051430652534105081, guid: ce80e63d7727c46ccb75371f2ebfe87b, type: 3}
@@ -448,6 +459,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1021290210 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6082725306121288983, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
+  m_PrefabInstance: {fileID: 1251618453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1116969544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -513,6 +535,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 497561f9ec05548d1b58be6ba3085d40, type: 3}
+--- !u!114 &1202377983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 217954808991663299, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
+  m_PrefabInstance: {fileID: 1251618453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1251618453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -541,6 +574,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 217954808991663299, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 217954808991663299, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1021290210}
+    - target: {fileID: 217954808991663299, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 958026369}
     - target: {fileID: 1099527991066912456, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -905,6 +950,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6082725306121288983, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082725306121288983, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 679578274}
+    - target: {fileID: 6082725306121288983, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1202377983}
     - target: {fileID: 6177393339424516322, guid: 6104fc2fb8a8542ac8e03f0551c0798e, type: 3}
       propertyPath: m_IsActive
       value: 0
